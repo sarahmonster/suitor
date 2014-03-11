@@ -14,14 +14,69 @@
   </div>
     
   <div>
-      <%= f.label :title %>
+      <%= f.label :position %>
       <%= f.text_field :title %>
   </div>
 
   <div>
-      <%= f.label :text %>
+      <%= f.label :'date posted' %>
+      <%= f.text_field :datePosted %>
+  </div>
+
+  <div>
+      <%= f.label :'posting url' %>
+      <%= f.text_field :url %>
+  </div>
+
+  <div>
+      <%= f.label :details %>
       <%= f.text_area :description %>
   </div>
+
+  
+
+
+  <h2>Company information</h2>
+  <div>
+      <%= f.label :company %>
+      <%= f.text_field :hiringOrganization %>
+  </div>
+
+  <div>
+      <%= f.label :'company website' %>
+      <%= f.text_field :hiringOrganizationUrl %>
+  </div>
+
+  <div>
+      <%= f.label :location %>
+      <%= f.text_field :jobLocation %>
+  </div>
+
+
+
+
+  <h2>Application details</h2>
+  <div>
+      <%= f.label :contact %>
+      <%= f.text_field :contactName %>
+  </div>
+
+  <div>
+      <%= f.label :'email' %>
+      <%= f.text_field :contactEmail %>
+  </div>
+
+  <div>
+      <%= f.label :'application url' %>
+      <%= f.text_field :applicationUrl %>
+  </div>
+
+  <div>
+      <%= f.label :'submission requirements' %>
+      <%= f.text_field :submissionRequirements %>
+  </div>
+
+  <hr>
 
   <div>
       <%= f.submit %>

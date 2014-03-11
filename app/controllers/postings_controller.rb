@@ -45,7 +45,9 @@ class PostingsController < ApplicationController
 
 	private 
 		def posting_params
-				params.require(:posting).permit(:title, :description)
+				params.require(:posting).permit(:title, :description, :url, :datePosted, :jobLocation, 
+					:hiringOrganization, :hiringOrganizationUrl, :contactName, :contactEmail, 
+					:applicationUrl, :submissionRequirements)
 		end
 
 end

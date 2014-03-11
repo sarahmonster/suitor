@@ -4,9 +4,14 @@
  
   <% @postings.each do |posting| %>
     <div>
-      <h3><%= posting.title %> (<%= link_to 'Show', posting %> | 
+      <h3><%= posting.title %>, <a href="<%= posting.hiringOrganizationUrl %>"><%= posting.hiringOrganization %></a> (<%= posting.jobLocation %>)
+      (<%= link_to 'Show', posting %> | 
       	<%= link_to 'Destroy', posting_path(posting), 
       	method: :delete, data: { confirm: 'Are you sure?' } %>) </h3>
-      <p><%= posting.description %></p>
+      <p>Posted on <%= posting.datePosted %></p>
+      <p>Requires <%= posting.submissionRequirements %></p>
+      <%= link_to 'Apply online', posting.applicationUrl %>
+      <%= link_to 'Original posting', posting.url %>
+
     </div>
   <% end %>

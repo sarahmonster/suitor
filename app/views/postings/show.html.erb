@@ -1,12 +1,73 @@
+<h2>Posting Details</h2>
+
 <div>
-  <h2>Title</h2>
+  <strong>Title: </strong>
   <%= @posting.title %>
 </div>
 
 <div>
-  <h2>Description</h2>
+  <strong>date posted: </strong>
+  <%= @posting.datePosted %>
+</div>
+
+  <div>
+    <strong>posting url: </strong>
+      <%= @posting.url %>
+  </div>
+
+<div>
+  <strong>Description: </strong>
   <%= @posting.description %>
 </div>
+
+
+
+
+<h2>Company information</h2>
+  
+<div>
+	<strong>company: </strong>
+	<%= @posting.hiringOrganization %>
+</div>
+
+<div>
+	<strong>company website: </strong>
+	<%= @posting.hiringOrganizationUrl %>
+</div>
+
+<div>
+	<strong>location: </strong>
+	<%= @posting.jobLocation %>
+</div>
+
+
+
+
+<h2>Application details</h2>
+
+<div>
+  <strong>contact: </strong>
+  <%= @posting.contactName %>
+</div>
+
+<div>
+  <strong>email: </strong>
+  <%= @posting.contactEmail %>
+</div>
+
+<div>
+  <strong>application url: </strong>
+  <%= @posting.applicationUrl %>
+</div>
+
+<div>
+  <strong>submission requirements: </strong>
+  <%= @posting.submissionRequirements %>
+</div>
+
+
+
+
 
 <%= link_to 'Edit posting', edit_posting_path(@posting) %>
 
