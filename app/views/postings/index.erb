@@ -1,0 +1,10 @@
+<h1>All job postings</h1>
+
+<%= link_to 'Add new job posting', new_posting_path %>
+ 
+  <% @postings.each do |posting| %>
+    <div>
+      <h3><%= posting.title %></h3>
+      <p><%= posting.description %></p>
+    </div>
+  <% end %>
