@@ -4,7 +4,9 @@
  
   <% @postings.each do |posting| %>
     <div>
-      <h3><%= posting.title %></h3>
+      <h3><%= posting.title %> (<%= link_to 'Show', posting %> | 
+      	<%= link_to 'Destroy', posting_path(posting), 
+      	method: :delete, data: { confirm: 'Are you sure?' } %>) </h3>
       <p><%= posting.description %></p>
     </div>
   <% end %>
