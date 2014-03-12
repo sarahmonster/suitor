@@ -1,0 +1,13 @@
+body {
+	background: pink;
+}
+
+$max-width: 800px;
+$grid-columns: 12;
+
+aside   { @include span-columns(3); }
+section { @include span-columns(6); }
+
+.container {
+	@include outer-container;	
+}
