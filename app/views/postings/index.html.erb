@@ -3,15 +3,29 @@
 <%= link_to 'Add new job posting', new_posting_path %>
  
   <% @postings.each do |posting| %>
-    <div>
-      <h3><%= posting.title %>, <a href="<%= posting.hiringOrganizationUrl %>"><%= posting.hiringOrganization %></a> (<%= posting.jobLocation %>)
-      (<%= link_to 'Show', posting %> | 
-      	<%= link_to 'Destroy', posting_path(posting), 
-      	method: :delete, data: { confirm: 'Are you sure?' } %>) </h3>
-      <p>Posted on <%= posting.datePosted %></p>
-      <p>Requires <%= posting.submissionRequirements %></p>
-      <%= link_to 'Apply online', posting.applicationUrl %>
-      <%= link_to 'Original posting', posting.url %>
+    <section class="job-posting">
+      
+      <div class="title">
+        <h3><%= link_to posting.title, posting %></h3>
+        <h2><a href="<%= posting.hiringOrganizationUrl %>"><%= posting.hiringOrganization %></a> 
+        (<%= posting.jobLocation %>)</h2>
+      </div>
 
-    </div>
+      <div class="date-posted">
+        <% if posting.datePosted %>
+          <p>Posted <%= posting.datePosted.strftime("%B %d") %></p>
+        <% end %>
+      </div>
+
+      <div class="application">
+        <p>Requires <%= posting.submissionRequirements %><br>
+        <% unless posting.applicationUrl.blank? %>
+          <%= link_to 'Apply online', posting.applicationUrl %> | 
+        <% end %>
+        <%= link_to 'Original posting', posting.url %><br>
+        <%= link_to 'More information', posting %> | 
+        <%= link_to 'Delete', posting_path(posting), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      </div>
+
+    </section>
   <% end %>

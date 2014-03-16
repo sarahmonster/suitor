@@ -1,12 +1,33 @@
 body {
-	background: pink;
+	background: lighten(pink, 10%);
 }
 
 $max-width: 800px;
 $grid-columns: 12;
 
 aside   { @include span-columns(3); }
-section { @include span-columns(6); }
+section { @include outer-container; }
+
+section.job-posting { 
+    @include span-columns(12); 
+    margin-top: 2em;
+
+    div {
+        min-height: 1px;
+    }
+
+    .title {
+        @include span-columns(5);
+    }
+
+    .date-posted {
+        @include span-columns(3);
+    }
+
+    .application {
+        @include span-columns(4);
+    }
+}
 
 .container {
 	@include outer-container;	

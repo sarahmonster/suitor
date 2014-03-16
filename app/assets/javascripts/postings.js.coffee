@@ -3,4 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('input[type=date]').datepicker {dateFormat: 'yy-mm-dd'}
+  $(document).on 'page:change', ->
+    $('input[type=date]').datepicker {dateFormat: 'yy-mm-dd'}
