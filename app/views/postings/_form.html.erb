@@ -1,55 +1,51 @@
 <%= form_for @posting do |f| %>
- <% if @posting.errors.any? %>
+  <% if @posting.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@posting.errors.count, "error") %> prohibited this post from being saved:</h2>
-    
+      <h2>
+        <%= pluralize(@posting.errors.count, "error") %> prohibited this post from being saved:</h2>
+      
       <ul>
-      <% @posting.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @posting.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
+    </div>  
+  <% end %>
 
-    <% end %>
-
-  </div>
-    
   <div>
-      <%= f.label :position %>
-      <%= f.text_field :title %>
+    <%= f.label :position %>
+    <%= f.text_field :title %>
   </div>
 
   <div>
-      <%= f.label :'date posted' %>
-      <%= f.text_field :datePosted %>
+    <%= f.label :'date posted' %>
+    <%= date_field(:posting, :datePosted) %>
   </div>
 
   <div>
-      <%= f.label :'posting url' %>
-      <%= f.text_field :url %>
+    <%= f.label :'posting url' %>
+    <%= f.text_field :url %>
   </div>
 
   <div>
-      <%= f.label :details %>
-      <%= f.text_area :description %>
+    <%= f.label :details %>
+    <%= f.text_area :description %>
   </div>
-
-  
-
 
   <h2>Company information</h2>
   <div>
-      <%= f.label :company %>
-      <%= f.text_field :hiringOrganization %>
+    <%= f.label :company %>
+    <%= f.text_field :hiringOrganization %>
   </div>
 
   <div>
-      <%= f.label :'company website' %>
-      <%= f.text_field :hiringOrganizationUrl %>
+    <%= f.label :'company website' %>
+    <%= f.text_field :hiringOrganizationUrl %>
   </div>
 
   <div>
-      <%= f.label :location %>
-      <%= f.text_field :jobLocation %>
+    <%= f.label :location %>
+    <%= f.text_field :jobLocation %>
   </div>
 
 
@@ -57,29 +53,29 @@
 
   <h2>Application details</h2>
   <div>
-      <%= f.label :contact %>
-      <%= f.text_field :contactName %>
+    <%= f.label :contact %>
+    <%= f.text_field :contactName %>
   </div>
 
   <div>
-      <%= f.label :'email' %>
-      <%= f.text_field :contactEmail %>
+    <%= f.label :'email' %>
+    <%= f.text_field :contactEmail %>
   </div>
 
   <div>
-      <%= f.label :'application url' %>
-      <%= f.text_field :applicationUrl %>
+    <%= f.label :'application url' %>
+    <%= f.text_field :applicationUrl %>
   </div>
 
   <div>
-      <%= f.label :'submission requirements' %>
-      <%= f.text_field :submissionRequirements %>
+    <%= f.label :'submission requirements' %>
+    <%= f.text_field :submissionRequirements %>
   </div>
 
   <hr>
 
   <div>
-      <%= f.submit %>
-    </div>
+    <%= f.submit %>
+  </div>
 
 <% end %>
