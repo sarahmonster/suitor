@@ -66,6 +66,25 @@
 </div>
 
 
+<h3>Applied for this job?</h3>
+<% if @posting.applied? %>
+HI GO YAY
+
+<% else %>
+
+  <%= form_for(@posting.job_application) do |f| %>
+
+    <%= f.label :"Date applied" %>
+    <%= date_field :job_application, :dateSent, value: @posting.job_application.dateSent %>
+
+    <%= f.label :"Cover letter" %>
+    <%= f.text_area :coverLetter %>
+
+    <%= f.submit %>
+
+  <% end %>
+
+<% end %>
 
 
 

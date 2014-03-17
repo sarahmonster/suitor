@@ -1,0 +1,31 @@
+<h1>Listing job_applications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Datesent</th>
+      <th>Coverletter</th>
+      <th>Posting</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_applications.each do |job_application| %>
+      <tr>
+        <td><%= job_application.dateSent %></td>
+        <td><%= job_application.coverLetter %></td>
+        <td><%= job_application.posting %></td>
+        <td><%= link_to 'Show', job_application %></td>
+        <td><%= link_to 'Edit', edit_job_application_path(job_application) %></td>
+        <td><%= link_to 'Destroy', job_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job application', new_job_application_path %>

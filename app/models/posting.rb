@@ -1,4 +1,10 @@
 class Posting < ActiveRecord::Base
 	validates :title, presence: true,
                     length: { minimum: 5 }
+  has_one :job_application
+
+  def applied?
+    job_application and job_application.dateSent
+  end
+
 end

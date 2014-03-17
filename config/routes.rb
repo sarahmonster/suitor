@@ -1,4 +1,6 @@
 JobTracker::Application.routes.draw do
+  resources :job_applications
+
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -7,9 +9,10 @@ JobTracker::Application.routes.draw do
   root 'welcome#index'
 
   # Set up job postings
-  resources :postings
-    get 'postings/:id(.:format)' => 'postings#show'
-    get 'postings(.:format)' => 'postings#index'
+  resources :postings do
+    resources :job_applications
+  end
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

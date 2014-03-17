@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140311210836) do
+ActiveRecord::Schema.define(version: 20140317190456) do
+
+  create_table "applications", force: true do |t|
+    t.date     "dateSent"
+    t.text     "coverLetter"
+    t.integer  "posting_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "applications", ["posting_id"], name: "index_applications_on_posting_id"
+
+  create_table "job_applications", force: true do |t|
+    t.date     "dateSent"
+    t.text     "coverLetter"
+    t.integer  "posting_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "job_applications", ["posting_id"], name: "index_job_applications_on_posting_id"
 
   create_table "job_postings", force: true do |t|
     t.datetime "created_at"
