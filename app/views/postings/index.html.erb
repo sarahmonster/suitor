@@ -7,6 +7,9 @@
       
       <div class="title">
         <h3><%= link_to posting.title, posting %></h3>
+        <% if posting.applied? %>
+          Applied for!
+        <% end %>
         <h2><a href="<%= posting.hiringOrganizationUrl %>"><%= posting.hiringOrganization %></a> 
         (<%= posting.jobLocation %>)</h2>
       </div>

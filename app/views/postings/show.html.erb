@@ -66,12 +66,13 @@
 </div>
 
 
-<h3>Applied for this job?</h3>
+
 <% if @posting.applied? %>
-HI GO YAY
+  <h3>Application submitted <%= @posting.job_application.dateSent.strftime("%B %d") %></h3>
+  <%= @posting.job_application.coverLetter %>
 
 <% else %>
-
+  <h3>Mark job as applied</h3>
   <%= form_for(@posting.job_application) do |f| %>
 
     <%= f.label :"Date applied" %>
