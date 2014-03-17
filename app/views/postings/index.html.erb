@@ -5,13 +5,16 @@
   <% @postings.each do |posting| %>
     <section class="job-posting">
       
-      <div class="title">
-        <h3><%= link_to posting.title, posting %></h3>
+      <div class="header">
+        <h3><%= link_to posting.title, posting %> (<%= posting.jobLocation %>)</h3>
         <% if posting.applied? %>
           Applied for!
         <% end %>
-        <h2><a href="<%= posting.hiringOrganizationUrl %>"><%= posting.hiringOrganization %></a> 
-        (<%= posting.jobLocation %>)</h2>
+        
+      </div>
+
+      <div class="company">
+        <h2><a href="<%= posting.hiringOrganizationUrl %>"><%= posting.hiringOrganization %></a></h2>
       </div>
 
       <div class="date-posted">

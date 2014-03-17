@@ -1,22 +1,24 @@
-body {
-	background: lighten(pink, 10%);
-}
-
-$max-width: 800px;
+$max-width: 500px;
 $grid-columns: 12;
 
 aside   { @include span-columns(3); }
 section { @include outer-container; }
 
 section.job-posting { 
-    @include span-columns(12); 
     margin-top: 2em;
 
     div {
         min-height: 1px;
     }
 
-    .title {
+    .header {
+        @include span-columns(12); 
+        border-bottom: 2px solid $medium-gray;
+        padding-bottom: .5em;
+        margin-bottom: .5em;
+    }
+
+    .company {
         @include span-columns(5);
     }
 

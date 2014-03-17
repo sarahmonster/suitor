@@ -22,7 +22,11 @@ h2 {
 }
 
 h3 {
-  font-size: $base-font-size * 1.75; // 16 * 1.75 = 28px
+  font-size: $base-font-size * 1; // 16 * 1 = 16px
+  text-transform: uppercase;
+  font-family: $base-font-family;
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
 h4 {
