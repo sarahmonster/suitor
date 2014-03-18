@@ -28,7 +28,7 @@
 
 
       <div class="company">
-        <h2><a href="<%= posting.hiringOrganizationUrl %>"><%= posting.hiringOrganization %></a></h2>
+        <h2><%= link_to posting.hiringOrganization, posting %></h2>
         <p><%= posting.description.truncate(300, separator: ' ') %> (<%= link_to 'More information', posting %>)</p>
       </div>
 

@@ -1,73 +1,73 @@
 <header class="page-header">
-  <h1>Posting Details</h1>
+  <h3><%= @posting.title %></h3>
+  <h1><%= @posting.hiringOrganization %></h1>
 </header>
 
-<div>
-  <strong>Title: </strong>
-  <%= @posting.title %>
-</div>
 
-<div>
-  <strong>date posted: </strong>
-  <%= @posting.datePosted %>
-</div>
+<section class="job-information">
 
-  <div>
-    <strong>posting url: </strong>
-      <%= @posting.url %>
+  <h2>About this job</h2>
+
+  <div class="controls">
+  <%= link_to edit_posting_path(@posting) do %>
+    <i class="icon-pencil2"><span>Edit</span></i>
+  <% end %>
+
+  <%= link_to posting_path(@posting), method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <i class="icon-trash2"><span>Delete</span></i>
+  <% end %> 
   </div>
 
-<div>
-  <strong>Description: </strong>
-  <%= @posting.description %>
-</div>
+  <ul class="job-details">
+    <% if @posting.datePosted %>
+      <li><i class="icon-clock4"><span>Posted</span></i><%= @posting.datePosted.strftime("%B %d") %>
+      (<%= link_to_if @posting.url, "Original post", @posting.url %>)
+      </li>
+    <% end %>
+
+    <% if @posting.hiringOrganization %>
+      <li><i class="icon-location4"><span>Employer</span></i>
+      <% if @posting.hiringOrganizationUrl %>
+        <%= link_to @posting.hiringOrganization, @posting.hiringOrganizationUrl %>
+      <% else %>
+        <%= @posting.hiringOrganization %>
+      <% end %>
+      <% if @posting.jobLocation %>(<%= @posting.jobLocation %>)<% end %>
+      </li>
+    <% end %>
+
+    <% if !@posting.applicationUrl.empty? %>
+      <li><i class="icon-external-link"><span>Online application</span></i><%= link_to 'URL', @posting.applicationUrl %></li>
+    <% end %>
+
+    <% if !@posting.contactName.empty? or !@posting.contactEmail.empty? %>
+      <li><i class="icon-user6"><span>Contact</span></i>
+      <% if @posting.contactName.empty? %>
+        <%= link_to @posting.contactEmail, @posting.contactEmail %>
+      <% elsif @posting.contactEmail.empty? %>
+        <%= @posting.contactName %>
+      <% else %>
+        <%= link_to @posting.contactName, @posting.contactEmail %>
+      <% end %>
+      </li>
+
+    <% end %>
+
+    <% if @posting.submissionRequirements %>
+      <li><i class="icon-key2"><span>Application requirements</span></i><%= @posting.submissionRequirements.downcase %></li>
+    <% end %>        
+  </ul>
+
+  <div class="job-description">
+    <%= @posting.description %>
+  </div>
+
+</section>
 
 
+<section class="job-actions">
 
-
-<h2>Company information</h2>
-  
-<div>
-	<strong>company: </strong>
-	<%= @posting.hiringOrganization %>
-</div>
-
-<div>
-	<strong>company website: </strong>
-	<%= @posting.hiringOrganizationUrl %>
-</div>
-
-<div>
-	<strong>location: </strong>
-	<%= @posting.jobLocation %>
-</div>
-
-
-
-
-<h2>Application details</h2>
-
-<div>
-  <strong>contact: </strong>
-  <%= @posting.contactName %>
-</div>
-
-<div>
-  <strong>email: </strong>
-  <%= @posting.contactEmail %>
-</div>
-
-<div>
-  <strong>application url: </strong>
-  <%= @posting.applicationUrl %>
-</div>
-
-<div>
-  <strong>submission requirements: </strong>
-  <%= @posting.submissionRequirements %>
-</div>
-
-
+  <h2>Action items</h2>
 
 <% if @posting.applied? %>
   <h3>Application submitted <%= @posting.job_application.dateSent.strftime("%B %d") %></h3>
@@ -89,8 +89,4 @@
 
 <% end %>
 
-
-
-<%= link_to 'Edit posting', edit_posting_path(@posting) %>
-
-<%= link_to 'Never-mind!', postings_path %>
+</section>

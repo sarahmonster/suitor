@@ -1,19 +1,21 @@
-$max-width: 800px;
+$max-width: 1140px;
 $grid-columns: 12;
 
 aside   { @include span-columns(3); }
-section { @include outer-container; }
+//section { @include outer-container; }
 
+
+// LOGO AND NAVIGATION
 .site-header {
     @include outer-container;
     border-bottom: 2px solid $light-grey;
 
     #logo {
-        @include span-columns(4);
+        @include span-columns(3);
     }
 
     ul.navigation {
-        @include span-columns(7);
+        @include span-columns(8);
         @include shift(1);
 
         li {
@@ -49,12 +51,11 @@ section { @include outer-container; }
             padding: 10px;
             border-radius: 50%;
         }
-
-
     }
 }
 
 
+// GENERAL PAGE STRUCTURE
 .container {
     @include outer-container;   
 }
@@ -65,8 +66,66 @@ section { @include outer-container; }
     margin: 4em 0;
 }
 
+
+// ICONS
+i {
+    color: $dark-grey;
+    margin-right: 5px;
+
+    &.greyed {
+        color: $light-grey;
+    }
+
+    span {
+        display: none;
+        font-family: sans-serif;
+        font-weight: 700;
+        font-size: .9em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding-left: 5px;
+        vertical-align: middle;
+    }
+}
+
+
+// JOB DETAILS LISTS
+.job-details {
+    font-family: $serif;
+    font-size: 1em;
+    font-weight: 400;
+
+    li {
+        padding: .5em;
+        border-top: 1px solid $light-grey;
+    }
+
+    i {
+
+        span {
+            display: inline;
+            color: $medium-grey;
+            font-size: .8em;
+            vertical-align: baseline;
+        }
+    }
+}
+
+.controls {
+    text-align: right;
+
+    i span {
+
+    }
+}
+
+
+
+
+// JOB LISTINGS
 section.job-posting { 
     margin: 4em 0;
+    @include clearfix;
 
     .header {
         @include span-columns(12); 
@@ -105,46 +164,47 @@ section.job-posting {
     .job-details {
         @include span-columns(5);
         padding-top: 4.25em;
-        font-family: $serif;
-        font-size: 1em;
-        font-weight: 400;
-
-        li {
-            padding: .5em;
-            border-top: 1px solid $light-grey;
-        }
-
-        i {
-
-            span {
-                display: inline;
-                color: $medium-grey;
-                font-size: .8em;
-                vertical-align: baseline;
-            }
-        }
     }
 }
 
 
-i {
-    color: $dark-grey;
-    margin-right: 5px;
+// JOB DETAILS
 
-    &.greyed {
-        color: $light-grey;
+section.job-information {
+    @include span-columns(6);
+
+    h2 {
+        @include span-columns(3 of 6);
     }
 
-    span {
-        display: none;
-        font-family: sans-serif;
-        font-weight: 700;
+    .controls {
+        @include span-columns(3 of 6);
+        @include omega;
+        margin-top: 1em;
         font-size: .9em;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        padding-left: 5px;
-        vertical-align: middle;
+
+        a {
+            background: lighten($light-grey, 5%);
+            padding: 5px 5px 5px 10px;
+            margin: 0 0 0 1em;
+            color: $medium-grey;
+        }
+
+        span {
+            display: inline;
+        }
     }
+
+    .job-details {
+        clear: both;
+    }
+
+    .job-description {
+        margin: 1em 0;
+    }
+}
+section.job-actions {
+    @include span-columns(6);
 }
 
 
