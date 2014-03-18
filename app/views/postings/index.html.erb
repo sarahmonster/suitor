@@ -30,7 +30,8 @@
       <div class="company">
         <h2><%= link_to posting.hiringOrganization, posting %></h2>
         <div class="notes">
-          <%= posting.description.truncate(300, separator: ' ') %> (<%= link_to 'More information', posting %>)
+          <%= simple_format(posting.description.truncate(300, separator: ' ')) %> 
+          (<%= link_to 'More information', posting %>)
         </div>
       </div>
 

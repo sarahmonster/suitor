@@ -59,7 +59,7 @@
   </ul>
 
   <div class="job-description">
-    <%= @posting.description %>
+    <%= simple_format(@posting.description) %>
   </div>
 
 </section>
@@ -73,7 +73,7 @@
     <h3><i class="applied icon-checkmark done"><span>Applied</span></i>
     <%= @posting.job_application.dateSent.strftime("%B %d") %></h3>
     <div class="notes">
-      <%= @posting.job_application.coverLetter %>
+      <%= simple_format(@posting.job_application.coverLetter) %>
     </div>
 
   <% else %>
