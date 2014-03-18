@@ -28,11 +28,12 @@
 
       <div class="company">
         <h2><a href="<%= posting.hiringOrganizationUrl %>"><%= posting.hiringOrganization %></a></h2>
+        <p><%= posting.description.truncate(300, separator: ' ') %> (<%= link_to 'More information', posting %>)</p>
       </div>
 
       <ul class="job-details">
         <% if posting.datePosted %>
-          <li><i class="icon-clock4"><span>Date posted</span></i>Posted <%= posting.datePosted.strftime("%B %d") %></li>
+          <li><i class="icon-clock4"><span>Posted</span></i><%= posting.datePosted.strftime("%B %d") %></li>
         <% end %>
 
         <% if posting.jobLocation %>
@@ -40,12 +41,8 @@
        <% end %>
 
         <% if posting.submissionRequirements %>
-          <li><i class="icon-key2"><span>Requirements</span></i>Requires <%= posting.submissionRequirements %><li>
-        <% end %>
-        
-        <%= link_to 'More information', posting %>
-
-        
+          <li><i class="icon-key2"><span>Requires</span></i><%= posting.submissionRequirements.downcase %></li>
+        <% end %>        
       </ul>
 
     </section>

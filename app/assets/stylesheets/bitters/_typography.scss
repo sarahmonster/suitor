@@ -19,6 +19,9 @@ h1 {
 
 h2 {
   font-size: $base-font-size * 2; // 16 * 2 = 32px
+  margin: .25em 0 .5em;
+  color: lighten($medium-grey, 15%);
+  a {color: lighten($medium-grey, 15%);}
 }
 
 h3 {
@@ -27,6 +30,8 @@ h3 {
   font-family: $base-font-family;
   letter-spacing: 1px;
   font-weight: 700;
+  color: lighten($dark-grey, 20%);
+  a {color: lighten($dark-grey, 20%)}
 }
 
 h4 {
