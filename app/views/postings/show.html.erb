@@ -69,24 +69,28 @@
 
   <h2>Action items</h2>
 
-<% if @posting.applied? %>
-  <h3>Application submitted <%= @posting.job_application.dateSent.strftime("%B %d") %></h3>
-  <%= @posting.job_application.coverLetter %>
+  <% if @posting.applied? %>
+    <h3><i class="applied icon-checkmark done"><span>Applied</span></i>
+    <%= @posting.job_application.dateSent.strftime("%B %d") %></h3>
+    <div class="notes">
+      <%= @posting.job_application.coverLetter %>
+    </div>
 
-<% else %>
-  <h3>Mark job as applied</h3>
-  <%= form_for(@posting.job_application) do |f| %>
+  <% else %>
+  <i class="applied icon-exclamation todo"><span>Apply now!</span></i>
+    <h3>Mark job as applied</h3>
+    <%= form_for(@posting.job_application) do |f| %>
 
-    <%= f.label :"Date applied" %>
-    <%= date_field :job_application, :dateSent, value: @posting.job_application.dateSent %>
+      <%= f.label :"Date applied" %>
+      <%= date_field :job_application, :dateSent, value: @posting.job_application.dateSent %>
 
-    <%= f.label :"Cover letter" %>
-    <%= f.text_area :coverLetter %>
+      <%= f.label :"Cover letter" %>
+      <%= f.text_area :coverLetter %>
 
-    <%= f.submit %>
+      <%= f.submit %>
+
+    <% end %>
 
   <% end %>
-
-<% end %>
 
 </section>

@@ -41,13 +41,13 @@ aside   { @include span-columns(3); }
 
         i {
             margin: 0 10px;
-            color: $red;
+            color: $blue;
             font-size: 16px;
             line-height: 16px;
             height: 40px;
             width: 40px;
             float: left;
-            border: 2px solid $red;
+            border: 2px solid $blue;
             padding: 10px;
             border-radius: 50%;
         }
@@ -55,7 +55,7 @@ aside   { @include span-columns(3); }
 }
 
 
-// GENERAL PAGE STRUCTURE
+// GENERAL PAGE STRUCTURE & STYLES
 .container {
     @include outer-container;   
 }
@@ -64,6 +64,12 @@ aside   { @include span-columns(3); }
     @include span-columns(12);
     text-align: center;
     margin: 4em 0;
+}
+
+.notes {
+    font-style: italic;
+    color: darken($medium-grey, 20%);
+    font-weight: 100;
 }
 
 
@@ -86,6 +92,14 @@ i {
         padding-left: 5px;
         vertical-align: middle;
     }
+}
+
+// ACTION ITEMS 
+.todo {
+    color: $red;
+}
+.done {
+    color: $green;
 }
 
 
@@ -153,12 +167,6 @@ section.job-posting {
 
     .company {
         @include span-columns(7);
-
-        p {
-            font-style: italic;
-            color: darken($medium-grey, 20%);
-            font-weight: 100;
-        }
     }
 
     .job-details {
@@ -205,6 +213,13 @@ section.job-information {
 }
 section.job-actions {
     @include span-columns(6);
+
+    .applied {
+
+        span {
+            display: inline;
+        }
+    }
 }
 
 

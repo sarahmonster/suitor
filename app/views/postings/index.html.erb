@@ -11,9 +11,9 @@
         
         <div class="controls">
         <% if posting.applied? %>
-          <i class="applied icon-checkmark-circle"><span>Applied</span></i>
+          <i class="applied icon-checkmark done"><span>Applied</span></i>
         <% else %>
-          <i class="applied icon-checkmark-circle greyed"><span>Apply now!</span></i>
+          <i class="applied icon-exclamation todo"><span>Apply now!</span></i>
         <% end %>
 
         <%= link_to posting.url do %>
@@ -29,7 +29,9 @@
 
       <div class="company">
         <h2><%= link_to posting.hiringOrganization, posting %></h2>
-        <p><%= posting.description.truncate(300, separator: ' ') %> (<%= link_to 'More information', posting %>)</p>
+        <div class="notes">
+          <%= posting.description.truncate(300, separator: ' ') %> (<%= link_to 'More information', posting %>)
+        </div>
       </div>
 
       <ul class="job-details">
