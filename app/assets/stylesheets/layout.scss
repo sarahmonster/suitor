@@ -1,11 +1,17 @@
-$max-width: 500px;
+$max-width: 600px;
 $grid-columns: 12;
+
+.container {
+    @include outer-container;   
+}
 
 aside   { @include span-columns(3); }
 section { @include outer-container; }
 
+
+
 section.job-posting { 
-    margin-top: 2em;
+    margin-top: 4em;
 
     div {
         min-height: 1px;
@@ -13,24 +19,61 @@ section.job-posting {
 
     .header {
         @include span-columns(12); 
-        border-bottom: 2px solid $medium-gray;
+        border-bottom: 2px solid $medium-grey;
         padding-bottom: .5em;
         margin-bottom: .5em;
+
+        h3 {
+            @include span-columns(6);
+        }
+
+        .controls {
+            @include span-columns(6);
+            text-align: right;
+
+            .applied {
+                float: left;
+
+                span {
+                    display: inline;
+                }
+            }
+        }
     }
 
     .company {
-        @include span-columns(5);
+        @include span-columns(6);
     }
 
-    .date-posted {
-        @include span-columns(3);
-    }
+    .job-details {
+        @include span-columns(6);
+        padding-top: 2em;
 
-    .application {
-        @include span-columns(4);
+        li {
+            padding: .25em;
+            border-top: 1px solid $light-grey;
+        }
     }
 }
 
-.container {
-	@include outer-container;	
+
+i {
+    color: $dark-grey;
+    margin-right: 5px;
+
+    &.greyed {
+        color: $light-grey;
+    }
+
+    span {
+        display: none;
+        font-family: sans-serif;
+        font-weight: 700;
+        font-size: .9em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding-left: 2px;
+    }
 }
+
+

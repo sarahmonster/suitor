@@ -6,32 +6,47 @@
     <section class="job-posting">
       
       <div class="header">
-        <h3><%= link_to posting.title, posting %> (<%= posting.jobLocation %>)</h3>
-        <% if posting.applied? %>
-          Applied for!
-        <% end %>
+        <h3><%= link_to posting.title, posting %></h3>
         
+        <div class="controls">
+        <% if posting.applied? %>
+          <i class="applied icon-checkmark-circle"><span>Applied</span></i>
+        <% else %>
+          <i class="applied icon-checkmark-circle greyed"><span>Apply now!</span></i>
+        <% end %>
+
+        <%= link_to posting.url do %>
+          <i class="icon-external-link"><span>Original posting</span></i>
+        <% end %>  
+
+        <%= link_to posting_path(posting), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="icon-trash2"><span>Delete</span></i>
+        <% end %>  
+        </div>
       </div>
+
 
       <div class="company">
         <h2><a href="<%= posting.hiringOrganizationUrl %>"><%= posting.hiringOrganization %></a></h2>
       </div>
 
-      <div class="date-posted">
+      <ul class="job-details">
         <% if posting.datePosted %>
-          <p>Posted <%= posting.datePosted.strftime("%B %d") %></p>
+          <li><i class="icon-clock4"><span>Date posted</span></i>Posted <%= posting.datePosted.strftime("%B %d") %></li>
         <% end %>
-      </div>
 
-      <div class="application">
-        <p>Requires <%= posting.submissionRequirements %><br>
-        <% unless posting.applicationUrl.blank? %>
-          <%= link_to 'Apply online', posting.applicationUrl %> | 
+        <% if posting.jobLocation %>
+          <li><i class="icon-location4"><span>Location</span></i><%= posting.jobLocation %></li>
+       <% end %>
+
+        <% if posting.submissionRequirements %>
+          <li><i class="icon-key2"><span>Requirements</span></i>Requires <%= posting.submissionRequirements %><li>
         <% end %>
-        <%= link_to 'Original posting', posting.url %><br>
-        <%= link_to 'More information', posting %> | 
-        <%= link_to 'Delete', posting_path(posting), method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      </div>
+        
+        <%= link_to 'More information', posting %>
+
+        
+      </ul>
 
     </section>
   <% end %>

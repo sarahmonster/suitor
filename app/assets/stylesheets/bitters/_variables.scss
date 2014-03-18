@@ -18,9 +18,10 @@ $base-border-radius: em(3);
 ///////////////////////////////////////////////////////////////////////////////
 
 $red: #8E1A22;
-$dark-gray: #333;
-$medium-gray: #999;
-$light-gray: #DDD;
+$white: #fff;
+$dark-grey: #333;
+$medium-grey: #999;
+$light-grey: #DDD;
 $light-red: #FBE3E4;
 $light-yellow: #FFF6BF;
 $light-green: #E6EFC2;
@@ -29,7 +30,7 @@ $light-green: #E6EFC2;
 $base-body-color: white;
 
 //  Font Colors
-$base-font-color: $dark-gray;
+$base-font-color: $dark-grey;
 $base-accent-color: $red;
 
 //  Text Link Colors
@@ -37,7 +38,7 @@ $base-link-color: $base-accent-color;
 $hover-link-color: darken($base-accent-color, 15);
 
 // Border color
-$base-border-color: $light-gray;
+$base-border-color: $light-grey;
 
 // Flash Colors
 $error-color: $light-red;
