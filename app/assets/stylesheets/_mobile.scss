@@ -1,0 +1,88 @@
+@include media($mobile) {
+    // LOGO AND NAVIGATION
+    .site-header {
+        @include outer-container;
+        border-bottom: 2px solid $light-grey;
+
+        #logo {
+            @include span-columns(2);
+            @include shift(1);
+        }
+
+        ul.navigation {
+            display: none;
+        }
+    }
+
+
+    // GENERAL PAGE STRUCTURE
+
+    .container {
+        margin: 20px;
+    }
+
+    .page-header {
+        @include span-columns(4);
+        font-size: .9em;
+    }
+
+
+    // FORMS
+
+    label, textarea, #{$all-text-inputs}, select[multiple=multiple] {
+        @include span-columns(4);
+    }
+
+
+
+    // JOB LISTINGS
+    section.job-posting { 
+
+        .header {
+            @include span-columns(4); 
+
+            h3 {
+                @include span-columns(4);
+                margin-bottom: .5em;
+            }
+
+            .controls {
+                @include span-columns(4);
+            }
+        }
+
+        .company {
+            @include span-columns(4);
+        }
+
+        .job-details {
+            @include span-columns(4);
+            padding-top: 0;
+        }
+    }
+
+
+    // JOB DETAILS
+
+    section.job-information {
+        @include span-columns(4);
+
+        h2 {
+            @include span-columns(2 of 4);
+        }
+
+        .controls {
+            @include span-columns(2 of 4);
+            @include omega;
+
+            span {
+                display: none;
+            }
+        }
+    }
+
+    section.job-actions {
+        @include span-columns(4);
+    }
+}
+
