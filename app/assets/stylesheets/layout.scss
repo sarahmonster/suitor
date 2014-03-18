@@ -8,7 +8,17 @@ $grid-columns: 12;
 aside   { @include span-columns(3); }
 section { @include outer-container; }
 
+#logo {
+    @include span-columns(6);
+    @include shift(3);
+    @include omega();
+}
 
+.page-header {
+    @include span-columns(12);
+    text-align: center;
+    margin: 4em 0;
+}
 
 section.job-posting { 
     margin: 4em 0;

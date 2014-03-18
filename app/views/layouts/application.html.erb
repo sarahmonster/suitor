@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JobTracker</title>
+  <title>suitor</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -9,6 +9,7 @@
 <body>
 
 <div class="container">
+  <%= image_tag("suitor.png", :alt => "suitor", :id => "logo") %>
   <%= yield %>
 </div>
 
