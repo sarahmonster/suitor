@@ -11,7 +11,7 @@ section { @include outer-container; }
 #logo {
     @include span-columns(6);
     @include shift(3);
-    @include omega();
+    margin-right: 25.5894%;
 }
 
 .page-header {

@@ -14,17 +14,20 @@ fieldset {
   padding: $base-line-height;
 }
 
+form div {
+  margin: 2em 0;
+}
+
 input,
 label,
 select {
-  display: block;
+  display: inline-block;
   font-family: $form-font-family;
   font-size: $form-font-size;
 }
 
 label {
-  font-weight: bold;
-  margin-bottom: $base-line-height / 4;
+  @include span-columns(4);
 
   &.required:after {
     content: "*";
@@ -48,7 +51,7 @@ select[multiple=multiple] {
   font-size: $form-font-size;
   margin-bottom: $base-line-height / 2;
   padding: ($base-line-height / 3) ($base-line-height / 3);
-  width: 100%;
+  @include span-columns(8);
 
   &:hover {
     border-color: $form-border-color-hover;
