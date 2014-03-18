@@ -1,17 +1,62 @@
 $max-width: 800px;
 $grid-columns: 12;
 
-.container {
-    @include outer-container;   
-}
-
 aside   { @include span-columns(3); }
 section { @include outer-container; }
 
-#logo {
-    @include span-columns(6);
-    @include shift(3);
-    margin-right: 25.5894%;
+.site-header {
+    @include outer-container;
+    border-bottom: 2px solid $light-grey;
+
+    #logo {
+        @include span-columns(4);
+    }
+
+    ul.navigation {
+        @include span-columns(7);
+        @include shift(1);
+
+        li {
+            display: inline-block;
+            margin: 2em .5em;
+            width: 160px;
+        }
+
+        a {
+            font-family: $serif;
+            font-size: 1.2em;
+            color: $medium-grey;
+            font-weight: 500;
+            line-height: .8em;
+
+            span {
+                display: block;
+                font-family: $sans-serif;
+                font-size: .6em;
+                text-transform: uppercase;
+            }
+        }
+
+        i {
+            margin: 0 10px;
+            color: $red;
+            font-size: 16px;
+            line-height: 16px;
+            height: 40px;
+            width: 40px;
+            float: left;
+            border: 2px solid $red;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+
+    }
+}
+
+
+.container {
+    @include outer-container;   
 }
 
 .page-header {

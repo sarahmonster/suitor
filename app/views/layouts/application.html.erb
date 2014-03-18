@@ -9,8 +9,31 @@
 </head>
 <body>
 
-<div class="container">
+<header class="site-header">
   <%= image_tag("suitor.png", :alt => "suitor", :id => "logo") %>
+
+  <ul class="navigation">
+    
+    <li>
+    <%= link_to new_posting_path do %>
+        <i class="icon-plus3"></i>
+        Add new<span>job posting</span>
+    <% end %>
+    </li>
+
+    <li>
+    <%= link_to controller: "postings" do %>
+        <i class="icon-list"></i>
+        List all<span>job postings</span>
+    <% end %>
+    </li>
+
+
+  </ul>
+
+</header>
+
+<div class="container">
   <%= yield %>
 </div>
 
