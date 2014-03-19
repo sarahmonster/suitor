@@ -108,6 +108,7 @@ i {
     color: $green;
 }
 
+
 // JOB DETAILS LISTS
 .job-details {
     font-family: $serif;
@@ -133,8 +134,14 @@ i {
 .controls {
     text-align: right;
 
-    i span {
+    i:hover {
+        background: lighten($light-grey, 10%);
+        padding: 5px 5px 5px 5px;
+        color: $medium-grey;
 
+        span {
+            display: inline;
+        }
     }
 }
 
