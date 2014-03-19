@@ -71,7 +71,7 @@
 
   <% if @posting.applied? %>
   <div class="accordion">
-    <h3><i class="applied icon-checkmark done"><span>Applied</span></i>
+    <h3><i class="applied icon-checkmark done"><span>Application sent</span></i>
     <%= @posting.job_application.dateSent.strftime("%B %d") %></h3>
     <div class="notes">
       <%= simple_format(@posting.job_application.coverLetter) %>
@@ -79,17 +79,19 @@
   </div>
 
   <% else %>
-  <i class="applied icon-circle-blank todo"><span>Apply now!</span></i>
-    <h3>Mark job as applied</h3>
+  <h3><i class="applied icon-circle-blank todo"><span>Send an application</span></i></h3>
+
     <%= form_for(@posting.job_application) do |f| %>
 
       <%= f.label :"Date applied" %>
       <%= date_field :job_application, :dateSent, value: @posting.job_application.dateSent %>
 
-      <%= f.label :"Cover letter" %>
+      <%= f.label :"Enter cover letter and/or notes." %>
       <%= f.text_area :coverLetter %>
 
-      <%= f.submit %>
+      <%= button_tag(:type => 'submit') do %>
+        <i class="icon-checkmark"></i>Mark as applied
+      <% end %>
 
     <% end %>
 

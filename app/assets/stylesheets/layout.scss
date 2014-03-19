@@ -78,7 +78,6 @@ aside   { @include span-columns(3); }
     font-weight: 100;
 }
 
-
 // ICONS
 i {
     color: $dark-grey;
@@ -231,6 +230,15 @@ section.job-actions {
         span {
             display: inline;
         }
+    }
+
+    label {
+        @include span-columns(2 of 6);
+    }
+
+    textarea, #{$all-text-inputs}, select[multiple=multiple] {
+        @include span-columns(4 of 6);
+        @include omega;
     }
 }
 
