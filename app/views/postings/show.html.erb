@@ -70,14 +70,16 @@
   <h2>Action items</h2>
 
   <% if @posting.applied? %>
+  <div class="accordion">
     <h3><i class="applied icon-checkmark done"><span>Applied</span></i>
     <%= @posting.job_application.dateSent.strftime("%B %d") %></h3>
     <div class="notes">
       <%= simple_format(@posting.job_application.coverLetter) %>
     </div>
+  </div>
 
   <% else %>
-  <i class="applied icon-exclamation todo"><span>Apply now!</span></i>
+  <i class="applied icon-circle-blank todo"><span>Apply now!</span></i>
     <h3>Mark job as applied</h3>
     <%= form_for(@posting.job_application) do |f| %>
 
