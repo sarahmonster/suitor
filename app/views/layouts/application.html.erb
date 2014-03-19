@@ -10,10 +10,19 @@
 <body>
 
 <header class="site-header">
-  <%= image_tag("suitor.png", :alt => "suitor", :id => "logo") %>
+  <%= link_to root_path do %>
+    <%= image_tag("suitor.png", :alt => "suitor", :id => "logo") %>
+  <% end %>
 
   <ul class="navigation">
     
+    <li>
+    <%= link_to welcome_index_path do %>
+        <i class="icon-dashboard2"></i>
+        Dashboard<span>Your progress</span>
+    <% end %>
+    </li>
+
     <li>
     <%= link_to new_posting_path do %>
         <i class="icon-plus3"></i>
@@ -25,6 +34,13 @@
     <%= link_to controller: "postings" do %>
         <i class="icon-list"></i>
         List all<span>job postings</span>
+    <% end %>
+    </li>
+
+    <li>
+    <%= link_to welcome_index_path do %>
+        <i class="icon-suitcase"></i>
+        About<span>Learn more</span>
     <% end %>
     </li>
 

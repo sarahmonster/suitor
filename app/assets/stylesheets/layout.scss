@@ -17,37 +17,43 @@ aside   { @include span-columns(3); }
     ul.navigation {
         @include span-columns(8);
         @include shift(1);
+        margin-top: 2em;
 
         li {
             display: inline-block;
-            margin: 2em .5em;
-            width: 160px;
+            width: auto;
+            @include span-columns(2 of 8);
+            @include omega(4n);
         }
 
         a {
-            font-family: $serif;
-            font-size: 1.2em;
-            color: $medium-grey;
-            font-weight: 500;
-            line-height: .8em;
+            font-family: $sans-serif;
+            font-size: 1.4em;
+            color: $blue;
+            font-weight: 300;
+            line-height: 1;
 
             span {
                 display: block;
+                color: $medium-grey;
                 font-family: $sans-serif;
-                font-size: .6em;
+                font-size: .5em;
+                letter-spacing: 1px;
+                font-weight: 600;
                 text-transform: uppercase;
+                white-space: nowrap;
             }
         }
 
         i {
-            margin: 0 10px;
+            margin: -1px 10px 0 0;
             color: $blue;
             font-size: 16px;
             line-height: 16px;
             height: 40px;
             width: 40px;
             float: left;
-            border: 2px solid $blue;
+            border: 2px solid lighten($blue, 20%);
             padding: 10px;
             border-radius: 50%;
         }
