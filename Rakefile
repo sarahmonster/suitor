@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-JobTracker::Application.load_tasks
+Suitor::Application.load_tasks
