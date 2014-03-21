@@ -4,7 +4,7 @@ class Posting < ActiveRecord::Base
   has_one :job_application
 
   def applied?
-    job_application and job_application.dateSent
+    job_application and job_application.date_sent
   end
 
 end

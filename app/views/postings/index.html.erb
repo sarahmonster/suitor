@@ -32,7 +32,7 @@
 
 
       <div class="company">
-        <h2><%= link_to posting.hiringOrganization, posting %></h2>
+        <h2><%= link_to posting.hiring_organization, posting %></h2>
         <div class="notes">
           <%= simple_format(posting.description.truncate(300, separator: ' ')) %> 
           (<%= link_to 'More information', posting %>)
@@ -40,16 +40,16 @@
       </div>
 
       <ul class="job-details">
-        <% if posting.datePosted %>
-          <li><i class="icon-clock4"><span>Posted</span></i><%= posting.datePosted.strftime("%B %d") %></li>
+        <% if posting.date_posted %>
+          <li><i class="icon-clock4"><span>Posted</span></i><%= posting.date_posted.strftime("%B %d") %></li>
         <% end %>
 
-        <% if posting.jobLocation %>
-          <li><i class="icon-location4"><span>Location</span></i><%= posting.jobLocation %></li>
+        <% if posting.job_location %>
+          <li><i class="icon-location4"><span>Location</span></i><%= posting.job_location %></li>
        <% end %>
 
-        <% if posting.submissionRequirements %>
-          <li><i class="icon-key2"><span>Requires</span></i><%= posting.submissionRequirements.downcase %></li>
+        <% if posting.submission_requirements %>
+          <li><i class="icon-key2"><span>Requires</span></i><%= posting.submission_requirements.downcase %></li>
         <% end %>        
       </ul>
 
