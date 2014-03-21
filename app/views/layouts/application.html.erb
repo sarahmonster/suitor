@@ -19,28 +19,28 @@
     <li>
     <%= link_to welcome_index_path do %>
         <i class="icon-dashboard2"></i>
-        Dashboard<span>Your progress</span>
+        <%= t('Dashboard') %> <span><%= t('Your progress') %></span>
     <% end %>
     </li>
 
     <li>
     <%= link_to new_posting_path do %>
         <i class="icon-plus3"></i>
-        Add new<span>job posting</span>
+        <%= t('Add new') %> <span><%= t('job posting') %></span>
     <% end %>
     </li>
 
     <li>
     <%= link_to controller: "postings" do %>
         <i class="icon-list"></i>
-        List all<span>job postings</span>
+        <%= t('List all') %> <span><%= t('job posting', count: 3) %></span>
     <% end %>
     </li>
 
     <li>
     <%= link_to welcome_index_path do %>
         <i class="icon-suitcase"></i>
-        About<span>Learn more</span>
+        <%= t('About') %> <span><%= t('Learn more') %></span>
     <% end %>
     </li>
 
