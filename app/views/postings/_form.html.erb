@@ -19,7 +19,7 @@
 
   <div>
     <%= f.label :'date posted' %>
-    <%= date_field(:posting, :datePosted) %>
+    <%= date_field(:posting, :date_posted) %>
   </div>
 
   <div>
@@ -35,17 +35,17 @@
   <h2>Company information</h2>
   <div>
     <%= f.label :company %>
-    <%= f.text_field :hiringOrganization %>
+    <%= f.text_field :hiring_organization %>
   </div>
 
   <div>
     <%= f.label :'company website' %>
-    <%= f.text_field :hiringOrganizationUrl %>
+    <%= f.text_field :hiring_organization_url %>
   </div>
 
   <div>
     <%= f.label :location %>
-    <%= f.text_field :jobLocation %>
+    <%= f.text_field :job_location %>
   </div>
 
 
@@ -54,22 +54,22 @@
   <h2>Application details</h2>
   <div>
     <%= f.label :contact %>
-    <%= f.text_field :contactName %>
+    <%= f.text_field :contact_name %>
   </div>
 
   <div>
     <%= f.label :'email' %>
-    <%= f.text_field :contactEmail %>
+    <%= f.text_field :contact_email %>
   </div>
 
   <div>
     <%= f.label :'application url' %>
-    <%= f.text_field :applicationUrl %>
+    <%= f.text_field :application_url %>
   </div>
 
   <div>
     <%= f.label :'submission requirements' %>
-    <%= f.text_field :submissionRequirements %>
+    <%= f.text_field :submission_requirements %>
   </div>
 
   <hr>

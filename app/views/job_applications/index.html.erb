@@ -3,8 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Datesent</th>
-      <th>Coverletter</th>
+      <th>date_sent</th>
+      <th>cover_letter</th>
       <th>Posting</th>
       <th></th>
       <th></th>
@@ -15,8 +15,8 @@
   <tbody>
     <% @job_applications.each do |job_application| %>
       <tr>
-        <td><%= job_application.dateSent %></td>
-        <td><%= job_application.coverLetter %></td>
+        <td><%= job_application.date_sent %></td>
+        <td><%= job_application.cover_letter %></td>
         <td><%= job_application.posting %></td>
         <td><%= link_to 'Show', job_application %></td>
         <td><%= link_to 'Edit', edit_job_application_path(job_application) %></td>
