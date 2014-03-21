@@ -1,4 +1,4 @@
-JobTracker::Application.routes.draw do
+Suitor::Application.routes.draw do
   resources :job_applications
 
   get "welcome/index"
