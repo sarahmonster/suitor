@@ -18,7 +18,7 @@ class JobApplicationsControllerTest < ActionController::TestCase
 
   test "should create job_application" do
     assert_difference('JobApplication.count') do
-      post :create, job_application: { coverLetter: @job_application.coverLetter, dateSent: @job_application.dateSent, posting_id: @job_application.posting_id }
+      post :create, job_application: { cover_letter: @job_application.cover_letter, date_sent: @job_application.date_sent, posting_id: @job_application.posting_id }
     end
 
     assert_redirected_to job_application_path(assigns(:job_application))
@@ -35,7 +35,7 @@ class JobApplicationsControllerTest < ActionController::TestCase
   end
 
   test "should update job_application" do
-    patch :update, id: @job_application, job_application: { coverLetter: @job_application.coverLetter, dateSent: @job_application.dateSent, posting_id: @job_application.posting_id }
+    patch :update, id: @job_application, job_application: { cover_letter: @job_application.cover_letter, date_sent: @job_application.date_sent, posting_id: @job_application.posting_id }
     assert_redirected_to job_application_path(assigns(:job_application))
   end
 

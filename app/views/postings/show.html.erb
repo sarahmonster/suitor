@@ -1,6 +1,6 @@
 <header class="page-header">
   <h3><%= @posting.title %></h3>
-  <h1><%= @posting.hiringOrganization %></h1>
+  <h1><%= @posting.hiring_organization %></h1>
 </header>
 
 
@@ -19,42 +19,42 @@
   </div>
 
   <ul class="job-details">
-    <% if @posting.datePosted %>
-      <li><i class="icon-clock4"><span>Posted</span></i><%= @posting.datePosted.strftime("%B %d") %>
+    <% if @posting.date_posted %>
+      <li><i class="icon-clock4"><span>Posted</span></i><%= @posting.date_posted.strftime("%B %d") %>
       (<%= link_to_if @posting.url, "Original post", @posting.url %>)
       </li>
     <% end %>
 
-    <% if @posting.hiringOrganization %>
+    <% if @posting.hiring_organization %>
       <li><i class="icon-location4"><span>Employer</span></i>
-      <% if @posting.hiringOrganizationUrl %>
-        <%= link_to @posting.hiringOrganization, @posting.hiringOrganizationUrl %>
+      <% if @posting.hiring_organization_url %>
+        <%= link_to @posting.hiring_organization, @posting.hiring_organization_url %>
       <% else %>
-        <%= @posting.hiringOrganization %>
+        <%= @posting.hiring_organization %>
       <% end %>
-      <% if @posting.jobLocation %>(<%= @posting.jobLocation %>)<% end %>
+      <% if @posting.job_location %>(<%= @posting.job_location %>)<% end %>
       </li>
     <% end %>
 
-    <% if !@posting.applicationUrl.empty? %>
-      <li><i class="icon-external-link"><span>Online application</span></i><%= link_to 'URL', @posting.applicationUrl %></li>
+    <% if !@posting.application_url.empty? %>
+      <li><i class="icon-external-link"><span>Online application</span></i><%= link_to 'URL', @posting.application_url %></li>
     <% end %>
 
-    <% if !@posting.contactName.empty? or !@posting.contactEmail.empty? %>
+    <% if !@posting.contact_name.empty? or !@posting.contact_email.empty? %>
       <li><i class="icon-user6"><span>Contact</span></i>
-      <% if @posting.contactName.empty? %>
-        <%= link_to @posting.contactEmail, @posting.contactEmail %>
-      <% elsif @posting.contactEmail.empty? %>
-        <%= @posting.contactName %>
+      <% if @posting.contact_name.empty? %>
+        <%= link_to @posting.contact_email, @posting.contact_email %>
+      <% elsif @posting.contact_email.empty? %>
+        <%= @posting.contact_name %>
       <% else %>
-        <%= link_to @posting.contactName, @posting.contactEmail %>
+        <%= link_to @posting.contact_name, @posting.contact_email %>
       <% end %>
       </li>
 
     <% end %>
 
-    <% if @posting.submissionRequirements %>
-      <li><i class="icon-key2"><span>Application requirements</span></i><%= @posting.submissionRequirements.downcase %></li>
+    <% if @posting.submission_requirements %>
+      <li><i class="icon-key2"><span>Application requirements</span></i><%= @posting.submission_requirements.downcase %></li>
     <% end %>        
   </ul>
 
@@ -72,9 +72,9 @@
   <% if @posting.applied? %>
   <div class="accordion">
     <h3><i class="applied icon-checkmark done"><span>Application sent</span></i>
-    <%= @posting.job_application.dateSent.strftime("%B %d") %></h3>
+    <%= @posting.job_application.date_sent.strftime("%B %d") %></h3>
     <div class="notes">
-      <%= simple_format(@posting.job_application.coverLetter) %>
+      <%= simple_format(@posting.job_application.cover_letter) %>
     </div>
   </div>
 
@@ -84,10 +84,10 @@
     <%= form_for(@posting.job_application) do |f| %>
 
       <%= f.label :"Date applied" %>
-      <%= date_field :job_application, :dateSent, value: @posting.job_application.dateSent %>
+      <%= date_field :job_application, :date_sent, value: @posting.job_application.date_sent %>
 
       <%= f.label :"Enter cover letter and/or notes." %>
-      <%= f.text_area :coverLetter %>
+      <%= f.text_area :cover_letter %>
 
       <%= button_tag(:type => 'submit') do %>
         <i class="icon-checkmark"></i>Mark as applied

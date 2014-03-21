@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  dateSent: 2014-03-17
-  coverLetter: MyText
+  date_sent: 2014-03-17
+  cover_letter: MyText
   posting_id: 
 
 two:
-  dateSent: 2014-03-17
-  coverLetter: MyText
+  date_sent: 2014-03-17
+  cover_letter: MyText
   posting_id: 

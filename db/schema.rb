@@ -13,19 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140317190456) do
 
-  create_table "applications", force: true do |t|
-    t.date     "dateSent"
-    t.text     "coverLetter"
-    t.integer  "posting_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "applications", ["posting_id"], name: "index_applications_on_posting_id"
-
   create_table "job_applications", force: true do |t|
-    t.date     "dateSent"
-    t.text     "coverLetter"
+    t.date     "date_sent"
+    t.text     "cover_letter"
     t.integer  "posting_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -33,25 +23,20 @@ ActiveRecord::Schema.define(version: 20140317190456) do
 
   add_index "job_applications", ["posting_id"], name: "index_job_applications_on_posting_id"
 
-  create_table "job_postings", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "postings", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "url"
-    t.date     "datePosted"
-    t.string   "jobLocation"
-    t.string   "hiringOrganization"
-    t.string   "hiringOrganizationUrl"
-    t.string   "contactName"
-    t.string   "contactEmail"
-    t.string   "applicationUrl"
-    t.string   "submissionRequirements"
+    t.date     "date_posted"
+    t.string   "job_location"
+    t.string   "hiring_organization"
+    t.string   "hiring_organization_url"
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.string   "application_url"
+    t.string   "submission_requirements"
   end
 
 end

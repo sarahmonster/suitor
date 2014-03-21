@@ -1,1 +1,1 @@
-json.extract! @job_application, :id, :dateSent, :coverLetter, :posting_id, :created_at, :updated_at
+json.extract! @job_application, :id, :date_sent, :cover_letter, :posting_id, :created_at, :updated_at
