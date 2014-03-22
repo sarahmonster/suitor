@@ -83,6 +83,8 @@
 
     <%= form_for(@posting.job_application) do |f| %>
 
+      <%= f.hidden_field :posting_id %>
+
       <%= f.label :"Date applied" %>
       <%= date_field :job_application, :date_sent, value: @posting.job_application.date_sent %>
 
