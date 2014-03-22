@@ -10,23 +10,23 @@
         <h3><%= link_to posting.title, posting %></h3>
         
         <div class="controls">
-        <% if posting.applied? %>
-          <i class="applied icon-checkmark done"><span>Applied</span></i>
-        <% else %>
-          <i class="applied icon-circle-blank todo"><span>Apply now!</span></i>
-        <% end %>
+          <% if posting.applied? %>
+            <i class="applied icon-checkmark done"><span>Applied</span></i>
+          <% else %>
+            <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Apply now!</span></i>
+          <% end %>
 
-        <%= link_to posting.url do %>
-          <i class="icon-external-link-sign"><span>Original posting</span></i>
-        <% end %>  
+          <%= link_to posting.url do %>
+            <i class="icon-external-link-sign"><span>Original posting</span></i>
+          <% end %>  
 
-        <%= link_to edit_posting_path(posting) do %>
-          <i class="icon-pencil2"><span>Edit</span></i>
-        <% end %>
+          <%= link_to edit_posting_path(posting) do %>
+            <i class="icon-pencil2"><span>Edit</span></i>
+          <% end %>
 
-        <%= link_to posting_path(posting), method: :delete, data: { confirm: 'Are you sure?' } do %>
-          <i class="icon-trash2"><span>Delete</span></i>
-        <% end %>  
+          <%= link_to posting_path(posting), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="icon-trash2"><span>Delete</span></i>
+          <% end %>
         </div>
       </div>
 
