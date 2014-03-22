@@ -6,7 +6,7 @@ class PostingsController < ApplicationController
 
   def show
     @posting = Posting.find(params[:id])
-    @posting.job_application = @posting.build_job_application unless @posting.job_application
+    @posting.build_job_application unless @posting.job_application
   end
 
   def new
