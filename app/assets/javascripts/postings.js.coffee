@@ -6,6 +6,22 @@ $ ->
   $(document).on 'page:change', ->
     $('input[type=date]').datepicker {dateFormat: 'yy-mm-dd'}
 
+  # Show submitted information in a modal
+  $('.applied.done').on 'click', ->
+    dialog = $(this).next(".dialog").dialog
+      modal: true
+
+      close: ->
+        dialog.dialog 'destroy'
+
+      show:
+        effect: "scale"
+        duration: 500
+
+      hide:
+        effect: "scale"
+        duration: 100
+
   # Listen to all the "Apply Now" links on the postings index view.
   $('.applied.todo').on 'click', ->
     $.ajax
@@ -18,3 +34,4 @@ $ ->
         $(this).replaceWith '<i class="applied icon-checkmark done"><span>Applied</span></i>'
       error: ->
         console.log "fail"
+

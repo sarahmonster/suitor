@@ -153,6 +153,10 @@ i {
             // display: inline;
         }
     }
+
+    & > .dialog {
+        display: none;
+    }
 }
 
 

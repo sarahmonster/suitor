@@ -12,6 +12,11 @@
         <div class="controls">
           <% if posting.applied? %>
             <i class="applied icon-checkmark done"><span>Applied</span></i>
+            
+            <div class="dialog" title="Application sent <%= posting.job_application.date_sent.strftime("%B %d") %>">
+            <p><%= posting.job_application.cover_letter %></p>
+            </div>
+
           <% else %>
             <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Apply now!</span></i>
           <% end %>
@@ -54,4 +59,5 @@
       </ul>
 
     </section>
+
   <% end %>
