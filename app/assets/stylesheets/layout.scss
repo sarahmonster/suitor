@@ -102,9 +102,17 @@ i {
 // ACTION ITEMS 
 .todo {
     color: $red;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 .done {
     color: $green;
+}
+
+.applied:hover {
+
 }
 
 
@@ -133,13 +141,16 @@ i {
 .controls {
     text-align: right;
 
+    i {
+        padding: 5px 5px 5px 5px;
+    }
+
     i:hover {
         background: lighten($light-grey, 10%);
-        padding: 5px 5px 5px 5px;
         color: $medium-grey;
 
         span {
-            display: inline;
+            // display: inline;
         }
     }
 }
