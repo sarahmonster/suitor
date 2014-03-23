@@ -89,7 +89,7 @@ i {
 
     span {
         display: none;
-        font-family: sans-serif;
+        font-family: $sans-serif;
         font-weight: 700;
         font-size: .9em;
         letter-spacing: 1px;
@@ -99,21 +99,7 @@ i {
     }
 }
 
-// ACTION ITEMS 
-.todo {
-    color: $red;
 
-    &:hover {
-        cursor: pointer;
-    }
-}
-.done {
-    color: $green;
-}
-
-.applied:hover {
-
-}
 
 
 // JOB DETAILS LISTS
@@ -132,34 +118,61 @@ i {
         span {
             display: inline;
             color: $medium-grey;
-            font-size: .8em;
+            font-size: .9em;
             vertical-align: baseline;
         }
     }
 }
 
+// control icons
 .controls {
     text-align: right;
 
     i {
         padding: 5px 5px 5px 5px;
-    }
 
-    i:hover {
-        background: lighten($light-grey, 10%);
-        color: $medium-grey;
+        &:hover {
+            background: lighten($light-grey, 10%);
+            color: $medium-grey;
 
-        span {
-            // display: inline;
+            span {
+                // display: inline;
+            }
         }
     }
 
+    // action items
+    .todo {
+        color: $red;
+        position: relative;
+
+        &:hover {
+            color: $green;
+            background: purple;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 5px;
+                left: 5px;
+
+            }
+        }
+    }
+    .done {
+        color: $green;
+    }
+
+    .applied:hover {
+        cursor: pointer;
+        background: none;
+    }
+
+    // hide dialogs
     & > .dialog {
         display: none;
     }
 }
-
-
 
 
 // JOB LISTINGS
