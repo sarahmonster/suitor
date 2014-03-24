@@ -10,17 +10,18 @@ $ ->
   $('.applied.done').on 'click', ->
     dialog = $(this).next(".dialog").dialog
       modal: true
+      width: "auto"
 
       close: ->
         dialog.dialog 'destroy'
 
       show:
-        effect: "scale"
-        duration: 500
+        effect: "fade"
+        duration: 800
 
       hide:
-        effect: "scale"
-        duration: 100
+        effect: "fade"
+        duration: 200
 
   # Listen to all the "Apply Now" links on the postings index view.
   $('.applied.todo').on 'click', ->

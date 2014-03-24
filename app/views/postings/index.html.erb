@@ -14,7 +14,7 @@
             <i class="applied icon-checkmark done"><span>Applied</span></i>
             
             <div class="dialog" title="Application sent <%= posting.job_application.date_sent.strftime("%B %d") %>">
-            <p><%= posting.job_application.cover_letter %></p>
+            <p><%= simple_format(posting.job_application.cover_letter) %></p>
             </div>
 
           <% else %>
