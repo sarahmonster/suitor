@@ -9,7 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require jquery.ui.all
  */
 
 @import "normalize";
@@ -20,5 +19,9 @@
 
 @import url("http://i.icomoon.io/public/temp/5dd6d5f1b7/UntitledProject1/style.css");
 @import "layout";
+
+@import "jquery-ui";
+@import "jquery.ui.all";
+
 @import "mobile";
 
