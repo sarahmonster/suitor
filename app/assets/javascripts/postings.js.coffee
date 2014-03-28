@@ -7,7 +7,7 @@ $ ->
     $('input[type=date]').datepicker {dateFormat: 'yy-mm-dd'}
 
   # Show submitted information in a modal
-  $('.applied.done').on 'click', ->
+  $('.applied ').on 'click', ->
     dialog = $(this).next(".dialog").dialog
       modal: true
       width: "auto"
