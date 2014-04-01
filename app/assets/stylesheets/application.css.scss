@@ -9,7 +9,6 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require icomoon-free/style
  */
 
 @import "normalize";
@@ -18,7 +17,7 @@
 @import "neat";
 @import "bitters/bitters";
 
-//@import "fonts/icomoon/style";
+@import "icomoon";
 @import "layout";
 
 @import "jquery-ui-config";

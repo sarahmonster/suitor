@@ -42,9 +42,6 @@ GEM
     execjs (2.0.2)
     hike (1.2.3)
     i18n (0.6.9)
-    icomoon-rails (0.1.0)
-      railties (>= 3.1.1)
-      sass-rails (>= 3.1.1)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -126,7 +123,6 @@ PLATFORMS
 DEPENDENCIES
   bourbon
   coffee-rails (~> 4.0.0)
-  icomoon-rails
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-sass-rails
