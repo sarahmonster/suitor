@@ -17,6 +17,10 @@
               <p><%= simple_format(posting.job_application.cover_letter) %></p>
             </div>
 
+            <% if posting.followup_needed? %>
+              <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Follow up</span></i>
+            <% end %>
+
           <% else %>
             <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Apply now!</span></i>
 
@@ -24,7 +28,9 @@
               <p>Your application for this job has been marked as sent today. You can undo this, add notes, or change the date below.</p>
               FORM!
             </div>
+
           <% end %>
+
 
           <%= link_to posting.url do %>
             <i class="icon-external-link-sign"><span>Original posting</span></i>

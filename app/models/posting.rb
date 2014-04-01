@@ -6,4 +6,8 @@ class Posting < ActiveRecord::Base
   def applied?
     job_application and job_application.id and job_application.date_sent
   end
+
+  def followup_needed?
+    job_application.date_sent.advance(:days => 14) < Date.current
+  end
 end

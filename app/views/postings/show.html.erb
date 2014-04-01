@@ -70,6 +70,11 @@
   <h2>Action items</h2>
 
   <% if @posting.applied? %>
+  
+    <% if @posting.followup_needed? %>
+      <i class="applied icon-circle-blank todo"><span>Follow up</span></i>
+    <% end %>
+
   <div class="accordion">
     <h3><i class="applied icon-checkmark done"><span>Application sent</span></i>
     <%= @posting.job_application.date_sent.strftime("%B %d") %></h3>
