@@ -3,9 +3,9 @@
 one:
   date_sent: 2014-03-17
   cover_letter: MyText
-  posting_id: 
+  posting: one
 
 two:
   date_sent: 2014-03-17
   cover_letter: MyText
-  posting_id: 
+  posting: two
