@@ -21,7 +21,14 @@ class JobApplicationsControllerTest < ActionController::TestCase
       post :create, job_application: { cover_letter: @job_application.cover_letter, date_sent: @job_application.date_sent, posting_id: @job_application.posting_id }
     end
 
-    assert_redirected_to job_application_path(assigns(:job_application))
+    # We redirect job application submissions to their parent posting.
+    assert_redirected_to posting_path(assigns(:job_application).posting)
+  end
+
+  test "should not create job_application without posting" do
+    assert_no_difference('JobApplication.count') do
+      post :create, job_application: { cover_letter: @job_application.cover_letter, date_sent: @job_application.date_sent }
+    end
   end
 
   test "should show job_application" do
