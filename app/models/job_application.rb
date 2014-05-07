@@ -3,6 +3,7 @@ class JobApplication < ActiveRecord::Base
   after_initialize :set_applied_date
 
   validates :date_sent, presence: true
+  validates :posting, presence: true
 
   private
     def set_applied_date
