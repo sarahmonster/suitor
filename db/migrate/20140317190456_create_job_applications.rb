@@ -3,7 +3,7 @@ class CreateJobApplications < ActiveRecord::Migration
     create_table :job_applications do |t|
       t.date :date_sent
       t.text :cover_letter
-      t.references :posting, index: true
+      t.references :posting, index: true, unique: true
 
       t.timestamps
     end
