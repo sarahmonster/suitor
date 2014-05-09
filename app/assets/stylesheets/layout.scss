@@ -1,6 +1,7 @@
 $max-width: 1140px;
 $grid-columns: 12;
 
+body { background-color: $base-body-color; }
 aside   { @include span-columns(3); }
 //section { @include outer-container; }
 
