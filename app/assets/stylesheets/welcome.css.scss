@@ -9,6 +9,7 @@
 
     div {
         margin: 0;
+        @include clearfix;
     }
 
     #twitter, #facebook {
@@ -48,9 +49,40 @@
         i { color: lighten($facebook, 30%) }
     }
 
-    h2 {
+    h3 {
+        clear: both;
+        margin: 20px 0 10px;
         text-align: center;
         font-style: italic;
+        text-transform: lowercase;
+        line-height: 0.5;
+        color: lighten($medium-grey, 10%);
+        
+        span {    
+            display: inline-block;
+            position: relative;  
+
+            &::before, &::after {
+                content: '';
+                position: absolute; 
+                display: block;
+                height: 2px;
+                width: 75px;
+                top: 2px;  
+                border-top: 1px solid $light-grey;
+                border-bottom: 2px solid $light-grey;
+            }
+
+            &::before {
+                right: 100%;
+                margin-right: 5px;
+            }
+
+            &::after {
+                left: 100%;
+                margin-left: 5px;
+            }
+        }
     }
 
     label, input[type=email], input[type=password] {
