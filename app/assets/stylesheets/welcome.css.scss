@@ -1,3 +1,38 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Registration form
+#register {
+    @include span-columns(4);
+    @include shift(4);
+
+    div {
+        margin: 0;
+    }
+
+    #twitter, #facebook {
+        clear: none;
+        float: left;
+        padding: 1em;
+        width: 48%;
+        margin: 0;
+        text-transform: uppercase;
+        font-size: .9em;
+    }
+
+    h2 {
+        text-align: center;
+        font-style: italic;
+    }
+
+    #facebook {
+        margin-right: 2%;
+    }
+
+    label, input[type=email], input[type=password] {
+        width: 100%;
+        float: none;
+    }
+
+}

@@ -1,8 +1,31 @@
 <header class="page-header">
-    <h1>Hi, bitches!</h1>
+    <h1>Register with us</h1>
 </header>
 
-<h2>Get off your lazy ass. It's time to find yourself a job.</h2>
 
-<%= link_to "See all job postings", controller: "postings" %>
-<%= link_to 'Add new job posting', new_posting_path %>
+<form id="register">
+  
+  
+  <p>It&rsquo;s <strong>free</strong> and takes less than <strong>30 seconds.</strong></p>
+
+  <div>
+    <button id="facebook">Facebook</button>
+    <button id="twitter">Twitter</button>
+  </div>
+  
+  <h2>or</h2>
+  <div>
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Where we can reach you">
+  </div>
+
+  <div>
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="****">
+  </div>
+
+  <div>
+    <input type="submit" value="Sign up">
+  </div>
+
+</form>
