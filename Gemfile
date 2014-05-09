@@ -37,6 +37,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Add pirate translations for testing and fun and profit!
+gem 'talk_like_a_pirate'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
