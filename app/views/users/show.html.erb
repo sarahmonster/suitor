@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Encrypted password:</strong>
+  <%= @user.encrypted_password %>
+</p>
+
+<p>
+  <strong>Reset password token:</strong>
+  <%= @user.reset_password_token %>
+</p>
+
+<p>
+  <strong>Reset password sent at:</strong>
+  <%= @user.reset_password_sent_at %>
+</p>
+
+<p>
+  <strong>Remember created at:</strong>
+  <%= @user.remember_created_at %>
+</p>
+
+<p>
+  <strong>Sign in count:</strong>
+  <%= @user.sign_in_count %>
+</p>
+
+<p>
+  <strong>Current sign in at:</strong>
+  <%= @user.current_sign_in_at %>
+</p>
+
+<p>
+  <strong>Last sign in at:</strong>
+  <%= @user.last_sign_in_at %>
+</p>
+
+<p>
+  <strong>Current sign in ip:</strong>
+  <%= @user.current_sign_in_ip %>
+</p>
+
+<p>
+  <strong>Last sign in ip:</strong>
+  <%= @user.last_sign_in_ip %>
+</p>
+
+<p>
+  <strong>Confirmation token:</strong>
+  <%= @user.confirmation_token %>
+</p>
+
+<p>
+  <strong>Confirmed at:</strong>
+  <%= @user.confirmed_at %>
+</p>
+
+<p>
+  <strong>Confirmation sent at:</strong>
+  <%= @user.confirmation_sent_at %>
+</p>
+
+<p>
+  <strong>Unconfirmed email:</strong>
+  <%= @user.unconfirmed_email %>
+</p>
+
+<p>
+  <strong>Failed attempts:</strong>
+  <%= @user.failed_attempts %>
+</p>
+
+<p>
+  <strong>Unlock token:</strong>
+  <%= @user.unlock_token %>
+</p>
+
+<p>
+  <strong>Locked at:</strong>
+  <%= @user.locked_at %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

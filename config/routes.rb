@@ -1,4 +1,6 @@
 Suitor::Application.routes.draw do
+  resources :users
+
   resources :job_applications
 
   get "welcome/index"

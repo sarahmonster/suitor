@@ -1,0 +1,89 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :encrypted_password %><br>
+    <%= f.text_field :encrypted_password %>
+  </div>
+  <div class="field">
+    <%= f.label :reset_password_token %><br>
+    <%= f.text_field :reset_password_token %>
+  </div>
+  <div class="field">
+    <%= f.label :reset_password_sent_at %><br>
+    <%= f.datetime_select :reset_password_sent_at %>
+  </div>
+  <div class="field">
+    <%= f.label :remember_created_at %><br>
+    <%= f.datetime_select :remember_created_at %>
+  </div>
+  <div class="field">
+    <%= f.label :sign_in_count %><br>
+    <%= f.number_field :sign_in_count %>
+  </div>
+  <div class="field">
+    <%= f.label :current_sign_in_at %><br>
+    <%= f.datetime_select :current_sign_in_at %>
+  </div>
+  <div class="field">
+    <%= f.label :last_sign_in_at %><br>
+    <%= f.datetime_select :last_sign_in_at %>
+  </div>
+  <div class="field">
+    <%= f.label :current_sign_in_ip %><br>
+    <%= f.text_field :current_sign_in_ip %>
+  </div>
+  <div class="field">
+    <%= f.label :last_sign_in_ip %><br>
+    <%= f.text_field :last_sign_in_ip %>
+  </div>
+  <div class="field">
+    <%= f.label :confirmation_token %><br>
+    <%= f.text_field :confirmation_token %>
+  </div>
+  <div class="field">
+    <%= f.label :confirmed_at %><br>
+    <%= f.datetime_select :confirmed_at %>
+  </div>
+  <div class="field">
+    <%= f.label :confirmation_sent_at %><br>
+    <%= f.datetime_select :confirmation_sent_at %>
+  </div>
+  <div class="field">
+    <%= f.label :unconfirmed_email %><br>
+    <%= f.text_field :unconfirmed_email %>
+  </div>
+  <div class="field">
+    <%= f.label :failed_attempts %><br>
+    <%= f.number_field :failed_attempts %>
+  </div>
+  <div class="field">
+    <%= f.label :unlock_token %><br>
+    <%= f.text_field :unlock_token %>
+  </div>
+  <div class="field">
+    <%= f.label :locked_at %><br>
+    <%= f.datetime_select :locked_at %>
+  </div>
+  <div class="field">
+    <%= f.label :role %><br>
+    <%= f.number_field :role %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

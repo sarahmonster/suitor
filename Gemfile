@@ -1,12 +1,20 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+gem 'rails', '4.1.1'
 
 # Use sqlite3 as the database for ActiveRecord
 group :development, :test do
   gem 'sqlite3'
 end
+
+# User authentication
+gem 'devise'
+gem 'pundit'
+
+# Better than Struct.new
+# See: http://thepugautomatic.com/2013/08/struct-inheritance-is-overused/
+gem 'attr_extras'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -37,7 +45,6 @@ gem 'jbuilder', '~> 1.2'
 # Better Development
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller', :platforms=>[:mri_21]
   gem 'quiet_assets'
 end
 
@@ -50,7 +57,7 @@ end
 gem 'talk_like_a_pirate'
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt'
 
 # Use unicorn as the app server
 # gem 'unicorn'
