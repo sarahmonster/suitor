@@ -14,20 +14,43 @@
     #twitter, #facebook {
         clear: none;
         float: left;
-        padding: 1em;
+        padding: .75em 1em;
         width: 48%;
         margin: 0;
         text-transform: uppercase;
-        font-size: .9em;
+        font-size: .85em;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-shadow: none;
+        line-height: 20px;
+        border-bottom-width: 2px;
+
+        i {
+            font-size: 20px;
+            vertical-align: bottom;
+            margin-right: 10px;
+        }
+
+    }
+
+    #twitter {
+        background-color: lighten($twitter, 30%);
+        color: $twitter;
+        border-color: $twitter;
+        i { color: $twitter; }
+    }
+
+    #facebook {
+        margin-right: 2%;
+        background-color: $facebook;
+        color: lighten($facebook, 30%);
+        border-color: lighten($facebook, 30%);
+        i { color: lighten($facebook, 30%) }
     }
 
     h2 {
         text-align: center;
         font-style: italic;
-    }
-
-    #facebook {
-        margin-right: 2%;
     }
 
     label, input[type=email], input[type=password] {
