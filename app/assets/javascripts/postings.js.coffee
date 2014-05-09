@@ -3,17 +3,16 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $(document).on 'page:change', ->
-    $('input[type=date]').datepicker {dateFormat: 'yy-mm-dd'}
+  $(document).on "page:change", ->
+    $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
 
-    # Show submitted information in a modal
-    $('.applied ').on 'click', ->
-      dialog = $(this).next(".dialog").dialog
+    showDialog = ($element) ->
+      dialog = $element.dialog
         modal: true
         width: "auto"
 
         close: ->
-          dialog.dialog 'destroy'
+          dialog.dialog "destroy"
 
         show:
           effect: "fade"
@@ -23,16 +22,26 @@ $ ->
           effect: "fade"
           duration: 200
 
+    # Show submitted information in a modal
+    $(".applied.done").on "click", ->
+      showDialog $(this).next(".dialog")
+
     # Listen to all the "Apply Now" links on the postings index view.
-    $('.applied.todo').on 'click', ->
+    $(".applied.todo").on "click", (event) ->
       $.ajax
-        url: "#{$(this).data('uri')}.json"
+        url: "#{$(this).data("uri")}.json"
         type: "POST"
         data:
           job_application:
             posting_id: $(this).data("posting-id")
         success: (response) =>
-          $(this).replaceWith '<i class="applied icon-checkmark done"><span>Applied</span></i>'
-        error: ->
-          console.log "fail"
+          $(this).next(".dialog").replaceWith(response.html)
+          $dialog = showDialog $(this).next(".dialog")
 
+          $(this).replaceWith response.replacementHTML
+
+          $(".edit_job_application").on "ajax:success", ->
+            $dialog.dialog "destroy"
+        error: ->
+          # TODO: Add an error message.
+          console.log "fail"

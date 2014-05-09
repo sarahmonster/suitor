@@ -11,9 +11,9 @@
         
         <div class="controls">
           <% if posting.applied? %>
-            <i class="applied icon-checkmark done"><span>Applied</span></i>
+            <i class="applied icon-checkmark done"><span><%= t('Applied') %></span></i>
             
-            <div class="dialog" title="Application sent <%= posting.job_application.date_sent.strftime("%B %d") %>">
+            <div class="dialog" title="<%= t('job_applications.sent_at_time', time: posting.job_application.date_sent.strftime("%B %d")) %>">
               <p><%= simple_format(posting.job_application.cover_letter) %></p>
             </div>
 
@@ -24,11 +24,7 @@
           <% else %>
             <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Apply now!</span></i>
 
-            <div class="dialog" title="Application marked as sent">
-              <p>Your application for this job has been marked as sent today. You can undo this, add notes, or change the date below.</p>
-              FORM!
-            </div>
-
+            <div class="dialog"></div>
           <% end %>
 
 

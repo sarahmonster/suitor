@@ -28,6 +28,7 @@ class JobApplicationsController < ApplicationController
 
     respond_to do |format|
       if @job_application.save
+        @job_application_is_new = true
         format.html { redirect_to @job_application.posting, notice: 'Job application was successfully created.' }
         format.json { render action: 'show', status: :created, location: @job_application }
       else
@@ -43,7 +44,7 @@ class JobApplicationsController < ApplicationController
     respond_to do |format|
       if @job_application.update(job_application_params)
         format.html { redirect_to @job_application, notice: 'Job application was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render action: 'show', location: @job_application }
       else
         format.html { render action: 'edit' }
         format.json { render json: @job_application.errors, status: :unprocessable_entity }
@@ -65,6 +66,7 @@ class JobApplicationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_job_application
       @job_application = JobApplication.find(params[:id])
+      @job_application_is_new = false
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
