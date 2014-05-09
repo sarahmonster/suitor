@@ -90,4 +90,20 @@
         float: none;
     }
 
+    label {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-family: $sans-serif;
+        font-size:.8em;
+        font-weight: 500;
+        color: $medium-grey;
+    }
+
+    input[type=submit] {
+        margin: 1em auto;
+        float: none;
+        padding-left: 5em;
+        padding-right: 5em;
+    }
+
 }
