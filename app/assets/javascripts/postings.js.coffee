@@ -28,8 +28,6 @@ $ ->
 
     # Listen to all the "Apply Now" links on the postings index view.
     $(".applied.todo").on "click", (event) ->
-      event.stopPropagation()
-
       $.ajax
         url: "#{$(this).data("uri")}.json"
         type: "POST"
@@ -38,10 +36,12 @@ $ ->
             posting_id: $(this).data("posting-id")
         success: (response) =>
           $(this).next(".dialog").replaceWith(response.html)
-          showDialog $(this).next(".dialog")
+          $dialog = showDialog $(this).next(".dialog")
 
           $(this).replaceWith response.replacementHTML
+
+          $(".edit_job_application").on "ajax:success", ->
+            $dialog.dialog "destroy"
         error: ->
           # TODO: Add an error message.
           console.log "fail"
-

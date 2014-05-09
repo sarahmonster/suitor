@@ -33,3 +33,4 @@ en:
   'job_applications':
     'marked_as_sent_dialog': "Your application for this job has been marked as sent today. You can undo this, add notes, or change the date below."
     'marked_as_sent_title': "Application marked as sent"
+    'sent_at_time': "Application sent %{time}."
