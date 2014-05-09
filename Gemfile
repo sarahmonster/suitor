@@ -14,6 +14,9 @@ gem 'actionpack-page_caching'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
+  # Run thin as a server in dev/test mode.
+  gem 'thin'
 end
 
 # Better Development
@@ -97,6 +100,15 @@ gem 'bcrypt'
 
 # Use unicorn as the app server
 # gem 'unicorn'
+
+group :test do
+  # Client tests
+  gem 'capybara'
+
+  # Use Sauce Labs for browser testing.
+  gem 'sauce'
+  gem 'sauce-connect'
+end
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
