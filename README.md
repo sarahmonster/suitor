@@ -1,4 +1,4 @@
-# suitor
+# suitor [![Build Status](https://secure.travis-ci.org/sarahsemark/suitor.png?branch=master)](http://travis-ci.org/sarahsemark/suitor)
 
 suitor is a Rails 4.0 web application for tracking your job applications. It
 allows you to track what jobs you've applied for, when you did it, what your
