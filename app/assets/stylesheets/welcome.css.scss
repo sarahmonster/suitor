@@ -7,6 +7,10 @@
     @include span-columns(4);
     @include shift(4);
 
+    p {
+        margin: -1em 0 2em;
+    }
+
     div {
         margin: 0;
         @include clearfix;
@@ -17,7 +21,7 @@
         float: left;
         padding: .75em 1em;
         width: 48%;
-        margin: 0;
+        margin: 1em 0 0 0;
         text-transform: uppercase;
         font-size: .85em;
         font-weight: 600;
@@ -51,10 +55,12 @@
 
     h3 {
         clear: both;
-        margin: 20px 0 10px;
+        margin: 2em 0 .25em;
         text-align: center;
         font-style: italic;
         text-transform: lowercase;
+        letter-spacing: 0;
+        font-weight: 400;
         line-height: 0.5;
         color: lighten($medium-grey, 10%);
         
