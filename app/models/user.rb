@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   def set_default_role
     self.role ||= :user
   end
+
+  def update_tracked_fields!(request)
+    super(request) unless self.role.admin?
+  end
 end
