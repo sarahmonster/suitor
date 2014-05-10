@@ -7,6 +7,9 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Ignore dotenv stuff
+.env
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
@@ -20,7 +23,6 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
-config/secrets.yml
 
 ## Environment normalisation:
 /.bundle

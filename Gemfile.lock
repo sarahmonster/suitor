@@ -51,6 +51,11 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    dotenv-rails (0.11.1)
+      dotenv (= 0.11.1)
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
@@ -114,6 +119,7 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    spring (1.1.2)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -151,6 +157,7 @@ DEPENDENCIES
   bourbon
   coffee-rails (~> 4.0.0)
   devise
+  dotenv-rails
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-sass-rails
@@ -160,6 +167,7 @@ DEPENDENCIES
   rails (= 4.1.1)
   sass-rails (~> 4.0.0)
   sdoc
+  spring
   sqlite3
   talk_like_a_pirate
   turbolinks

@@ -3,9 +3,20 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 
-# Use sqlite3 as the database for ActiveRecord
+# Development and test-only gems
 group :development, :test do
+  # Use dotenv to manage secrets and things of that nature
+  gem 'dotenv-rails'
+
+  # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+end
+
+# Better Development
+group :development do
+  gem 'better_errors'
+  gem 'quiet_assets'
+  gem 'spring'
 end
 
 # User authentication
@@ -41,12 +52,6 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
-# Better Development
-group :development do
-  gem 'better_errors'
-  gem 'quiet_assets'
-end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
