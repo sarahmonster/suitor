@@ -1,1 +1,9 @@
-Hello, welcome to suitor!
+<h2>Hello, welcome to suitor!</h2>
+
+<% unless current_user %>
+  <%= link_to "Login", new_user_session_path %>
+  <%= link_to t("Sign up"), user_signup_path %>
+<% else %>
+  Signed in as <%= current_user.email %>
+  <%= link_to "Logout", destroy_user_session_path, method: 'delete' %>
+<% end %>
