@@ -1,9 +1,9 @@
-$form-border-color: $base-border-color;
+$form-border-color: $light-grey;
 $form-border-color-hover: darken($base-border-color, 10);
-$form-border-color-focus: $base-accent-color;
+$form-border-color-focus: lighten($base-accent-color, 10);
 $form-border-radius: $base-border-radius;
-$form-box-shadow: inset 0 1px 3px hsla(0, 0%, 0%, 0.06);
-$form-box-shadow-focus: $form-box-shadow, 0 0 5px rgba(darken($form-border-color-focus, 5), 0.7);
+$form-box-shadow: 1px 1px 2px $light-grey;
+$form-box-shadow-focus: $form-box-shadow, 0 0 4px rgba(darken($form-border-color-focus, 5), 0.5);
 $form-font-size: $base-font-size;
 $form-font-family: $base-font-family;
 
@@ -16,6 +16,10 @@ fieldset {
 
 form div {
   margin: 2em 0;
+}
+
+form div.center {
+  text-align: center;
 }
 
 input,
@@ -43,9 +47,11 @@ textarea,
 select[multiple=multiple] {
   @include box-sizing(border-box);
   @include transition(border-color);
-  background-color: white;
+  background: $white;
   border-radius: $form-border-radius;
   border: 1px solid $form-border-color;
+  border-right-color: lighten($form-border-color, 10%);
+  border-bottom-color: lighten($form-border-color, 10%);
   box-shadow: $form-box-shadow;
   font-family: $form-font-family;
   font-size: $form-font-size;
@@ -60,6 +66,7 @@ select[multiple=multiple] {
   &:focus {
     border-color: $form-border-color-focus;
     box-shadow: $form-box-shadow-focus;
+    color: darken($form-border-color-focus, 20%);
     outline: none;
   }
 }

@@ -1,0 +1,61 @@
+<h1>Listing users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Encrypted password</th>
+      <th>Reset password token</th>
+      <th>Reset password sent at</th>
+      <th>Remember created at</th>
+      <th>Sign in count</th>
+      <th>Current sign in at</th>
+      <th>Last sign in at</th>
+      <th>Current sign in ip</th>
+      <th>Last sign in ip</th>
+      <th>Confirmation token</th>
+      <th>Confirmed at</th>
+      <th>Confirmation sent at</th>
+      <th>Unconfirmed email</th>
+      <th>Failed attempts</th>
+      <th>Unlock token</th>
+      <th>Locked at</th>
+      <th>Role</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.encrypted_password %></td>
+        <td><%= user.reset_password_token %></td>
+        <td><%= user.reset_password_sent_at %></td>
+        <td><%= user.remember_created_at %></td>
+        <td><%= user.sign_in_count %></td>
+        <td><%= user.current_sign_in_at %></td>
+        <td><%= user.last_sign_in_at %></td>
+        <td><%= user.current_sign_in_ip %></td>
+        <td><%= user.last_sign_in_ip %></td>
+        <td><%= user.confirmation_token %></td>
+        <td><%= user.confirmed_at %></td>
+        <td><%= user.confirmation_sent_at %></td>
+        <td><%= user.unconfirmed_email %></td>
+        <td><%= user.failed_attempts %></td>
+        <td><%= user.unlock_token %></td>
+        <td><%= user.locked_at %></td>
+        <td><%= user.role %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>

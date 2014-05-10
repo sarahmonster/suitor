@@ -13,16 +13,22 @@
 
 @import "normalize";
 
+// Vendor CSS
 @import "bourbon";
 @import "neat";
 @import "bitters/bitters";
 
-@import "icomoon";
-@import "layout";
-
 @import "jquery-ui-config";
 @import "jquery.ui.all";
-@import "jquery-ui-overrides";
 
+// Custom icomoon glyphs
+@import "icomoon";
+
+// suitor files
+@import "layout";
+@import "jquery-ui-overrides";
+@import "users";
+
+// Mobile-specific overrides
 @import "mobile";
 

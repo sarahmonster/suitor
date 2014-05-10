@@ -1,8 +1,9 @@
-<header class="page-header">
-    <h1>Hi, bitches!</h1>
-</header>
+<h2>Hello, welcome to suitor!</h2>
 
-<h2>Get off your lazy ass. It's time to find yourself a job.</h2>
-
-<%= link_to "See all job postings", controller: "postings" %>
-<%= link_to 'Add new job posting', new_posting_path %>
+<% unless current_user %>
+  <%= link_to "Login", new_user_session_path %>
+  <%= link_to t("Sign up"), user_signup_path %>
+<% else %>
+  Signed in as <%= current_user.email %>
+  <%= link_to "Logout", destroy_user_session_path, method: 'delete' %>
+<% end %>
