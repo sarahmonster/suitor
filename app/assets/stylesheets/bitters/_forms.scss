@@ -112,3 +112,27 @@ input[type="submit"] {
   vertical-align: middle;
   white-space: nowrap;
 }
+
+
+.skinny-form {
+
+  div {
+      margin: 0;
+      @include clearfix;
+  }
+  
+  label, input[type=email], input[type=password], input[type=text], input[type=date], textarea {
+      width: 100%;
+      float: none;
+  }
+
+  label {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: $sans-serif;
+      font-size:.8em;
+      font-weight: 500;
+      color: $medium-grey;
+      text-align: left;
+  }
+}

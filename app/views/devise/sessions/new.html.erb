@@ -2,7 +2,7 @@
   <h1><%= t('Log in') %></h1>
 </header>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form' }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form', :class => 'skinny-form' }) do |f| %>
   <% if devise_mapping.rememberable? -%>
     <%= f.hidden_field :remember_me, value: 1 %>
   <% end %>

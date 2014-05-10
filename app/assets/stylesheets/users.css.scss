@@ -11,11 +11,6 @@
         margin: -1em 0 2em;
     }
 
-    div {
-        margin: 0;
-        @include clearfix;
-    }
-
     #twitter, #facebook {
         clear: none;
         float: left;
@@ -93,21 +88,6 @@
                 margin-left: 5px;
             }
         }
-    }
-
-    label, input[type=email], input[type=password] {
-        width: 100%;
-        float: none;
-    }
-
-    label {
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-family: $sans-serif;
-        font-size:.8em;
-        font-weight: 500;
-        color: $medium-grey;
-        text-align: left;
     }
 
     input[type=submit] {
