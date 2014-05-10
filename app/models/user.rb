@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   end
 
   def update_tracked_fields!(request)
-    super(request) unless role == :admin
+    super(request) unless admin?
   end
 end
