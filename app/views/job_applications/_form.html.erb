@@ -11,16 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :date_sent %><br>
-    <%= f.date_select :date_sent %>
+  <div>
+    <%= f.label :date_sent %>
+    <%= date_field(:job_application, :date_sent) %>
   </div>
-  <div class="field">
-    <%= f.label :cover_letter %><br>
+
+  <div>
+    <%= f.label :cover_letter %>
     <%= f.text_area :cover_letter %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
