@@ -12,7 +12,7 @@
   <% end %>
 
   <div>
-    <%= f.label :date_sent %>
+    <%= f.label :date_applied %>
     <%= date_field(:job_application, :date_sent) %>
   </div>
 
@@ -22,7 +22,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update application" %>
   </div>
 
 <% end %>
