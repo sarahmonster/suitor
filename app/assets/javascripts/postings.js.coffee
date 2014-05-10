@@ -38,6 +38,8 @@ $ ->
           $(this).next(".dialog").replaceWith(response.html)
           $dialog = showDialog $(this).next(".dialog")
 
+          $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
+
           $(this).replaceWith response.replacementHTML
 
           $(".edit_job_application").on "ajax:success", ->

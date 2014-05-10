@@ -1,4 +1,4 @@
-<%= form_for(@job_application, remote: true, format: :json) do |f| %>
+<%= form_for(@job_application, remote: true, format: :json, html: {class: "skinny-form"})  do |f| %>
   <% if @job_application.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job_application.errors.count, "error") %> prohibited this job_application from being saved:</h2>
@@ -11,16 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :date_sent %><br>
-    <%= f.date_select :date_sent %>
+  <div>
+    <%= f.label :date_applied %>
+    <%= date_field(:job_application, :date_sent) %>
   </div>
-  <div class="field">
-    <%= f.label :cover_letter %><br>
-    <%= f.text_area :cover_letter %>
+
+  <div>
+    <%= f.label :cover_letter %>
+    <%= f.text_area :cover_letter, autofocus: 'autofocus' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Update application" %>
   </div>
+
 <% end %>
