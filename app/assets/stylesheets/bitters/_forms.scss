@@ -31,7 +31,9 @@ select {
 }
 
 label {
-  @include span-columns(4);
+  @include span-columns(2);
+  text-align: right;
+  margin-top: .5em;
 
   &.required:after {
     content: "*";
@@ -57,7 +59,7 @@ select[multiple=multiple] {
   font-size: $form-font-size;
   margin-bottom: $base-line-height / 2;
   padding: ($base-line-height / 3) ($base-line-height / 3);
-  @include span-columns(8);
+  @include span-columns(10);
 
   &:hover {
     border-color: $form-border-color-hover;
