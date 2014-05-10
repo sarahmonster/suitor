@@ -18,9 +18,11 @@
     box-shadow: 0px 0px 15px 5px rgba(255, 255, 255, .25);
 
     .ui-dialog-titlebar {
-        padding: 1em 0;
+        padding: 1em 0 .25em;
         margin: .5em 2em;
         border-bottom: 2px solid $light-grey;
+        text-align: center;
+        display: block;
     }
 
     .ui-dialog-titlebar-close {
