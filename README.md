@@ -36,7 +36,7 @@ Finally, to run the rails server:
 rails server
 ```
 
-Now your development version of suitor is available at [localhost][]
+Now your development version of suitor is available at [localhost][].
 
 [localhost]: http://localhost:3000/
 [Ruby]: http://www.ruby-lang.org/
