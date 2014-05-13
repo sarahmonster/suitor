@@ -12,9 +12,8 @@
     </div>  
   <% end %>
 
-<fieldset class="job-information">
+<fieldset class="job-information primary">
 
-<h2>About the job</h2>
   <div>
     <%= f.label :position %>
     <%= f.text_field :title %>
@@ -35,11 +34,16 @@
     <%= f.text_area :description %>
   </div>
 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
 </fieldset>
 
-<fieldset class="company-information">
 
-  <h2>About the company</h2>
+<fieldset class="company-information secondary">
+
+  <h3>About the company</h3>
   <div>
     <%= f.label :company %>
     <%= f.text_field :hiring_organization %>
@@ -57,9 +61,9 @@
 
 </fieldset>
 
-<fieldset class="application-information">
+<fieldset class="application-information secondary">
 
-  <h2>How to apply</h2>
+  <h3>How to apply</h3>
   <div>
     <%= f.label :contact %>
     <%= f.text_field :contact_name %>
@@ -81,10 +85,5 @@
   </div>
 
 </fieldset>
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 
 <% end %>

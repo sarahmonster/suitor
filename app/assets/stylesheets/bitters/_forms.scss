@@ -8,10 +8,28 @@ $form-font-size: $base-font-size;
 $form-font-family: $base-font-family;
 
 fieldset {
-  background: lighten($base-border-color, 10);
-  border: 1px solid $base-border-color;
-  margin: 0 0 ($base-line-height / 2) 0;
+  background: lighten($base-accent-color, 60);
+  border: 2px solid lighten($base-accent-color, 20);
+  margin: 0 0 ($base-line-height) 0;
   padding: $base-line-height;
+
+  &.primary {
+    border: none;
+    background: none;
+    padding: 0;
+  }
+
+  &.secondary {
+    border: 1px solid $base-border-color;
+    background: lighten($base-border-color, 10);
+  }
+
+  h3 {
+    text-align: center;
+    border-bottom: 1px solid $medium-grey;
+    padding-bottom: .5em;
+    margin: 0 0 1.5em;
+  }
 }
 
 form div {
