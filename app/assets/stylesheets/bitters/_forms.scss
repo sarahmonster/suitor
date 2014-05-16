@@ -8,7 +8,6 @@ $form-font-size: $base-font-size;
 $form-font-family: $base-font-family;
 
 fieldset {
-  @extend box;
   margin: 0 0 ($base-line-height) 0;
 
   &.primary {
@@ -18,15 +17,15 @@ fieldset {
   }
 
   &.secondary {
-    border: 1px solid $base-border-color;
-    background: lighten($base-border-color, 10);
+    @extend %box;
+    padding-bottom: 1em;
   }
 
   h3 {
     text-align: center;
     border-bottom: 1px solid $medium-grey;
     padding-bottom: .5em;
-    margin: .5em 0 1.5em;
+    margin: 0em 0 1.5em;
   }
 }
 
