@@ -9,24 +9,28 @@ $form-font-family: $base-font-family;
 
 fieldset {
   margin: 0 0 ($base-line-height) 0;
+  border: none;
 
-  &.primary {
-    border: none;
-    background: none;
-    padding: 0;
-  }
-
-  &.secondary {
+  &.primary, &.secondary {
     @extend %box;
     padding-bottom: 1em;
   }
 
+  &.primary {
+      border-top-color: lighten($base-accent-color, 40%);
+      h3 { color: $base-accent-color; }
+  }
+
+  &.secondary {
+      border-top-color: lighten($base-secondary-color, 40%);
+      h3 { color: $base-secondary-color; }
+  }
+  
   h3 {
     text-align: center;
-    border-bottom: 1px solid $medium-grey;
-    padding-bottom: .5em;
-    margin: 0em 0 1.5em;
+    margin: 0 0 1.5em;
   }
+
 }
 
 form div {
