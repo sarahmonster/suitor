@@ -2,8 +2,6 @@ $form-border-color: $light-grey;
 $form-border-color-hover: darken($base-border-color, 10);
 $form-border-color-focus: lighten($base-accent-color, 10);
 $form-border-radius: $base-border-radius;
-$form-box-shadow: 1px 1px 2px $light-grey;
-$form-box-shadow-focus: $form-box-shadow, 0 0 4px rgba(darken($form-border-color-focus, 5), 0.5);
 $form-font-size: $base-font-size;
 $form-font-family: $base-font-family;
 
@@ -86,23 +84,22 @@ select[multiple=multiple] {
   @include transition(border-color);
   background: $white;
   border-radius: $form-border-radius;
-  border: 1px solid $form-border-color;
-  border-right-color: lighten($form-border-color, 10%);
-  border-bottom-color: lighten($form-border-color, 10%);
-  box-shadow: $form-box-shadow;
+  border: 1px solid lighten($form-border-color, 10%);
+  border-left-color: lighten($form-border-color, 20%);
+  border-top-color: lighten($form-border-color, 20%);
   font-family: $form-font-family;
   font-size: $form-font-size;
   margin-bottom: $base-line-height / 2;
   padding: ($base-line-height / 3) ($base-line-height / 3);
   width: 100%;
+  @include box-shadow($size: 1px);
 
   &:hover {
-    border-color: $form-border-color-hover;
+    @include box-shadow($size: 2px, $post-shadow: 0 0 4px rgba(darken($form-border-color-focus, 5), 0.5));
   }
 
   &:focus {
     border-color: $form-border-color-focus;
-    box-shadow: $form-box-shadow-focus;
     color: darken($form-border-color-focus, 20%);
     outline: none;
   }
