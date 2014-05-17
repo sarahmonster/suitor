@@ -34,7 +34,9 @@ fieldset {
 }
 
 form div {
-  margin: 2em 0;
+  margin: 0;
+  @include clearfix;
+  text-align: left;
 
   &.actions {
     text-align: center;
@@ -56,12 +58,20 @@ select {
 }
 
 label {
-  @include span-columns(2);
-  text-align: right;
-  margin-top: .5em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: $sans-serif;
+  font-size:.8em;
+  font-weight: 500;
+  color: $medium-grey;
+  text-align: left;
 
-  &.required:after {
-    content: "*";
+  &.required {
+    font-weight: bolder;
+
+    &:after {
+      content: "*";
+    }
   }
 
   abbr {
@@ -84,7 +94,7 @@ select[multiple=multiple] {
   font-size: $form-font-size;
   margin-bottom: $base-line-height / 2;
   padding: ($base-line-height / 3) ($base-line-height / 3);
-  @include span-columns(10);
+  width: 100%;
 
   &:hover {
     border-color: $form-border-color-hover;
@@ -130,28 +140,4 @@ input[type="submit"] {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
-}
-
-
-.skinny-form {
-
-  div {
-      margin: 0;
-      @include clearfix;
-  }
-  
-  label, input[type=email], input[type=password], input[type=text], input[type=date], textarea {
-      width: 100%;
-      float: none;
-  }
-
-  label {
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-family: $sans-serif;
-      font-size:.8em;
-      font-weight: 500;
-      color: $medium-grey;
-      text-align: left;
-  }
 }
