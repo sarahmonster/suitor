@@ -23,4 +23,10 @@
 
         i {color: lighten($base-accent-color, 60%); }
     }
+
+    &.secondary {
+        background: $base-secondary-color;
+        border-bottom-color: lighten($base-secondary-color, 40%);
+        color: lighten($base-secondary-color, 40%);
+    }
 }

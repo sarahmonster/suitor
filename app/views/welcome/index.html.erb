@@ -10,8 +10,8 @@
   <p>Get your foot in the door, not in your mouth.</p>
 
   <% unless current_user %>
-    <%= link_to "Log in", new_user_session_path %>
     <%= link_to t("Sign up"), user_signup_path %>
+    <%= link_to "Log in", new_user_session_path, class: "secondary" %>
   <% else %>
     Signed in as <%= current_user.email %>
     <%= link_to "Log out", destroy_user_session_path, method: 'delete' %>
