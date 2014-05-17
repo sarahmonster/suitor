@@ -2,7 +2,7 @@ $form-border-color: $light-grey;
 $form-border-color-hover: darken($base-border-color, 10);
 $form-border-color-focus: lighten($base-accent-color, 10);
 $form-border-radius: $base-border-radius;
-$form-font-size: $base-font-size;
+$form-font-size: .95em;
 $form-font-family: $base-font-family;
 
 fieldset {
@@ -89,8 +89,9 @@ select[multiple=multiple] {
   border-top-color: lighten($form-border-color, 20%);
   font-family: $form-font-family;
   font-size: $form-font-size;
+  color: $dark-grey;
   margin-bottom: $base-line-height / 2;
-  padding: ($base-line-height / 3) ($base-line-height / 3);
+  padding: ($base-line-height / 2) ($base-line-height / 2);
   width: 100%;
   @include box-shadow($size: 1px);
 
