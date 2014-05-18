@@ -12,9 +12,10 @@ aside   { @include span-columns(3); }
 
 // LOGO AND NAVIGATION
 .site-header {
-    border-bottom: 2px solid $light-grey;
+    border-bottom: 1px solid $light-grey;
     background: $base-body-color;
     width: 100%;
+    @include box-shadow;
 
     div {
         @include outer-container;

@@ -15,22 +15,22 @@
 <fieldset class="job-information">
 
   <div>
-    <%= f.label :position, class: "required" %>
+    <%= f.label :title, "Position", class: "required" %>
     <%= f.text_field :title %>
   </div>
 
   <div>
-    <%= f.label :'date posted' %>
+    <%= f.label :date_posted, "Date posted" %>
     <%= date_field(:posting, :date_posted) %>
   </div>
 
   <div>
-    <%= f.label :'posting url' %>
+    <%= f.label :'url', "URL to original posting" %>
     <%= f.text_field :url %>
   </div>
 
   <div>
-    <%= f.label :details %>
+    <%= f.label :description, "Posting details" %>
     <%= f.text_area :description %>
   </div>
 
@@ -45,17 +45,17 @@
 
   <h3>About the company</h3>
   <div>
-    <%= f.label :company %>
+    <%= f.label :hiring_organization , "Company" %>
     <%= f.text_field :hiring_organization %>
   </div>
 
   <div>
-    <%= f.label :'company website' %>
+    <%= f.label :hiring_organization_url, "Company Website"  %>
     <%= f.text_field :hiring_organization_url %>
   </div>
 
   <div>
-    <%= f.label :location %>
+    <%= f.label :job_location, "Location" %>
     <%= f.text_field :job_location %>
   </div>
 
@@ -65,22 +65,22 @@
 
   <h3>How to apply</h3>
   <div>
-    <%= f.label :contact %>
+    <%= f.label :contact_name, "Contact Name" %>
     <%= f.text_field :contact_name %>
   </div>
 
   <div>
-    <%= f.label :'email' %>
+    <%= f.label :contact_email, "Email address" %>
     <%= f.text_field :contact_email %>
   </div>
 
   <div>
-    <%= f.label :'application url' %>
+    <%= f.label :application_url, "Application URL" %>
     <%= f.text_field :application_url %>
   </div>
 
   <div>
-    <%= f.label :'submission requirements' %>
+    <%= f.label :submission_requirements, "Submission requirements" %>
     <%= f.text_field :submission_requirements %>
   </div>
 
