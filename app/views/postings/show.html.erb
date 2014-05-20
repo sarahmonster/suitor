@@ -25,6 +25,10 @@
       </li>
     <% end %>
 
+    <% if @posting.deadline %>
+      <li><i class="icon-clock4"><span>Deadline</span></i><%= @posting.deadline.strftime("%B %d") %></li>
+    <% end %>
+
     <% if @posting.hiring_organization %>
       <li><i class="icon-location4"><span>Employer</span></i>
       <% if @posting.hiring_organization_url %>
@@ -53,8 +57,8 @@
 
     <% end %>
 
-    <% if @posting.submission_requirements %>
-      <li><i class="icon-key2"><span>Application requirements</span></i><%= @posting.submission_requirements.downcase %></li>
+    <% if @posting.application_instructions %>
+      <li><i class="icon-key2"><span>How to apply</span></i><%= @posting.application_instructions %></li>
     <% end %>        
   </ul>
 

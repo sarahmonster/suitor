@@ -64,6 +64,12 @@
 <fieldset class="application-information secondary">
 
   <h3>How to apply</h3>
+
+  <div>
+    <%= f.label :deadline, "Deadline" %>
+    <%= date_field(:posting, :deadline) %>
+  </div>
+
   <div>
     <%= f.label :contact_name, "Contact Name" %>
     <%= f.text_field :contact_name %>
@@ -80,8 +86,8 @@
   </div>
 
   <div>
-    <%= f.label :submission_requirements, "Submission requirements" %>
-    <%= f.text_field :submission_requirements %>
+    <%= f.label :application_instructions, "Instructions" %>
+    <%= f.text_area :application_instructions %>
   </div>
 
 </fieldset>
