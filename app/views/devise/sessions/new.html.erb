@@ -11,14 +11,17 @@
 
   <p>Sign in with your existing account.<br> Don't have an account? <%= link_to t("Sign up"), user_signup_path %></p>
 
-  <h3><span><%= t('Log in with') %></span></h3>
+  <fieldset class="secondary">
+  <h3>Log into your account</h3>
+
+  <h4><span><%= t('Log in with') %></span></h4>
 
   <div>
     <button id="facebook"><i class="icon-facebook"></i>Facebook</button>
     <button id="twitter"><i class="icon-twitter"></i>Twitter</button>
   </div>
   
-  <h3><span><%= t('or with your email') %></span></h3>
+  <h4><span><%= t('or with your email') %></span></h4>
   
   <div>
     <!--
