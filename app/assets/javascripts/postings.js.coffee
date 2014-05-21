@@ -4,7 +4,10 @@
 
 $ ->
   $(document).on "page:change", ->
-    $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
+    eleGroup = document.querySelectorAll("input[type=date]")
+    for x of eleGroup
+      new Pikaday(field: eleGroup[x])  if eleGroup.hasOwnProperty(x)
+
     $("textarea.wysiwyg").editable 
       inlineMode: false
       borderColor: "#dddddd"
@@ -21,6 +24,7 @@ $ ->
         "createLink"
         "sep"
         "html"
+        "sep"
         "undo"
         "redo"
       ]
