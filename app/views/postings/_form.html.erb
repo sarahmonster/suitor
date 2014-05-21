@@ -19,12 +19,12 @@
     <%= f.text_field :title %>
   </div>
 
-  <div class="half-width">
+  <div class="half-width partial">
     <%= f.label :hiring_organization , "Company", class: "required" %>
     <%= f.text_field :hiring_organization %>
   </div>
 
-  <div class="half-width">
+  <div class="half-width date">
     <%= f.label :date_posted, "Date posted" %>
     <%= date_field(:posting, :date_posted) %>
     <i class="icon-calendar"></i>
@@ -68,13 +68,13 @@
 
   <h3>How to apply</h3>
 
-  <div class="half-width">
+  <div class="half-width date">
     <%= f.label :deadline, "Deadline" %>
     <%= date_field(:posting, :deadline) %>
     <i class="icon-calendar"></i>
   </div>
 
-  <div class="half-width">
+  <div class="half-width partial">
     <%= f.label :contact_name, "Contact Name" %>
     <%= f.text_field :contact_name %>
   </div>
