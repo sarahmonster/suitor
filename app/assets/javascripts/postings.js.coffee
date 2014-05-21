@@ -5,7 +5,33 @@
 $ ->
   $(document).on "page:change", ->
     $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
-    $("textarea.wysiwyg").editable inlineMode: false
+    $("textarea.wysiwyg").editable 
+      inlineMode: false
+      borderColor: "#dddddd"
+      height: 500
+      paragraphy: true
+      placeholder: ''
+      buttons: [
+        "bold"
+        "italic"
+        "formatBlock"
+        "sep"
+        "insertOrderedList"
+        "insertUnorderedList"
+        "createLink"
+        "sep"
+        "html"
+        "undo"
+        "redo"
+      ]
+      blockTags: [
+        "p"
+        "blockquote"
+        "h1"
+        "h2"
+        "h3"
+        "h4"
+      ]
 
     showDialog = ($element) ->
       dialog = $element.dialog

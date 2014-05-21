@@ -14,15 +14,15 @@
 @import "normalize";
 
 // Vendor CSS
+@import "font-awesome";
+@import "froala_editor.min";
+
 @import "bourbon";
 @import "neat";
 @import "bitters/bitters";
 
 @import "jquery-ui-config";
 @import "jquery.ui.all";
-
-@import "font-awesome";
-@import "froala_editor.min";
 
 // Custom icomoon glyphs
 @import "icomoon";

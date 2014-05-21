@@ -150,3 +150,29 @@ input[type="submit"] {
   vertical-align: middle;
   white-space: nowrap;
 }
+
+
+.froala-box {
+  background: rgba($white, .5);
+  @include box-shadow($size: 1px);
+
+  .bttn-wrapper {
+    background: $white;
+  }
+
+  .fr-bttn, .fr-trigger {
+    clear: none;
+    text-shadow: none;
+    i {color: $medium-grey;}
+
+    &[data-cmd="undo"], &[data-cmd="redo"], &[data-cmd="html"] {
+      float: right;
+    }  
+  }
+
+  span.f-sep {
+    border-right: none;
+    width: 5px;
+    background: $white;
+  }
+}
