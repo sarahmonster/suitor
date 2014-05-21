@@ -35,13 +35,17 @@ form div {
   margin: 0;
   @include clearfix;
   text-align: left;
+  clear: both;
 
   &.half-width {
     float: left;
     clear: none;
     width: calc(50% - 10px);
     margin-right: 20px;
-    & + .half-width {margin-right: 0;}
+    & + .half-width {
+      margin-right: 0;
+      @include clearfix;
+    }
   }
 
   &.date {
@@ -50,6 +54,30 @@ form div {
 
   &.partial {
     width: calc(100% - 190px);
+  }
+
+  &.url-field {
+    position: relative;
+
+    input[type="url"] {
+      text-indent: 5.5em;
+    }
+
+    &:after {
+      content: 'http://';
+      display: block;
+      position: absolute;
+      top: 2.35em;
+      left: 4px;
+      padding: 6px 10px;
+      background: lighten($light-grey, 5%);
+      color: $white;
+      font-family: $sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: .75em;
+      letter-spacing: 2px;
+    }
   }
 
   &.actions {
@@ -142,6 +170,7 @@ input[type="file"] {
 
 input[type="date"] {
   display: inline-block;
+  -webkit-appearance: none;
 
   &+i {
     display: inline-block;

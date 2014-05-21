@@ -30,9 +30,9 @@
     <i class="icon-calendar"></i>
   </div>
 
-  <div>
+  <div class="url-field">
     <%= f.label :'url', "URL to original posting" %>
-    <%= f.text_field :url %>
+    <%= f.url_field :url %>
   </div>
 
   <div>
@@ -56,9 +56,9 @@
     <%= f.text_field :job_location %>
   </div>
 
-  <div>
+  <div class="url-field">
     <%= f.label :hiring_organization_url, "Company Website"  %>
-    <%= f.text_field :hiring_organization_url %>
+    <%= f.url_field :hiring_organization_url %>
   </div>
 
 
@@ -81,12 +81,12 @@
 
   <div>
     <%= f.label :contact_email, "Email address" %>
-    <%= f.text_field :contact_email %>
+    <%= f.email_field :contact_email %>
   </div>
 
-  <div>
+  <div class="url-field">
     <%= f.label :application_url, "Application URL" %>
-    <%= f.text_field :application_url %>
+    <%= f.url_field :application_url %>
   </div>
 
   <div>
