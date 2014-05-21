@@ -19,7 +19,12 @@
     <%= f.text_field :title %>
   </div>
 
-  <div>
+  <div class="half-width">
+    <%= f.label :hiring_organization , "Company", class: "required" %>
+    <%= f.text_field :hiring_organization %>
+  </div>
+
+  <div class="half-width">
     <%= f.label :date_posted, "Date posted" %>
     <%= date_field(:posting, :date_posted) %>
     <i class="icon-calendar"></i>
@@ -45,9 +50,10 @@
 <fieldset class="company-information primary">
 
   <h3>About the company</h3>
+
   <div>
-    <%= f.label :hiring_organization , "Company" %>
-    <%= f.text_field :hiring_organization %>
+    <%= f.label :job_location, "Location" %>
+    <%= f.text_field :job_location %>
   </div>
 
   <div>
@@ -55,10 +61,6 @@
     <%= f.text_field :hiring_organization_url %>
   </div>
 
-  <div>
-    <%= f.label :job_location, "Location" %>
-    <%= f.text_field :job_location %>
-  </div>
 
 </fieldset>
 
@@ -66,13 +68,13 @@
 
   <h3>How to apply</h3>
 
-  <div>
+  <div class="half-width">
     <%= f.label :deadline, "Deadline" %>
     <%= date_field(:posting, :deadline) %>
     <i class="icon-calendar"></i>
   </div>
 
-  <div>
+  <div class="half-width">
     <%= f.label :contact_name, "Contact Name" %>
     <%= f.text_field :contact_name %>
   </div>

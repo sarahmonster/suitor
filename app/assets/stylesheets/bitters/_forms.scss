@@ -36,6 +36,14 @@ form div {
   @include clearfix;
   text-align: left;
 
+  &.half-width {
+    float: left;
+    clear: none;
+    width: calc(50% - 10px);
+    margin-right: 20px;
+    & + .half-width {margin-right: 0;}
+  }
+
   &.actions {
     text-align: center;
 
@@ -126,7 +134,6 @@ input[type="file"] {
 
 input[type="date"] {
   display: inline-block;
-  width: 200px;
 
   &+i {
     display: inline-block;
