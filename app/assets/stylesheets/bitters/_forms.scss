@@ -50,7 +50,7 @@ form div {
 input,
 label,
 select {
-  display: inline-block;
+  display: block;
   font-family: $form-font-family;
   font-size: $form-font-size;
 }
@@ -122,6 +122,17 @@ input[type="checkbox"], input[type="radio"] {
 
 input[type="file"] {
   width: 100%;
+}
+
+input[type="date"] {
+  display: inline-block;
+  width: 200px;
+
+  &+i {
+    display: inline-block;
+    margin-left: -40px;
+    color: $medium-grey;
+  }
 }
 
 select {
