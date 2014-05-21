@@ -5,6 +5,7 @@
 $ ->
   $(document).on "page:change", ->
     $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
+    $("textarea.wysiwyg").editable inlineMode: false
 
     showDialog = ($element) ->
       dialog = $element.dialog
