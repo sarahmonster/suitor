@@ -37,6 +37,14 @@ $ ->
         "h4"
       ]
 
+    $("input").focus ->
+      $(this).parent().addClass "focus"
+      return
+
+    $("input").blur ->
+      $(this).parent().removeClass "focus"
+      return
+
     showDialog = ($element) ->
       dialog = $element.dialog
         modal: true

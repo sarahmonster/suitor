@@ -121,6 +121,10 @@ label {
   }
 }
 
+.focus label {
+   color: $blue;
+}
+
 textarea,
 #{$all-text-inputs},
 select[multiple=multiple] {
