@@ -200,6 +200,7 @@ input[type="submit"] {
 }
 
 
+// Text editor!
 .froala-box {
   background: rgba($white, .8);
   @include box-shadow($size: 1px);
@@ -222,5 +223,13 @@ input[type="submit"] {
     border-right: none;
     width: 5px;
     background: $white;
+  }
+
+  ul {
+    @extend %default-ul;
+  }
+
+  ol {
+    @extend %default-ol;
   }
 }
