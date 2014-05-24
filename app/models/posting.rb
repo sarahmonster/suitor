@@ -10,4 +10,14 @@ class Posting < ActiveRecord::Base
   def followup_needed?
     job_application.date_sent.advance(:days => 14) < Date.current
   end
+
+  def actionable
+    if applied? and followup_needed?
+      "action-required"
+    elsif !applied?
+      "action-required"
+    else
+      ""
+    end
+  end
 end

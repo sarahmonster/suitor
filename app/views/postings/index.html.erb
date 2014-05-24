@@ -5,11 +5,7 @@
 
 <% @postings.each do |posting| %>
 
-  <% if posting.applied? and !posting.followup_needed? %>
-    <section class="job-posting">
-  <% else %>
-    <section class="job-posting action-required">
-  <% end %>
+  <section class="job-posting <%= posting.actionable %>">
 
     <div class="actions">
 
