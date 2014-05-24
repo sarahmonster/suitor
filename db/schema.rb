@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524183512) do
+ActiveRecord::Schema.define(version: 20140524185628) do
 
   create_table "interviews", force: true do |t|
     t.datetime "date"
@@ -50,7 +50,10 @@ ActiveRecord::Schema.define(version: 20140524183512) do
     t.string   "application_url"
     t.date     "deadline"
     t.text     "application_instructions"
+    t.boolean  "archived",                 default: false
   end
+
+  add_index "postings", ["archived"], name: "index_postings_on_archived"
 
   create_table "users", force: true do |t|
     t.string   "email"
