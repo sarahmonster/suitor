@@ -17,9 +17,6 @@
           <li><i class="icon-clock4"><span>Deadline</span></i><%= posting.deadline.strftime("%B %d") %></li>
         <% end %>
 
-        <% if posting.job_location %>
-          <li><i class="icon-location4"><span>Location</span></i><%= posting.job_location %></li>
-       <% end %>
       </ul>
     
       <div class="controls">
@@ -42,6 +39,11 @@
 
       </div>
 
+      <div class="hidden-info">
+        <% if posting.job_location %>
+          <li><i class="icon-location4"><span>Location</span></i><%= posting.job_location %></li>
+        <% end %>
+    </div>
 
   </section>
 
