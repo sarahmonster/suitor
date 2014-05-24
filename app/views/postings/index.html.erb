@@ -17,16 +17,16 @@
       </div>
     
       <div class="controls">
-        <% if posting.applied? %>
-          <i class="applied icon-checkmark done"><span><%= t('Applied') %></span></i>
+
+        <% if posting.applied? and posting.followup_needed? %>
+          <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Follow up</span></i>
+
+        <% elsif posting.applied? %>
+          <i class="applied icon-checkmark done"><span><%= t('Applied') %> <%= posting.job_application.date_sent.strftime("%B %d") %></span></i>
           
           <div class="dialog" title="<%= t('job_applications.sent_at_time', time: posting.job_application.date_sent.strftime("%B %d")) %>">
             <p><%= simple_format(posting.job_application.cover_letter) %></p>
           </div>
-
-          <% if posting.followup_needed? %>
-            <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Follow up</span></i>
-          <% end %>
 
         <% else %>
           <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Apply now!</span></i>
