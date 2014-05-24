@@ -3,55 +3,16 @@
   <h1>All job postings</h1>
 </header>
 
-  <% @postings.each do |posting| %>
-    <section class="job-posting">
-      
-      <div class="header">
-        <h3><%= link_to posting.title, posting %></h3>
-        
-        <div class="controls">
-          <% if posting.applied? %>
-            <i class="applied icon-checkmark done"><span><%= t('Applied') %></span></i>
-            
-            <div class="dialog" title="<%= t('job_applications.sent_at_time', time: posting.job_application.date_sent.strftime("%B %d")) %>">
-              <p><%= simple_format(posting.job_application.cover_letter) %></p>
-            </div>
+<% @postings.each do |posting| %>
+  <section class="job-posting">
+    
+    <div class="posting-title">
+      <h3><%= link_to posting.title, posting %></h3>
+      <h2><%= link_to posting.hiring_organization, posting %></h2>
+    </div>
 
-            <% if posting.followup_needed? %>
-              <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Follow up</span></i>
-            <% end %>
-
-          <% else %>
-            <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Apply now!</span></i>
-
-            <div class="dialog"></div>
-          <% end %>
-
-
-          <%= link_to posting.url do %>
-            <i class="icon-external-link-sign"><span>Original posting</span></i>
-          <% end %>  
-
-          <%= link_to edit_posting_path(posting) do %>
-            <i class="icon-pencil2"><span>Edit</span></i>
-          <% end %>
-
-          <%= link_to posting_path(posting), method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="icon-trash2"><span>Delete</span></i>
-          <% end %>
-        </div>
-      </div>
-
-
-      <div class="company">
-        <h2><%= link_to posting.hiring_organization, posting %></h2>
-        <div class="notes">
-          <%= simple_format(posting.description.truncate(300, separator: ' ')) %> 
-          (<%= link_to 'More information', posting %>)
-        </div>
-      </div>
-
-      <ul class="job-details">
+    <div class="posting-details">
+      <ul class="important-information">
         <% if posting.date_posted %>
           <li><i class="icon-clock4"><span>Posted</span></i><%= posting.date_posted.strftime("%B %d") %></li>
         <% end %>
@@ -63,12 +24,42 @@
         <% if posting.job_location %>
           <li><i class="icon-location4"><span>Location</span></i><%= posting.job_location %></li>
        <% end %>
-
-        <% if posting.application_instructions %>
-          <li><i class="icon-key2"><span>Requires</span></i><%= posting.application_instructions.downcase %></li>
-        <% end %>        
       </ul>
+    
+      <div class="controls">
+        <% if posting.applied? %>
+          <i class="applied icon-checkmark done"><span><%= t('Applied') %></span></i>
+          
+          <div class="dialog" title="<%= t('job_applications.sent_at_time', time: posting.job_application.date_sent.strftime("%B %d")) %>">
+            <p><%= simple_format(posting.job_application.cover_letter) %></p>
+          </div>
 
-    </section>
+          <% if posting.followup_needed? %>
+            <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Follow up</span></i>
+          <% end %>
 
-  <% end %>
+        <% else %>
+          <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Apply now!</span></i>
+
+          <div class="dialog"></div>
+        <% end %>
+
+
+        <%= link_to posting.url do %>
+          <i class="icon-external-link-sign"><span>Original posting</span></i>
+        <% end %>  
+
+        <%= link_to edit_posting_path(posting) do %>
+          <i class="icon-pencil2"><span>Edit</span></i>
+        <% end %>
+
+        <%= link_to posting_path(posting), method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="icon-trash2"><span>Delete</span></i>
+        <% end %>
+      </div>
+
+    </div>
+
+  </section>
+
+<% end %>

@@ -3,29 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-
-// JOB DETAILS LISTS
-.job-details {
-    font-family: $serif;
-    font-size: 1em;
-    font-weight: 400;
-
-    li {
-        padding: .5em;
-        border-top: 1px solid $light-grey;
-    }
-
-    i {
-
-        span {
-            display: inline;
-            color: $medium-grey;
-            font-size: .9em;
-            vertical-align: baseline;
-        }
-    }
-}
-
 // control icons
 .controls {
     text-align: right;
@@ -77,23 +54,43 @@
 }
 
 
+
+
+
+
 // JOB LISTINGS
 section.job-posting { 
     margin: 4em 0;
     @include clearfix;
+    @include outer-container;
+    border-bottom: 2px solid $medium-grey;
+    padding-bottom: .25em;
+    margin-bottom: .25em;
 
-    .header {
-        @include span-columns(12); 
-        border-bottom: 2px solid $medium-grey;
-        padding-bottom: .25em;
-        margin-bottom: .25em;
+    .posting-title {
+        @include span-columns(4);
+    }
 
-        h3 {
-            @include span-columns(7);
+    .posting-details {
+        @include span-columns(8);
+
+        .important-information {
+            list-style-type: none;
+
+            li {
+                display: inline-block;
+                margin-right: 1em;
+            }
+
+            i span {
+                display: inline;
+                color: $medium-grey;
+                font-size: .9em;
+                vertical-align: baseline;
+            }
         }
 
         .controls {
-            @include span-columns(5);
             text-align: right;
 
             .applied {
@@ -105,16 +102,11 @@ section.job-posting {
             }
         }
     }
-
-    .company {
-        @include span-columns(7);
-    }
-
-    .job-details {
-        @include span-columns(5);
-        padding-top: 4.25em;
-    }
 }
+
+
+
+
 
 
 // JOB DETAILS
@@ -146,6 +138,24 @@ section.job-information {
 
     .job-details {
         clear: both;
+        font-family: $serif;
+        font-size: 1em;
+        font-weight: 400;
+
+        li {
+            padding: .5em;
+            border-top: 1px solid $light-grey;
+        }
+
+        i {
+
+            span {
+                display: inline;
+                color: $medium-grey;
+                font-size: .9em;
+                vertical-align: baseline;
+            }
+        }
     }
 
     .job-description {
