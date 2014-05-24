@@ -1,6 +1,8 @@
 Suitor::Application.routes.draw do
 
 
+  resources :interviews
+
   devise_for :users, :skip => [:sessions]
   as :user do
     get 'login' => 'devise/sessions#new', :as => :new_user_session

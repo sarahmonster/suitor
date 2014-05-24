@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @interview.date %>
+</p>
+
+<p>
+  <strong>Posting:</strong>
+  <%= @interview.posting %>
+</p>
+
+<p>
+  <strong>Interviewer:</strong>
+  <%= @interview.interviewer %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @interview.notes %>
+</p>
+
+<p>
+  <strong>Contact method:</strong>
+  <%= @interview.contact_method %>
+</p>
+
+<%= link_to 'Edit', edit_interview_path(@interview) %> |
+<%= link_to 'Back', interviews_path %>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2014-05-24 14:35:12
+  posting_id: 
+  interviewer: MyString
+  notes: MyText
+  contact_method: MyString
+
+two:
+  date: 2014-05-24 14:35:12
+  posting_id: 
+  interviewer: MyString
+  notes: MyText
+  contact_method: MyString
