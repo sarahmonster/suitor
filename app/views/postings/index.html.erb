@@ -5,13 +5,9 @@
 
 <% @postings.each do |posting| %>
   <section class="job-posting">
-    
-    <div class="posting-title">
       <h3><%= link_to posting.title, posting %></h3>
       <h2><%= link_to posting.hiring_organization, posting %></h2>
-    </div>
 
-    <div class="posting-details">
       <ul class="important-information">
         <% if posting.date_posted %>
           <li><i class="icon-clock4"><span>Posted</span></i><%= posting.date_posted.strftime("%B %d") %></li>
@@ -46,7 +42,6 @@
 
       </div>
 
-    </div>
 
   </section>
 

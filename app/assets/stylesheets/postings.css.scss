@@ -61,20 +61,15 @@
 // LIST ALL POSTINGS
 
 section.job-posting { 
-    border-top: 2px solid $light-grey;
-    border-bottom: 1px solid $light-grey;
-    padding: .75em 0 .5em;
-    @include clearfix;
-    @include outer-container;
+    @extend %box;
+    margin-bottom: 2em;
+    text-align: left;
+    @include span-columns(3);
+    @include omega(4n);
 
-    .posting-title {
-        @include span-columns(4);
-
-        h2 {margin: 0;}
-    }
+    h2 {margin: 0;}
 
     .posting-details {
-        @include span-columns(8);
 
         .important-information {
             list-style-type: none;
@@ -122,7 +117,6 @@ section.job-information {
 
     .controls {
         @include span-columns(3 of 6);
-        @include omega;
         margin-top: 1em;
         font-size: .9em;
 
@@ -180,7 +174,6 @@ section.job-actions {
 
     textarea, #{$all-text-inputs}, select[multiple=multiple] {
         @include span-columns(4 of 6);
-        @include omega;
     }
 }
 
