@@ -69,33 +69,24 @@ section.job-posting {
 
     h2 {margin: 0;}
 
-    .posting-details {
+    .date {
 
-        .important-information {
-            list-style-type: none;
-
-            li {
-                display: inline-block;
-                margin-right: 1em;
-            }
-
-            i span {
-                display: inline;
-                color: $medium-grey;
-                font-size: .9em;
-                vertical-align: baseline;
-            }
+        i span {
+            display: inline;
+            color: $medium-grey;
+            font-size: .9em;
+            vertical-align: baseline;
         }
+    }
 
-        .controls {
-            text-align: right;
+    .controls {
+        text-align: right;
 
-            .applied {
-                float: left;
+        .applied {
+            float: left;
 
-                span {
-                    display: inline;
-                }
+            span {
+                display: inline;
             }
         }
     }
