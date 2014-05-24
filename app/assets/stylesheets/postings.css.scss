@@ -58,17 +58,19 @@
 
 
 
-// JOB LISTINGS
+// LIST ALL POSTINGS
+
 section.job-posting { 
-    margin: 4em 0;
+    border-top: 2px solid $light-grey;
+    border-bottom: 1px solid $light-grey;
+    padding: .75em 0 .5em;
     @include clearfix;
     @include outer-container;
-    border-bottom: 2px solid $medium-grey;
-    padding-bottom: .25em;
-    margin-bottom: .25em;
 
     .posting-title {
         @include span-columns(4);
+
+        h2 {margin: 0;}
     }
 
     .posting-details {

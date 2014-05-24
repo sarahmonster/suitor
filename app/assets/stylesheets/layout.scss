@@ -77,9 +77,9 @@ aside   { @include span-columns(3); }
 }
 
 .page-header {
-    @include span-columns(12);
     text-align: center;
     margin: 4em 0;
+    @include clearfix;
 }
 
 .notes {
