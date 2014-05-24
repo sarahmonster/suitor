@@ -27,6 +27,8 @@ h2 {
   line-height: 1em;
   color: lighten($medium-grey, 15%);
   a {color: lighten($medium-grey, 15%);}
+  padding-bottom: .25em;
+  border-bottom: 2px solid $light-grey;
 }
 
 h3 {
