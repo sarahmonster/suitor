@@ -1,0 +1,7 @@
+%box {
+    background-color: rgba($white, .8);
+    border-top: 5px solid $light-grey;
+    padding: $base-line-height $base-line-height ($base-line-height * 2);
+    text-align: center;
+    @include box-shadow($pre-shadow: 0px 0px 1px $light-grey);
+}

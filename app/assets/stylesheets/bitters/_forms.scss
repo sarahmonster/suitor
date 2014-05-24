@@ -2,20 +2,83 @@ $form-border-color: $light-grey;
 $form-border-color-hover: darken($base-border-color, 10);
 $form-border-color-focus: lighten($base-accent-color, 10);
 $form-border-radius: $base-border-radius;
-$form-box-shadow: 1px 1px 2px $light-grey;
-$form-box-shadow-focus: $form-box-shadow, 0 0 4px rgba(darken($form-border-color-focus, 5), 0.5);
-$form-font-size: $base-font-size;
+$form-font-size: .95em;
 $form-font-family: $base-font-family;
 
 fieldset {
-  background: lighten($base-border-color, 10);
-  border: 1px solid $base-border-color;
-  margin: 0 0 ($base-line-height / 2) 0;
-  padding: $base-line-height;
+  margin: 0 0 ($base-line-height) 0;
+  border: none;
+
+  &.primary, &.secondary {
+    @extend %box;
+    padding-bottom: 1em;
+  }
+
+  &.primary {
+      border-top-color: lighten($base-accent-color, 40%);
+      h3 { color: $base-accent-color; }
+  }
+
+  &.secondary {
+      border-top-color: lighten($base-secondary-color, 40%);
+      h3 { color: $base-secondary-color; }
+  }
+  
+  h3 {
+    text-align: center;
+    margin: 0 0 1.5em;
+  }
+
 }
 
 form div {
-  margin: 2em 0;
+  margin: 0;
+  @include clearfix;
+  text-align: left;
+  clear: both;
+
+  &.half-width {
+    float: left;
+    clear: none;
+    width: calc(50% - 10px);
+    margin-right: 20px;
+    & + .half-width {
+      margin-right: 0;
+      @include clearfix;
+    }
+  }
+
+  &.date {
+    width: 170px;
+  }
+
+  &.partial {
+    width: calc(100% - 190px);
+  }
+
+  &.url-field {
+    position: relative;
+
+    input[type="url"] {
+      text-indent: 5.5em;
+    }
+
+    &:after {
+      content: 'http://';
+      display: block;
+      position: absolute;
+      top: 2.35em;
+      left: 4px;
+      padding: 6px 10px;
+      background: lighten($light-grey, 5%);
+      color: $white;
+      font-family: $sans-serif;
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: .75em;
+      letter-spacing: 2px;
+    }
+  }
 
   &.actions {
     text-align: center;
@@ -31,23 +94,35 @@ form div {
 input,
 label,
 select {
-  display: inline-block;
+  display: block;
   font-family: $form-font-family;
   font-size: $form-font-size;
 }
 
 label {
-  @include span-columns(2);
-  text-align: right;
-  margin-top: .5em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: $sans-serif;
+  font-size:.8em;
+  font-weight: 500;
+  color: $medium-grey;
+  text-align: left;
 
-  &.required:after {
-    content: "*";
+  &.required {
+    font-weight: bolder;
+
+    &:after {
+      content: "*";
+    }
   }
 
   abbr {
     display: none;
   }
+}
+
+.focus label {
+   color: $blue;
 }
 
 textarea,
@@ -57,23 +132,23 @@ select[multiple=multiple] {
   @include transition(border-color);
   background: $white;
   border-radius: $form-border-radius;
-  border: 1px solid $form-border-color;
-  border-right-color: lighten($form-border-color, 10%);
-  border-bottom-color: lighten($form-border-color, 10%);
-  box-shadow: $form-box-shadow;
+  border: 1px solid lighten($form-border-color, 5%);
+  border-left-color: lighten($form-border-color, 10%);
+  border-top-color: lighten($form-border-color, 10%);
   font-family: $form-font-family;
   font-size: $form-font-size;
+  color: $dark-grey;
   margin-bottom: $base-line-height / 2;
-  padding: ($base-line-height / 3) ($base-line-height / 3);
-  @include span-columns(10);
+  padding: ($base-line-height / 2) ($base-line-height / 2);
+  width: 100%;
+  @include box-shadow($size: 1px);
 
   &:hover {
-    border-color: $form-border-color-hover;
+    @include box-shadow($size: 2px, $post-shadow: 0 0 4px rgba(darken($form-border-color-focus, 5), 0.5));
   }
 
   &:focus {
     border-color: $form-border-color-focus;
-    box-shadow: $form-box-shadow-focus;
     color: darken($form-border-color-focus, 20%);
     outline: none;
   }
@@ -97,6 +172,17 @@ input[type="file"] {
   width: 100%;
 }
 
+input[type="date"] {
+  display: inline-block;
+  -webkit-appearance: none;
+
+  &+i {
+    display: inline-block;
+    margin-left: -35px;
+    color: $medium-grey;
+  }
+}
+
 select {
   width: auto;
   max-width: 100%;
@@ -114,25 +200,36 @@ input[type="submit"] {
 }
 
 
-.skinny-form {
+// Text editor!
+.froala-box {
+  background: rgba($white, .8);
+  @include box-shadow($size: 1px);
 
-  div {
-      margin: 0;
-      @include clearfix;
-  }
-  
-  label, input[type=email], input[type=password], input[type=text], input[type=date], textarea {
-      width: 100%;
-      float: none;
+  .bttn-wrapper {
+    background: $white;
   }
 
-  label {
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-family: $sans-serif;
-      font-size:.8em;
-      font-weight: 500;
-      color: $medium-grey;
-      text-align: left;
+  .fr-bttn, .fr-trigger {
+    clear: none;
+    text-shadow: none;
+    i {color: $medium-grey;}
+
+    &[data-cmd="undo"], &[data-cmd="redo"], &[data-cmd="html"] {
+      float: right;
+    }  
+  }
+
+  span.f-sep {
+    border-right: none;
+    width: 5px;
+    background: $white;
+  }
+
+  ul {
+    @extend %default-ul;
+  }
+
+  ol {
+    @extend %default-ol;
   }
 }

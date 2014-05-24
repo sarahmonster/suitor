@@ -4,7 +4,46 @@
 
 $ ->
   $(document).on "page:change", ->
-    $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
+    eleGroup = document.querySelectorAll("input[type=date]")
+    for x of eleGroup
+      new Pikaday(field: eleGroup[x])  if eleGroup.hasOwnProperty(x)
+
+    $("textarea.wysiwyg").editable 
+      inlineMode: false
+      borderColor: "#dddddd"
+      height: 500
+      paragraphy: true
+      placeholder: ''
+      buttons: [
+        "bold"
+        "italic"
+        "formatBlock"
+        "sep"
+        "insertOrderedList"
+        "insertUnorderedList"
+        "createLink"
+        "sep"
+        "html"
+        "sep"
+        "undo"
+        "redo"
+      ]
+      blockTags: [
+        "p"
+        "blockquote"
+        "h1"
+        "h2"
+        "h3"
+        "h4"
+      ]
+
+    $("input").focus ->
+      $(this).parent().addClass "focus"
+      return
+
+    $("input").blur ->
+      $(this).parent().removeClass "focus"
+      return
 
     showDialog = ($element) ->
       dialog = $element.dialog

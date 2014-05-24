@@ -1,16 +1,25 @@
 $max-width: 1140px;
 $grid-columns: 12;
 
-body { background-color: $base-body-color; }
+body { 
+    background: $base-body-color url('../assets/pinstriped_suit_@2X.png'); 
+    background-size: 400px 330px;
+}
+
 aside   { @include span-columns(3); }
 //section { @include outer-container; }
 
 
 // LOGO AND NAVIGATION
 .site-header {
-    @include outer-container;
-    border-bottom: 2px solid $light-grey;
+    border-bottom: 1px solid $light-grey;
+    background: $base-body-color;
+    width: 100%;
+    @include box-shadow;
 
+    div {
+        @include outer-container;
+    }
     #logo {
         @include span-columns(3);
     }

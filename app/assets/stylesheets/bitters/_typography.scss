@@ -38,7 +38,17 @@ h3 {
 }
 
 h4 {
-  font-size: $base-font-size * 1.5; // 16 * 1.5 = 24px
+  font-size: $base-font-size * 1; // 16 * 1.5 = 24px
+  font-family: $base-font-family;
+  clear: both;
+  margin: 2em 0 .25em;
+  text-align: center;
+  font-style: italic;
+  text-transform: lowercase;
+  letter-spacing: 0;
+  font-weight: 400;
+  line-height: 0.5;
+  color: lighten($medium-grey, 10%);
 }
 
 h5 {

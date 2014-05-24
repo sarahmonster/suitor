@@ -14,6 +14,10 @@
 @import "normalize";
 
 // Vendor CSS
+@import "font-awesome";
+@import "froala_editor.min";
+@import "pikaday";
+
 @import "bourbon";
 @import "neat";
 @import "bitters/bitters";
@@ -28,6 +32,8 @@
 @import "layout";
 @import "jquery-ui-overrides";
 @import "users";
+@import "postings";
+@import "welcome";
 
 // Mobile-specific overrides
 @import "mobile";

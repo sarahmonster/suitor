@@ -1,3 +1,16 @@
 // Place all the styles related to the postings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#new_posting {
+    @include outer-container;
+}
+
+.job-information {
+    @include span-columns(7);
+}
+
+.company-information, .application-information {
+    @include span-columns(5);
+    margin-right: 0;
+}

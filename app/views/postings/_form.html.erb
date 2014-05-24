@@ -1,4 +1,4 @@
-<%= form_for @posting do |f| %>
+<%= form_for @posting, html: {class: "skinny-form"} do |f| %>
   <% if @posting.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -12,70 +12,88 @@
     </div>  
   <% end %>
 
+<fieldset class="job-information">
+
   <div>
-    <%= f.label :position %>
+    <%= f.label :title, "Position", class: "required" %>
     <%= f.text_field :title %>
   </div>
 
-  <div>
-    <%= f.label :'date posted' %>
-    <%= date_field(:posting, :date_posted) %>
-  </div>
-
-  <div>
-    <%= f.label :'posting url' %>
-    <%= f.text_field :url %>
-  </div>
-
-  <div>
-    <%= f.label :details %>
-    <%= f.text_area :description %>
-  </div>
-
-  <h2>Company information</h2>
-  <div>
-    <%= f.label :company %>
+  <div class="half-width partial">
+    <%= f.label :hiring_organization , "Company", class: "required" %>
     <%= f.text_field :hiring_organization %>
   </div>
 
-  <div>
-    <%= f.label :'company website' %>
-    <%= f.text_field :hiring_organization_url %>
+  <div class="half-width date">
+    <%= f.label :date_posted, "Date posted" %>
+    <%= date_field(:posting, :date_posted) %>
+    <i class="icon-calendar"></i>
+  </div>
+
+  <div class="url-field">
+    <%= f.label :'url', "URL to original posting" %>
+    <%= f.url_field :url %>
   </div>
 
   <div>
-    <%= f.label :location %>
-    <%= f.text_field :job_location %>
+    <%= f.label :description, "Posting details" %>
+    <%= f.text_area :description, class: "wysiwyg" %>
   </div>
-
-
-
-
-  <h2>Application details</h2>
-  <div>
-    <%= f.label :contact %>
-    <%= f.text_field :contact_name %>
-  </div>
-
-  <div>
-    <%= f.label :'email' %>
-    <%= f.text_field :contact_email %>
-  </div>
-
-  <div>
-    <%= f.label :'application url' %>
-    <%= f.text_field :application_url %>
-  </div>
-
-  <div>
-    <%= f.label :'submission requirements' %>
-    <%= f.text_field :submission_requirements %>
-  </div>
-
-  <hr>
 
   <div class="actions">
     <%= f.submit %>
   </div>
+
+</fieldset>
+
+
+<fieldset class="company-information primary">
+
+  <h3>About the company</h3>
+
+  <div>
+    <%= f.label :job_location, "Location" %>
+    <%= f.text_field :job_location %>
+  </div>
+
+  <div class="url-field">
+    <%= f.label :hiring_organization_url, "Company Website"  %>
+    <%= f.url_field :hiring_organization_url %>
+  </div>
+
+
+</fieldset>
+
+<fieldset class="application-information secondary">
+
+  <h3>How to apply</h3>
+
+  <div class="half-width date">
+    <%= f.label :deadline, "Deadline" %>
+    <%= date_field(:posting, :deadline) %>
+    <i class="icon-calendar"></i>
+  </div>
+
+  <div class="half-width partial">
+    <%= f.label :contact_name, "Contact Name" %>
+    <%= f.text_field :contact_name %>
+  </div>
+
+  <div>
+    <%= f.label :contact_email, "Email address" %>
+    <%= f.email_field :contact_email %>
+  </div>
+
+  <div class="url-field">
+    <%= f.label :application_url, "Application URL" %>
+    <%= f.url_field :application_url %>
+  </div>
+
+  <div>
+    <%= f.label :application_instructions, "Instructions" %>
+    <%= f.text_area :application_instructions %>
+  </div>
+
+</fieldset>
 
 <% end %>

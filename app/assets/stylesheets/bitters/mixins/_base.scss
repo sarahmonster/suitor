@@ -1,1 +1,15 @@
 @import "flash";
+
+// Box shadows
+@mixin simple-shadow($size: 5px, $opacity: 0.1) {
+    box-shadow: 1px 1px $size rgba(0, 0, 0, $opacity);
+}
+
+@mixin box-shadow($pre-shadow: false, $size: 5px, $opacity: 0.1, $post-shadow: false) {
+    $base-shadow: 1px 1px $size rgba(0, 0, 0, $opacity);
+    $shadows: $base-shadow;
+    @if $pre-shadow {$shadows: $pre-shadow, $base-shadow;}
+    @if $post-shadow {$shadows: $base-shadow, $post-shadow;}
+    @if $pre-shadow and $post-shadow {$shadows: $pre-shadow, $base-shadow, $post-shadow;}
+    box-shadow: $shadows;
+}
