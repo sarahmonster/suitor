@@ -64,8 +64,8 @@ section.job-posting {
     @extend %box;
     margin-bottom: 2em;
     text-align: left;
-    @include span-columns(3);
-    @include omega(4n);
+    @include span-columns(4);
+    @include omega(3n);
 
     h2 {margin: 0;}
 
