@@ -4,18 +4,18 @@
 
 
 // control icons
-.controls {
+.actions, .controls {
     text-align: right;
 
     i {
-        padding: 5px 5px 5px 5px;
+        padding: 5px;
 
         &:hover {
             background: lighten($light-grey, 10%);
             color: $medium-grey;
 
             span {
-                // display: inline;
+                //display: inline;
             }
         }
     }
@@ -79,16 +79,27 @@ section.job-posting {
         }
     }
 
-    .controls {
-        text-align: right;
+    .actions {
+        text-align: left;
 
-        .applied {
-            float: left;
-
-            span {
-                display: inline;
-            }
+        i {
+            padding: 0;
+            span { display: inline; }
         }
+    }
+
+    .status {
+        a { 
+            @extend %small-button; 
+
+            i {
+                color: $medium-grey;
+                
+                span {
+                    display: inline;
+                }
+            }
+        }    
     }
 
     .hidden-info {
@@ -98,7 +109,10 @@ section.job-posting {
 
 
 
-// JOB DETAILS
+
+
+
+// INDIVIDUAL JOB POSTING PAGE
 
 section.job-information {
     @include span-columns(6);

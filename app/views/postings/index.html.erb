@@ -16,7 +16,7 @@
         <% end %>
       </div>
     
-      <div class="controls">
+      <div class="actions">
 
         <% if posting.applied? and posting.followup_needed? %>
           <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Follow up</span></i>
@@ -35,6 +35,15 @@
         <% end %>
 
       </div>
+
+
+      <div class="status">
+        <a href="#"><i class="icon-thumbs-down3"><span>Archive</span></i></a>
+        <a href="#"><i class="icon-bubbles3"><span>Interview</span></i></a>
+        <a href="#"><i class="icon-dollar"><span>Offer</span></i></a>
+      </div>
+
+
 
       <div class="hidden-info">
         <% if posting.job_location %>
