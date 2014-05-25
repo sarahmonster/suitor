@@ -39,6 +39,23 @@ h3 {
   font-weight: 700;
   color: lighten($dark-grey, 20%);
   a {color: lighten($dark-grey, 20%)}
+
+  span {
+    margin: 0;
+    font-weight: 400;
+    text-transform: none;
+    font-style: italic;
+    color: lighten($medium-grey, 10%);
+
+    &::before, &::after {
+      margin: 0 2px;
+      content: '';
+      display: inline-block;
+      height: 5px;
+      width: 10px;
+      border-top: 1px solid $light-grey;
+    }
+  }
 }
 
 h4 {
