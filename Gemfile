@@ -38,6 +38,7 @@ gem 'neat'
 gem 'font-awesome-rails'
 gem 'wysiwyg-rails'
 gem 'pickadate-rails'
+gem 'date_time_attribute'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

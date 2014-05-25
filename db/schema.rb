@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140524185628) do
+ActiveRecord::Schema.define(version: 20140525182929) do
 
   create_table "interviews", force: true do |t|
-    t.datetime "date"
+    t.datetime "datetime"
     t.integer  "posting_id"
     t.string   "interviewer"
     t.text     "notes"

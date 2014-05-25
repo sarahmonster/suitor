@@ -13,13 +13,13 @@
 
   <div class="half-width date">
     <%= f.label :date %>
-    <%= date_field(:interview, :date) %>
+    <%= date_field(:interview, :datetime_date) %>
     <i class="icon-calendar"></i>
   </div>
 
   <div class="half-width time">
     <%= f.label :time %>
-    <%= time_field(:interview, :date) %>
+    <%= time_field(:interview, :datetime_time) %>
     <i class="icon-clock"></i>
   </div>
 

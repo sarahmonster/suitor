@@ -45,6 +45,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    date_time_attribute (0.1.1)
+      activesupport (>= 3.0.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -163,6 +165,7 @@ DEPENDENCIES
   better_errors
   bourbon
   coffee-rails (~> 4.0.0)
+  date_time_attribute
   devise
   dotenv-rails
   font-awesome-rails
