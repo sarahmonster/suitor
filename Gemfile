@@ -16,6 +16,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
+  gem 'rails-footnotes', '>= 4.0.0', '<5'
   gem 'spring'
 end
 
