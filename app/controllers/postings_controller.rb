@@ -6,6 +6,7 @@ class PostingsController < ApplicationController
 
   def archived
     @postings = Posting.archived
+    @archive_page = true
     render 'index'
   end
 
