@@ -4,8 +4,18 @@ class PostingsController < ApplicationController
     @postings = Posting.all
   end
 
+  def archived
+    @postings = Posting.archived
+    render 'index'
+  end
+
+  def archivetoggle
+    @posting = Posting.unscoped.find(params[:id])
+    @posting.toggle!(:archived)
+  end
+
   def show
-    @posting = Posting.find(params[:id])
+    @posting = Posting.unscoped.find(params[:id])
     @posting.build_job_application unless @posting.job_application
   end
 
@@ -24,11 +34,11 @@ class PostingsController < ApplicationController
   end
 
   def edit
-    @posting = Posting.find(params[:id])
+    @posting = Posting.unscoped.find(params[:id])
   end
 
   def update
-    @posting = Posting.find(params[:id])
+    @posting = Posting.unscoped.find(params[:id])
 
     if @posting.update(posting_params)
       redirect_to @posting
@@ -38,7 +48,7 @@ class PostingsController < ApplicationController
   end
 
   def destroy
-    @posting = Posting.find(params[:id])
+    @posting = Posting.unscoped.find(params[:id])
     @posting.destroy
     redirect_to postings_path
   end

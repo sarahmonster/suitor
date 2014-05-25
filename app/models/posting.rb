@@ -5,7 +5,7 @@ class Posting < ActiveRecord::Base
   has_many :interviews, dependent: :destroy
 
   default_scope -> { where(archived: false) }
-  scope :archived, -> { where(archived: true) }
+  scope :archived, -> { unscoped.where(archived: true) }
 
   def applied?
     job_application and job_application.id and job_application.date_sent

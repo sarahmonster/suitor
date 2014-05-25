@@ -83,3 +83,8 @@ $ ->
         error: ->
           # TODO: Add an error message.
           console.log "fail"
+
+    # Fade out posting listing when archived     
+    $(".archive-toggle").on "ajax:complete", ->
+      $("##{$(this).data('id')}").fadeOut 500, =>
+        $("##{$(this).data('id')}").remove()

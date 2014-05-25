@@ -5,7 +5,7 @@
 
 <% @postings.each do |posting| %>
 
-  <section class="job-posting <%= posting.actionable %>">
+  <section class="job-posting <%= posting.actionable %>" id="posting-<%= posting.id %>">
 
     <div class="status">
 
@@ -47,7 +47,14 @@
 
     <!-- VARIOUS STATUS BUTTONS -->
     <div class="actions">
-      <a href="#"><i class="icon-thumbs-down3"><span>Archive</span></i></a>
+      
+      <%= link_to archivetoggle_posting_path(posting), remote: true, method: :put, class: "archive-toggle", data: {id: "posting-#{posting.id}"} do %>
+        <% if posting.archived %>
+          <i class="icon-thumbs-up3"><span>Unarchive</span></i>
+        <% else %>
+          <i class="icon-thumbs-down3"><span>Archive</span></i>
+        <% end %>
+      <% end %>
 
       <%= link_to new_posting_interview_path(posting) do %>
         <i class="icon-bubbles3"><span>Interview</span></i>

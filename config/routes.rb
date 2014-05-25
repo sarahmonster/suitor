@@ -24,10 +24,13 @@ Suitor::Application.routes.draw do
 
   # Set up job postings, and routing for nested models
   resources :postings do
+    get 'archived', on: :collection
+    member do
+      put :archivetoggle
+    end
     resources :job_applications
     resources :interviews
   end
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
