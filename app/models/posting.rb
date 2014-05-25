@@ -16,7 +16,11 @@ class Posting < ActiveRecord::Base
   end
 
   def actionable
-    if applied? and followup_needed?
+    if !interviews.empty? and !interviews.upcoming.empty?
+      "interview-scheduled"
+    elsif !interviews.empty? and interviews.upcoming.empty?
+      "interview-completed"
+    elsif applied? and followup_needed?
       "action-required"
     elsif !applied?
       "action-required"
