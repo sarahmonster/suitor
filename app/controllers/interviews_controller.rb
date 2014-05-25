@@ -15,7 +15,7 @@ class InterviewsController < ApplicationController
   # GET /postings/:posting_id/interviews/new
   def new
     @interview = Interview.new
-    @interview.posting = Posting.find(params[:posting_id])
+    @interview.posting = Posting.unscoped.find(params[:posting_id])
   end
 
   # GET /interviews/1/edit
@@ -26,7 +26,7 @@ class InterviewsController < ApplicationController
   # POST /postings/:posting_id/interviews.json
   def create
     @interview = Interview.new(interview_params)
-    @interview.posting = Posting.find(params[:posting_id])
+    @interview.posting = Posting.unscoped.find(params[:posting_id])
 
     respond_to do |format|
       if @interview.save
@@ -67,6 +67,7 @@ class InterviewsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_interview
       @interview = Interview.find(params[:id])
+      @interview.posting = Posting.unscoped.find(params[:posting_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
