@@ -16,7 +16,10 @@
 // Vendor CSS
 @import "font-awesome";
 @import "froala_editor.min";
-@import "pikaday";
+
+@import "pickadate/classic";
+@import "pickadate/classic.date";
+@import "pickadate/classic.time";
 
 @import "bourbon";
 @import "neat";

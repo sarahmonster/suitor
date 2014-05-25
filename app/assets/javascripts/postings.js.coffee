@@ -4,9 +4,6 @@
 
 $ ->
   $(document).on "page:change", ->
-    eleGroup = document.querySelectorAll("input[type=date]")
-    for x of eleGroup
-      new Pikaday(field: eleGroup[x])  if eleGroup.hasOwnProperty(x)
 
     $("textarea.wysiwyg").editable 
       inlineMode: false

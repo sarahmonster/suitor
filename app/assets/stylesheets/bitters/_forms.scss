@@ -42,6 +42,7 @@ form div {
     clear: none;
     width: calc(50% - 10px);
     margin-right: 20px;
+   
     & + .half-width {
       margin-right: 0;
       @include clearfix;
@@ -50,6 +51,12 @@ form div {
 
   &.date, &.time {
     width: 170px;
+
+    i {
+      display: inline-block;
+      margin-left: -35px;
+      color: $medium-grey;
+    }
   }
 
   &.partial, &.date + .time {
@@ -172,15 +179,9 @@ input[type="file"] {
   width: 100%;
 }
 
-input[type="date"], input[type="time"] {
+input[type="date"], input[type="time"], .time input[type="text"], .date input[type="text"] {
   display: inline-block;
   -webkit-appearance: none;
-
-  &+i {
-    display: inline-block;
-    margin-left: -35px;
-    color: $medium-grey;
-  }
 }
 
 select {
