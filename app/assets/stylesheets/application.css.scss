@@ -31,9 +31,11 @@
 // suitor files
 @import "layout";
 @import "jquery-ui-overrides";
+@import "welcome";
 @import "users";
 @import "postings";
-@import "welcome";
+@import "interviews";
+
 
 // Mobile-specific overrides
 @import "mobile";

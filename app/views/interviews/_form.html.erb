@@ -1,4 +1,4 @@
-<%= form_for(@interview) do |f| %>
+<%= form_for([@interview.posting, @interview]) do |f| %>
   <% if @interview.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@interview.errors.count, "error") %> prohibited this interview from being saved:</h2>
@@ -11,27 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+  <div class="half-width date">
+    <%= f.label :date %>
+    <%= date_field(:interview, :date) %>
+    <i class="icon-calendar"></i>
   </div>
-  <div class="field">
-    <%= f.label :posting_id %><br>
-    <%= f.text_field :posting_id %>
+
+  <div class="half-width time">
+    <%= f.label :time %>
+    <%= time_field(:interview, :date) %>
+    <i class="icon-clock"></i>
   </div>
-  <div class="field">
-    <%= f.label :interviewer %><br>
+
+
+  <div>
+    <%= f.label :interviewer, "Name of your interviewer" %>
     <%= f.text_field :interviewer %>
   </div>
-  <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_method %><br>
+
+  <div>
+    <%= f.label :contact_method, "How to reach them (Skype, phone, meeting place)" %>
     <%= f.text_field :contact_method %>
   </div>
+  
+  <div>
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

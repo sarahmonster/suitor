@@ -12,23 +12,25 @@ class InterviewsController < ApplicationController
   def show
   end
 
-  # GET /interviews/new
+  # GET /postings/:posting_id/interviews/new
   def new
     @interview = Interview.new
+    @interview.posting = Posting.find(params[:posting_id])
   end
 
   # GET /interviews/1/edit
   def edit
   end
 
-  # POST /interviews
-  # POST /interviews.json
+  # POST /postings/:posting_id/interviews
+  # POST /postings/:posting_id/interviews.json
   def create
     @interview = Interview.new(interview_params)
+    @interview.posting = Posting.find(params[:posting_id])
 
     respond_to do |format|
       if @interview.save
-        format.html { redirect_to @interview, notice: 'Interview was successfully created.' }
+        format.html { redirect_to [@interview.posting, @interview], notice: 'Interview was successfully created.' }
         format.json { render action: 'show', status: :created, location: @interview }
       else
         format.html { render action: 'new' }

@@ -48,11 +48,11 @@ form div {
     }
   }
 
-  &.date {
+  &.date, &.time {
     width: 170px;
   }
 
-  &.partial {
+  &.partial, &.date + .time {
     width: calc(100% - 190px);
   }
 
@@ -172,7 +172,7 @@ input[type="file"] {
   width: 100%;
 }
 
-input[type="date"] {
+input[type="date"], input[type="time"] {
   display: inline-block;
   -webkit-appearance: none;
 
