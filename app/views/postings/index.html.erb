@@ -16,7 +16,7 @@
     <div class="status">
 
       <% if !posting.interviews.empty? and !posting.interviews.upcoming.empty? %>
-        <i class="icon-bubbles3"><span>Interview scheduled <%= posting.interviews.upcoming.first.datetime.strftime("%B %d %l:%M %P") %></span></i>
+        <i class="icon-bubbles3"><span>Interview <%= friendly_date(posting.interviews.upcoming.first.datetime) %></span></i>
 
       <% elsif !posting.interviews.empty? and posting.interviews.upcoming.empty? %>
         <i class="icon-bubbles3"><span>Interviewed <%= posting.interviews.last.datetime.strftime("%B %d") %></span></i>
