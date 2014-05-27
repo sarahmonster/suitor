@@ -73,7 +73,6 @@
 
         .controls {
             @include span-columns(2 of 4);
-            @include omega;
 
             span {
                 display: none;

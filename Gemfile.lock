@@ -45,6 +45,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    date_time_attribute (0.1.1)
+      activesupport (>= 3.0.0)
     devise (3.2.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -86,8 +88,8 @@ GEM
       bourbon (>= 3.1)
       sass (~> 3.2.19)
     orm_adapter (0.5.0)
-    pikaday-gem (1.2.0)
-      railties (>= 3.1)
+    pickadate-rails (3.5.2.0)
+      railties (>= 3.1.0)
     polyglot (0.3.4)
     pundit (0.2.3)
       activesupport (>= 3.0.0)
@@ -165,6 +167,7 @@ DEPENDENCIES
   better_errors
   bourbon
   coffee-rails (~> 4.0.0)
+  date_time_attribute
   devise
   dotenv-rails
   font-awesome-rails
@@ -172,7 +175,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-sass-rails
   neat
-  pikaday-gem
+  pickadate-rails
   pundit
   quiet_assets
   rails (= 4.1.1)

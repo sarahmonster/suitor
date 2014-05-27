@@ -35,10 +35,11 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bourbon'
 gem 'neat'
 
-# Use Froala for WYSIWYG editing (requires FontAwesome) and Pikaday for datepicking
+# Use Froala for WYSIWYG editing (requires FontAwesome) and pickadate for time/date input
 gem 'font-awesome-rails'
 gem 'wysiwyg-rails'
-gem 'pikaday-gem'
+gem 'pickadate-rails'
+gem 'date_time_attribute'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

@@ -2,6 +2,220 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// control icons
+.status, .controls {
+    text-align: right;
+
+    i {
+        padding: 5px;
+
+        &:hover {
+            background: lighten($light-grey, 10%);
+            color: $medium-grey;
+
+            span {
+                //display: inline;
+            }
+        }
+    }
+
+    // action items
+    .todo {
+        color: $red;
+        position: relative;
+
+        &:hover {
+            color: $green;
+            background: purple;
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: 5px;
+                left: 5px;
+
+            }
+        }
+    }
+    .done {
+        color: $green;
+    }
+
+    .applied:hover {
+        cursor: pointer;
+        background: none;
+    }
+
+    // hide dialogs
+    & > .dialog {
+        display: none;
+    }
+}
+
+
+
+
+
+
+// LIST ALL POSTINGS
+
+section.job-posting { 
+    @extend %box;
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    text-align: center;
+    position: relative;
+    border-top-color: $green;
+    @include span-columns(4);
+    @include omega(3n);
+
+    h3 {margin: .75em 0 0 0;}
+    h2 {margin: .25em 0 .5em 0;}
+
+    .date {
+        margin: 0 0 1em 0;
+
+        i span {
+            display: inline;
+            color: $medium-grey;
+            font-size: .9em;
+            vertical-align: baseline;
+        }
+    }
+
+    .status {
+        text-align: center;
+        background: lighten($green, 50%);
+        padding: 2px 5px 2px 10px;
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        font-size: .85em;
+
+        i {
+            padding: 0;
+            span { display: inline; }
+        }
+    }
+
+    &.action-required {
+        border-top-color: $red;
+        .status {background: lighten($red, 50%);}
+    }
+
+    &.interview-scheduled {
+        border-top-color: $blue;
+        .status {background: lighten($blue, 50%);}
+    }
+
+    &.interview-completed {
+        border-top-color: lighten($blue, 10%);
+        .status {background: lighten($blue, 60%);}
+    }
+
+
+    .actions {
+        line-height: 1.8em;
+
+        a { 
+            @extend %small-button; 
+
+            i {
+                color: $medium-grey;
+                
+                span {
+                    display: inline;
+                }
+            }
+        }    
+    }
+
+    .hidden-info {
+        display: none;
+    }
+}
+
+
+
+
+
+
+// INDIVIDUAL JOB POSTING PAGE
+
+section.job-information {
+    @include span-columns(6);
+
+    h2 {
+        @include span-columns(3 of 6);
+    }
+
+    .controls {
+        @include span-columns(3 of 6);
+        margin-top: 1em;
+        font-size: .9em;
+
+        a {
+            background: lighten($light-grey, 10%);
+            padding: 5px 5px 5px 10px;
+            margin: 0 0 0 1em;
+            color: $medium-grey;
+        }
+
+        span {
+            display: inline;
+        }
+    }
+
+    .job-details {
+        clear: both;
+        font-family: $serif;
+        font-size: 1em;
+        font-weight: 400;
+
+        li {
+            padding: .5em;
+            border-top: 1px solid $light-grey;
+        }
+
+        i {
+
+            span {
+                display: inline;
+                color: $medium-grey;
+                font-size: .9em;
+                vertical-align: baseline;
+            }
+        }
+    }
+
+    .job-description {
+        margin: 1em 0;
+    }
+}
+section.job-actions {
+    @include span-columns(6);
+
+    .applied {
+
+        span {
+            display: inline;
+        }
+    }
+
+    label {
+        @include span-columns(2 of 6);
+    }
+
+    textarea, #{$all-text-inputs}, select[multiple=multiple] {
+        @include span-columns(4 of 6);
+    }
+}
+
+
+
+
+
 #new_posting {
     @include outer-container;
 }

@@ -30,3 +30,22 @@
         color: lighten($base-secondary-color, 40%);
     }
 }
+
+
+%small-button {
+    @extend %button;
+    padding: 5px 7px 5px 8px;
+    float: none;
+    clear: none;
+    margin: 1px 2px 2px;
+    background: $light-grey;
+    border-bottom: 0;
+    border-left: 2px solid $medium-grey;
+    font-size: .8em;
+    color: $medium-grey;
+    text-shadow: 1px 1px 1px rgba(255,255,255,.25);
+
+    &:hover {
+        border-width: 0 0 0 2px;
+    }
+}

@@ -4,9 +4,6 @@
 
 $ ->
   $(document).on "page:change", ->
-    eleGroup = document.querySelectorAll("input[type=date]")
-    for x of eleGroup
-      new Pikaday(field: eleGroup[x])  if eleGroup.hasOwnProperty(x)
 
     $("textarea.wysiwyg").editable 
       inlineMode: false
@@ -86,3 +83,8 @@ $ ->
         error: ->
           # TODO: Add an error message.
           console.log "fail"
+
+    # Fade out posting listing when archived     
+    $(".archive-toggle").on "ajax:complete", ->
+      $("##{$(this).data('id')}").fadeOut 500, =>
+        $("##{$(this).data('id')}").remove()

@@ -1,6 +1,5 @@
 Suitor::Application.routes.draw do
 
-
   devise_for :users, :skip => [:sessions]
   as :user do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
@@ -14,6 +13,7 @@ Suitor::Application.routes.draw do
   # resources :users
 
   resources :job_applications
+  #resources :interviews
 
   get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
@@ -22,11 +22,15 @@ Suitor::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  # Set up job postings
+  # Set up job postings, and routing for nested models
   resources :postings do
+    get 'archived', on: :collection
+    member do
+      put :archivetoggle
+    end
     resources :job_applications
+    resources :interviews
   end
-
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
