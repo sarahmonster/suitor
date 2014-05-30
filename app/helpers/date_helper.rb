@@ -6,10 +6,10 @@ module DateHelper
 
     # yesterday: yesterday
     if date == Date.yesterday
-      datetime.strftime("yesterday")
-    # any other time in the past
+      yesterday
+    # any other time in the past: 5 days ago
     elsif date < Date.yesterday
-      return "in the past"
+      distance_of_time_in_words(date, Date.today) + " ago"
     # today: today at 5pm
     elsif date == Date.today
       datetime.strftime("today at %l:%M %P")
