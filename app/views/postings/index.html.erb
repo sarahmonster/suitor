@@ -19,7 +19,7 @@
         <i class="icon-bubbles3"><span>Interview <%= friendly_date(posting.interviews.upcoming.first.datetime) %></span></i>
 
       <% elsif !posting.interviews.empty? and posting.interviews.upcoming.empty? %>
-        <i class="icon-bubbles3"><span>Interviewed <%= posting.interviews.last.datetime.strftime("%B %d") %></span></i>
+        <i class="icon-bubbles3"><span>Interviewed <%= friendly_date(posting.interviews.last.datetime) %></span></i>
 
       <% elsif posting.applied? and posting.followup_needed? %>
         <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Follow up</span></i>
