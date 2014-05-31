@@ -12,9 +12,9 @@ module DateHelper
       distance_of_time_in_words(date, Date.today) + " ago"
     # today: today at 5pm
     elsif date == Date.today
-      "today at " + short_time(datetime) 
+      "today at " + short_time(datetime)
     # tomorrow: tomorrow at 5pm
-    elsif date == Date.tomorrow 
+    elsif date == Date.tomorrow
       "tomorrow at " + short_time(datetime)
     # this week: this Thursday at 5pm
     elsif date < Date.current.advance(days: 7)
