@@ -18,6 +18,7 @@ group :development do
   gem 'quiet_assets'
   gem 'rails-footnotes', '>= 4.0.0', '<5'
   gem 'spring'
+  gem 'seed_dump'
 end
 
 # User authentication
