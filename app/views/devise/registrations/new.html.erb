@@ -12,10 +12,11 @@
   <div>
     <button id="facebook"><i class="icon-facebook"></i>Facebook</button>
     <button id="twitter"><i class="icon-twitter"></i>Twitter</button>
+    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
   </div>
-  
+
   <h3><span><%= t('or with email') %></span></h3>
-  
+
   <div>
     <%= f.label :email %>
     <%= f.text_field :email, placeholder: t("users.email.placeholder"), type: 'email' %>
