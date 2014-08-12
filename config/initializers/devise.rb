@@ -230,6 +230,13 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
+  unless Rails.env.production?
+    config.omniauth :developer
+    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+  end
+  puts Rails.application.secrets.facebook_id
+  puts Rails.application.secrets.facebook_secret
+  config.omniauth :facebook, Rails.application.secrets.facebook_id, Rails.application.secrets.facebook_secret
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # ==> Warden configuration

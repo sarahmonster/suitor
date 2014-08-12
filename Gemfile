@@ -24,6 +24,7 @@ end
 # User authentication
 gem 'devise'
 gem 'pundit'
+gem 'omniauth-facebook'
 
 # Better than Struct.new
 # See: http://thepugautomatic.com/2013/08/struct-inheritance-is-overused/
