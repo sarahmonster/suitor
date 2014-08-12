@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509231932) do
+ActiveRecord::Schema.define(version: 20140812053348) do
 
   create_table "job_applications", force: true do |t|
     t.date     "date_sent"
@@ -36,7 +36,8 @@ ActiveRecord::Schema.define(version: 20140509231932) do
     t.string   "contact_name"
     t.string   "contact_email"
     t.string   "application_url"
-    t.string   "submission_requirements"
+    t.date     "deadline"
+    t.text     "application_instructions"
   end
 
   create_table "users", force: true do |t|
@@ -60,6 +61,10 @@ ActiveRecord::Schema.define(version: 20140509231932) do
     t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "photo"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token"

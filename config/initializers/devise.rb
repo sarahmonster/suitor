@@ -234,6 +234,8 @@ Devise.setup do |config|
     config.omniauth :developer
     OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end
+  puts Rails.application.secrets.facebook_id
+  puts Rails.application.secrets.facebook_secret
   config.omniauth :facebook, Rails.application.secrets.facebook_id, Rails.application.secrets.facebook_secret
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
