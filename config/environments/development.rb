@@ -28,4 +28,7 @@ Suitor::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  # Let's set a timezone so I get less confused
+  config.time_zone = 'Eastern Time (US & Canada)'
+
 end
