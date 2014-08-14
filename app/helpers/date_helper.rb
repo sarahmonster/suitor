@@ -28,9 +28,9 @@ module DateHelper
       # tomorrow: tomorrow at 5pm
       elsif date == Date.tomorrow
         "tomorrow at " + short_time(datetime)
-      # this week: this Thursday at 5pm
+      # this week: Thursday at 5pm
       elsif date < Date.current.advance(days: 7)
-        datetime.strftime("this %A at ") + short_time(datetime)    
+        datetime.strftime("%A at ") + short_time(datetime)    
       # next week: next Thursday, March 28th
       elsif date < Date.current.advance(days: 14)
         datetime.strftime("next %A, %B %d")
