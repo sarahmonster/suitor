@@ -26,7 +26,9 @@ class Posting < ActiveRecord::Base
   # { joins(:interviews).where('interviews.date_sent < ?', Date.current.advance(days: 14)) }
 
 	def self.valid_scope?(scope_name)
-		VALID_FILTER_SCOPES.include? scope_name.to_sym
+    if scope_name
+  		VALID_FILTER_SCOPES.include? scope_name.to_sym
+    end
 	end
 
   def action_required?
