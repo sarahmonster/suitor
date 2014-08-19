@@ -84,6 +84,13 @@ $ ->
           # TODO: Add an error message.
           console.log "fail"
 
+    # Show and hide postings according to user's filter
+    $(".filter-buttons a").click (event) ->
+      event.preventDefault()
+      buttonClass = $(this).data('class')
+      $("section.#{buttonClass}").toggle(400)
+
+
     # Fade out posting listing when archived     
     $(".archive-toggle").on "ajax:complete", ->
       $("##{$(this).data('id')}").fadeOut 500, =>

@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// control icons
+// CONTROL BUTTONS
+
 .status, .controls {
     text-align: right;
 
@@ -13,10 +14,6 @@
         &:hover {
             background: lighten($light-grey, 10%);
             color: $medium-grey;
-
-            span {
-                //display: inline;
-            }
         }
     }
 
@@ -54,6 +51,11 @@
 }
 
 
+// Filter toggles 
+.filter-buttons {
+    a {@extend %small-button;}
+    span {display: inline;}
+}
 
 
 

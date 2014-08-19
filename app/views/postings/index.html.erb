@@ -7,6 +7,35 @@
     <h3><%= link_to "View archived postings", archived_postings_path %></h3>
     <h1>Open job postings</h1>
   <% end %>
+
+  <div class="filter-buttons">
+    Filter postings: 
+    <div>
+      <i class="icon-bubbles3"></i>Interview 
+      <%= link_to "#", data: {class: "interview-scheduled"} do %>
+        <span>scheduled</span>
+      <% end %>
+      <%= link_to "#", data: {class: "interview-completed"} do %>
+        <span>complete</span>
+      <% end %>
+    </div>
+    
+    <div>
+        Application
+      <%= link_to "#", data: {class: "applied"} do %>
+        <i class="icon-bubbles3"><span>sent</span></i>
+      <% end %>
+
+      <%= link_to "#", data: {class: "application-needed"} do %>
+        <i class="icon-bubbles3"><span>due</span></i>
+      <% end %>
+
+      <%= link_to "#", data: {class: "followup-needed"} do %>
+        <i class="icon-bubbles3"><span>follow-up</span></i>
+      <% end %>
+    </div>
+  </div>
+
 </header>
 
 <% @postings.each do |posting| %>
@@ -15,10 +44,10 @@
 
     <div class="status">
 
-      <% if !posting.interviews.empty? and !posting.interviews.upcoming.empty? %>
+      <% if posting.interview_scheduled? %>
         <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>">Interview <%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
 
-      <% elsif !posting.interviews.empty? and posting.interviews.upcoming.empty? %>
+      <% elsif posting.interview_completed? %>
         <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.last.datetime) %>">Interviewed <%= friendly_datetime(posting.interviews.last.datetime) %></span></i>
 
       <% elsif posting.applied? and posting.followup_needed? %>
