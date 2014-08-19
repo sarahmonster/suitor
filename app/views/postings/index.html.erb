@@ -16,18 +16,18 @@
     <div class="status">
 
       <% if !posting.interviews.empty? and !posting.interviews.upcoming.empty? %>
-        <i class="icon-bubbles3"><span>Interview <%= friendly_date(posting.interviews.upcoming.first.datetime) %></span></i>
+        <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>">Interview <%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
 
       <% elsif !posting.interviews.empty? and posting.interviews.upcoming.empty? %>
-        <i class="icon-bubbles3"><span>Interviewed <%= posting.interviews.last.datetime.strftime("%B %d") %></span></i>
+        <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.last.datetime) %>">Interviewed <%= friendly_datetime(posting.interviews.last.datetime) %></span></i>
 
       <% elsif posting.applied? and posting.followup_needed? %>
-        <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span>Follow up</span></i>
+        <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span title="Application sent <%= friendly_datetime(posting.job_application.date_sent) %>">Follow up</span></i>
 
       <% elsif posting.applied? %>
-        <i class="applied icon-checkmark done"><span><%= t('Applied') %> <%= posting.job_application.date_sent.strftime("%B %d") %></span></i>
+        <i class="applied icon-checkmark done"><span title="Application sent on <%= short_date(posting.job_application.date_sent) %>"><%= t('Applied') %> <%= friendly_datetime(posting.job_application.date_sent) %></span></i>
         
-        <div class="dialog" title="<%= t('job_applications.sent_at_time', time: posting.job_application.date_sent.strftime("%B %d")) %>">
+        <div class="dialog" title="<%= t('job_applications.sent_at_time', time: short_date(posting.job_application.date_sent)) %>">
           <p><%= simple_format(posting.job_application.cover_letter) %></p>
         </div>
 
@@ -44,9 +44,9 @@
 
     <div class="date">
       <% if posting.deadline %>
-        <i class="icon-clock4"><span>Deadline</span></i><%= posting.deadline.strftime("%B %d") %>
+        <i class="icon-clock4"><span>Deadline</span></i><%= short_date(posting.deadline) %>
       <% elsif posting.date_posted %>
-        <i class="icon-clock4"><span>Posted</span></i><%= posting.date_posted.strftime("%B %d") %>
+        <i class="icon-clock4"><span>Posted</span></i><%= short_date(posting.date_posted) %>
       <% end %>
     </div>
 
