@@ -1,7 +1,7 @@
 module DateHelper
 
   # take a regular old date and turn it into something human-parseable
-  def friendly_date(datetime)
+  def friendly_datetime(datetime)
     date = datetime.to_date
     
     # THE PAST
@@ -49,6 +49,16 @@ module DateHelper
     else
       time.strftime("%l:%M %P")
     end
+  end
+
+  # output a concrete date-time
+  def full_datetime(datetime)
+    datetime.strftime("%l:%M %p %A, %B %d")
+  end
+
+  # take a date and output it in a simple, short format
+  def short_date(date)
+    date.strftime("%B %d")
   end
 
 end
