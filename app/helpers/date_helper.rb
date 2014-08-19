@@ -30,15 +30,15 @@ module DateHelper
         "tomorrow at " + short_time(datetime)
       # this week: Thursday at 5pm
       elsif date < Date.current.advance(days: 7)
-        datetime.strftime("%A at ") + short_time(datetime)    
+        datetime.strftime("%A at ") + short_time(datetime) 
       # next week: next Thursday, March 28th
       elsif date < Date.current.advance(days: 14)
-        datetime.strftime("next %A, %B %d")
+        datetime.strftime("next %A, %B #{datetime.day.ordinalize}")
       end
     
     # default
     else
-      datetime.strftime("%B %d")
+      datetime.strftime("%B #{datetime.day.ordinalize}")
     end
   
   end
@@ -53,12 +53,13 @@ module DateHelper
 
   # output a concrete date-time
   def full_datetime(datetime)
-    datetime.strftime("%l:%M %p %A, %B %d")
+    datetime.strftime("%l:%M %p %A, %B #{datetime.day.ordinalize}")
   end
 
   # take a date and output it in a simple, short format
   def short_date(date)
-    date.strftime("%B %d")
+    date.strftime("%B #{date.day.ordinalize}")
+    
   end
 
 end
