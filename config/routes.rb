@@ -22,6 +22,7 @@ Suitor::Application.routes.draw do
   # Set site root
   root 'pages#launch'
 
+
   # Set up job postings, and routing for nested models
   resources :postings do
     get 'archived', on: :collection
