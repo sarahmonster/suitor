@@ -40,7 +40,7 @@
       <% else %>
         <%= @posting.hiring_organization %>
       <% end %>
-      <% if @posting.job_location %>(<%= @posting.job_location %>)<% end %>
+      <% if !@posting.job_location.empty? %>(<%= @posting.job_location %>)<% end %>
       </li>
     <% end %>
 
