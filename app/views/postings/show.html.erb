@@ -16,13 +16,17 @@
   <%= link_to posting_path(@posting), method: :delete, data: { confirm: 'Are you sure?' } do %>
     <i class="icon-trash2"><span>Delete</span></i>
   <% end %> 
+
+  <% if @posting.url %>
+    <%= link_to @posting.url do %>
+        <i class="icon-link3"><span>Original posting</span></i>
+    <% end %>
+  <% end %>
   </div>
 
   <ul class="job-details">
     <% if @posting.date_posted %>
-      <li><i class="icon-clock4"><span>Posted</span></i><%= @posting.date_posted.strftime("%B %d") %>
-      (<%= link_to_if @posting.url, "Original post", @posting.url %>)
-      </li>
+      <li><i class="icon-clock4"><span>Posted</span></i><%= @posting.date_posted.strftime("%B %d") %></li>
     <% end %>
 
     <% if @posting.deadline %>
