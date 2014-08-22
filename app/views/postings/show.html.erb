@@ -61,13 +61,17 @@
 
     <% end %>
 
-    <% if @posting.application_instructions %>
-      <li><i class="icon-key2"><span>How to apply</span></i><%= @posting.application_instructions %></li>
-    <% end %>        
   </ul>
 
   <div class="job-description">
     <%= simple_format(@posting.description) %>
+  </div>
+
+  <div class="application-instructions">
+    <% if @posting.application_instructions %>
+      <h3><i class="icon-key2"><span></span></i>How to apply</h3>
+      <%= @posting.application_instructions %>
+    <% end %>   
   </div>
 
 </section>
