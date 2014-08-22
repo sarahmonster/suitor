@@ -26,11 +26,11 @@
 
   <ul class="job-details">
     <% if @posting.date_posted %>
-      <li><i class="icon-clock4"><span>Posted</span></i><%= @posting.date_posted.strftime("%B %d") %></li>
+      <li><i class="icon-clock4"><span>Posted</span></i><%= short_date(@posting.date_posted) %></li>
     <% end %>
 
     <% if @posting.deadline %>
-      <li><i class="icon-clock4"><span>Deadline</span></i><%= @posting.deadline.strftime("%B %d") %></li>
+      <li><i class="icon-clock4"><span>Deadline</span></i><%= friendly_datetime(@posting.deadline) %></li>
     <% end %>
 
     <% if @posting.hiring_organization %>
