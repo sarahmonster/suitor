@@ -72,9 +72,7 @@ aside   { @include span-columns(3); }
 
 
 // GENERAL PAGE STRUCTURE & STYLES
-.container {
-    @include outer-container;   
-}
+.container {@include outer-container;}
 
 .page-header {
     text-align: center;
@@ -107,4 +105,6 @@ i {
         padding-left: 5px;
         vertical-align: middle;
     }
+
+    & + i {margin-left: 15px;}
 }

@@ -24,13 +24,19 @@
   <% end %>
   </div>
 
-  <ul class="job-details">
-    <% if @posting.date_posted %>
-      <li><i class="icon-clock4"><span>Posted</span></i><%= short_date(@posting.date_posted) %></li>
-    <% end %>
 
-    <% if @posting.deadline %>
-      <li><i class="icon-clock4"><span>Deadline</span></i><%= friendly_datetime(@posting.deadline) %></li>
+
+  <ul class="job-details">
+    
+    <% if @posting.date_posted or @posting.deadline %>
+      <li>
+      <% if @posting.date_posted %>
+        <i class="icon-clock4"><span>Posted</span></i><%= short_date(@posting.date_posted) %>
+      <% end %>
+      <% if @posting.deadline %>
+        <i class="icon-alarm2"><span>Deadline</span></i><%= friendly_datetime(@posting.deadline) %>
+      <% end %>
+      </li>
     <% end %>
 
     <% if @posting.hiring_organization %>
@@ -58,7 +64,6 @@
         <%= link_to @posting.contact_name, @posting.contact_email %>
       <% end %>
       </li>
-
     <% end %>
 
   </ul>
