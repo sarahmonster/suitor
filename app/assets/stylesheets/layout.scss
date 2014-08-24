@@ -4,6 +4,7 @@ $grid-columns: 12;
 body { 
     background: $base-body-color url('../assets/pinstriped_suit_@2X.png'); 
     background-size: 400px 330px;
+    overflow-x: hidden;
 }
 
 aside   { @include span-columns(3); }
@@ -81,18 +82,20 @@ aside   { @include span-columns(3); }
 
     .controls {
         margin: 1em 0;
-        font-size: .9em;
+        font-size: .8em;
+        line-height: 1em;
 
         a {
-            background: darken($medium-grey, 10%);
-            padding: 5px 5px 5px 10px;
-            margin: 0 1em 0 0;
+            background: lighten($medium-grey, 20%);
+            margin: 0 .25em;
+            padding: 6px;
             color: $light-grey;
+
+            &:hover {background-color: $light-grey;}
         }
 
-        span {
-            display: inline;
-        }
+        span {display: inline;}
+        i {margin: 0;}
     }
 }
 
@@ -101,6 +104,7 @@ aside   { @include span-columns(3); }
     color: darken($medium-grey, 20%);
     font-weight: 100;
 }
+
 
 // ICONS
 i {

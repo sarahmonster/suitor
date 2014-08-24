@@ -6,18 +6,7 @@
 // control icons
 .status, .controls {
 
-    i {
-        padding: 5px;
-
-        &:hover {
-            background: lighten($light-grey, 10%);
-            color: $medium-grey;
-
-            span {
-                //display: inline;
-            }
-        }
-    }
+    i {padding: 5px;}
 
     // action items
     .todo {
