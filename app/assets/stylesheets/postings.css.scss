@@ -189,22 +189,24 @@ section.job-information {
         margin: 1em 0;
     }
 }
+
+
 section.job-actions {
     @include span-columns(6);
+
+    form {
+        @extend %box;
+        padding-bottom: 1em;
+        border-top-color: lighten($red, 40%);
+
+        h3 {color: $red;}
+    }
 
     .applied {
 
         span {
             display: inline;
         }
-    }
-
-    label {
-        @include span-columns(2 of 6);
-    }
-
-    textarea, #{$all-text-inputs}, select[multiple=multiple] {
-        @include span-columns(4 of 6);
     }
 }
 

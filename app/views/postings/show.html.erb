@@ -101,9 +101,9 @@
   </div>
 
   <% else %>
-  <h3><i class="applied icon-circle-blank todo"><span>Send an application</span></i></h3>
 
     <%= form_for(@posting.job_application) do |f| %>
+    <h3>Apply now!</h3>
 
       <%= f.hidden_field :posting_id %>
 
@@ -113,9 +113,11 @@
       <%= f.label :"Enter cover letter and/or notes." %>
       <%= f.text_area :cover_letter %>
 
-      <%= button_tag(:type => 'submit') do %>
-        <i class="icon-checkmark"></i>Mark as applied
-      <% end %>
+      <div class="actions">
+        <%= button_tag(:type => 'submit') do %>
+          <i class="icon-checkmark"></i>Mark as applied
+        <% end %>
+      </div>
 
     <% end %>
 
