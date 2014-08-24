@@ -78,6 +78,22 @@ aside   { @include span-columns(3); }
     text-align: center;
     margin: 4em 0;
     @include clearfix;
+
+    .controls {
+        margin: 1em 0;
+        font-size: .9em;
+
+        a {
+            background: darken($medium-grey, 10%);
+            padding: 5px 5px 5px 10px;
+            margin: 0 1em 0 0;
+            color: $light-grey;
+        }
+
+        span {
+            display: inline;
+        }
+    }
 }
 
 .notes {

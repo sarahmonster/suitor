@@ -1,12 +1,6 @@
 <header class="page-header">
   <h3><%= @posting.title %></h3>
   <h1><%= @posting.hiring_organization %></h1>
-</header>
-
-
-<section class="job-information">
-
-  <h2>About this job</h2>
 
   <div class="controls">
   <%= link_to edit_posting_path(@posting) do %>
@@ -23,6 +17,12 @@
     <% end %>
   <% end %>
   </div>
+  
+</header>
+
+
+<section class="job-information">
+
 
 
 
@@ -83,8 +83,6 @@
 
 
 <section class="job-actions">
-
-  <h2>Action items</h2>
 
   <% if @posting.applied? %>
   

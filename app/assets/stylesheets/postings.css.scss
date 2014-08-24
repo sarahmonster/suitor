@@ -145,24 +145,6 @@ section.job-posting {
 section.job-information {
     @include span-columns(6);
 
-    h2 {}
-
-    .controls {
-        margin: 1em 0;
-        font-size: .9em;
-
-        a {
-            background: darken($medium-grey, 10%);
-            padding: 5px 5px 5px 10px;
-            margin: 0 1em 0 0;
-            color: $light-grey;
-        }
-
-        span {
-            display: inline;
-        }
-    }
-
     .job-details {
         clear: both;
         font-family: $serif;
