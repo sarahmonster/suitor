@@ -173,12 +173,9 @@ section.job-actions {
         h3 {color: $red;}
     }
 
-    .applied {
+    span {display: inline;}
 
-        span {
-            display: inline;
-        }
-    }
+    .applied { }
 }
 
 

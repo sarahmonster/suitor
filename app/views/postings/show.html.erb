@@ -17,7 +17,7 @@
     <% end %>
   <% end %>
   </div>
-  
+
 </header>
 
 
@@ -84,6 +84,8 @@
 
 <section class="job-actions">
 
+
+
   <% if @posting.applied? %>
   
     <% if @posting.followup_needed? %>
@@ -98,7 +100,11 @@
     </div>
   </div>
 
+
+
   <% else %>
+
+   <% if @posting.actionable != "interview-scheduled" and @posting.actionable != "interview-completed" %>
 
     <%= form_for(@posting.job_application) do |f| %>
     <h3>Apply now!</h3>
@@ -116,6 +122,8 @@
           <i class="icon-checkmark"></i>Mark as applied
         <% end %>
       </div>
+
+      <% end %>
 
     <% end %>
 
