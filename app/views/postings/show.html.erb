@@ -84,6 +84,15 @@
 
 <section class="job-actions">
 
+  <h2>Status: <%= @posting.actionable %></h2>
+
+    <% if @posting.actionable == "interview-completed" %>
+      <i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.last.datetime) %>">Interviewed <%= friendly_datetime(@posting.interviews.last.datetime) %></span></i>
+    <% end %>
+
+    <% if @posting.actionable == "interview-scheduled" %>
+      <i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span></i>
+    <% end %>
 
 
   <% if @posting.applied? %>
