@@ -16,6 +16,14 @@
         <i class="icon-link3"><span>Original posting</span></i>
     <% end %>
   <% end %>
+
+  <%= link_to archivetoggle_posting_path(@posting), remote: true, method: :put, class: "archive-toggle", data: {id: "posting-#{@posting.id}"} do %>
+        <% if @posting.archived %>
+          <i class="icon-thumbs-up3"><span>Unarchive</span></i>
+        <% else %>
+          <i class="icon-thumbs-down3"><span>Archive</span></i>
+        <% end %>
+      <% end %>
   </div>
 
 </header>
@@ -110,8 +118,8 @@
   </div>
 
 
-
   <% else %>
+
 
    <% if @posting.actionable != "interview-scheduled" and @posting.actionable != "interview-completed" %>
 
