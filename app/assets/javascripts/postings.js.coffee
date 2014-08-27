@@ -86,5 +86,10 @@ $ ->
 
     # Fade out posting listing when archived     
     $(".archive-toggle").on "ajax:complete", ->
+      $(this).fadeOut(100).fadeIn(300)
+      if $(this).find("span").text() is "Unarchive"
+        $(this).find("span").text "Archive"
+      else
+        $(this).find("span").text "Unarchive"
       $("##{$(this).data('id')}").fadeOut 500, =>
         $("##{$(this).data('id')}").remove()
