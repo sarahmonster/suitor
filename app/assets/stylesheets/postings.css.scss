@@ -176,6 +176,13 @@ section.job-actions {
     span {display: inline;}
 
     .applied { }
+
+    #new_interview {
+        @include span-columns(12);
+        @include shift(0);
+        border-top-color: lighten($blue, 40%);
+        h3 {color: $blue;}
+    }
 }
 
 
