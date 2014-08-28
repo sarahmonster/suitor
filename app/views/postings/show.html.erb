@@ -92,37 +92,39 @@
 
 <section class="job-actions">
 
-  <h2>Status: <%= @posting.actionable %></h2>
+  
+  <ul class="pending-tasks">
+    
+    <% if @posting.actionable == "interview-scheduled" %>
+      <li><i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span></i></li>
+    <% end %>
+
+    <% if @posting.followup_needed? %>
+      <li><i class="icon-circle-blank todo"><span>Send a follow-up</span></i></li>
+    <% end %>
+
+  </ul>
+
+
+
+
+  <ul class="completed-tasks">
 
     <% if @posting.actionable == "interview-completed" %>
-      <i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.last.datetime) %>">Interviewed <%= friendly_datetime(@posting.interviews.last.datetime) %></span></i>
+      <li><i class="icon-checkmark"><span title="<%= full_datetime(@posting.interviews.last.datetime) %>">Interviewed</span></i> <%= friendly_datetime(@posting.interviews.last.datetime) %></li>
     <% end %>
-
-    <% if @posting.actionable == "interview-scheduled" %>
-      <i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span></i>
-    <% end %>
-
-
-  <% if @posting.applied? %>
   
-    <% if @posting.followup_needed? %>
-      <i class="applied icon-circle-blank todo"><span>Follow up</span></i>
+    <% if @posting.applied? %>
+      <li><i class="icon-checkmark"><span>Application sent </i><%= short_date(@posting.job_application.date_sent) %></span></li>
+      <div class="notes" style="display: none;">
+        <%= simple_format(@posting.job_application.cover_letter) %>
+      </div>
     <% end %>
 
-  <div class="accordion">
-    <h3><i class="applied icon-checkmark done"><span>Application sent</span></i>
-    <%= @posting.job_application.date_sent.strftime("%B %d") %></h3>
-    <div class="notes">
-      <%= simple_format(@posting.job_application.cover_letter) %>
-    </div>
-  </div>
-
-  <%= render 'interviews/form', location: "posting-detail" %>
-  
-  <% else %>
+  </ul>
 
 
-   <% if @posting.actionable != "interview-scheduled" and @posting.actionable != "interview-completed" %>
+  <% if @posting.actionable != "interview-scheduled" and @posting.actionable != "interview-completed" and !@posting.applied? %>
 
     <%= form_for(@posting.job_application) do |f| %>
     <h3>Apply now!</h3>
@@ -143,8 +145,10 @@
 
       <% end %>
 
-    <% end %>
+  <% end %>
 
+  <% if @posting.actionable != "interview-scheduled"  %>
+    <%= render 'interviews/form', location: "posting-detail" %>
   <% end %>
 
 </section>

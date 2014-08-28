@@ -175,7 +175,13 @@ section.job-actions {
 
     span {display: inline;}
 
-    .applied { }
+    .pending-tasks {
+        i {color: $red;}
+    }
+
+    .completed-tasks {
+        i {color: $green;}
+    }
 
     #new_interview {
         @include span-columns(12);
