@@ -175,6 +175,12 @@ section.job-actions {
 
     span {display: inline;}
 
+    form + form, ul + form, ul li + ul {margin-top: 1em;}
+    li {
+        padding: .5em;
+        border-top: 1px solid $light-grey;
+    }
+
     .pending-tasks {
         i {color: $red;}
     }
