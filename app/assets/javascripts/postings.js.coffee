@@ -85,9 +85,14 @@ $ ->
           console.log "fail"
 
     
-    # Drop-down filters
+    # Show drop-down filters
     $(".filter-buttons button").click (event) ->
       $(".filter-buttons ul").slideToggle(400)
+    # Close drop-down when clicking outside the menu
+    $(document).on "click", (event) ->
+      if !$(event.target).closest(".filter-buttons").length
+        if $(".filter-buttons ul").is(":visible")
+          $(".filter-buttons ul").slideToggle(400)
 
     # Show and hide postings according to user's filter 
     $(".filter-buttons a").click (event) ->
