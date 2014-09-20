@@ -120,8 +120,8 @@ $ ->
 
     # Show application data on click
     $(".expander").on "click", (event) ->
-      $(this).next(".expand-panel").slideToggle(800, 'easeInOutBounce')
-      if $(this).find(".expander-icon").hasClass('icon-arrow-down9')
-        $(this).find(".expander-icon").switchClass('icon-arrow-down9', 'icon-arrow-up8')
+      $(this).next(".expand-panel").slideToggle(400, 'easeInOutBounce')
+      if $(this).find(".expand-icon").hasClass('icon-arrow-down9')
+        $(this).find(".expand-icon").switchClass('icon-arrow-down9', 'icon-arrow-up8')
       else
-        $(this).find(".expander-icon").switchClass('icon-arrow-up8', 'icon-arrow-down9')
+        $(this).find(".expand-icon").switchClass('icon-arrow-up8', 'icon-arrow-down9')
