@@ -1,7 +1,7 @@
 <%= form_for([@interview.posting, @interview]) do |f| %>
   
   <% if location == "posting-detail" %>
-    <h3>Schedule an interview</h3>
+    <h3>Schedule <span>an<% if interview == "second" %>other<% end %></span> interview</h3>
   <% end %>
 
   <% if @interview.errors.any? %>

@@ -154,7 +154,11 @@
   <% end %>
 
   <% if @posting.actionable != "interview-scheduled"  %>
-    <%= render 'interviews/form', location: "posting-detail" %>
+    <% if @posting.actionable == "interview-completed" %>
+      <%= render 'interviews/form', location: "posting-detail", interview: "second" %>
+    <% else %>
+      <%= render 'interviews/form', location: "posting-detail", interview: "first" %>
+    <% end %>
   <% end %>
 
 </section>
