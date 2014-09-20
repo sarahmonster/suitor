@@ -3,10 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// control icons
+// CONTROL BUTTONS
+
 .status, .controls {
 
-    i {padding: 5px;}
+    i {
+        padding: 5px;
+
+        &:hover {
+            background: lighten($light-grey, 10%);
+            color: $medium-grey;
+        }
+    }
 
     // action items
     .todo {
@@ -42,6 +50,57 @@
 }
 
 
+// Filter toggles 
+.filter-buttons {
+    display: inline-block;
+
+    span {display: inline;}
+    
+    button {
+        @extend %small-button;
+        width: 100%;
+        text-align: left;
+        i {color: $medium-grey;}
+        &:hover {
+            border-color: lighten($dark-grey, 20%);
+            i {color: lighten($dark-grey, 20%);}
+        }
+    }
+
+    ul {
+        position: absolute;
+        z-index: 4000;
+        background: transparentize($white, .2);
+        padding: .25em;
+        border: 2px solid $light-grey;
+
+        li.title {
+            margin-top: 0;
+            color: lighten($medium-grey, 15%);
+            font-style: italic;
+            font-size: .9em;
+        }
+
+        li:not(.title) {
+            @extend %small-button;
+            background-color: lighten($light-grey, 10%);
+            border-color: lighten($medium-grey, 10%);
+            text-align: left;
+            i {color: lighten($medium-grey, 10%);}
+            &:hover {
+                background-color: $light-grey;
+                i {color: $medium-grey;}
+            }
+        }
+
+        li.checked {
+            background-color: lighten($green, 50%);
+            border-color: $green;
+            i {color: $green;}
+        }
+
+    }
+}
 
 
 

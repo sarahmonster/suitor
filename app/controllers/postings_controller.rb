@@ -1,7 +1,9 @@
 class PostingsController < ApplicationController
-
   def index
     @postings = Posting.all
+
+    # Check for any filters.
+    @postings = @postings.send(params[:filter].to_sym) if Posting.valid_scope?(params[:filter])
   end
 
   def archived
@@ -27,7 +29,7 @@ class PostingsController < ApplicationController
 
   def create
     @posting = Posting.new(posting_params)
-    
+
     if @posting.save
       redirect_to @posting
     else
@@ -55,11 +57,10 @@ class PostingsController < ApplicationController
     redirect_to postings_path
   end
 
-
-  private 
+  private
     def posting_params
-        params.require(:posting).permit(:title, :description, :url, :date_posted, :job_location, 
-          :hiring_organization, :hiring_organization_url, :contact_name, :contact_email, 
+        params.require(:posting).permit(:title, :description, :url, :date_posted, :job_location,
+          :hiring_organization, :hiring_organization_url, :contact_name, :contact_email,
           :application_url, :deadline, :application_instructions)
     end
 

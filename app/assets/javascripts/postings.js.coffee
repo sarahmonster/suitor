@@ -84,6 +84,30 @@ $ ->
           # TODO: Add an error message.
           console.log "fail"
 
+    
+    # Show drop-down filters
+    $(".filter-buttons button").click (event) ->
+      $(".filter-buttons ul").slideToggle(400)
+    # Close drop-down when clicking outside the menu
+    $(document).on "click", (event) ->
+      if !$(event.target).closest(".filter-buttons").length
+        if $(".filter-buttons ul").is(":visible")
+          $(".filter-buttons ul").slideToggle(400)
+
+    # Show and hide postings according to user's filter 
+    $(".filter-buttons a").click (event) ->
+      event.preventDefault()
+      # Change appearance of button
+      if $(this).find('li').hasClass('checked')
+        $(this).find('li i').switchClass('icon-checkmark', 'icon-circle-blank')
+      else 
+        $(this).find('li i').switchClass('icon-circle-blank', 'icon-checkmark')
+      $(this).find('li').toggleClass('checked')
+      # Toggle postings of the given class
+      buttonClass = $(this).data('class')
+      $("section.#{buttonClass}").toggle(400)
+
+
     # Fade out posting listing when archived     
     $(".archive-toggle").on "ajax:complete", ->
       $(this).fadeOut(100).fadeIn(300)

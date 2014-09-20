@@ -1,24 +1,63 @@
 
 <header class="page-header">
   <% if @archive_page %>
-    <h3><%= link_to "View open postings instead", postings_path %></h3>
     <h1>Archived job postings</h1>
+      <div class="controls">
+      <%= link_to postings_path do %>
+        <i class="icon-thumbs-up3"><span>Open postings</span></i>
+      <% end %>
   <% else %>
-    <h3><%= link_to "View archived postings", archived_postings_path %></h3>
     <h1>Open job postings</h1>
+    <div class="controls">
+      <%= link_to archived_postings_path do %>
+        <i class="icon-thumbs-down3"><span>Archived postings</span></i>
+      <% end %>
   <% end %>
+
+    <div class="filter-buttons">
+      <button><i class="icon-beaker2"><span>Filter</span></i></button>
+      <ul style="display: none;">
+      <li class="title">Only show postings with:</li>
+        <%= link_to "#", data: {class: "application-needed"} do %>
+          <li class="checked"><i class="icon-checkmark"><span>Application due</span></i></li>
+        <% end %>
+
+        <%= link_to "#", data: {class: "followup-needed"} do %>
+          <li class="checked"><i class="icon-checkmark"><span>Follow-up due</span></i></li>
+        <% end %>
+      
+        <%= link_to "#", data: {class: "interview-scheduled"} do %>
+          <li class="checked"><i class="icon-checkmark"><span>Interview scheduled</span></i></li>
+        <% end %>
+
+        <%= link_to "#", data: {class: "interview-completed"} do %>
+          <li class="checked"><i class="icon-checkmark"><span>Interview completed</span></i></li>
+        <% end %>
+
+        <%= link_to "#", data: {class: "offer-made"} do %>
+          <li class="checked"><i class="icon-checkmark"><span>Offer made</span></i></li>
+        <% end %>
+      </ul>
+    <div>
+
+  </div>
+
 </header>
+
+
+
+
 
 <% @postings.each do |posting| %>
 
-  <section class="job-posting <%= posting.actionable %>" id="posting-<%= posting.id %>">
+  <section class="job-posting <%= posting.actionable %> <% if posting.action_required? %>action-required<% end %>" id="posting-<%= posting.id %>">
 
     <div class="status">
 
-      <% if !posting.interviews.empty? and !posting.interviews.upcoming.empty? %>
+      <% if posting.interview_scheduled? %>
         <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>">Interview <%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
 
-      <% elsif !posting.interviews.empty? and posting.interviews.upcoming.empty? %>
+      <% elsif posting.interview_completed? %>
         <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.last.datetime) %>">Interviewed <%= friendly_datetime(posting.interviews.last.datetime) %></span></i>
 
       <% elsif posting.applied? and posting.followup_needed? %>
