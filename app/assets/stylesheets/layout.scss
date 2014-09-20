@@ -103,6 +103,7 @@ aside   { @include span-columns(3); }
     font-style: italic;
     color: darken($medium-grey, 20%);
     font-weight: 100;
+    border-bottom: 2px solid $light-grey;
 }
 
 
@@ -127,4 +128,11 @@ i {
     }
 
     & + i {margin-left: 15px;}
+
+    &.expander {
+        float: right;
+        background: $medium-grey;
+        border-radius: 50%;
+        color: $white;
+    }
 }

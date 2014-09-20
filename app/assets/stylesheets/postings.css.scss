@@ -182,11 +182,15 @@ section.job-actions {
     }
 
     .pending-tasks {
-        i {color: $red;}
+        i:not(.expander) {color: $red;}
     }
 
     .completed-tasks {
-        i {color: $green;}
+        i:not(.expander) {color: $green;}
+    }
+
+    .application-sent:hover {
+        cursor: pointer;
     }
 
     #new_interview {

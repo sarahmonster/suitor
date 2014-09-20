@@ -29,10 +29,9 @@
 </header>
 
 
+
+
 <section class="job-information">
-
-
-
 
   <ul class="job-details">
     
@@ -90,8 +89,9 @@
 </section>
 
 
-<section class="job-actions">
 
+
+<section class="job-actions">
   
   <ul class="pending-tasks">
     
@@ -115,8 +115,8 @@
     <% end %>
   
     <% if @posting.applied? %>
-      <li><i class="icon-checkmark"><span>Application sent </i><%= short_date(@posting.job_application.date_sent) %></span></li>
-      <div class="notes" style="display: none;">
+      <li class="application-sent" title="Show application"><i class="icon-checkmark"><span>Application sent </i><%= short_date(@posting.job_application.date_sent) %></span><i class="expander icon-arrow-down9"></i></li>
+      <div class="notes" style="display: none">
         <%= simple_format(@posting.job_application.cover_letter) %>
       </div>
     <% end %>
