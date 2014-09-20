@@ -97,11 +97,13 @@ $ ->
     # Show and hide postings according to user's filter 
     $(".filter-buttons a").click (event) ->
       event.preventDefault()
+      # Change appearance of button
       if $(this).find('li').hasClass('checked')
         $(this).find('li i').switchClass('icon-checkmark', 'icon-circle-blank')
       else 
         $(this).find('li i').switchClass('icon-circle-blank', 'icon-checkmark')
       $(this).find('li').toggleClass('checked')
+      # Toggle postings of the given class
       buttonClass = $(this).data('class')
       $("section.#{buttonClass}").toggle(400)
 

@@ -56,8 +56,8 @@ class Posting < ActiveRecord::Base
       "interview-scheduled"
     elsif interview_completed?
       "interview-completed"
-    elsif action_required? or !applied?
-      "action-required"
+    elsif !applied?
+      "application-needed"
     else
       ""
     end

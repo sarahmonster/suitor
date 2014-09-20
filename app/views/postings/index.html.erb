@@ -50,7 +50,7 @@
 
 <% @postings.each do |posting| %>
 
-  <section class="job-posting <%= posting.actionable %>" id="posting-<%= posting.id %>">
+  <section class="job-posting <%= posting.actionable %> <% if posting.action_required? %>action-required<% end %>" id="posting-<%= posting.id %>">
 
     <div class="status">
 
