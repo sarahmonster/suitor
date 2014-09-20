@@ -1,4 +1,9 @@
 <%= form_for([@interview.posting, @interview]) do |f| %>
+  
+  <% if location == "posting-detail" %>
+    <h3>Schedule <span>an<% if interview == "second" %>other<% end %></span> interview</h3>
+  <% end %>
+
   <% if @interview.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@interview.errors.count, "error") %> prohibited this interview from being saved:</h2>

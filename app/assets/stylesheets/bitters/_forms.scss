@@ -23,13 +23,12 @@ fieldset {
       border-top-color: lighten($base-secondary-color, 40%);
       h3 { color: $base-secondary-color; }
   }
-  
-  h3 {
-    text-align: center;
-    margin: 0 0 1.5em;
-  }
-
 }
+
+form h3 {
+    margin: 0 0 1.5em;
+}
+
 
 form div {
   margin: 0;

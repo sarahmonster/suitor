@@ -40,7 +40,7 @@ class Posting < ActiveRecord::Base
   end
 
   def followup_needed?
-    job_application.date_sent.advance(days: -14) > Date.current
+    job_application.date_sent.advance(days: -14) > Date.current and !interview_scheduled?
   end
 
   def interview_completed?

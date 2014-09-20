@@ -6,7 +6,6 @@
 // CONTROL BUTTONS
 
 .status, .controls {
-    text-align: right;
 
     i {
         padding: 5px;
@@ -194,27 +193,6 @@ section.job-posting {
 section.job-information {
     @include span-columns(6);
 
-    h2 {
-        @include span-columns(3 of 6);
-    }
-
-    .controls {
-        @include span-columns(3 of 6);
-        margin-top: 1em;
-        font-size: .9em;
-
-        a {
-            background: lighten($light-grey, 10%);
-            padding: 5px 5px 5px 10px;
-            margin: 0 0 0 1em;
-            color: $medium-grey;
-        }
-
-        span {
-            display: inline;
-        }
-    }
-
     .job-details {
         clear: both;
         font-family: $serif;
@@ -241,22 +219,40 @@ section.job-information {
         margin: 1em 0;
     }
 }
+
+
 section.job-actions {
     @include span-columns(6);
 
-    .applied {
+    form {
+        @extend %box;
+        padding-bottom: 1em;
+        border-top-color: lighten($red, 40%);
 
-        span {
-            display: inline;
-        }
+        h3 {color: $red;}
     }
 
-    label {
-        @include span-columns(2 of 6);
+    span {display: inline;}
+
+    form + form, ul + form, ul li + ul {margin-top: 1em;}
+    li {
+        padding: .5em;
+        border-top: 1px solid $light-grey;
     }
 
-    textarea, #{$all-text-inputs}, select[multiple=multiple] {
-        @include span-columns(4 of 6);
+    .pending-tasks {
+        i:not(.expand-icon) {color: $red;}
+    }
+
+    .completed-tasks {
+        i:not(.expand-icon) {color: $green;}
+    }
+
+    #new_interview {
+        @include span-columns(12);
+        @include shift(0);
+        border-top-color: lighten($blue, 40%);
+        h3 {color: $blue;}
     }
 }
 

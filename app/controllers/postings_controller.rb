@@ -20,6 +20,7 @@ class PostingsController < ApplicationController
   def show
     @posting = Posting.unscoped.find(params[:id])
     @posting.build_job_application unless @posting.job_application
+    @interview = Interview.new(posting: @posting)
   end
 
   def new
