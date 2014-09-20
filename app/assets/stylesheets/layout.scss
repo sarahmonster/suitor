@@ -99,11 +99,20 @@ aside   { @include span-columns(3); }
     }
 }
 
+.expander:hover {cursor: pointer;}
+.expand-panel {
+    border-bottom: 2px solid $light-grey;
+
+    h3 {
+        margin: .25em 0 .75em;
+        font-size: .9em;
+        text-align: center;
+    }
+}
 .notes {
     font-style: italic;
     color: darken($medium-grey, 20%);
     font-weight: 100;
-    border-bottom: 2px solid $light-grey;
 }
 
 
@@ -129,7 +138,7 @@ i {
 
     & + i {margin-left: 15px;}
 
-    &.expander {
+    &.expand-icon {
         float: right;
         background: $medium-grey;
         border-radius: 50%;

@@ -95,9 +95,9 @@ $ ->
         $("##{$(this).data('id')}").remove()
 
     # Show application data on click
-    $(".application-sent").on "click", (event) ->
-      $(this).next(".notes").slideToggle(800, 'easeInOutBounce')
-      if $(this).find(".expander").hasClass('icon-arrow-down9')
-        $(this).find(".expander").switchClass('icon-arrow-down9', 'icon-arrow-up8')
+    $(".expander").on "click", (event) ->
+      $(this).next(".expand-panel").slideToggle(800, 'easeInOutBounce')
+      if $(this).find(".expander-icon").hasClass('icon-arrow-down9')
+        $(this).find(".expander-icon").switchClass('icon-arrow-down9', 'icon-arrow-up8')
       else
-        $(this).find(".expander").switchClass('icon-arrow-up8', 'icon-arrow-down9')
+        $(this).find(".expander-icon").switchClass('icon-arrow-up8', 'icon-arrow-down9')
