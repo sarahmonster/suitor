@@ -101,7 +101,7 @@ $ ->
     $(document).on "click", (event) ->
       if !$(event.target).closest(".filter-buttons").length
         if $(".filter-buttons ul").is(":visible")
-          $(".filter-buttons ul").slideToggle(400)
+          $(".filter-buttons ul").slideUp(400)
           $(".filter-buttons button").expanderSwap()
 
     # Show and hide postings according to user's filter 
