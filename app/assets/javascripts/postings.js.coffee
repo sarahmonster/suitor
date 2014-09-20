@@ -86,5 +86,18 @@ $ ->
 
     # Fade out posting listing when archived     
     $(".archive-toggle").on "ajax:complete", ->
+      $(this).fadeOut(100).fadeIn(300)
+      if $(this).find("span").text() is "Unarchive"
+        $(this).find("span").text "Archive"
+      else
+        $(this).find("span").text "Unarchive"
       $("##{$(this).data('id')}").fadeOut 500, =>
         $("##{$(this).data('id')}").remove()
+
+    # Show application data on click
+    $(".expander").on "click", (event) ->
+      $(this).next(".expand-panel").slideToggle(800, 'easeInOutBounce')
+      if $(this).find(".expander-icon").hasClass('icon-arrow-down9')
+        $(this).find(".expander-icon").switchClass('icon-arrow-down9', 'icon-arrow-up8')
+      else
+        $(this).find(".expander-icon").switchClass('icon-arrow-up8', 'icon-arrow-down9')
