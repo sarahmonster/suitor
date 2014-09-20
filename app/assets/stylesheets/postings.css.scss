@@ -73,16 +73,31 @@
         z-index: 4000;
         background: transparentize($white, .2);
         padding: .25em;
-        border: 1px solid $medium-grey;
+        border: 2px solid $light-grey;
 
         li.title {
-            font-style: italic;
             margin-top: 0;
+            color: lighten($medium-grey, 15%);
+            font-style: italic;
+            font-size: .9em;
         }
 
         li:not(.title) {
             @extend %small-button;
+            background-color: lighten($light-grey, 10%);
+            border-color: lighten($medium-grey, 10%);
             text-align: left;
+            i {color: lighten($medium-grey, 10%);}
+            &:hover {
+                background-color: $light-grey;
+                i {color: $medium-grey;}
+            }
+        }
+
+        li.checked {
+            background-color: lighten($green, 50%);
+            border-color: $green;
+            i {color: $green;}
         }
 
     }

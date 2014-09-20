@@ -13,27 +13,27 @@
     <ul style="display: none;">
     <li class="title">Only show postings with:</li>
       <%= link_to "#", data: {class: "application-needed"} do %>
-        <li><i class="icon-checkmark"><span>Application due</span></i></li>
+        <li class="checked"><i class="icon-checkmark"><span>Application due</span></i></li>
       <% end %>
 
       <%= link_to "#", data: {class: "followup-needed"} do %>
-        <li><i class="icon-checkmark"><span>Follow-up due</span></i></li>
+        <li class="checked"><i class="icon-checkmark"><span>Follow-up due</span></i></li>
       <% end %>
     
       <%= link_to "#", data: {class: "interview-scheduled"} do %>
-        <li><i class="icon-checkmark"><span>Interview scheduled</span></i></li>
+        <li class="checked"><i class="icon-checkmark"><span>Interview scheduled</span></i></li>
       <% end %>
 
       <%= link_to "#", data: {class: "interview-completed"} do %>
-        <li><i class="icon-checkmark"><span>Interview completed</span></i></li>
+        <li class="checked"><i class="icon-checkmark"><span>Interview completed</span></i></li>
       <% end %>
 
       <%= link_to "#", data: {class: "offer-made"} do %>
-        <li><i class="icon-checkmark"><span>Offer made</span></i></li>
+        <li class="checked"><i class="icon-checkmark"><span>Offer made</span></i></li>
       <% end %>
 
       <%= link_to "#", data: {class: "offer-made"} do %>
-        <li><i class="icon-circle-blank"><span>Archived</span></i></li>
+        <li class="unchecked"><i class="icon-circle-blank"><span>Archived</span></i></li>
       <% end %>
     </ul>
   <div>
