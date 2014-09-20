@@ -117,10 +117,14 @@
     <% end %>
   
     <% if @posting.applied? %>
-      <li class="application-sent" title="Show application"><i class="icon-checkmark"><span>Application sent </i><%= short_date(@posting.job_application.date_sent) %></span><i class="expander icon-arrow-down9"></i></li>
-      <div class="notes" style="display: none">
-        <%= simple_format(@posting.job_application.cover_letter) %>
-      </div>
+      <% if @posting.job_application.cover_letter? %>
+        <li class="application-sent" title="Show application"><i class="icon-checkmark"><span>Application sent </i><%= short_date(@posting.job_application.date_sent) %></span><i class="expander icon-arrow-down9"></i></li>
+        <div class="notes" style="display: none">
+          <%= simple_format(@posting.job_application.cover_letter) %>
+        </div>
+      <% else %>
+        <li><i class="icon-checkmark"><span>Application sent </i><%= short_date(@posting.job_application.date_sent) %></span></li>
+      <% end %>
     <% end %>
 
   </ul>
