@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812053348) do
+ActiveRecord::Schema.define(version: 20140920230556) do
 
   create_table "interviews", force: true do |t|
     t.datetime "datetime"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20140812053348) do
     t.integer  "posting_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "followup"
   end
 
   add_index "job_applications", ["posting_id"], name: "index_job_applications_on_posting_id"
