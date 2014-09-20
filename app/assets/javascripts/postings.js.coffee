@@ -84,7 +84,12 @@ $ ->
           # TODO: Add an error message.
           console.log "fail"
 
-    # Show and hide postings according to user's filter
+    
+    # Drop-down filters
+    $(".filter-buttons button").click (event) ->
+      $(".filter-buttons ul").slideToggle(400)
+
+    # Show and hide postings according to user's filter 
     $(".filter-buttons a").click (event) ->
       event.preventDefault()
       buttonClass = $(this).data('class')

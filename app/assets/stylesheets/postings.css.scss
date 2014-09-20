@@ -53,8 +53,39 @@
 
 // Filter toggles 
 .filter-buttons {
-    a {@extend %small-button;}
+    display: inline-block;
+
     span {display: inline;}
+    
+    button {
+        @extend %small-button;
+        width: 100%;
+        text-align: left;
+        i {color: $medium-grey;}
+        &:hover {
+            border-color: lighten($dark-grey, 20%);
+            i {color: lighten($dark-grey, 20%);}
+        }
+    }
+
+    ul {
+        position: absolute;
+        z-index: 4000;
+        background: transparentize($white, .2);
+        padding: .25em;
+        border: 1px solid $medium-grey;
+
+        li.title {
+            font-style: italic;
+            margin-top: 0;
+        }
+
+        li:not(.title) {
+            @extend %small-button;
+            text-align: left;
+        }
+
+    }
 }
 
 

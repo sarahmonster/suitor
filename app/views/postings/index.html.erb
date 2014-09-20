@@ -9,34 +9,40 @@
   <% end %>
 
   <div class="filter-buttons">
-    Filter postings: 
-    <div>
-      <i class="icon-bubbles3"></i>Interview 
-      <%= link_to "#", data: {class: "interview-scheduled"} do %>
-        <span>scheduled</span>
-      <% end %>
-      <%= link_to "#", data: {class: "interview-completed"} do %>
-        <span>complete</span>
-      <% end %>
-    </div>
-    
-    <div>
-        Application
-      <%= link_to "#", data: {class: "applied"} do %>
-        <i class="icon-bubbles3"><span>sent</span></i>
-      <% end %>
-
+    <button><i class="icon-beaker2"><span>Filter</span></i></button>
+    <ul style="display: none;">
+    <li class="title">Only show postings with:</li>
       <%= link_to "#", data: {class: "application-needed"} do %>
-        <i class="icon-bubbles3"><span>due</span></i>
+        <li><i class="icon-checkmark"><span>Application due</span></i></li>
       <% end %>
 
       <%= link_to "#", data: {class: "followup-needed"} do %>
-        <i class="icon-bubbles3"><span>follow-up</span></i>
+        <li><i class="icon-checkmark"><span>Follow-up due</span></i></li>
       <% end %>
-    </div>
-  </div>
+    
+      <%= link_to "#", data: {class: "interview-scheduled"} do %>
+        <li><i class="icon-checkmark"><span>Interview scheduled</span></i></li>
+      <% end %>
+
+      <%= link_to "#", data: {class: "interview-completed"} do %>
+        <li><i class="icon-checkmark"><span>Interview completed</span></i></li>
+      <% end %>
+
+      <%= link_to "#", data: {class: "offer-made"} do %>
+        <li><i class="icon-checkmark"><span>Offer made</span></i></li>
+      <% end %>
+
+      <%= link_to "#", data: {class: "offer-made"} do %>
+        <li><i class="icon-circle-blank"><span>Archived</span></i></li>
+      <% end %>
+    </ul>
+  <div>
 
 </header>
+
+
+
+
 
 <% @postings.each do |posting| %>
 
