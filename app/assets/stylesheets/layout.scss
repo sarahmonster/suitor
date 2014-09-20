@@ -81,21 +81,20 @@ aside   { @include span-columns(3); }
     @include clearfix;
 
     .controls {
+        display: inline-block;
         margin: 1em 0;
-        font-size: .8em;
         line-height: 1em;
-
-        a {
-            background: lighten($medium-grey, 20%);
-            margin: 0 .25em;
-            padding: 6px;
-            color: $light-grey;
-
-            &:hover {background-color: $light-grey;}
-        }
-
         span {display: inline;}
         i {margin: 0;}
+    }
+
+    .controls > a, button {
+        @extend %small-button;
+        width: 100%;
+        padding: 8px 12px;
+        text-align: left;
+        font-size: .85em;
+        i {color: $medium-grey;}
     }
 }
 

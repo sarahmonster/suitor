@@ -7,7 +7,7 @@
 
 .status, .controls {
 
-    i {
+    & > i {
         padding: 5px;
 
         &:hover {
@@ -57,10 +57,9 @@
     span {display: inline;}
     
     button {
-        @extend %small-button;
         width: 100%;
         text-align: left;
-        i {color: $medium-grey;}
+        
         &:hover {
             border-color: lighten($dark-grey, 20%);
             i {color: lighten($dark-grey, 20%);}
