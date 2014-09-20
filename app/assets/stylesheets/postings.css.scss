@@ -59,11 +59,18 @@
     button {
         width: 100%;
         text-align: left;
-        
+
         &:hover {
             border-color: lighten($dark-grey, 20%);
             i {color: lighten($dark-grey, 20%);}
         }
+    
+        .expand-icon {
+            float: none;
+            background: none;
+            vertical-align: bottom;
+        }
+
     }
 
     ul {

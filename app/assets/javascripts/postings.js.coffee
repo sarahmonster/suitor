@@ -85,14 +85,24 @@ $ ->
           console.log "fail"
 
     
+    # Swap down arrow for up
+    $.fn.expanderSwap = ->
+      if this.find(".expand-icon").hasClass('icon-arrow-down9')
+        this.find(".expand-icon").switchClass('icon-arrow-down9', 'icon-arrow-up8')
+      else
+        this.find(".expand-icon").switchClass('icon-arrow-up8', 'icon-arrow-down9')
+
     # Show drop-down filters
     $(".filter-buttons button").click (event) ->
       $(".filter-buttons ul").slideToggle(400)
+      $(this).expanderSwap()
+
     # Close drop-down when clicking outside the menu
     $(document).on "click", (event) ->
       if !$(event.target).closest(".filter-buttons").length
         if $(".filter-buttons ul").is(":visible")
           $(".filter-buttons ul").slideToggle(400)
+          $(".filter-buttons button").expanderSwap()
 
     # Show and hide postings according to user's filter 
     $(".filter-buttons a").click (event) ->
@@ -121,7 +131,4 @@ $ ->
     # Show application data on click
     $(".expander").on "click", (event) ->
       $(this).next(".expand-panel").slideToggle(400, 'easeInOutBounce')
-      if $(this).find(".expand-icon").hasClass('icon-arrow-down9')
-        $(this).find(".expand-icon").switchClass('icon-arrow-down9', 'icon-arrow-up8')
-      else
-        $(this).find(".expand-icon").switchClass('icon-arrow-up8', 'icon-arrow-down9')
+      $(this).expanderSwap()
