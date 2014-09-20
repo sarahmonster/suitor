@@ -81,8 +81,10 @@
 
   <div class="application-instructions">
     <% if @posting.application_instructions %>
+      <% if !@posting.application_instructions.empty? %>
       <h3><i class="icon-key2"><span></span></i>How to apply</h3>
       <%= @posting.application_instructions %>
+      <% end %>
     <% end %>   
   </div>
 
