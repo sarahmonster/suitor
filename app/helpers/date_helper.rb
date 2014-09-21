@@ -8,7 +8,7 @@ module DateHelper
     if datetime < Time.now 
       # today: 2 hours ago
       if date == Date.today
-        time_ago_in_words(datetime) + "ago"
+        time_ago_in_words(datetime) + " ago"
       # yesterday: yesterday
       elsif date == Date.yesterday
         "yesterday"
