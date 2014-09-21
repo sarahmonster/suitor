@@ -155,7 +155,7 @@
           <%= @posting.interviews.last.interviewer %>
         <% end %>
         <% if @posting.interviews.last.contact_method %>
-          <span>via</span> <%= @posting.interviews.last.contact_method%>
+          <span>via</span> <%= @posting.interviews.last.contact_method %>
         <% end %>
         </h3>
         <div class="notes">
@@ -167,7 +167,8 @@
       <% if @posting.job_application.followup %>
       <li>
         <i class="icon-checkmark"><span>Follow-up sent</span></i> 
-        <%= short_date(@posting.job_application.followup) %></li>
+        <%= short_date(@posting.job_application.followup) %>
+      </li>
       <% end %>
 
     <% end %>
