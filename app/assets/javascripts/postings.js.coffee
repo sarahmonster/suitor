@@ -105,16 +105,19 @@ $ ->
 
     # Show drop-down filters
     $(".dropdown button").click (event) ->
-      console.log $(this).parent()
       $(this).parent().find("ul").slideToggle(400)
       $(this).expanderSwap()
+      $sibling = $(this).parent().siblings(".dropdown").find("ul")
+      if $sibling.is(":visible")
+        $sibling.slideUp(400)
+        $sibling.parent().find("button").expanderSwap()
 
     # Close drop-down when clicking outside the menu
     $(document).on "click", (event) ->
-      if !$(event.target).closest(".filter-buttons").length
-        if $(".filter-buttons ul").is(":visible")
-          $(".filter-buttons ul").slideUp(400)
-          $(".filter-buttons button").expanderSwap()
+      if !$(event.target).closest(".dropdown").length
+        if $(".dropdown ul").is(":visible")
+          $(".dropdown ul").slideUp(400)
+          $(this).parent().find("button").expanderSwap()
 
     # Show and hide postings according to user's filter 
     $(".filter-buttons a").click (event) ->
