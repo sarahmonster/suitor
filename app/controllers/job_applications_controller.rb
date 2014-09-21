@@ -1,5 +1,5 @@
 class JobApplicationsController < ApplicationController
-  before_action :set_job_application, only: [:show, :edit, :update, :destroy]
+  before_action :set_job_application, only: [:show, :edit, :update, :destroy, :followup]
 
   # GET /job_applications
   # GET /job_applications.json
@@ -30,13 +30,26 @@ class JobApplicationsController < ApplicationController
       if @job_application.save
         @job_application_is_new = true
         format.html { redirect_to @job_application.posting, notice: 'Job application was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @job_application }
+        format.json { render action: 'show', status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @job_application.errors, status: :unprocessable_entity }
       end
     end
   end
+
+
+  # PATCH/PUT /job_applications/1/followup.json
+  def followup
+    respond_to do |format|
+      if @job_application.update(followup: Time.now)
+        format.json { render action: 'show' }
+      else
+        format.json { render json: @job_application.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   # PATCH/PUT /job_applications/1
   # PATCH/PUT /job_applications/1.json

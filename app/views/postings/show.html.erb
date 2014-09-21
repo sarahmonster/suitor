@@ -177,7 +177,7 @@
 
   <% if @posting.actionable != "interview-scheduled" and @posting.actionable != "interview-completed" and !@posting.applied? %>
 
-    <%= form_for(@posting.job_application) do |f| %>
+    <%= form_for([@posting, @posting.job_application]) do |f| %>
     <h3>Apply now!</h3>
 
       <%= f.hidden_field :posting_id %>
