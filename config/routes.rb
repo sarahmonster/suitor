@@ -13,8 +13,6 @@ Suitor::Application.routes.draw do
   end
 
   # resources :users
-
-  resources :job_applications
   #resources :interviews
 
   get "welcome/index"
@@ -30,7 +28,11 @@ Suitor::Application.routes.draw do
     member do
       put :archivetoggle
     end
-    resources :job_applications
+    resources :job_applications do
+      member do
+        put 'followup'
+      end
+    end
     resources :interviews
   end
 

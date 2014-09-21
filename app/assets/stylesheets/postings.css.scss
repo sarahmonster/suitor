@@ -7,14 +7,7 @@
 
 .status, .controls {
 
-    & > i {
-        padding: 5px;
-
-        &:hover {
-            background: lighten($light-grey, 10%);
-            color: $medium-grey;
-        }
-    }
+    & > i { padding: 5px; }
 
     // action items
     .todo {
@@ -22,31 +15,20 @@
         position: relative;
 
         &:hover {
-            color: $green;
-            background: purple;
+            color: darken($red, 10%);
+            cursor: pointer;
 
             &:after {
                 content: '';
                 position: absolute;
-                top: 5px;
-                left: 5px;
-
+                top: 0px;
+                left: 0px;
             }
         }
     }
-    .done {
-        color: $green;
-    }
+    .done { color: $green; }
 
-    .applied:hover {
-        cursor: pointer;
-        background: none;
-    }
-
-    // hide dialogs
-    & > .dialog {
-        display: none;
-    }
+    & > .dialog { display: none; }
 }
 
 
@@ -54,7 +36,7 @@
 .filter-buttons {
     display: inline-block;
 
-    span {display: inline;}
+    span { display: inline; }
     
     button {
         width: 100%;
@@ -176,10 +158,7 @@ section.job-posting {
 
             i {
                 color: $medium-grey;
-                
-                span {
-                    display: inline;
-                }
+                span { display: inline;}
             }
         }    
     }
@@ -247,18 +226,26 @@ section.job-actions {
     }
 
     .pending-tasks {
-        i:not(.expand-icon) {color: $red;}
+        i:not(.expand-icon) { color: $red; }
+
+        .followup.todo {
+            cursor: pointer;
+            color: lighten($red, 10%);
+        }
+
+        i.done { color: $green; }
+
     }
 
     .completed-tasks {
-        i:not(.expand-icon) {color: $green;}
+        i:not(.expand-icon) { color: $green; }
     }
 
     #new_interview {
         @include span-columns(12);
         @include shift(0);
         border-top-color: lighten($blue, 40%);
-        h3 {color: $blue;}
+        h3 { color: $blue; }
     }
 }
 

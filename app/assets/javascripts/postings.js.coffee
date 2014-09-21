@@ -62,7 +62,7 @@ $ ->
     $(".applied.done").on "click", ->
       showDialog $(this).next(".dialog")
 
-    # Listen to all the "Apply Now" links on the postings index view.
+    # Create a new application instance when "apply now" is clicked from postings index page
     $(".applied.todo").on "click", (event) ->
       $.ajax
         url: "#{$(this).data("uri")}.json"
@@ -73,16 +73,27 @@ $ ->
         success: (response) =>
           $(this).next(".dialog").replaceWith(response.html)
           $dialog = showDialog $(this).next(".dialog")
-
           $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
-
           $(this).replaceWith response.replacementHTML
-
+          $(this).parents('section').removeClass('action-required')
           $(".edit_job_application").on "ajax:success", ->
             $dialog.dialog "destroy"
-        error: ->
-          # TODO: Add an error message.
-          console.log "fail"
+        error: (response) ->
+          console.log "Error: ", response
+
+
+    # Mark application as followed-up when "follow up" is clicked (from index or detail page)
+    $(".followup.todo").on "click", (event) ->
+      $.ajax
+        url: "#{$(this).data("uri")}.json"
+        type: "PUT"
+        success: (response) =>
+          $(this).find("span").text "Good work!"
+          $(this).switchClass('todo', 'done')
+          $(this).switchClass('icon-circle-blank', 'icon-checkmark')
+          $(this).parents('section').removeClass('action-required')
+        error: (response) ->
+          console.log "Error: ", response
 
     
     # Swap down arrow for up
