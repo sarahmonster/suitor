@@ -60,7 +60,7 @@
         <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.last.datetime) %>">Interviewed <%= friendly_datetime(posting.interviews.last.datetime) %></span></i>
 
       <% elsif posting.applied? and posting.followup_needed? %>
-        <i class="applied icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span title="Application sent <%= friendly_datetime(posting.job_application.date_sent) %>">Follow up</span></i>
+        <i class="followup icon-circle-blank todo" data-uri="<%= job_applications_path %>" data-posting-id="<%= posting.id %>"><span title="Application sent <%= friendly_datetime(posting.job_application.date_sent) %>">Follow up</span></i>
 
       <% elsif posting.applied? %>
         <i class="applied icon-checkmark done"><span title="Application sent on <%= short_date(posting.job_application.date_sent) %>"><%= t('Applied') %> <%= friendly_datetime(posting.job_application.date_sent) %></span></i>
