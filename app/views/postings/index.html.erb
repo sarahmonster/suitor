@@ -57,23 +57,7 @@
       <button><i class="icon-magic"><span>Sort</span></i> <i class="expand-icon icon-arrow-down9"></i></button>
       <ul style="display: none;">
       <li class="title">Sort postings by:</li>
-
-        <%= link_to(postings_path :sort => "importance") do %>
-          <li class="checked"><i class="icon-checkmark"><span>Importance</span></i></li>
-        <% end %>
-
-        <%= link_to(postings_path :sort => "posted") do %>
-          <li><i class="icon-circle-blank"><span>Date posted</span></i></li>
-        <% end %>
-
-        <%= link_to(postings_path :sort => "added") do %>
-          <li><i class="icon-circle-blank"><span>Date added</span></i></li>
-        <% end %>
-      
-        <%= link_to(postings_path :sort => "status") do %>
-          <li><i class="icon-circle-blank"><span>Application status</span></i></li>
-        <% end %>
-        
+        <%= render "sort_buttons", buttons: ["importance", "status", "posted", "added"] %>  
       </ul>
     <div>
 

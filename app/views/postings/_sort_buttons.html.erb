@@ -1,0 +1,10 @@
+<% buttons.each do |button| %>
+  <%= link_to(postings_path :sort => button) do %>
+  <% if @sortorder == button %>
+    <li class="checked"><i class="icon-checkmark">
+  <% else %>
+    <li><i class="icon-circle-blank">
+  <% end %>
+    <span><%= button %></span></i></li>
+  <% end %>
+<% end %>
