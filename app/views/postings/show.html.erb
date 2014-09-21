@@ -116,8 +116,6 @@
 
     <% if @posting.followup_needed? %>
       <li><i class="icon-circle-blank todo"><span>Send a follow-up</span></i></li>
-    <% else %>
-      
     <% end %>
 
   </ul>
@@ -126,33 +124,52 @@
 
 
   <ul class="completed-tasks">
-
-    <% if @posting.actionable == "interview-completed" %>
-      <li class="expander" title="Show interview details"><i class="icon-checkmark"><span title="<%= full_datetime(@posting.interviews.last.datetime) %>">Interviewed</span></i> <%= friendly_datetime(@posting.interviews.last.datetime) %><i class="expand-icon icon-arrow-down9"></i></li>
-       <div class="expand-panel" style="display: none">
-          <h3>
-          <% if @posting.interviews.last.interviewer %>
-            <%= @posting.interviews.last.interviewer %>
-          <% end %>
-          <% if @posting.interviews.last.contact_method %>
-            <span>via</span> <%= @posting.interviews.last.contact_method%>
-          <% end %>
-          </h3>
-          <div class="notes">
-            <%= simple_format(@posting.interviews.last.notes) %>
-          </div>
-        </div>
-    <% end %>
   
     <% if @posting.applied? %>
+      
       <% if @posting.job_application.cover_letter? %>
-        <li class="expander" title="Show application"><i class="icon-checkmark"><span>Application sent </i><%= short_date(@posting.job_application.date_sent) %></span><i class="expand-icon icon-arrow-down9"></i></li>
+        <li class="expander" title="Show application">
+          <i class="icon-checkmark"><span>Application sent </span></i>
+          <%= short_date(@posting.job_application.date_sent) %>
+          <i class="expand-icon icon-arrow-down9"></i>
+        </li>
         <div class="expand-panel notes" style="display: none">
           <%= simple_format(@posting.job_application.cover_letter) %>
         </div>
       <% else %>
-        <li><i class="icon-checkmark"><span>Application sent </i><%= short_date(@posting.job_application.date_sent) %></span></li>
+        <li>
+          <i class="icon-checkmark"><span>Application sent</span></i>
+          <%= short_date(@posting.job_application.date_sent) %>
+        </li>
       <% end %>
+
+    <% if @posting.actionable == "interview-completed" %>
+      <li class="expander" title="Show interview details">
+        <i class="icon-checkmark"><span title="<%= full_datetime(@posting.interviews.last.datetime) %>">Interviewed</span></i> 
+        <%= friendly_datetime(@posting.interviews.last.datetime) %>
+        <i class="expand-icon icon-arrow-down9"></i>
+      </li>
+      <div class="expand-panel" style="display: none">
+        <h3>
+        <% if @posting.interviews.last.interviewer %>
+          <%= @posting.interviews.last.interviewer %>
+        <% end %>
+        <% if @posting.interviews.last.contact_method %>
+          <span>via</span> <%= @posting.interviews.last.contact_method%>
+        <% end %>
+        </h3>
+        <div class="notes">
+          <%= simple_format(@posting.interviews.last.notes) %>
+        </div>
+      </div>
+    <% end %>
+
+      <% if @posting.job_application.followup %>
+      <li>
+        <i class="icon-checkmark"><span>Follow-up sent</span></i> 
+        <%= short_date(@posting.job_application.followup) %></li>
+      <% end %>
+
     <% end %>
 
   </ul>

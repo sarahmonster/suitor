@@ -41,7 +41,7 @@ class Posting < ActiveRecord::Base
 
   def followup_needed?
     if job_application
-      job_application.date_sent.advance(:days => 14) < Date.current and !interview_scheduled?
+      job_application.date_sent.advance(:days => 14) < Date.current and interviews.empty? and !job_application.followup?
     end
   end
 
