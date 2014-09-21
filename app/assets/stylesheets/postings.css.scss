@@ -226,18 +226,26 @@ section.job-actions {
     }
 
     .pending-tasks {
-        i:not(.expand-icon) {color: $red;}
+        i:not(.expand-icon) { color: $red; }
+
+        .followup.todo {
+            cursor: pointer;
+            color: lighten($red, 10%);
+        }
+
+        i.done { color: $green; }
+
     }
 
     .completed-tasks {
-        i:not(.expand-icon) {color: $green;}
+        i:not(.expand-icon) { color: $green; }
     }
 
     #new_interview {
         @include span-columns(12);
         @include shift(0);
         border-top-color: lighten($blue, 40%);
-        h3 {color: $blue;}
+        h3 { color: $blue; }
     }
 }
 

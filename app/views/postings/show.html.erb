@@ -115,7 +115,7 @@
     <% end %>
 
     <% if @posting.followup_needed? %>
-      <li><i class="icon-circle-blank todo"><span>Send a follow-up</span></i></li>
+      <li><i class="followup icon-circle-blank todo" data-uri="<%= followup_posting_job_application_path(@posting, @posting.job_application) %>" data-posting-id="<%= @posting.id %>"><span>Send a follow-up</span></i></li>
     <% end %>
 
   </ul>
