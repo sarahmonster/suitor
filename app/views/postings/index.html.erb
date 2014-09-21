@@ -1,8 +1,10 @@
 
 <header class="page-header">
   <% if @archive_page %>
+    <h3>Sorted by: <%= @sortorder %></h3> 
     <h1>Archived job postings</h1>
   <% else %>
+    <h3>Sorted by: <%= @sortorder %></h3> 
     <h1>Open job postings</h1>
   <% end %>
 
@@ -56,25 +58,24 @@
       <ul style="display: none;">
       <li class="title">Sort postings by:</li>
 
-        <%= link_to "#", data: {class: "interview-completed"} do %>
-          <li class="checked"><i class="icon-checkmark"><span>Urgency</span></i></li>
+        <%= link_to(postings_path :sort => "importance") do %>
+          <li class="checked"><i class="icon-checkmark"><span>Importance</span></i></li>
         <% end %>
 
-        <%= link_to "#", data: {class: "application-needed"} do %>
+        <%= link_to(postings_path :sort => "posted") do %>
           <li><i class="icon-circle-blank"><span>Date posted</span></i></li>
         <% end %>
 
-        <%= link_to "#", data: {class: "followup-needed"} do %>
-          <li><i class="icon-circle-blank"><span>Date addded</span></i></li>
+        <%= link_to(postings_path :sort => "added") do %>
+          <li><i class="icon-circle-blank"><span>Date added</span></i></li>
         <% end %>
       
-        <%= link_to "#", data: {class: "interview-scheduled"} do %>
+        <%= link_to(postings_path :sort => "status") do %>
           <li><i class="icon-circle-blank"><span>Application status</span></i></li>
         <% end %>
         
       </ul>
     <div>
-
 
 </header>
 
@@ -115,10 +116,18 @@
     <h3><%= link_to posting.title, posting %></h3>
     <h2><%= link_to posting.hiring_organization, posting %></h2>
 
+    
+    <!-- DEADLINE AND/OR DATE POSTED -->
     <div class="date">
+      <div style="display: none">
       <% if posting.deadline %>
         <i class="icon-clock4"><span>Deadline</span></i><%= short_date(posting.deadline) %>
-      <% elsif posting.date_posted %>
+      <% end %>
+      </div>
+
+      Date added: <%= friendly_datetime(posting.created_at) %>
+
+      <% if posting.date_posted %>
         <i class="icon-clock4"><span>Posted</span></i><%= short_date(posting.date_posted) %>
       <% end %>
     </div>

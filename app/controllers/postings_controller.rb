@@ -1,6 +1,20 @@
 class PostingsController < ApplicationController
   def index
-    @postings = Posting.all
+    # Sort results depending on what the user is looking for
+    @sortorder = params[:sort]
+    case params[:sort]
+    when 'added'
+      @postings = Posting.order('created_at DESC')
+    when 'posted'
+      @postings = Posting.order('date_posted')
+    when 'importance'
+      @postings = Posting.order('hiring_organization')
+    when 'status'
+      @postings = Posting.order('title')
+    else 
+      @postings = Posting.order('created_at')
+      @sortorder = 'importance'
+    end
 
     # Check for any filters.
     @postings = @postings.send(params[:filter].to_sym) if Posting.valid_scope?(params[:filter])

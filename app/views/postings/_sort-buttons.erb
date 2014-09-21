@@ -1,0 +1,8 @@
+<%= link_to(postings_path :sort => "importance") do %>
+<% if @sortorder == "importance" %>
+  <li class="checked"><i class="icon-checkmark">
+<% else %>
+  <li><i class="icon-circle-blank">
+<% end %>
+  <span>Importance</span></i></li>
+<% end %>
