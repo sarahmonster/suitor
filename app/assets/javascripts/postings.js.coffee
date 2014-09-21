@@ -104,8 +104,9 @@ $ ->
         this.find(".expand-icon").switchClass('icon-arrow-up8', 'icon-arrow-down9')
 
     # Show drop-down filters
-    $(".filter-buttons button").click (event) ->
-      $(".filter-buttons ul").slideToggle(400)
+    $(".dropdown button").click (event) ->
+      console.log $(this).parent()
+      $(this).parent().find("ul").slideToggle(400)
       $(this).expanderSwap()
 
     # Close drop-down when clicking outside the menu
