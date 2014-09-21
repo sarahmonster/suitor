@@ -1,0 +1,14 @@
+.panel {
+  height: 100%;
+  @include outer-container; 
+}
+
+#tagline {
+  @include span-columns (6);
+  text-align: center;
+}
+
+#signup {
+  @include span-columns(6);
+  margin-top: 20em;
+}
