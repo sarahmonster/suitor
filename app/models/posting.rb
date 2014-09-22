@@ -1,17 +1,21 @@
 class Posting < ActiveRecord::Base
-	VALID_FILTER_SCOPES = [:applied, :archived, :interview_completed, :interview_scheduled]
+  VALID_FILTER_SCOPES = [:applied, :archived, :interview_completed, :interview_scheduled]
 
-	validates :title, presence: true,
+  validates :title, presence: true,
                     length: { minimum: 5 }
   has_one :job_application, dependent: :destroy
   has_many :interviews, dependent: :destroy
-	enum role: [:user, :admin]
+  enum role: [:user, :admin]
 
+  # Define scopes for easier access
   default_scope -> {
     where(archived: false)
   }
   scope :applied, -> {
     joins(:job_application).where('job_applications.date_sent IS NOT NULL')
+  }
+  scope :havent_applied, -> {
+    where("NOT EXISTS (SELECT null FROM job_applications where job_applications.posting_id = postings.id)")
   }
   scope :archived, -> {
     unscoped.where(archived: true)
@@ -22,15 +26,80 @@ class Posting < ActiveRecord::Base
   scope :interview_scheduled, -> {
     joins(:interviews).where('interviews.datetime >= ?', Time.now)
   }
+  scope :no_interviews, -> {
+    where("NOT EXISTS (SELECT null FROM interviews where interviews.posting_id = postings.id)")
+  }
+  scope :with_deadline, -> {
+    where('deadline IS NOT NULL')
+  }
 
-  # { joins(:interviews).where('interviews.date_sent < ?', Date.current.advance(days: 14)) }
+  scope :deadline_approaching, -> {
+    where('deadline >= ?', Time.now)
+  }
 
-	def self.valid_scope?(scope_name)
+
+  def self.valid_scope?(scope_name)
     if scope_name
-  		VALID_FILTER_SCOPES.include? scope_name.to_sym
+      VALID_FILTER_SCOPES.include? scope_name.to_sym
     end
-	end
+  end
 
+
+  # Sort all posts by "importance", as defined by four methods below
+  def self.sorted_by_importance
+    postings = interview_scheduled_or_deadline_approaching +
+               unapplied_or_interview_completed
+
+    # Squash duplicates.
+    postings.uniq { |p| p.id }
+  end
+
+  # Find all postingss with an interview scheduled, or with an application due for a deadline
+  # and sort by their key dates (interview date and deadline, respectively)
+  def self.interview_scheduled_or_deadline_approaching
+    postings = interview_scheduled.order('interviews.datetime ASC') +
+               havent_applied.with_deadline
+
+    # We use a proxy array here because we're operating directly on
+    # ActiveRecord models/objects and we can't add a property to them
+    # without doing attr_accessor nonsense.
+    # TODO: Make this slicker.
+    key_dates = {}
+    postings.each { |p|
+      if p.interviews.count > 0
+        key_dates[p.id] = p.interviews.upcoming.last.datetime
+      else
+        key_dates[p.id] = p.deadline
+      end
+    }
+
+    # Squash duplicates.
+    postings.uniq { |p| p.id }
+
+    # Sort in DESC order (i.e. earlier dates/deadlines come first).
+    postings.sort { |p1, p2| key_dates[p1.id].to_date <=> key_dates[p2.id].to_date }
+  end
+
+  # Find all postings with an interview completed, or posts that have not been applied to,
+  # and sort by their key dates (interview date and deadline, respectively)
+  def self.unapplied_or_interview_completed
+    postings = where('deadline IS NOT NULL')
+  end
+
+
+
+  # Sort all posts by their application statuses
+  def self.sorted_by_status
+    postings = interview_scheduled.order('interviews.datetime ASC') +
+               havent_applied +
+               no_interviews.joins(:job_application).order('job_applications.followup ASC') +
+               interview_completed
+    # Squash duplicates.
+    postings.uniq { |p| p.id }
+  end
+
+
+  # These methods allow for easier checks on certain statuses of the postings
   def action_required?
     !applied? or (applied? and followup_needed?)
   end
