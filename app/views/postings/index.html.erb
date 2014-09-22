@@ -1,47 +1,76 @@
 
 <header class="page-header">
+  
+  <!-- PAGE TITLE -->
   <% if @archive_page %>
+    <h3>Sorted by: date added</h3> 
     <h1>Archived job postings</h1>
-      <div class="controls">
-      <%= link_to postings_path do %>
-        <i class="icon-thumbs-up3"><span>Open postings</span></i>
-      <% end %>
   <% else %>
+    <h3>Sorted by: <%= @sortorder.titleize %></h3> 
     <h1>Open job postings</h1>
-    <div class="controls">
-      <%= link_to archived_postings_path do %>
-        <i class="icon-thumbs-down3"><span>Archived postings</span></i>
+  <% end %>
+  <!-- END PAGE TITLE -->
+
+
+  <!-- FILTER BUTTONS -->
+  <div class="dropdown filter-buttons">
+    <button><i class="icon-beaker2"><span>Filter</span></i> <i class="expand-icon icon-arrow-down9"></i></button>
+    <ul style="display: none;">
+      <li class="title">Only show postings with:</li>
+      
+      <%= link_to "#", data: {class: "application-needed"} do %>
+        <li class="checked"><i class="icon-checkmark"><span>Application due</span></i></li>
       <% end %>
+
+      <%= link_to "#", data: {class: "followup-needed"} do %>
+        <li class="checked"><i class="icon-checkmark"><span>Follow-up due</span></i></li>
+      <% end %>
+    
+      <%= link_to "#", data: {class: "interview-scheduled"} do %>
+        <li class="checked"><i class="icon-checkmark"><span>Interview scheduled</span></i></li>
+      <% end %>
+
+      <%= link_to "#", data: {class: "interview-completed"} do %>
+        <li class="checked"><i class="icon-checkmark"><span>Interview completed</span></i></li>
+      <% end %>
+
+      <!--
+      <%= link_to "#", data: {class: "offer-made"} do %>
+        <li class="checked"><i class="icon-checkmark"><span>Offer made</span></i></li>
+      <% end %>
+      -->
+      
+    </ul>
+  </div>
+  <!-- END FILTER BUTTONS -->
+
+
+  <!-- BUTTON TO ARCHIVED POSTS -->
+  <div class="controls">
+  <% if @archive_page %>
+    <%= link_to postings_path do %>
+      <i class="icon-thumbs-up3"><span>Open postings</span></i>
+    <% end %>
+  <% else %>
+    <%= link_to archived_postings_path do %>
+      <i class="icon-thumbs-down3"><span>Archived postings</span></i>
+    <% end %>
   <% end %>
   </div>
-    <div class="filter-buttons">
-      <button><i class="icon-beaker2"><span>Filter</span></i> <i class="expand-icon icon-arrow-down9"></i></button>
+  <!-- END ARCHIVED POSTS BUTTON -->
+
+
+  <!-- SORT BUTTONS -->
+  <% if !@archive_page %>
+    <div class="dropdown sort-buttons">
+      <button><i class="icon-magic"><span>Sort</span></i> <i class="expand-icon icon-arrow-down9"></i></button>
       <ul style="display: none;">
-      <li class="title">Only show postings with:</li>
-        <%= link_to "#", data: {class: "application-needed"} do %>
-          <li class="checked"><i class="icon-checkmark"><span>Application due</span></i></li>
-        <% end %>
-
-        <%= link_to "#", data: {class: "followup-needed"} do %>
-          <li class="checked"><i class="icon-checkmark"><span>Follow-up due</span></i></li>
-        <% end %>
-      
-        <%= link_to "#", data: {class: "interview-scheduled"} do %>
-          <li class="checked"><i class="icon-checkmark"><span>Interview scheduled</span></i></li>
-        <% end %>
-
-        <%= link_to "#", data: {class: "interview-completed"} do %>
-          <li class="checked"><i class="icon-checkmark"><span>Interview completed</span></i></li>
-        <% end %>
-
-        <!--
-        <%= link_to "#", data: {class: "offer-made"} do %>
-          <li class="checked"><i class="icon-checkmark"><span>Offer made</span></i></li>
-        <% end %>
-        -->
-        
+      <li class="title">Sort postings by:</li>
+        <%= render "sort_buttons", buttons: ["importance", "status", "date-posted", "date-added"] %>  
       </ul>
     <div>
+  <% end %>
+  <!-- END SORT BUTTONS -->
 
 
 </header>
@@ -50,10 +79,12 @@
 
 
 
+<!-- INDIVIDUAL POSTING BOXES -->
 <% @postings.each do |posting| %>
 
   <section class="job-posting <%= posting.actionable %> <% if posting.action_required? %>action-required<% end %>" id="posting-<%= posting.id %>">
 
+    <!-- STATUS BAR -->
     <div class="status">
 
       <% if posting.interview_scheduled? %>
@@ -79,10 +110,16 @@
       <% end %>
 
     </div>
+    <!-- END STATUS BAR -->
 
+
+    <!-- POSTING TITLE -->
     <h3><%= link_to posting.title, posting %></h3>
     <h2><%= link_to posting.hiring_organization, posting %></h2>
+    <!-- END POSTING TITLE -->
 
+    
+    <!-- DEADLINE AND/OR DATE POSTED -->
     <div class="date">
       <% if posting.deadline %>
         <i class="icon-clock4"><span>Deadline</span></i><%= short_date(posting.deadline) %>
@@ -90,9 +127,10 @@
         <i class="icon-clock4"><span>Posted</span></i><%= short_date(posting.date_posted) %>
       <% end %>
     </div>
+    <!-- END DEADLINE-->
 
 
-    <!-- VARIOUS ACTION BUTTONS (CONTEXTUAL) -->
+    <!-- ACTION BUTTONS (CONTEXTUAL) -->
     <div class="actions">
       
       <%= link_to archivetoggle_posting_path(posting), remote: true, method: :put, class: "archive-toggle", data: {id: "posting-#{posting.id}"} do %>
@@ -111,15 +149,18 @@
         <!--<a href="#"><i class="icon-dollar"><span>Offer</span></i></a>-->
       <% end %>
     </div>
+    <!-- END ACTION BUTTONS -->
 
 
-
+    <!-- JUST A PLACE TO HIDE THINGS FOR NOW -->
     <div class="hidden-info">
       <% if posting.job_location %>
         <li><i class="icon-location4"><span>Location</span></i><%= posting.job_location %></li>
       <% end %>
     </div>
+    <!-- END SARAH'S LACK OF ORGANIZATION -->
+
 
   </section>
-
 <% end %>
+<!-- END INDIVIDUAL POSTING BOXES-->

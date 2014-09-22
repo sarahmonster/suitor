@@ -33,7 +33,7 @@
 
 
 // Filter toggles 
-.filter-buttons {
+.filter-buttons, .sort-buttons {
     display: inline-block;
 
     span { display: inline; }
@@ -41,6 +41,7 @@
     button {
         width: 100%;
         text-align: left;
+        padding-right: 5px;
 
         &:hover {
             border-color: lighten($dark-grey, 20%);
