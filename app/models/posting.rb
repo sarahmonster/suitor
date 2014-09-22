@@ -36,6 +36,9 @@ class Posting < ActiveRecord::Base
     where('deadline > ?', Time.now)
   }
 
+  scope :without_followup, -> {
+     joins(:job_application).where('followup IS NULL AND job_applications.date_sent < ?', Date.current.advance(days: 14))
+  }
 
   def self.valid_scope?(scope_name)
     if scope_name
@@ -47,7 +50,8 @@ class Posting < ActiveRecord::Base
   # Sort all posts by "importance", as defined by four methods below
   def self.sorted_by_importance
     postings = interview_scheduled_or_deadline_approaching +
-               unapplied_or_interview_completed
+               unapplied_or_interview_completed +
+               without_followup.where('deadline IS NULL').no_interviews.order('job_applications.date_sent DESC')
 
     # Squash duplicates.
     postings.uniq { |p| p.id }
