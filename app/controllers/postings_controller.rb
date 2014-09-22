@@ -3,9 +3,9 @@ class PostingsController < ApplicationController
     # Sort results depending on what the user is looking for
     @sortorder = params[:sort]
     case params[:sort]
-      when 'added'
+      when 'date-added'
         @postings = Posting.order('created_at DESC')
-      when 'posted'
+      when 'date-posted'
         @postings = Posting.order('date_posted')
       when 'importance'
         @postings = Posting.sorted_by_importance

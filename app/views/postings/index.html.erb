@@ -3,10 +3,10 @@
   
   <!-- PAGE TITLE -->
   <% if @archive_page %>
-    <h3>Sorted by: <%= @sortorder %></h3> 
+    <h3>Sorted by: <%= @sortorder.titleize %></h3> 
     <h1>Archived job postings</h1>
   <% else %>
-    <h3>Sorted by: <%= @sortorder %></h3> 
+    <h3>Sorted by: <%= @sortorder.titleize %></h3> 
     <h1>Open job postings</h1>
   <% end %>
   <!-- END PAGE TITLE -->
@@ -65,7 +65,7 @@
     <button><i class="icon-magic"><span>Sort</span></i> <i class="expand-icon icon-arrow-down9"></i></button>
     <ul style="display: none;">
     <li class="title">Sort postings by:</li>
-      <%= render "sort_buttons", buttons: ["importance", "status", "posted", "added"] %>  
+      <%= render "sort_buttons", buttons: ["importance", "status", "date-posted", "date-added"] %>  
     </ul>
   <div>
   <!-- END SORT BUTTONS -->
