@@ -1,3 +1,87 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.pages.launch, html {height: 100%;}
+
+.panel {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  border-bottom: 2px solid $medium-grey;
+  border-top: 1px solid $white;
+  @include box-shadow;
+}
+
+.next {
+  clear: both;
+  position: absolute;
+  bottom: 2em;
+  width: 100%;
+  text-align: center;
+
+  i {
+    background: lighten($blue, 60%);
+    border: 4px solid lighten($blue, 40%);
+    border-radius: 50%;
+    color: lighten($blue, 20%);
+    font-size: 3em;
+    @include box-shadow;
+
+    &:hover {
+      background: $blue;
+    }
+  }
+}
+
+
+// TAGLINE/INTRO PANEL
+#tagline {
+  text-align: center;
+  @include span-columns(8);
+  @include shift(2);
+}
+
+
+// SCREENSHOTS PANEL
+#screenshots {
+  background: lighten($light-grey, 10%);
+  padding-bottom: 5em;
+
+  .row {
+    clear: both;
+  }
+
+  .image {
+    @include span-columns(4);
+    &:first-child { @include shift(1); }
+
+    img {
+      border: 10px solid $white;
+      border-radius: 50%;
+      @include box-shadow;
+    }
+  }
+
+  .text {
+    margin-top: 3em;
+    font-size: 1.2em;
+    line-height: 1.8em;
+    @include span-columns(6); 
+    &:first-child { @include shift(1); }
+  }
+}
+
+
+// SIGNUP PANEL
+#signup {
+
+  form {
+    margin-top: 5em;
+    @include span-columns(6);
+    @include shift(3);
+  }
+
+}
+
