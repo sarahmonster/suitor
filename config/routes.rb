@@ -1,5 +1,13 @@
 Suitor::Application.routes.draw do
 
+  get 'pages/home'
+
+  get 'pages/help'
+
+  get 'pages/about'
+
+  get 'pages/launch'
+
   devise_for :users, skip: [:sessions], controllers: {
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
