@@ -3,7 +3,7 @@
   
   <!-- PAGE TITLE -->
   <% if @archive_page %>
-    <h3>Sorted by: <%= @sortorder.titleize %></h3> 
+    <h3>Sorted by: date added</h3> 
     <h1>Archived job postings</h1>
   <% else %>
     <h3>Sorted by: <%= @sortorder.titleize %></h3> 
@@ -61,13 +61,15 @@
 
 
   <!-- SORT BUTTONS -->
-  <div class="dropdown sort-buttons">
-    <button><i class="icon-magic"><span>Sort</span></i> <i class="expand-icon icon-arrow-down9"></i></button>
-    <ul style="display: none;">
-    <li class="title">Sort postings by:</li>
-      <%= render "sort_buttons", buttons: ["importance", "status", "date-posted", "date-added"] %>  
-    </ul>
-  <div>
+  <% if !@archive_page %>
+    <div class="dropdown sort-buttons">
+      <button><i class="icon-magic"><span>Sort</span></i> <i class="expand-icon icon-arrow-down9"></i></button>
+      <ul style="display: none;">
+      <li class="title">Sort postings by:</li>
+        <%= render "sort_buttons", buttons: ["importance", "status", "date-posted", "date-added"] %>  
+      </ul>
+    <div>
+  <% end %>
   <!-- END SORT BUTTONS -->
 
 
