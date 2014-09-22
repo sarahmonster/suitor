@@ -1,6 +1,7 @@
 #launch-page, html {height: 100%;}
 
 .panel {
+  position: relative;
   height: 100%;
   width: 100%;
   margin: 0;
@@ -9,6 +10,25 @@
   @include box-shadow;
 }
 
+.next {
+  position: absolute;
+  bottom: 2em;
+  width: 100%;
+  text-align: center;
+
+  i {
+    background: lighten($blue, 60%);
+    border: 4px solid lighten($blue, 40%);
+    border-radius: 50%;
+    color: lighten($blue, 20%);
+    font-size: 3em;
+    @include box-shadow;
+
+    &:hover {
+      background: $blue;
+    }
+  }
+}
 
 #tagline {
   text-align: center;
