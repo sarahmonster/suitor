@@ -1,14 +1,33 @@
+#launch-page, html {height: 100%;}
+
 .panel {
   height: 100%;
-  @include outer-container; 
+  width: 100%;
+  margin: 0;
+  border-bottom: 2px solid $medium-grey;
+  border-top: 1px solid $white;
+  @include box-shadow;
 }
 
 #tagline {
-  @include span-columns (6);
   text-align: center;
+  @include span-columns(8);
+  @include shift(2);
 }
 
-#signup {
-  @include span-columns(6);
-  margin-top: 20em;
+#screenshots {
+  background: $white;
 }
+
+
+
+#signup {
+
+  form {
+    margin-top: 5em;
+    @include span-columns(6);
+    @include shift(3);
+  }
+
+}
+
