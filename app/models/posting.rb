@@ -32,9 +32,8 @@ class Posting < ActiveRecord::Base
   scope :with_deadline, -> {
     where('deadline IS NOT NULL')
   }
-
   scope :deadline_approaching, -> {
-    where('deadline >= ?', Time.now)
+    where('deadline > ?', Time.now)
   }
 
 
@@ -54,11 +53,12 @@ class Posting < ActiveRecord::Base
     postings.uniq { |p| p.id }
   end
 
+
   # Find all postingss with an interview scheduled, or with an application due for a deadline
   # and sort by their key dates (interview date and deadline, respectively)
   def self.interview_scheduled_or_deadline_approaching
-    postings = interview_scheduled.order('interviews.datetime ASC') +
-               havent_applied.with_deadline
+    postings = interview_scheduled +
+               havent_applied.deadline_approaching
 
     # We use a proxy array here because we're operating directly on
     # ActiveRecord models/objects and we can't add a property to them
@@ -67,7 +67,7 @@ class Posting < ActiveRecord::Base
     key_dates = {}
     postings.each { |p|
       if p.interviews.count > 0
-        key_dates[p.id] = p.interviews.upcoming.last.datetime
+        key_dates[p.id] = p.interviews.upcoming.first.datetime
       else
         key_dates[p.id] = p.deadline
       end
@@ -76,15 +76,37 @@ class Posting < ActiveRecord::Base
     # Squash duplicates.
     postings.uniq { |p| p.id }
 
-    # Sort in DESC order (i.e. earlier dates/deadlines come first).
+    # Sort in ASC order, since these are future dates (i.e. earlier dates/deadlines come first).
     postings.sort { |p1, p2| key_dates[p1.id].to_date <=> key_dates[p2.id].to_date }
   end
 
+
   # Find all postings with an interview completed, or posts that have not been applied to,
-  # and sort by their key dates (interview date and deadline, respectively)
+  # and sort by their key dates (interview date and posting/updated date, respectively). 
+  # Ignore any posting with a deadline.
   def self.unapplied_or_interview_completed
-    postings = where('deadline IS NOT NULL')
+    postings = havent_applied.where('deadline IS NULL') +
+               interview_completed
+
+    # Proxy array
+    key_dates = {}
+    postings.each { |p|
+      if p.interviews.count > 0
+        key_dates[p.id] = p.interviews.last.datetime
+      elsif p.date_posted
+        key_dates[p.id] = p.date_posted
+      else 
+        key_dates[p.id] = p.updated_at
+      end
+    }
+
+    # Squash duplicates.
+    postings.uniq { |p| p.id }
+
+    # Sort in DESC order, since these are past dates (i.e. later dates/deadlines come first).
+    postings.sort { |p1, p2| key_dates[p2.id].to_date <=> key_dates[p1.id].to_date }
   end
+
 
 
 
@@ -97,6 +119,8 @@ class Posting < ActiveRecord::Base
     # Squash duplicates.
     postings.uniq { |p| p.id }
   end
+
+
 
 
   # These methods allow for easier checks on certain statuses of the postings
