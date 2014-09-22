@@ -2,8 +2,12 @@
 <html>
 <head>
   <title>Welcome to suitor, the better way to keep track of job applications.</title>
+  
   <link href="http://localhost:3000/assets/application.css?body=1" media="all" rel="stylesheet" />
-  <script src="http://localhost:3000/assets/javascripts/jquery.js?body=1"></script>
+  
+  <script src="http://localhost:3000/assets/jquery.js?body=1"></script>
+  <script src="jquery.smooth-scroll.min.js"></script>
+
   <link href="http://localhost:3000/assets/favicon.png?v=5" rel="shortcut icon" type="image/png" />
 
   <style>
@@ -85,7 +89,11 @@
   </div>
 </div>
 
-
+<script>
+  $('a').smoothScroll({
+      speed: 800
+    });
+</script>
 
 </body>
 </html>
