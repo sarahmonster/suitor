@@ -2,7 +2,7 @@
 
 .panel {
   position: relative;
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   margin: 0;
   border-bottom: 2px solid $medium-grey;
@@ -11,6 +11,7 @@
 }
 
 .next {
+  clear: both;
   position: absolute;
   bottom: 2em;
   width: 100%;
@@ -41,14 +42,30 @@
 
 // SCREENSHOTS PANEL
 #screenshots {
-  background: $white;
+  background: lighten($light-grey, 10%);
+  padding-bottom: 5em;
 
-  .images {
-    @include span-columns(6)
+  .row {
+    clear: both;
+  }
+
+  .image {
+    @include span-columns(4);
+    &:first-child { @include shift(1); }
+
+    img {
+      border: 10px solid $white;
+      border-radius: 50%;
+      @include box-shadow;
+    }
   }
 
   .text {
-    @include span-columns(6)
+    margin-top: 3em;
+    font-size: 1.2em;
+    line-height: 1.8em;
+    @include span-columns(6); 
+    &:first-child { @include shift(1); }
   }
 }
 
