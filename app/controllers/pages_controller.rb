@@ -9,5 +9,6 @@ class PagesController < ApplicationController
   end
 
   def launch
+    render :layout => 'skeleton'
   end
 end
