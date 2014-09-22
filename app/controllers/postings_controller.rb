@@ -12,7 +12,7 @@ class PostingsController < ApplicationController
       when 'status'
         @postings = Posting.sorted_by_status
     else 
-      @postings = Posting.order('created_at')
+      @postings = Posting.sorted_by_importance
       @sortorder = 'importance'
     end
 

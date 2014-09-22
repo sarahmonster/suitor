@@ -36,6 +36,14 @@ class Posting < ActiveRecord::Base
     where('deadline > ?', Time.now)
   }
 
+  scope :deadline_passed, -> {
+    where('deadline < ?', Time.now)
+  }
+
+  scope :with_followup, -> {
+     joins(:job_application).where('followup IS NOT NULL')
+  }
+
   scope :without_followup, -> {
      joins(:job_application).where('followup IS NULL AND job_applications.date_sent < ?', Date.current.advance(days: 14))
   }
@@ -46,17 +54,16 @@ class Posting < ActiveRecord::Base
     end
   end
 
-
-  # Sort all posts by "importance", as defined by four methods below
+  # Sort all posts by "importance", as defined by methods below
   def self.sorted_by_importance
     postings = interview_scheduled_or_deadline_approaching +
                unapplied_or_interview_completed +
-               without_followup.where('deadline IS NULL').no_interviews.order('job_applications.date_sent DESC')
+               without_followup.where('deadline IS NULL').no_interviews.order('job_applications.date_sent DESC') +
+               recently_applied_or_followed_up_or_deadline_passed
 
     # Squash duplicates.
     postings.uniq { |p| p.id }
   end
-
 
   # Find all postingss with an interview scheduled, or with an application due for a deadline
   # and sort by their key dates (interview date and deadline, respectively)
@@ -84,7 +91,6 @@ class Posting < ActiveRecord::Base
     postings.sort { |p1, p2| key_dates[p1.id].to_date <=> key_dates[p2.id].to_date }
   end
 
-
   # Find all postings with an interview completed, or posts that have not been applied to,
   # and sort by their key dates (interview date and posting/updated date, respectively). 
   # Ignore any posting with a deadline.
@@ -111,8 +117,35 @@ class Posting < ActiveRecord::Base
     postings.sort { |p1, p2| key_dates[p2.id].to_date <=> key_dates[p1.id].to_date }
   end
 
+  # Find all remaining postings (recently applied, followed-up, and deadline passed)
+  # and sort by their key dates (applied date and follow-up, respectively). 
+  def self.recently_applied_or_followed_up_or_deadline_passed
+    postings = deadline_passed.havent_applied.no_interviews +
+               with_followup.no_interviews +
+               applied.no_interviews
 
+    # Proxy array
+    key_dates = {}
+    postings.each { |p|
+      if p.deadline
+        key_dates[p.id] = p.deadline
+      elsif p.job_application.followup
+        key_dates[p.id] = p.job_application.followup
+      elsif p.job_application.date_sent
+        key_dates[p.id] = p.job_application.date_sent
+      elsif p.date_posted
+        key_dates[p.id] = p.date_posted
+      else 
+        key_dates[p.id] = p.updated_at
+      end
+    }
 
+    # Squash duplicates.
+    postings.uniq { |p| p.id }
+
+    # Sort in DESC order, since these are past dates (i.e. later dates/deadlines come first).
+    postings.sort { |p1, p2| key_dates[p2.id].to_date <=> key_dates[p1.id].to_date }
+  end
 
   # Sort all posts by their application statuses
   def self.sorted_by_status
@@ -120,12 +153,10 @@ class Posting < ActiveRecord::Base
                havent_applied +
                no_interviews.joins(:job_application).order('job_applications.followup ASC') +
                interview_completed
+
     # Squash duplicates.
     postings.uniq { |p| p.id }
   end
-
-
-
 
   # These methods allow for easier checks on certain statuses of the postings
   def action_required?
