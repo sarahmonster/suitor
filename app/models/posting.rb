@@ -35,15 +35,12 @@ class Posting < ActiveRecord::Base
   scope :deadline_approaching, -> {
     where('deadline > ?', Time.now)
   }
-
   scope :deadline_passed, -> {
     where('deadline < ?', Time.now)
   }
-
   scope :with_followup, -> {
      joins(:job_application).where('followup IS NOT NULL')
   }
-
   scope :without_followup, -> {
      joins(:job_application).where('followup IS NULL AND job_applications.date_sent < ?', Date.current.advance(days: 14))
   }
