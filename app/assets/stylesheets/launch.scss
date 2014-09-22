@@ -30,18 +30,30 @@
   }
 }
 
+
+// TAGLINE/INTRO PANEL
 #tagline {
   text-align: center;
   @include span-columns(8);
   @include shift(2);
 }
 
+
+// SCREENSHOTS PANEL
 #screenshots {
   background: $white;
+
+  .images {
+    @include span-columns(6)
+  }
+
+  .text {
+    @include span-columns(6)
+  }
 }
 
 
-
+// SIGNUP PANEL
 #signup {
 
   form {
