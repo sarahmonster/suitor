@@ -117,7 +117,7 @@ $ ->
       if !$(event.target).closest(".dropdown").length
         if $(".dropdown ul").is(":visible")
           $(".dropdown ul").slideUp(400)
-          $(this).parent().find("button").expanderSwap()
+          $(".dropdown ul").parent().find("button").expanderSwap()
 
     # Show and hide postings according to user's filter 
     $(".filter-buttons a").click (event) ->
