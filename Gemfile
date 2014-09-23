@@ -12,10 +12,7 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-# Production-only gems
-group :production do
-  gem 'mysql2'
-end
+gem 'mysql2'
 
 # Deployment via Capistrano
 gem 'capistrano', '~> 3.1.0'
