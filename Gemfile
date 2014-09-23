@@ -7,18 +7,22 @@ gem 'rails', '4.1.1'
 group :development, :test do
   # Use dotenv to manage secrets and things of that nature
   gem 'dotenv-rails'
-
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
 
-gem 'mysql2'
+# Production-only gems
+group :production do
+  gem 'mysql2'
+end
 
 # Deployment via Capistrano
-gem 'capistrano', '~> 3.1.0'
-gem 'capistrano-bundler', '~> 1.1.2'
-gem 'capistrano-rails', '~> 1.1.1'
-gem 'capistrano-rvm', github: "capistrano/rvm"
+group :production do
+  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-rvm', github: "capistrano/rvm"
+end
 
 # Better Development
 group :development do
