@@ -3,25 +3,13 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 
+# Use dotenv to manage secrets and things of that nature
+gem 'dotenv-rails'
+
 # Development and test-only gems
 group :development, :test do
-  # Use dotenv to manage secrets and things of that nature
-  gem 'dotenv-rails'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-end
-
-# Production-only gems
-group :production do
-  gem 'mysql2'
-end
-
-# Deployment via Capistrano
-group :production do
-  gem 'capistrano', '~> 3.1.0'
-  gem 'capistrano-bundler', '~> 1.1.2'
-  gem 'capistrano-rails', '~> 1.1.1'
-  gem 'capistrano-rvm', github: "capistrano/rvm"
 end
 
 # Better Development
@@ -31,6 +19,20 @@ group :development do
   gem 'rails-footnotes', '>= 4.0.0', '<5'
   gem 'spring'
   gem 'seed_dump'
+end
+
+# Production-only gems
+group :production do
+  # Use dotenv to deploy secrets with Capistrano
+  gem 'dotenv-deployment', require: 'dotenv/deployment'
+
+  # MySQL in production
+  gem 'mysql2'
+
+  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1.1'
+  gem 'capistrano-rvm', github: "capistrano/rvm"
 end
 
 # User authentication

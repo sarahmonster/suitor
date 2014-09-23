@@ -225,6 +225,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   date_time_attribute
   devise
+  dotenv-deployment
   dotenv-rails
   font-awesome-rails
   jbuilder (~> 1.2)
