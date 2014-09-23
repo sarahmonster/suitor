@@ -19,6 +19,7 @@ gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rvm', github: "capistrano/rvm"
 
 # Capistrano needs mysql
+gem 'mysql'
 gem 'mysql2'
 
 # Better Development
