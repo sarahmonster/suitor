@@ -5,6 +5,7 @@ set :application, 'suitor'
 set :repo_url, 'git@github.com:sarahsemark/suitor.git'
 
 # Default branch is :master
+set :branch "deployment-system"
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
 # Default deploy_to directory is /var/www/my_app

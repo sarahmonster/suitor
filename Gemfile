@@ -18,6 +18,9 @@ gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rvm', github: "capistrano/rvm"
 
+# Capistrano needs mysql
+gem 'mysql2'
+
 # Better Development
 group :development do
   gem 'better_errors'
