@@ -27,6 +27,7 @@ Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 
 require 'capistrano/bundler'
 require 'capistrano/rails'
+require 'capistrano/rvm'
 
 # If you are using rvm add these lines:
 # require 'capistrano/rvm'
