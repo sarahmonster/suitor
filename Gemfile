@@ -12,15 +12,16 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+# Production-only gems
+group :production do
+  gem 'mysql2'
+end
+
 # Deployment via Capistrano
 gem 'capistrano', '~> 3.1.0'
 gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rvm', github: "capistrano/rvm"
-
-# Capistrano needs mysql
-gem 'mysql'
-gem 'mysql2'
 
 # Better Development
 group :development do

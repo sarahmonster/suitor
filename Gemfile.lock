@@ -109,7 +109,6 @@ GEM
     multi_json (1.10.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql (2.9.1)
     mysql2 (0.3.16)
     neat (1.5.1)
       bourbon (>= 3.1)
@@ -231,7 +230,6 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-sass-rails
-  mysql
   mysql2
   neat
   omniauth-facebook
