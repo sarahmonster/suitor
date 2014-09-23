@@ -39,6 +39,7 @@
 // TAGLINE/INTRO PANEL
 #tagline {
   text-align: center;
+  margin-top: 15%;
   @include span-columns(8);
   @include shift(2);
 }
