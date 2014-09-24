@@ -2,7 +2,7 @@ $max-width: 1140px;
 $grid-columns: 12;
 
 body { 
-    background: $base-body-color url('../assets/pinstriped_suit_@2X.png'); 
+    background: $base-body-color image-url('pinstriped_suit_@2X.png'); 
     background-size: 400px 330px;
     overflow-x: hidden;
 }
