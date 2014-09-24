@@ -1,2 +1,19 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<header class="page-header">
+  <h3>Hello! Welcome to suitor.</h3>
+  <h1>Let&rsquo;s find you a job.</h1>
+</header>
+
+<div class="intro">
+
+  <p>Job-hunting is a pain in the butt. Whether you send out ten resumes or ten hundred, it&rsquo;s important to keep track of your process. Using suitor, you can easily track your application status, send follow-ups, and keep a record of what you said to who, so you&rsquo;ll never accidentally say the wrong thing to the wrong person.</p>
+
+  <p>Get your foot in the door, not in your mouth.</p>
+
+  <% unless current_user %>
+    <%= link_to t("Sign up"), user_signup_path %>
+    <%= link_to "Log in", new_user_session_path, class: "secondary" %>
+  <% else %>
+    Signed in as <%= current_user.email %>
+    <%= link_to "Log out", destroy_user_session_path, method: 'delete' %>
+  <% end %> 
+</div>

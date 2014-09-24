@@ -7,13 +7,9 @@ Suitor::Application.routes.draw do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
     post 'login' => 'devise/sessions#create', :as => :user_session
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
-
     get 'sign-up' => 'devise/registrations#new', as: :user_signup
     # post 'signup' => 'devise/registrations#create', as: :user_signup
   end
-
-  # resources :users
-  #resources :interviews
 
   get '/home' => 'pages#home'
   get '/launch' => 'pages#launch'
@@ -24,8 +20,8 @@ Suitor::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  # Set site root
+  root 'pages#launch'
 
   # Set up job postings, and routing for nested models
   resources :postings do
