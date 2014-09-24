@@ -52,7 +52,7 @@
 
 // SCREENSHOTS PANEL
 #screenshots {
-  background: lighten($blue, 66.5%) url('../assets/whitey_@2X.png');
+  background: lighten($blue, 66.5%) image-url('whitey_@2X.png');
   background-size: 654px 654px;
   padding-bottom: 5em;
 
