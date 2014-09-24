@@ -11,12 +11,11 @@ Suitor::Application.routes.draw do
     # post 'signup' => 'devise/registrations#create', as: :user_signup
   end
 
-  get '/home' => 'pages#home'
-  get '/launch' => 'pages#launch'
-  get '/about' => 'pages#about'
-  get '/help' => 'pages#help'
+  get 'home' => 'pages#home'
+  get 'launch' => 'pages#launch'
+  get 'about' => 'pages#about'
+  get 'help' => 'pages#help'
 
-  get "welcome/index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
