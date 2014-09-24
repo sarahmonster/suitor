@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+
+// LAUNCH PAGE
+
 .pages.launch, html {height: 100%;}
 
 .panel {
@@ -41,7 +46,7 @@
 }
 
 
-// TAGLINE/INTRO PANEL
+// tagline/intro panel
 #tagline {
   text-align: center;
   margin-top: 15%;
@@ -50,7 +55,7 @@
 }
 
 
-// ABOUT PANEL
+// about panel
 #about {
   background: lighten($blue, 66.5%) image-url('whitey_@2X.png');
   background-size: 654px 654px;
@@ -79,7 +84,7 @@
 }
 
 
-// SIGNUP PANEL
+// signup panel
 #signup {
 
   .large-text {
@@ -110,5 +115,36 @@
     }
   }
 
+}
+
+
+
+// WELCOME/HOME PAGE
+.home .intro {
+  @extend %box;
+  @include span-columns(6);
+  @include shift(3);
+
+  p {
+    text-align: left;
+  }
+  
+  p:last-of-type {
+    margin: 1em 0 3em;
+    font-size: 1.4em;
+    color: $red;
+    text-align: center;
+  }
+
+  a {
+    @extend %button;
+    @include appearance(none);
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    float: none;
+    clear: both;
+  }
 }
 
