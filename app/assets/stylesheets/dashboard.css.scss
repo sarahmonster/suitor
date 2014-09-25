@@ -1,0 +1,13 @@
+// DASHBOARD CONTROLLER STYLES
+
+
+.logout {
+    @extend %button;
+    @include appearance(none);
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    float: none;
+    clear: both;
+}

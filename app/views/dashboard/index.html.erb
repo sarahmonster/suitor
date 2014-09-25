@@ -1,9 +1,9 @@
 <header class="page-header">
-  <h3>Welcome back, <%= current_user.name %>!</h3>
-  <h1>Dashboard</h1>
+  <h3>Welcome back<% if current_user.name %>, <%= current_user.name %><% end %>!</h3>
+  <h1>Your dashboard</h1>
 </header>
 
 <div class="intro">
   <p>Your process this week:</p>
-  <%= link_to "Log out", destroy_user_session_path, method: 'delete' %>
+  <%= link_to "Log out", destroy_user_session_path, method: 'delete', class: 'logout' %>
 </div>
