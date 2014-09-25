@@ -7,6 +7,24 @@
   <p>Hello<% if current_user.name %>, <%= current_user.name %><% end %>. Here&rsquo;s a look at your progress.</p>
 </div>
 
+<div class="action-items">
+  <% unless @postings_with_upcoming_interviews.empty? %>
+    <h3>You have <%= @postings_with_upcoming_interviews.size %> upcoming interviews:</h3>
+    <ul>
+      <% @postings_with_upcoming_interviews.each do |posting| %>
+        <li>
+          <%= friendly_datetime(posting.interviews.upcoming.first.datetime) %> 
+          with 
+          <% unless posting.interviews.upcoming.first.interviewer.blank? %> 
+            <%= posting.interviews.upcoming.first.interviewer %> at
+          <% end %>
+          <%= posting.hiring_organization %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
 <footer class="logout">
   <%= link_to "Log out", destroy_user_session_path, method: 'delete' %>
 </footer>
