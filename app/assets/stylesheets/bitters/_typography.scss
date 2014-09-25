@@ -145,3 +145,18 @@ cite {
     content: '\2014 \00A0';
   }
 }
+
+em {
+  font-style: italic;
+  color: lighten(desaturate($blue, 50%), 10%);
+}
+
+strong {
+  background: transparentize($white, .15);
+  padding: .125em .25em;
+  text-transform: uppercase;
+  font-size: .8em;
+  letter-spacing: 1px;
+  font-weight: bolder;
+  color: $green;
+}

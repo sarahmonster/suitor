@@ -1,0 +1,150 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+// LAUNCH PAGE
+
+.pages.launch, html {height: 100%;}
+
+.panel {
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  margin: 0;
+  border-bottom: 2px solid $medium-grey;
+  border-top: 1px solid $white;
+  @include box-shadow;
+}
+
+.next {
+  clear: both;
+  position: absolute;
+  bottom: 2em;
+  width: 100%;
+  text-align: center;
+
+  i {
+    background: lighten($blue, 60%);
+    border: 4px solid lighten($blue, 40%);
+    border-radius: 50%;
+    color: lighten($blue, 20%);
+    font-size: 3em;
+    @include box-shadow;
+
+    &:hover {
+      background: $blue;
+    }
+  }
+}
+
+.large-text {
+  font-size: 1.2em;
+  line-height: 1.8em;
+}
+
+
+// tagline/intro panel
+#tagline {
+  text-align: center;
+  margin-top: 15%;
+  @include span-columns(8);
+  @include shift(2);
+}
+
+
+// about panel
+#about {
+  background: lighten($blue, 66.5%) image-url('whitey_@2X.png');
+  background-size: 654px 654px;
+  padding-bottom: 5em;
+
+  .row {
+    clear: both;
+  }
+
+  .image {
+    @include span-columns(4);
+    &:first-child { @include shift(1); }
+
+    img {
+      border: 10px solid $white;
+      border-radius: 50%;
+      @include box-shadow;
+    }
+  }
+
+  .large-text {
+    margin: 3em 0;
+    @include span-columns(6); 
+    &:first-child { @include shift(1); }
+  }
+}
+
+
+// signup panel
+#signup {
+
+  .large-text {
+    @include span-columns(6);
+    @include shift(3);
+
+  }
+
+  form {
+    margin-top: 5em;
+    @include span-columns(8);
+    @include shift(2);
+
+    input[type="email"] {
+      width: 53%;
+      float: left;
+    }
+
+    .mce-responses {
+      display: none;
+    }
+
+    input[type="submit"] {
+      margin-left: 2%;
+      width: 45%;
+      float: left;
+      clear: none;
+    }
+  }
+
+}
+
+
+
+// WELCOME/HOME PAGE
+.home .intro {
+  @extend %box;
+  @include span-columns(6);
+  @include shift(3);
+
+  p {
+    text-align: left;
+  }
+  
+  p:last-of-type {
+    margin: 1em 0 3em;
+    font-size: 1.4em;
+    color: $red;
+    text-align: center;
+  }
+
+  a {
+    @extend %button;
+    @include appearance(none);
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+    float: none;
+    clear: both;
+  }
+}
+

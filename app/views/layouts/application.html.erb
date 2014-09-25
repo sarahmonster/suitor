@@ -7,7 +7,7 @@
   <%= favicon_link_tag 'favicon.png?v=5', type: 'image/png' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
 
 <header class="site-header">
   <div>
@@ -18,7 +18,7 @@
   <ul class="navigation">
     
     <li>
-    <%= link_to welcome_index_path do %>
+    <%= link_to home_path do %>
         <i class="icon-dashboard2"></i>
         <%= t('Dashboard') %> <span><%= t('Your progress') %></span>
     <% end %>
@@ -40,7 +40,7 @@
     </li>
 
     <li>
-    <%= link_to welcome_index_path do %>
+    <%= link_to about_path do %>
         <i class="icon-suitcase"></i>
         <%= t('About') %> <span><%= t('Learn more') %></span>
     <% end %>
