@@ -40,6 +40,10 @@ h3 {
   color: lighten($dark-grey, 20%);
   a {color: lighten($dark-grey, 20%)}
 
+  & + p {
+    margin-top: 1em;
+  }
+
   span {
     margin: 0;
     font-weight: 400;

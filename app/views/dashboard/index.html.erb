@@ -14,48 +14,56 @@
 
 
 <!-- ACTIONABLE ITEMS -->
-<div class="action-items">
+<section class="action-items">
   
   <!-- UPCOMING INTERVIEWS -->
   <% unless @postings_with_upcoming_interviews.empty? %>
-    <h3>You have <%= @postings_with_upcoming_interviews.size %> upcoming interviews:</h3>
-    <ul>
-      <% @postings_with_upcoming_interviews.each do |posting| %>
-        <li>
-          <%= friendly_datetime(posting.interviews.upcoming.first.datetime) %> 
-          with 
-          <% unless posting.interviews.upcoming.first.interviewer.blank? %> 
-            <%= posting.interviews.upcoming.first.interviewer %> at
-          <% end %>
-          <%= posting.hiring_organization %>
-        </li>
-      <% end %>
-    </ul>
+    <div class="upcoming-interviews">
+      <h3>You have <%= @postings_with_upcoming_interviews.size %> upcoming interviews:</h3>
+      <ul>
+        <% @postings_with_upcoming_interviews.each do |posting| %>
+          <li>
+            <%= friendly_datetime(posting.interviews.upcoming.first.datetime) %> 
+            with 
+            <% unless posting.interviews.upcoming.first.interviewer.blank? %> 
+              <%= posting.interviews.upcoming.first.interviewer %> at
+            <% end %>
+            <%= posting.hiring_organization %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
   <!-- END UPCOMING INTERVIEWS -->
 
   <!-- APPLICATION NEEDED -->
   <% unless @postings_needing_application.empty? %>
-    <h3>You have <%= @postings_needing_application.size %> jobs to apply for. What are you waiting for?</h3>
-    <ul>
-      <% @postings_needing_application.each do |posting| %>
-        <li>
-          <%= link_to posting do %>
-            <%= posting.title %> at <%= posting.hiring_organization %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <div class="application-needed">
+      <h3>You have <%= @postings_needing_application.size %> jobs to apply for.</h3>
+      <p>What are you waiting for? Start sending out applications today!</p>
+      <ul>
+        <% @postings_needing_application.each do |posting| %>
+          <li>
+            <%= link_to posting do %>
+              <%= posting.title %> at <%= posting.hiring_organization %> (Deadline <%= posting.deadline %>)
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
   <!-- END APPLICATION NEEDED -->
 
   <!-- FOLLOW-UP NEEDED -->
   <% unless @postings_needing_followup.empty? %>
+  <div class="followup-needed">
     <h3>You need to send <%= @postings_needing_followup.size %> follow-up messages.</h3>
+    <p>Let&rsquo;s get going, mister and/or missy!</p>
+  </div>
   <% end %>
   <!-- END FOLLOWUP NEEDED -->
 
-</div>
+</section>
 <!-- END ACTIONABLE ITEMS -->
 
 

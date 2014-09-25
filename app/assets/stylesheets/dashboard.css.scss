@@ -3,6 +3,41 @@
 .dashboard .intro {
 }
 
+.dashboard .action-items {
+    @include span-columns(6);
+
+    div {
+        @extend %box;
+        margin-bottom: 1em;
+
+        &.upcoming-interviews {
+            border-color: lighten($blue, 40%);
+            h3 { color: $blue; }
+        }
+
+        &.application-needed {
+            border-color: lighten($red, 40%);
+            h3 { color: $red; }
+        }
+
+        &.followup-needed {
+            border-color: lighten($red, 40%);
+            h3 { color: $red; }
+        }
+
+        ul {
+            margin-top: 2em;
+        }
+
+        li {
+            text-align: left;
+            padding: .5em;
+            border-top: 1px solid $light-grey;
+        }
+    }
+
+}
+
 footer.logout {
     margin-top: 5em;
     text-align: center;
