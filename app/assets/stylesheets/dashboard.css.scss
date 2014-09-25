@@ -1,13 +1,20 @@
 // DASHBOARD CONTROLLER STYLES
 
+.dashboard .intro {
+}
 
-.logout {
-    @extend %button;
-    @include appearance(none);
-    cursor: pointer;
-    user-select: none;
-    vertical-align: middle;
-    white-space: nowrap;
-    float: none;
-    clear: both;
+footer.logout {
+    margin-top: 5em;
+    text-align: center;
+
+    a {
+        @extend %button;
+        @include appearance(none);
+        cursor: pointer;
+        user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        float: none;
+        clear: both;
+    }
 }

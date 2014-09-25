@@ -3,7 +3,10 @@
   <h1>Your dashboard</h1>
 </header>
 
-<div class="intro">
-  <p>Your process this week:</p>
-  <%= link_to "Log out", destroy_user_session_path, method: 'delete', class: 'logout' %>
+<div class="intro large-text">
+  <p>Hello<% if current_user.name %>, <%= current_user.name %><% end %>. Here&rsquo;s a look at your progress.</p>
 </div>
+
+<footer class="logout">
+  <%= link_to "Log out", destroy_user_session_path, method: 'delete' %>
+</footer>
