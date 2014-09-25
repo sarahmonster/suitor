@@ -1,13 +1,22 @@
+<!-- PAGE HEADER -->
 <header class="page-header">
   <h3>Welcome back<% if current_user.name %>, <%= current_user.name %><% end %>!</h3>
   <h1>Your dashboard</h1>
 </header>
+<!-- END PAGE HEADER -->
 
+
+<!-- HELLO MESSAGE -->
 <div class="intro large-text">
   <p>Hello<% if current_user.name %>, <%= current_user.name %><% end %>. Here&rsquo;s a look at your progress.</p>
 </div>
+<!-- END HELLO MESSAGE -->
 
+
+<!-- ACTIONABLE ITEMS -->
 <div class="action-items">
+  
+  <!-- UPCOMING INTERVIEWS -->
   <% unless @postings_with_upcoming_interviews.empty? %>
     <h3>You have <%= @postings_with_upcoming_interviews.size %> upcoming interviews:</h3>
     <ul>
@@ -23,8 +32,35 @@
       <% end %>
     </ul>
   <% end %>
-</div>
+  <!-- END UPCOMING INTERVIEWS -->
 
+  <!-- APPLICATION NEEDED -->
+  <% unless @postings_needing_application.empty? %>
+    <h3>You have <%= @postings_needing_application.size %> jobs to apply for. What are you waiting for?</h3>
+    <ul>
+      <% @postings_needing_application.each do |posting| %>
+        <li>
+          <%= link_to posting do %>
+            <%= posting.title %> at <%= posting.hiring_organization %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <!-- END APPLICATION NEEDED -->
+
+  <!-- FOLLOW-UP NEEDED -->
+  <% unless @postings_needing_followup.empty? %>
+    <h3>You need to send <%= @postings_needing_followup.size %> follow-up messages.</h3>
+  <% end %>
+  <!-- END FOLLOWUP NEEDED -->
+
+</div>
+<!-- END ACTIONABLE ITEMS -->
+
+
+<!-- LOGOUT IN FOOTER (FOR NOW) -->
 <footer class="logout">
   <%= link_to "Log out", destroy_user_session_path, method: 'delete' %>
 </footer>
+<!-- END FOOTER -->
