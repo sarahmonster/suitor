@@ -36,20 +36,22 @@ form div {
   text-align: left;
   clear: both;
 
-  &.half-width {
-    float: left;
-    clear: none;
-    width: calc(50% - 10px);
-    margin-right: 20px;
-   
-    & + .half-width {
-      margin-right: 0;
-      @include clearfix;
+  @include media($medium-screen-up) {
+    &.half-width {
+      float: left;
+      clear: none;
+      width: calc(50% - 10px);
+      margin-right: 20px;
+     
+      & + .half-width {
+        margin-right: 0;
+        @include clearfix;
+      }
     }
   }
 
   &.date, &.time {
-    width: 170px;
+    @include media($medium-screen-up) { width: 170px; }
 
     i {
       display: inline-block;
@@ -59,30 +61,29 @@ form div {
   }
 
   &.partial, &.date + .time {
-    width: calc(100% - 190px);
+    @include media($medium-screen-up) { width: calc(100% - 190px); }
   }
 
-  &.url-field {
-    position: relative;
+  @include media($medium-screen-up) { 
+    &.url-field {
+      position: relative;
+      input[type="url"] { text-indent: 5.5em; }
 
-    input[type="url"] {
-      text-indent: 5.5em;
-    }
-
-    &:after {
-      content: 'http://';
-      display: block;
-      position: absolute;
-      top: 2.35em;
-      left: 4px;
-      padding: 6px 10px;
-      background: lighten($light-grey, 5%);
-      color: $white;
-      font-family: $sans-serif;
-      text-transform: uppercase;
-      font-weight: 600;
-      font-size: .75em;
-      letter-spacing: 2px;
+      &:after {
+        content: 'http://';
+        display: block;
+        position: absolute;
+        top: 2.35em;
+        left: 4px;
+        padding: 6px 10px;
+        background: lighten($light-grey, 5%);
+        color: $white;
+        font-family: $sans-serif;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: .75em;
+        letter-spacing: 2px;
+      }
     }
   }
 
