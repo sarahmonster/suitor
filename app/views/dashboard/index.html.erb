@@ -78,10 +78,21 @@
       <div class="progress-bar">
         <span class="meter" style="width: 60%"><p>60%</p></span>
       </div>
-      
-      <p>You have applied to x jobs of your x goal. Keep at it!</p>
+
+      <p>You have applied to x jobs of your x goal. This is x% higher/lower than your average. Something encouraging.</p>
     </div>
     <!-- END WEEKLY PROGRESS -->
+
+    <!-- OVERALL STATISTICS -->
+    <div class="statistics">
+      <h3>Your overall statistics</h3>
+      <ul>
+        <li><%= @postings_with_interviews.size %> of <%= @postings_applied_for.size %> (x%) of jobs you&rsquo;ve applied to have moved to the interview stage</li>
+        <li><%= @postings_archived.size %> of <%= @postings_applied_for.size %> (x%) were archived (are we assuming those were "no thank yous")</li>
+        <li>In total, you&rsquo;ve applied for <%= @postings_applied_for.size %> jobs</li>
+        <li>On average, you apply to x jobs per week</li>
+      </ul>
+    </div>
 
   </section>
   <!-- END PROGRESS AND STATISTICS -->

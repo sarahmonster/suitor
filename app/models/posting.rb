@@ -16,6 +16,9 @@ class Posting < ActiveRecord::Base
   scope :applied, -> {
     joins(:job_application).where('job_applications.date_sent IS NOT NULL')
   }
+  scope :total_applied, -> {
+    unscoped.joins(:job_application).where('job_applications.date_sent IS NOT NULL')
+  }
   scope :havent_applied, -> {
     where("NOT EXISTS (SELECT null FROM job_applications where job_applications.posting_id = postings.id)")
   }
@@ -28,6 +31,9 @@ class Posting < ActiveRecord::Base
   scope :interview_scheduled, -> {
     joins(:interviews).where('interviews.datetime >= ?', Time.now)
   }
+  scope :with_interviews, -> {
+    where("EXISTS (SELECT null FROM interviews where interviews.posting_id = postings.id)")
+  }  
   scope :no_interviews, -> {
     where("NOT EXISTS (SELECT null FROM interviews where interviews.posting_id = postings.id)")
   }
