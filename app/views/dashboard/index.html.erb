@@ -19,11 +19,12 @@
   <!-- UPCOMING INTERVIEWS -->
   <% unless @postings_with_upcoming_interviews.empty? %>
     <div class="upcoming-interviews">
-      <h3>You have <%= @postings_with_upcoming_interviews.size %> upcoming interviews:</h3>
+      <h3>You have <%= @postings_with_upcoming_interviews.size %> upcoming interviews</h3>
+      <p>You get &lsquo;em, tiger!</p>
       <ul>
         <% @postings_with_upcoming_interviews.each do |posting| %>
           <li>
-            <%= friendly_datetime(posting.interviews.upcoming.first.datetime) %> 
+            <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>"><%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
             with 
             <% unless posting.interviews.upcoming.first.interviewer.blank? %> 
               <%= posting.interviews.upcoming.first.interviewer %> at
@@ -39,7 +40,7 @@
   <!-- APPLICATION NEEDED -->
   <% unless @postings_needing_application.empty? %>
     <div class="application-needed">
-      <h3>You have <%= @postings_needing_application.size %> jobs to apply for.</h3>
+      <h3>You have <%= @postings_needing_application.size %> jobs to apply for</h3>
       <p>What are you waiting for? Start sending out applications today!</p>
       <ul>
         <% @postings_needing_application.each do |posting| %>
