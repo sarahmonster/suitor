@@ -1,7 +1,3 @@
-$max-width: 1140px;
-$grid-columns: 12;
-$visual-grid: true;
-
 body { 
     background: $base-body-color image-url('pinstriped_suit_@2X.png'); 
     background-size: 400px 330px;
@@ -88,7 +84,7 @@ body {
 // GENERAL PAGE STRUCTURE & STYLES
 .container {
     @include outer-container;
-    margin: 10px;
+    @include media($max-width-down) { margin: 10px; }
 }
 
 .page-header {

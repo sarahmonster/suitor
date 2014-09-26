@@ -7,6 +7,9 @@
 
 // Neat Breakpoints
 ///////////////////////////////////////////////////////////////////////////////
+$max-width: 1140px;
+$grid-columns: 12;
+
 $mobile: new-breakpoint(max-width 480px 4);
 
 $medium-screen: 640px;
@@ -14,7 +17,12 @@ $large-screen: 800px;
 
 $medium-screen-down: new-breakpoint(max-width $medium-screen);
 $medium-screen-up: new-breakpoint(min-width $medium-screen);
+
+$large-screen-down: new-breakpoint(max-width $large-screen);
 $large-screen-up: new-breakpoint(min-width $large-screen);
+
+$max-width-down: new-breakpoint(max-width $max-width);
+$max-width-up: new-breakpoint(min-width $max-width);
 
 .hide-small {
   @include media($medium-screen-down) { display: none; }
