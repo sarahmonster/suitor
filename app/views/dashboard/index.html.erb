@@ -12,60 +12,81 @@
 </div>
 <!-- END HELLO MESSAGE -->
 
+<div class="main-content">
+  <!-- ACTIONABLE ITEMS -->
+  <section class="action-items">
+    
+    <!-- UPCOMING INTERVIEWS -->
+    <% unless @postings_with_upcoming_interviews.empty? %>
+      <div class="upcoming-interviews">
+        <h3>You have <%= @postings_with_upcoming_interviews.size %> upcoming interviews</h3>
+        <p>You get &lsquo;em, tiger!</p>
+        <ul>
+          <% @postings_with_upcoming_interviews.each do |posting| %>
+            <li>
+              <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>"><%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
+              with 
+              <% unless posting.interviews.upcoming.first.interviewer.blank? %> 
+                <%= posting.interviews.upcoming.first.interviewer %> at
+              <% end %>
+              <%= posting.hiring_organization %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <!-- END UPCOMING INTERVIEWS -->
 
-<!-- ACTIONABLE ITEMS -->
-<section class="action-items">
-  
-  <!-- UPCOMING INTERVIEWS -->
-  <% unless @postings_with_upcoming_interviews.empty? %>
-    <div class="upcoming-interviews">
-      <h3>You have <%= @postings_with_upcoming_interviews.size %> upcoming interviews</h3>
-      <p>You get &lsquo;em, tiger!</p>
-      <ul>
-        <% @postings_with_upcoming_interviews.each do |posting| %>
-          <li>
-            <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>"><%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
-            with 
-            <% unless posting.interviews.upcoming.first.interviewer.blank? %> 
-              <%= posting.interviews.upcoming.first.interviewer %> at
-            <% end %>
-            <%= posting.hiring_organization %>
-          </li>
-        <% end %>
-      </ul>
+    <!-- APPLICATION NEEDED -->
+    <% unless @postings_needing_application.empty? %>
+      <div class="application-needed">
+        <h3>You have <%= @postings_needing_application.size %> jobs to apply for</h3>
+        <p>What are you waiting for? Start sending out applications today!</p>
+        <ul>
+          <% @postings_needing_application.each do |posting| %>
+            <li>
+              <%= link_to posting do %>
+                <%= posting.title %> at <%= posting.hiring_organization %> (Deadline <%= posting.deadline %>)
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <!-- END APPLICATION NEEDED -->
+
+    <!-- FOLLOW-UP NEEDED -->
+    <% unless @postings_needing_followup.empty? %>
+    <div class="followup-needed">
+      <h3>You need to send <%= @postings_needing_followup.size %> follow-up messages.</h3>
+      <p>Let&rsquo;s get going, mister and/or missy!</p>
     </div>
-  <% end %>
-  <!-- END UPCOMING INTERVIEWS -->
+    <% end %>
+    <!-- END FOLLOWUP NEEDED -->
 
-  <!-- APPLICATION NEEDED -->
-  <% unless @postings_needing_application.empty? %>
-    <div class="application-needed">
-      <h3>You have <%= @postings_needing_application.size %> jobs to apply for</h3>
-      <p>What are you waiting for? Start sending out applications today!</p>
-      <ul>
-        <% @postings_needing_application.each do |posting| %>
-          <li>
-            <%= link_to posting do %>
-              <%= posting.title %> at <%= posting.hiring_organization %> (Deadline <%= posting.deadline %>)
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
+  </section>
+  <!-- END ACTIONABLE ITEMS -->
+
+
+  <!-- PROGRESS AND STATISTICS -->
+  <section class="progress-and-statistics">
+
+    <!-- WEEKLY PROGRESS -->
+    <div class="progress">
+      <h3>Your progress this week</h3>
+      
+      <div class="progress-bar">
+        <span class="meter" style="width: 60%"><p>60%</p></span>
+      </div>
+      
+      <p>You have applied to x jobs of your x goal. Keep at it!</p>
     </div>
-  <% end %>
-  <!-- END APPLICATION NEEDED -->
+    <!-- END WEEKLY PROGRESS -->
 
-  <!-- FOLLOW-UP NEEDED -->
-  <% unless @postings_needing_followup.empty? %>
-  <div class="followup-needed">
-    <h3>You need to send <%= @postings_needing_followup.size %> follow-up messages.</h3>
-    <p>Let&rsquo;s get going, mister and/or missy!</p>
-  </div>
-  <% end %>
-  <!-- END FOLLOWUP NEEDED -->
+  </section>
+  <!-- END PROGRESS AND STATISTICS -->
 
-</section>
-<!-- END ACTIONABLE ITEMS -->
+</div>
 
 
 <!-- LOGOUT IN FOOTER (FOR NOW) -->
