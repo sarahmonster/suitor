@@ -16,6 +16,10 @@ $medium-screen-down: new-breakpoint(max-width $medium-screen);
 $medium-screen-up: new-breakpoint(min-width $medium-screen);
 $large-screen-up: new-breakpoint(min-width $large-screen);
 
+.hide-small {
+  @include media($medium-screen-down) { display: none; }
+}
+
 @mixin omega($nth) {
     &:nth-of-type(#{$nth}) {
         margin-right: 0;

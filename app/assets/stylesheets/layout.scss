@@ -98,7 +98,7 @@ body {
 
     .controls {
         display: inline-block;
-        margin: 1em 0;
+        margin: .5em 0 0;
         line-height: 1em;
         span {display: inline;}
         i {margin: 0;}
@@ -106,7 +106,8 @@ body {
 
     .controls > a, button {
         @extend %small-button;
-        width: 100%;
+        display: inline-block;
+        margin-bottom: 6px;
         padding: 8px 12px;
         text-align: left;
         font-size: .85em;
@@ -114,7 +115,7 @@ body {
     }
 
     @include media($mobile) {
-        font-size: .9em;
+        h1 { font-size: 2em; }
     }
 }
 

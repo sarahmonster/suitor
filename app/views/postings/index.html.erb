@@ -1,11 +1,11 @@
 <header class="page-header">
   <!-- PAGE TITLE -->
   <% if @archive_page %>
-    <h3>Sorted by: date added</h3>
-    <h1>Archived job postings</h1>
+    <h3>Sorted by: date added</h3> 
+    <h1>Archived <span class="hide-small">job</span> postings</h1>
   <% else %>
-    <h3>Sorted by: <%= @sortorder.titleize %></h3>
-    <h1>Open job postings</h1>
+    <h3>Sorted by: <%= @sortorder.titleize %></h3> 
+    <h1>Open <span class="hide-small">job</span> postings</h1>
   <% end %>
   <!-- END PAGE TITLE -->
 
