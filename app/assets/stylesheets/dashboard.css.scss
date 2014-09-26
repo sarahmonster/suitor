@@ -1,41 +1,41 @@
 // DASHBOARD CONTROLLER STYLES
 
-.dashboard .intro {
+.dashboard {
+    .action-items > div, .progress-and-statistics > div {
+        @extend %box;
+        margin-bottom: 1em;
+    }
+
+    ul {
+        margin-top: 2em;
+    }
+
+    li {
+        text-align: left;
+        padding: .5em;
+        border-top: 1px solid $light-grey;
+
+        i span { display: inline; }
+    }
 }
+
 
 .dashboard .action-items {
     @include span-columns(6);
 
-    div {
-        @extend %box;
-        margin-bottom: 1em;
+    .upcoming-interviews {
+        border-color: lighten($blue, 40%);
+        h3, i { color: $blue; }
+    }
 
-        &.upcoming-interviews {
-            border-color: lighten($blue, 40%);
-            h3, i { color: $blue; }
-        }
+    .application-needed {
+        border-color: lighten($red, 40%);
+        h3 { color: $red; }
+    }
 
-        &.application-needed {
-            border-color: lighten($red, 40%);
-            h3 { color: $red; }
-        }
-
-        &.followup-needed {
-            border-color: lighten($red, 40%);
-            h3 { color: $red; }
-        }
-
-        ul {
-            margin-top: 2em;
-        }
-
-        li {
-            text-align: left;
-            padding: .5em;
-            border-top: 1px solid $light-grey;
-
-            i span { display: inline; }
-        }
+    .followup-needed {
+        border-color: lighten($red, 40%);
+        h3 { color: $red; }
     }
 
 }
@@ -44,8 +44,6 @@
     @include span-columns(6);
 
     > div {
-        @extend %box;
-        margin-bottom: 1em;
         border-color: lighten($green, 40%);
         h3 { color: $green; }
     }
