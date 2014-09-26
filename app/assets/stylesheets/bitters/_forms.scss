@@ -146,6 +146,7 @@ select[multiple=multiple] {
   color: $dark-grey;
   margin-bottom: $base-line-height / 2;
   padding: $base-line-height / 1.75;
+  width: 100%;
   @include box-shadow($size: 1px);
 
   &:hover {
