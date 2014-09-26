@@ -22,16 +22,11 @@
     }
 
     .page-header {
-        @include span-columns(4);
+        @include fill-parent();
         font-size: .9em;
     }
 
 
-    // FORMS
-
-    label, textarea, #{$all-text-inputs}, select[multiple=multiple] {
-        @include span-columns(4);
-    }
 
 
 

@@ -7,8 +7,6 @@ body {
     overflow-x: hidden;
 }
 
-aside   { @include span-columns(3); }
-//section { @include outer-container; }
 
 
 // LOGO AND NAVIGATION
@@ -69,11 +67,28 @@ aside   { @include span-columns(3); }
             border-radius: 50%;
         }
     }
+
+    @include media($mobile) {
+        //@include outer-container;
+        border-bottom: 2px solid $light-grey;
+
+        #logo {
+            @include span-columns(2);
+            @include shift(1);
+        }
+
+        ul.navigation {
+            display: none;
+        }
+    }
 }
 
 
 // GENERAL PAGE STRUCTURE & STYLES
-.container {@include outer-container;}
+.container {
+    @include outer-container;
+    @include media($mobile) { margin: 20px; }
+}
 
 .page-header {
     text-align: center;
@@ -95,6 +110,10 @@ aside   { @include span-columns(3); }
         text-align: left;
         font-size: .85em;
         i {color: $medium-grey;}
+    }
+
+    @include media($mobile) {
+        font-size: .9em;
     }
 }
 
