@@ -6,16 +6,16 @@
         margin-bottom: 1em;
     }
 
-    ul {
+    section ul {
         margin-top: 2em;
-    }
 
-    li {
-        text-align: left;
-        padding: .5em;
-        border-top: 1px solid $light-grey;
+        li {
+            text-align: left;
+            padding: .5em;
+            border-top: 1px solid $light-grey;
 
-        i span { display: inline; }
+            i span { display: inline; }
+        }
     }
 }
 
