@@ -103,7 +103,7 @@ section.job-posting {
     text-align: center;
     position: relative;
     border-top-color: $green;
-    @include media($medium-screen-up) {
+    @include media($large-screen-up) {
         @include span-columns(4 of 12);
         @include omega(3n);
     }
@@ -179,7 +179,7 @@ section.job-posting {
 // INDIVIDUAL JOB POSTING PAGE
 
 section.job-information {
-    @include media($medium-screen-up) { @include span-columns(6 of 12); }
+    @include media($large-screen-up) { @include span-columns(6 of 12); }
 
     .job-details {
         clear: both;
@@ -210,7 +210,7 @@ section.job-information {
 
 
 section.job-actions {
-    @include media($medium-screen-up) {
+    @include media($large-screen-up) {
         @include span-columns(6 of 12);
     }
 
@@ -260,7 +260,7 @@ section.job-actions {
 
 
 // ADD NEW JOB SCREEN
-@include media($medium-screen-up) {
+@include media($large-screen-up) {
     #new_posting {
         @include outer-container;
 

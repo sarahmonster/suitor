@@ -88,7 +88,7 @@ body {
 // GENERAL PAGE STRUCTURE & STYLES
 .container {
     @include outer-container;
-    @include media($mobile) { margin: 20px; }
+    margin: 10px;
 }
 
 .page-header {
