@@ -1,11 +1,10 @@
 class PostingsController < ApplicationController
-  # after_action :verify_authorized, except: [:new, :create]
-
   def index
     # Restrict postings to this user.
     users_postings = policy_scope Posting.all
 
-    case params[:sort]
+    @sortorder = params[:sort] || 'importance'
+    case @sortorder
       when 'date-added'
         @postings = users_postings.order('created_at DESC')
       when 'date-posted'
