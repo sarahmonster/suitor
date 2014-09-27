@@ -1,8 +1,10 @@
 class Posting < ActiveRecord::Base
   VALID_FILTER_SCOPES = [:applied, :archived, :interview_completed, :interview_scheduled]
 
+  validates :user, presence: true
   validates :title, presence: true,
                     length: { minimum: 5 }
+  belongs_to :user
   has_one :job_application, dependent: :destroy
   has_many :interviews, dependent: :destroy
   enum role: [:user, :admin]
@@ -89,7 +91,7 @@ class Posting < ActiveRecord::Base
   end
 
   # Find all postings with an interview completed, or posts that have not been applied to,
-  # and sort by their key dates (interview date and posting/updated date, respectively). 
+  # and sort by their key dates (interview date and posting/updated date, respectively).
   # Ignore any posting with a deadline.
   def self.unapplied_or_interview_completed
     postings = havent_applied.where('deadline IS NULL') +
@@ -102,7 +104,7 @@ class Posting < ActiveRecord::Base
         key_dates[p.id] = p.interviews.last.datetime
       elsif p.date_posted
         key_dates[p.id] = p.date_posted
-      else 
+      else
         key_dates[p.id] = p.updated_at
       end
     }
@@ -115,7 +117,7 @@ class Posting < ActiveRecord::Base
   end
 
   # Find all remaining postings (recently applied, followed-up, and deadline passed)
-  # and sort by their key dates (applied date and follow-up, respectively). 
+  # and sort by their key dates (applied date and follow-up, respectively).
   def self.recently_applied_or_followed_up_or_deadline_passed
     postings = deadline_passed.havent_applied.no_interviews +
                with_followup.no_interviews +
@@ -132,7 +134,7 @@ class Posting < ActiveRecord::Base
         key_dates[p.id] = p.job_application.date_sent
       elsif p.date_posted
         key_dates[p.id] = p.date_posted
-      else 
+      else
         key_dates[p.id] = p.updated_at
       end
     }
