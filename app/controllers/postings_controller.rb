@@ -1,4 +1,8 @@
 class PostingsController < ApplicationController
+  after_action :verify_authorized, except: [:index, :archived]
+  after_action :verify_policy_scoped, only: [:index, :archived]
+  before_action :require_login
+
   def index
     # Restrict postings to this user.
     users_postings = policy_scope Posting.all
@@ -38,11 +42,14 @@ class PostingsController < ApplicationController
 
   def new
     @posting = Posting.new
+    authorize @posting
   end
 
   def create
     @posting = Posting.new(posting_params)
     @posting.user_id = current_user.id
+
+    authorize @posting
 
     if @posting.save
       redirect_to @posting

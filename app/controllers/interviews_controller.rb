@@ -1,10 +1,16 @@
 class InterviewsController < ApplicationController
+  after_action :verify_authorized
+  after_action :verify_policy_scoped, only: [:index]
+  before_action :require_login
   before_action :set_interview, only: [:show, :edit, :update, :destroy]
 
   # GET /interviews
   # GET /interviews.json
   def index
-    @interviews = Interview.all
+    @posting = Posting.unscoped.find(params[:posting_id])
+    authorize @posting, :show?
+
+    @interviews = policy_scope Interview.where(posting_id: params[:posting_id])
   end
 
   # GET /interviews/1
@@ -15,6 +21,7 @@ class InterviewsController < ApplicationController
   # GET /postings/:posting_id/interviews/new
   def new
     @interview = Interview.new
+    authorize @interview
     @interview.posting = Posting.unscoped.find(params[:posting_id])
   end
 
@@ -27,6 +34,8 @@ class InterviewsController < ApplicationController
   def create
     @interview = Interview.new(interview_params)
     @interview.posting = Posting.unscoped.find(params[:posting_id])
+    authorize @interview
+    authorize @interview.posting, :update?
 
     respond_to do |format|
       if @interview.save
@@ -68,6 +77,8 @@ class InterviewsController < ApplicationController
     def set_interview
       @interview = Interview.find(params[:id])
       @interview.posting = Posting.unscoped.find(params[:posting_id])
+
+      authorize @interview
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

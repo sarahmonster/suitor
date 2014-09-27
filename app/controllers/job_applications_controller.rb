@@ -1,9 +1,15 @@
 class JobApplicationsController < ApplicationController
+  after_action :verify_authorized
+  after_action :verify_policy_scoped, only: [:index]
+  before_action :require_login
   before_action :set_job_application, only: [:show, :edit, :update, :destroy, :followup]
 
   # GET /job_applications
   # GET /job_applications.json
   def index
+    @posting = Posting.unscoped.find(params[:posting_id])
+    authorize @posting, :show?
+
     @job_applications = JobApplication.all
   end
 
@@ -15,6 +21,7 @@ class JobApplicationsController < ApplicationController
   # GET /job_applications/new
   def new
     @job_application = JobApplication.new
+    authorize @job_application
   end
 
   # GET /job_applications/1/edit
@@ -25,6 +32,9 @@ class JobApplicationsController < ApplicationController
   # POST /job_applications.json
   def create
     @job_application = JobApplication.new(job_application_params)
+    @interview.posting = Posting.unscoped.find(params[:posting_id])
+    authorize @job_application
+    authorize @interview.posting, :update?
 
     respond_to do |format|
       if @job_application.save
@@ -79,6 +89,7 @@ class JobApplicationsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_job_application
       @job_application = JobApplication.find(params[:id])
+      authorize @job_application
       @job_application_is_new = false
     end
 

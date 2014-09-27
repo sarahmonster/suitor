@@ -1,5 +1,6 @@
 class JobApplication < ActiveRecord::Base
   belongs_to :posting
+  has_one :user, through: :posting
   after_initialize :set_applied_date
 
   validates :date_sent, presence: true

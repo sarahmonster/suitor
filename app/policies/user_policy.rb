@@ -1,15 +1,14 @@
 class UserPolicy
-  pattr_initialize :user, :record
+  pattr_initialize :active_user, :user
 
-  # def index?
-  #   @user.admin?
-  # end
+  def initialize(active_user, user)
+    @active_user = active_user
+    @user = user
 
-  # def update?
-  #   @user.admin? or @user.id == @record.id
-  # end
-
-  # def destroy?
-  #   @user.admin? or @user.id == @record.id
-  # end
+    [:index, :archivetoggle, :edit, :update, :show, :destroy].each do |m|
+      self.class.send(:define_method, (m.to_s + '?').to_sym) do
+        @user and (@user.admin? or @user.id == @posting.user_id)
+      end
+    end
+  end
 end
