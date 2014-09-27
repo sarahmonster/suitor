@@ -48,5 +48,4 @@ class User < ActiveRecord::Base
   def update_tracked_fields!(request)
     super(request) unless admin?
   end
-
 end
