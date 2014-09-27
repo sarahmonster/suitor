@@ -79,7 +79,13 @@
         <span class="meter" style="width: 60%"><p>60%</p></span>
       </div>
 
-      <p>You have applied to <%= @postings_applied_this_week.size %> jobs this week. This is x% higher/lower than your average, and whatever percent of your goal. Something encouraging.</p>
+      <p>You have applied to <%= @postings_applied_this_week.size %> jobs this week. That&rsquo;s 
+      <% if @percent_difference > 0 %>
+        <span class="success"><i class="icon-double-angle-up"><span><%= @percent_difference.round(0) %>% higher</span></i></span> than your average. Way to go!
+      <% else %>
+        <span class="failure"><i class="icon-double-angle-down"><span><%= @percent_difference.abs.round(0) %>% lower</span></i></span> than your average. Keep at it, okay?
+      <% end %>
+      </p>
     </div>
     <!-- END WEEKLY PROGRESS -->
 
@@ -89,8 +95,7 @@
       <ul>
         <li class="total-applications">
           <i class="icon-checkmark"><span><%= @postings_applied_for.size %> down</span></i>
-          In total, you&rsquo;ve applied for <%= @postings_applied_for.size %> jobs.
-          You've been at this since <%= @date_started %>
+          In total, you&rsquo;ve applied for <%= @postings_applied_for.size %> jobs since <%= short_date(@date_started) %>
         </li>
         
         <li class="success">
@@ -104,8 +109,8 @@
         </li>
         
         <li class="weekly-average">
-          <i class="icon-calendar"><span>x jobs per week</span></i>
-          On average, you apply to x jobs per week.
+          <i class="icon-calendar"><span><%= @applications_per_week %> jobs per week</span></i>
+          On average, you apply to <%= @applications_per_week %> jobs per week.
         </li>
       
       </ul>

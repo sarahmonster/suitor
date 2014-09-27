@@ -13,5 +13,7 @@ class DashboardController < ApplicationController
     @postings_with_interviews = policy_scope Posting.with_interviews
     @postings_applied_this_week = policy_scope Posting.applied_this_week
     @date_started = current_user.activity_start_date
+    @applications_per_week = current_user.applications_per_week.round(1)
+    @percent_difference = (100 * (@postings_applied_this_week.size / @applications_per_week)) - 100
   end
 end

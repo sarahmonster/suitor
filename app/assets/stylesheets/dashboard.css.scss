@@ -47,7 +47,7 @@
         border-color: lighten($green, 40%);
         h3 { color: $green; }
     }
-
+    i span { display: inline; }
     .failure i { color: $red;}
     .success i { color: $green; }
     .total-applications i, .weekly-average i { color: $blue; }
