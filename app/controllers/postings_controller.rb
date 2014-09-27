@@ -19,7 +19,7 @@ class PostingsController < ApplicationController
   end
 
   def archived
-    @postings = policy_scope(Posting.archived)
+    @method = :archived
     @archive_page = true
     render 'index'
   end
