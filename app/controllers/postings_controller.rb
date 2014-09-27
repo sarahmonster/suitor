@@ -4,24 +4,22 @@ class PostingsController < ApplicationController
   before_action :require_login
 
   def index
-    # Restrict postings to this user.
-    users_postings = policy_scope Posting.all
-
-    @sortorder = params[:sort] || 'importance'
+    @sortorder = params[:sort]
     case @sortorder
       when 'date-added'
-        @postings = users_postings.order('created_at DESC')
+        @method = :order, 'created_at DESC'
       when 'date-posted'
-        @postings = users_postings.order('date_posted')
-      when 'importance'
-        @postings = users_postings.sorted_by_importance
+        @method = :order, 'date_posted'
       when 'status'
-        @postings = users_postings.sorted_by_status
+        @method = :sorted_by_status
+    else
+      @sortorder = 'importance'
+      @method = :sorted_by_importance
     end
   end
 
   def archived
-    @postings = policy_scope Posting.archived
+    @postings = policy_scope(Posting.archived)
     @archive_page = true
     render 'index'
   end

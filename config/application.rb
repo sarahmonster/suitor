@@ -22,8 +22,7 @@ module Suitor
 
     # add app/assets/fonts to the asset path
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
-  
+
+    config.action_controller.page_cache_directory = "#{Rails.root.to_s}/page_cache"
   end
 end
-
-

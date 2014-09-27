@@ -6,13 +6,14 @@ gem 'rails', '4.1.1'
 # Use dotenv to manage secrets and things of that nature
 gem 'dotenv-rails'
 
+# Page caching.
+gem 'actionpack-page_caching'
+
 # Development and test-only gems
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 end
-
-gem 'mysql2'
 
 # Better Development
 group :development do

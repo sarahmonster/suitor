@@ -16,7 +16,7 @@ class JobApplicationPolicy
 
   def initialize(user, job_application)
     @user = user
-    @interview = job_application
+    @job_application = job_application
 
     [:create, :edit, :update, :show, :destroy].each do |m|
       self.class.send(:define_method, (m.to_s + '?').to_sym) do
