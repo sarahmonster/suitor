@@ -48,6 +48,10 @@
         h3 { color: $green; }
     }
 
+    .failure i { color: $red;}
+    .success i { color: $green; }
+    .total-applications i, .weekly-average i { color: $blue; }
+
 }
 
 /* progress bar */

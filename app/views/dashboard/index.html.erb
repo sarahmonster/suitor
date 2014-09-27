@@ -87,13 +87,26 @@
     <div class="statistics">
       <h3>Your overall statistics</h3>
       <ul>
-        <li><%= @postings_with_interviews.size %> of <%= @postings_applied_for.size %> (x%) of jobs you&rsquo;ve applied to have moved to the interview stage</li>
-        <li><%= @postings_archived.size %> of <%= @postings_applied_for.size %> (x%) 
-        <%= @postings_archived.count/@postings_applied_for.count %>
-        <%= (10/15).round(3) %>
-         were archived (are we assuming those were "no thank yous")</li>
-        <li>In total, you&rsquo;ve applied for <%= @postings_applied_for.size %> jobs</li>
-        <li>On average, you apply to x jobs per week</li>
+        <li class="total-applications">
+          <i class="icon-checkmark"><span><%= @postings_applied_for.size %> down</span></i>
+          In total, you&rsquo;ve applied for <%= @postings_applied_for.size %> jobs.
+        </li>
+        
+        <li class="success">
+          <i class="icon-bubbles3"><span><%= (@postings_with_interviews.size.to_f/@postings_applied_for.count.to_f * 100).round(0) %>% rockstar</span></i>
+          You&rsquo;ve had <%= @postings_with_interviews.size %> interviews so far.
+        </li>
+
+        <li class="failure">
+          <i class="icon-thumbs-down3"><span><%= (@postings_archived.count.to_f/@postings_applied_for.count.to_f * 100).round(0) %>% sadface</span></i> 
+          <%= @postings_archived.size %> of your jobs just didn&rsquo;t work out.
+        </li>
+        
+        <li class="weekly-average">
+          <i class="icon-calendar"><span>x jobs per week</span></i>
+          On average, you apply to x jobs per week.
+        </li>
+      
       </ul>
     </div>
 
