@@ -19,6 +19,9 @@ class Posting < ActiveRecord::Base
   scope :total_applied, -> {
     unscoped.joins(:job_application).where('job_applications.date_sent IS NOT NULL')
   }
+  scope :applied_this_week, -> {
+    joins(:job_application).where('job_applications.date_sent >= ?', Date.today.beginning_of_week)
+  }
   scope :havent_applied, -> {
     where("NOT EXISTS (SELECT null FROM job_applications where job_applications.posting_id = postings.id)")
   }

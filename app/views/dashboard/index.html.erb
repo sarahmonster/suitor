@@ -79,7 +79,7 @@
         <span class="meter" style="width: 60%"><p>60%</p></span>
       </div>
 
-      <p>You have applied to x jobs of your x goal. This is x% higher/lower than your average. Something encouraging.</p>
+      <p>You have applied to <%= @postings_applied_this_week.size %> jobs this week. This is x% higher/lower than your average, and whatever percent of your goal. Something encouraging.</p>
     </div>
     <!-- END WEEKLY PROGRESS -->
 
@@ -93,12 +93,12 @@
         </li>
         
         <li class="success">
-          <i class="icon-bubbles3"><span><%= (@postings_with_interviews.size.to_f/@postings_applied_for.count.to_f * 100).round(0) %>% rockstar</span></i>
+          <i class="icon-bubbles3"><span><%= (@postings_with_interviews.size.to_f/@postings_applied_for.size.to_f * 100).round(0) %>% rockstar</span></i>
           You&rsquo;ve had <%= @postings_with_interviews.size %> interviews so far.
         </li>
 
         <li class="failure">
-          <i class="icon-thumbs-down3"><span><%= (@postings_archived.count.to_f/@postings_applied_for.count.to_f * 100).round(0) %>% sadface</span></i> 
+          <i class="icon-thumbs-down3"><span><%= (@postings_archived.size.to_f/@postings_applied_for.size.to_f * 100).round(0) %>% sadface</span></i> 
           <%= @postings_archived.size %> of your jobs just didn&rsquo;t work out.
         </li>
         

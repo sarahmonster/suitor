@@ -8,5 +8,6 @@ class DashboardController < ApplicationController
     @postings_applied_for = Posting.total_applied
     @postings_archived = Posting.archived
     @postings_with_interviews = Posting.with_interviews
+    @postings_applied_this_week = Posting.applied_this_week
   end
 end

@@ -32,7 +32,12 @@ class User < ActiveRecord::Base
     self.role ||= :user
   end
 
+  def activity_start_date
+    JobApplication.first(:order => 'date_sent ASC')
+  end
+
   def update_tracked_fields!(request)
     super(request) unless admin?
   end
+
 end
