@@ -1,6 +1,10 @@
 Suitor::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Use memcache in production.
+  # TODO: Add server addresses for memcache.
+  config.cache_store = :mem_cache_store
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

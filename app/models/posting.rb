@@ -190,16 +190,19 @@ class Posting < ActiveRecord::Base
   end
 
   def actionable
-    if interview_scheduled?
-      "interview-scheduled"
-    elsif interview_completed?
-      "interview-completed"
-    elsif followup_needed?
-      "followup-needed"
-    elsif !applied?
-      "application-needed"
-    else
-      ""
-    end
+    return @actionable if @actionable
+
+    @actionable ||=
+      if interview_scheduled?
+        "interview-scheduled"
+      elsif interview_completed?
+        "interview-completed"
+      elsif followup_needed?
+        "followup-needed"
+      elsif !applied?
+        "application-needed"
+      else
+        ""
+      end
   end
 end

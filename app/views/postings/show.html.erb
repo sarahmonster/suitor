@@ -9,7 +9,7 @@
 
   <%= link_to posting_path(@posting), method: :delete, data: { confirm: 'Are you sure?' } do %>
     <i class="icon-trash2"><span>Delete</span></i>
-  <% end %> 
+  <% end %>
 
   <% if @posting.url %>
     <%= link_to @posting.url do %>
@@ -34,7 +34,7 @@
 <section class="job-information">
 
   <ul class="job-details">
-    
+
     <% if @posting.date_posted or @posting.deadline %>
       <li>
       <% if @posting.date_posted %>
@@ -85,7 +85,7 @@
       <h3><i class="icon-key2"><span></span></i>How to apply</h3>
       <%= @posting.application_instructions %>
       <% end %>
-    <% end %>   
+    <% end %>
   </div>
 
 </section>
@@ -94,9 +94,9 @@
 
 
 <section class="job-actions">
-  
+
   <ul class="pending-tasks">
-    
+
     <% if @posting.actionable == "interview-scheduled" %>
       <li class="expander" title="Show interview details"><i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled</i> <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span><i class="expand-icon icon-arrow-down9"></i></li>
         <div class="expand-panel" style="display: none">
@@ -124,9 +124,9 @@
 
 
   <ul class="completed-tasks">
-  
+
     <% if @posting.applied? %>
-      
+
       <% if @posting.job_application.cover_letter? %>
         <li class="expander" title="Show application">
           <i class="icon-checkmark"><span>Application sent </span></i>
@@ -145,7 +145,7 @@
 
     <% if @posting.actionable == "interview-completed" %>
       <li class="expander" title="Show interview details">
-        <i class="icon-checkmark"><span title="<%= full_datetime(@posting.interviews.last.datetime) %>">Interviewed</span></i> 
+        <i class="icon-checkmark"><span title="<%= full_datetime(@posting.interviews.last.datetime) %>">Interviewed</span></i>
         <%= friendly_datetime(@posting.interviews.last.datetime) %>
         <i class="expand-icon icon-arrow-down9"></i>
       </li>
@@ -166,7 +166,7 @@
 
       <% if @posting.job_application.followup %>
       <li>
-        <i class="icon-checkmark"><span>Follow-up sent</span></i> 
+        <i class="icon-checkmark"><span>Follow-up sent</span></i>
         <%= short_date(@posting.job_application.followup) %>
       </li>
       <% end %>

@@ -1,5 +1,8 @@
 .DS_Store
 
+# Ignore page cache
+/page_cache/*
+
 # Ignore bundler config.
 /.bundle
 

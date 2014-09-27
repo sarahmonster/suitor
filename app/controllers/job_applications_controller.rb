@@ -32,9 +32,9 @@ class JobApplicationsController < ApplicationController
   # POST /job_applications.json
   def create
     @job_application = JobApplication.new(job_application_params)
-    @interview.posting = Posting.unscoped.find(params[:posting_id])
+    @job_application.posting = Posting.unscoped.find(params[:posting_id])
     authorize @job_application
-    authorize @interview.posting, :update?
+    authorize @job_application.posting, :update?
 
     respond_to do |format|
       if @job_application.save
@@ -66,8 +66,8 @@ class JobApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @job_application.update(job_application_params)
-        format.html { redirect_to @job_application, notice: 'Job application was successfully updated.' }
-        format.json { render action: 'show', location: @job_application }
+        format.html { redirect_to @job_application.posting, notice: 'Job application was successfully updated.' }
+        format.json { render action: 'show', location: @job_application.posting }
       else
         format.html { render action: 'edit' }
         format.json { render json: @job_application.errors, status: :unprocessable_entity }
