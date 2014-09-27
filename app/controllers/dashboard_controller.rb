@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+  before_action :require_login
+  
   def index
     @postings = Posting.all
     @postings_with_upcoming_interviews = Posting.interview_scheduled
@@ -9,5 +11,6 @@ class DashboardController < ApplicationController
     @postings_archived = Posting.archived
     @postings_with_interviews = Posting.with_interviews
     @postings_applied_this_week = Posting.applied_this_week
+    @date_started = current_user.activity_start_date
   end
 end

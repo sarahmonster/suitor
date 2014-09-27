@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   end
 
   def activity_start_date
-    JobApplication.first(:order => 'date_sent ASC')
+    JobApplication.joins(:posting).where(postings: {user_id: id}).order('job.applications.date_sent ASC').limit(1).first.date_sent
   end
 
   def update_tracked_fields!(request)
