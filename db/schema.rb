@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927012952) do
+ActiveRecord::Schema.define(version: 20140927192405) do
 
   create_table "interviews", force: true do |t|
     t.datetime "datetime"
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 20140927012952) do
     t.string   "uid"
     t.string   "name"
     t.string   "photo"
+    t.integer  "application_goal",       default: 10
+    t.integer  "followup_offset",        default: 14
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token"

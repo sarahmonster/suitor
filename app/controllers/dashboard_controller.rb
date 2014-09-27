@@ -15,5 +15,7 @@ class DashboardController < ApplicationController
     @date_started = current_user.activity_start_date
     @applications_per_week = current_user.applications_per_week.round(1)
     @percent_difference = (100 * (@postings_applied_this_week.size / @applications_per_week)) - 100
+    @application_goal = current_user.application_goal
+    @progress = (@postings_applied_this_week.size.to_f / @application_goal.to_f) * 100 
   end
 end
