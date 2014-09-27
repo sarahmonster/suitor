@@ -24,7 +24,7 @@ class PostingPolicy
 
     [:archivetoggle, :create, :edit, :update, :show, :destroy].each do |m|
       self.class.send(:define_method, (m.to_s + '?').to_sym) do
-        @user and (@user.admin? or @user.id == @posting.user.id)
+        @user and (@user.admin? or (@posting.user and @user.id == @posting.user.id))
       end
     end
   end

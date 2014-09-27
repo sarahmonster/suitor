@@ -20,7 +20,7 @@ class InterviewPolicy
 
     [:create, :edit, :update, :show, :destroy].each do |m|
       self.class.send(:define_method, (m.to_s + '?').to_sym) do
-        @user and (@user.admin? or @user.id == @interview.user.id)
+        @user and (@user.admin? or (@interview.user and @user.id == @interview.user.id))
       end
     end
   end

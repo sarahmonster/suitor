@@ -20,7 +20,7 @@ class JobApplicationPolicy
 
     [:create, :edit, :update, :show, :destroy].each do |m|
       self.class.send(:define_method, (m.to_s + '?').to_sym) do
-        @user and (@user.admin? or @user.id == @job_application.user.id)
+        @user and (@user.admin? or (@job_application.user and @user.id == @job_application.user.id))
       end
     end
   end
