@@ -5,6 +5,8 @@
 
 #new_interview, #edit_interview {
     // @extend %box;
-    @include span-columns(6);
-    @include shift(3);
+    @include media($large-screen-up) {
+      @include span-columns(6);
+      @include shift(3);
+    }
 }

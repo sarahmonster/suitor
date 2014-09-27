@@ -27,7 +27,9 @@
 
 
 .dashboard .action-items {
-    @include span-columns(6);
+    @include media($large-screen-up) {
+        @include span-columns(6);
+    }
 
     .upcoming-interviews {
         border-color: lighten($blue, 40%);
@@ -48,8 +50,10 @@
 }
 
 .dashboard .progress-and-statistics {
-    @include span-columns(6);
-
+    @include media($large-screen-up) {
+        @include span-columns(6);
+    }
+    
     > div {
         border-color: lighten($green, 40%);
         h3 { color: $green; }
