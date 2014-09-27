@@ -15,12 +15,19 @@ Suitor::Application.routes.draw do
   get 'launch' => 'pages#launch'
   get 'about' => 'pages#about'
   get 'help' => 'pages#help'
+  get 'dashboard' => 'dashboard#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+ 
+  # If user is logged in, show the dashboard as root
+  authenticated do
+    root :to => 'dashboard#index', as: :authenticated
+  end
+  
+  # If user isn't logged in, show the launch page as root
+  root :to => 'pages#launch'
 
-  # Set site root
-  root 'pages#launch'
 
   # Set up job postings, and routing for nested models
   resources :postings do

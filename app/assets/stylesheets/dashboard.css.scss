@@ -1,0 +1,139 @@
+// DASHBOARD CONTROLLER STYLES
+
+.dashboard {
+    .action-items > div, .progress-and-statistics > div {
+        @extend %box;
+        margin-bottom: 1em;
+        padding-bottom: .25em;
+    }
+
+    section ul {
+        margin: 2em 0 .75em;
+
+        li {
+            text-align: left;
+            padding: .5em;
+            border-top: 1px solid $light-grey;
+
+            i span { display: inline; }
+
+            a { 
+                color: $dark-grey; 
+                &:hover { color: $medium-grey; }
+            }
+        }
+    }
+}
+
+
+.dashboard .action-items {
+    @include span-columns(6);
+
+    .upcoming-interviews {
+        border-color: lighten($blue, 40%);
+        h3, i { color: $blue; }
+    }
+
+    .application-needed {
+        border-color: lighten($red, 40%);
+        h3, i { color: $red; }
+        i.no-deadline { color: $blue; }
+    }
+
+    .followup-needed {
+        border-color: lighten($red, 40%);
+        h3 { color: $red; }
+    }
+
+}
+
+.dashboard .progress-and-statistics {
+    @include span-columns(6);
+
+    > div {
+        border-color: lighten($green, 40%);
+        h3 { color: $green; }
+    }
+    i span { display: inline; }
+    .failure i { color: $red;}
+    .success i { color: $green; }
+    .total-applications i, .weekly-average i { color: $blue; }
+    
+    strong { 
+        color: $medium-grey; 
+        font-size: 1.2em;
+        font-family: $sans-serif;
+        font-weight: 500;
+        padding: .1em;
+    }
+
+}
+
+/* progress bar */
+.progress-bar {
+    $progress-border-color: $green;
+    $progress-border: 1px solid $progress-border-color;
+    $progress-meter-border-color: $green;
+    $progress-meter-border: 1px solid darken($progress-meter-border-color, 15%);
+    $progress-meter-color: $progress-meter-border-color;
+    $progress-background: lighten($green, 50%);
+    $progress-animation-duration: 0.7s;
+    $progress-height: 40px;
+
+    background-color: $progress-background;
+    border: $progress-border;
+    box-shadow: inset 0 0 3px 0 rgba(darken($progress-background, 50%), 0.15);
+    border-radius: $base-border-radius;
+    height: $progress-height;
+    margin: .5em auto;
+    padding: 2px;
+    width: 100%;
+
+    > .meter {
+        @include animation(progress $progress-animation-duration linear infinite);
+        @include box-sizing(border-box);
+        background-color: $progress-meter-color;
+        @include background-image(linear-gradient(-45deg, rgba(255,255,255, 0.15) 25%,
+                                                          transparent 25%,
+                                                          transparent 50%,
+                                                          rgba(255,255,255, 0.15) 50%,
+                                                          rgba(255,255,255, 0.15) 75%,
+                                                          transparent 75%));
+        background-size: 40px 40px;
+        background-repeat: repeat-x;
+        border: $progress-meter-border;
+        border-radius: $base-border-radius /1.5;
+        display: block;
+        height: 100%;
+    }
+
+      .label {
+        display: block;
+        text-align: right;
+        margin-bottom: 0;
+        padding: .2em 1.2em;
+        font-weight: 800;
+        color: $white;   
+        text-shadow: 0 0 1px black;
+    }
+}
+
+
+
+
+footer.logout {
+    @include span-columns(12);
+    margin-top: 5em;
+    text-align: center;
+
+    a {
+        @extend %button;
+        @include appearance(none);
+        cursor: pointer;
+        user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        float: none;
+        clear: both;
+    }
+}

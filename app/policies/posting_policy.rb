@@ -1,17 +1,17 @@
 class PostingPolicy
   class Scope
-    pattr_initialize :user, :scope
+    pattr_initialize :user, :postings
 
-    def initialize(user, scope)
+    def initialize(user, postings)
       @user = user
-      @scope = scope
+      @postings = postings
     end
 
     def resolve
       if user.admin?
-        scope.all
+        postings.all
       else
-        scope.where(user_id: user.id)
+        postings.where(user_id: user.id)
       end
     end
   end
