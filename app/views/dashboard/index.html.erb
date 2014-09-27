@@ -24,12 +24,15 @@
         <ul>
           <% @postings_with_upcoming_interviews.each do |posting| %>
             <li>
-              <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>"><%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
-              with 
-              <% unless posting.interviews.upcoming.first.interviewer.blank? %> 
-                <%= posting.interviews.upcoming.first.interviewer %> at
+              <%= link_to posting do %>
+                <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>"><%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
+
+                <% unless posting.interviews.upcoming.first.interviewer.blank? %> 
+                  <%= posting.interviews.upcoming.first.interviewer %> at
+                <% end %>
+              
+                <%= posting.hiring_organization %>
               <% end %>
-              <%= posting.hiring_organization %>
             </li>
           <% end %>
         </ul>
@@ -46,7 +49,12 @@
           <% @postings_needing_application.each do |posting| %>
             <li>
               <%= link_to posting do %>
-                <%= posting.title %> at <%= posting.hiring_organization %> (Deadline <%= posting.deadline %>)
+                <% if posting.deadline %>
+                  <i class="icon-clock"><span><%= friendly_datetime(posting.deadline) %></span></i>
+                <% else %>
+                  <i class="icon-circle-blank no-deadline"><span>No deadline</span></i>
+                <% end %>
+                <%= posting.title %> at <%= posting.hiring_organization %>
               <% end %>
             </li>
           <% end %>
@@ -83,7 +91,8 @@
         </span></div>
       </div>
 
-      <p>You have applied to <%= @postings_applied_this_week.size %> <%= "job".pluralize(@postings_applied_this_week.size) %> this week. That&rsquo;s 
+      <p>You have applied to <strong><%= @postings_applied_this_week.size %></strong> <%= "job".pluralize(@postings_applied_this_week.size) %> this week. 
+      <br>That&rsquo;s 
       <% if @percent_difference > 0 %>
         <span class="success"><i class="icon-double-angle-up"><span><%= @percent_difference.round(0) %>% higher</span></i></span> than your average. Way to go!
       <% else %>
@@ -99,22 +108,22 @@
       <ul>
         <li class="total-applications">
           <i class="icon-checkmark"><span><%= @postings_applied_for.size %> down</span></i>
-          In total, you&rsquo;ve applied for <%= @postings_applied_for.size %> <%= "job".pluralize(@postings_applied_for.size) %> since <%= short_date(@date_started) %>
+          In total, you&rsquo;ve applied for <strong><%= @postings_applied_for.size %></strong> <%= "job".pluralize(@postings_applied_for.size) %> since <%= short_date(@date_started) %>
         </li>
         
         <li class="success">
           <i class="icon-bubbles3"><span><%= (@postings_with_interviews.size.to_f / @postings_applied_for.size.to_f * 100).round(0) %>% rockstar</span></i>
-          You&rsquo;ve had <%= @postings_with_interviews.size %> <%= "interview".pluralize(@postings_with_interviews.size) %> so far.
+          You&rsquo;ve had <strong><%= @postings_with_interviews.size %></strong> <%= "interview".pluralize(@postings_with_interviews.size) %> so far.
         </li>
 
         <li class="failure">
           <i class="icon-thumbs-down3"><span><%= (@postings_archived.size.to_f / @postings_applied_for.size.to_f * 100).round(0) %>% sadface</span></i> 
-          <%= @postings_archived.size %> of your <%= "job".pluralize(@postings_archived.size) %> just didn&rsquo;t work out.
+          <strong><%= @postings_archived.size %></strong> of your <%= "job".pluralize(@postings_archived.size) %> just didn&rsquo;t work out.
         </li>
         
         <li class="weekly-average">
-          <i class="icon-calendar"><span><%= @applications_per_week.ceil %> <%= "job".pluralize(@applications_per_week.ceil) %> per week</span></i>
-          On average, you apply to <%= @applications_per_week.ceil %> <%= "job".pluralize(@applications_per_week.ceil) %> per week.
+          <i class="icon-calendar"><span><%= @applications_per_week.ceil %> a week</span></i>
+          On average, you send out <strong><%= @applications_per_week.ceil %></strong> <%= "application".pluralize(@applications_per_week.ceil) %> a week.
         </li>
       
       </ul>
