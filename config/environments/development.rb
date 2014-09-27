@@ -30,5 +30,4 @@ Suitor::Application.configure do
 
   # Let's set a timezone so I get less confused
   config.time_zone = 'Eastern Time (US & Canada)'
-
 end

@@ -11,13 +11,10 @@ class PostingsController < ApplicationController
         @postings = Posting.sorted_by_importance
       when 'status'
         @postings = Posting.sorted_by_status
-    else 
+    else
       @postings = Posting.sorted_by_importance
       @sortorder = 'importance'
     end
-
-    # Check for any filters.
-    @postings = @postings.send(params[:filter].to_sym) if Posting.valid_scope?(params[:filter])
   end
 
   def archived
