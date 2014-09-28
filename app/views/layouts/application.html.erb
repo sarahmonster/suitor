@@ -13,7 +13,8 @@
 
 <!-- MOBILE MENU -->
 <nav id="mobile-menu">
-  <%= render "menu" %>
+  <%= render "layouts/menu", :type => 'mobile' %>
+
 </nav>
 
 <div id="page-wrapper"><!-- This isn't needed strictly speaking, but we're using it to make mmenu happy. -->
@@ -28,7 +29,7 @@
       <% end %>
 
       <!-- MAIN NAVBAR -->
-      <%= render "menu" %>
+      <%= render "layouts/menu", :type => 'desktop' %>
     </nav>
   </header>
 
