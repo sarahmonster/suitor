@@ -13,14 +13,34 @@ body {
     width: 100%;
     @include box-shadow;
 
-    div {
-        @include outer-container;
+    nav { 
+        @include outer-container; 
+        @include media($mobile) { text-align: center; }
     }
+
+    #mobile-menu-button {
+        float: left;
+        position: relative;
+        top: 20px;
+        left: 20px;
+        font-size: 30px;
+        color: $medium-grey;
+        @include media($not-mobile) { display: none; }
+    }
+
     #logo {
-        @include span-columns(3);
+        @include media($not-mobile) {
+            @include span-columns(3);
+        }
+
+        @include media($mobile) {
+            width: 45%;
+            margin: 0 auto;
+        }
     }
 
     ul.navigation {
+        @include media($mobile) { display: none; }
         @include span-columns(8);
         @include shift(1);
         margin-top: 2em;
@@ -62,20 +82,6 @@ body {
             border: 2px solid lighten($blue, 20%);
             padding: 10px;
             border-radius: 50%;
-        }
-    }
-
-    @include media($mobile) {
-        //@include outer-container;
-        border-bottom: 2px solid $light-grey;
-
-        #logo {
-            @include span-columns(2);
-            @include shift(1);
-        }
-
-        ul.navigation {
-            display: none;
         }
     }
 }

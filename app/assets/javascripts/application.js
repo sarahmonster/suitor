@@ -14,8 +14,10 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require turbolinks
+//= require jquery.mmenu.min.all.js
 //= require pickadate/picker 
 //= require pickadate/picker.date 
 //= require pickadate/picker.time 
 //= require froala_editor.min.js
+//= require layout
 //= require_tree .

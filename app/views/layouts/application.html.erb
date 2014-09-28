@@ -8,53 +8,36 @@
   <%= favicon_link_tag 'favicon.png?v=5', type: 'image/png' %>
   <%= csrf_meta_tags %>
 </head>
+
 <body class="<%= controller_name %> <%= action_name %>">
 
-<header class="site-header">
-  <div>
-  <%= link_to root_path do %>
-    <%= image_tag("suitor.png", :alt => "suitor", :id => "logo") %>
-  <% end %>
+<!-- MOBILE MENU -->
+<nav id="mobile-menu">
+  <%= render "menu" %>
+</nav>
 
-  <ul class="navigation">
+<div id="page-wrapper"><!-- This isn't needed strictly speaking, but we're using it to make mmenu happy. -->
+
+  <header class="site-header">
+    <a id="mobile-menu-button" href="#mobile-menu"><i class="icon-menu2"><span>Menu</span></i></a>
     
-    <li>
-    <%= link_to dashboard_path do %>
-        <i class="icon-dashboard2"></i>
-        <%= t('Dashboard') %> <span><%= t('Your progress') %></span>
-    <% end %>
-    </li>
+    <nav>
+      <!-- LOGO -->
+      <%= link_to root_path do %>
+        <%= image_tag("suitor.png", :alt => "suitor", :id => "logo") %>
+      <% end %>
 
-    <li>
-    <%= link_to new_posting_path do %>
-        <i class="icon-plus3"></i>
-        <!-- TODO: Make this one string. -->
-        <%= t('Add new') %> <span><%= t('job posting') %></span>
-    <% end %>
-    </li>
+      <!-- MAIN NAVBAR -->
+      <%= render "menu" %>
+    </nav>
+  </header>
 
-    <li>
-    <%= link_to postings_path do %>
-        <i class="icon-list"></i>
-        <%= t('List all') %> <span><%= t('job postings') %></span>
-    <% end %>
-    </li>
-
-    <li>
-    <%= link_to about_path do %>
-        <i class="icon-suitcase"></i>
-        <%= t('About') %> <span><%= t('Learn more') %></span>
-    <% end %>
-    </li>
-
-
-  </ul>
+  <!-- PAGE CONTENT -->
+  <div class="container">
+    <%= yield %>
   </div>
-</header>
 
-<div class="container">
-  <%= yield %>
-</div>
+</div><!-- END PAGE-WRAPPER -->
 
 </body>
 </html>

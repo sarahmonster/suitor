@@ -11,6 +11,7 @@ $max-width: 1140px;
 $grid-columns: 12;
 
 $mobile: new-breakpoint(max-width 480px 4);
+$not-mobile: new-breakpoint(min-width 480px);
 
 $medium-screen: 640px;
 $large-screen: 800px;
