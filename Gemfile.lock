@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/sarahsemark/mmenu-rails.git
-  revision: a87e6618667b06ce1fa2446ceb7f96ac03bdd86c
+  revision: 2e52a13fcf2ebf9a92c98143b523bea5e1dbbd4f
   specs:
     mmenu-rails (0.0.2)
 
