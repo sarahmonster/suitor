@@ -4,8 +4,10 @@
 
 // Registration form
 #new_user {
-    @include span-columns(4);
-    @include shift(4);
+    @include media($large-screen-up) {
+        @include span-columns(4);
+        @include shift(4);
+    }
 
     p {
         margin: -1em 0 2em;
