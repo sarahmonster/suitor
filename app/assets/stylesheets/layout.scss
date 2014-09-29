@@ -4,7 +4,37 @@ body {
     overflow-x: hidden;
 }
 
+// MOBILE MENU
+html.mm-opened .mm-page {
+    border: none none none 5px solid $white;
+    @include box-shadow;
+}
+#mobile-menu {
+    &:not(.mm-menu) { display: none; }
+    background: lighten($blue, 66.5%) image-url('whitey_@2X.png');
+    background-size: 654px 654px;
+    color: $blue;
 
+    .mm-list {
+        padding-top: 0;
+
+        li {
+            border-top: 1px solid transparentize($medium-grey, .8);
+            border-bottom: 1px solid $white;
+        }
+        > li:after { display: none; }
+        
+        li > a, li > span {
+            padding: 15px 20px;
+            font-family: $sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+    }
+
+    i { color: lighten($blue, 40%); }
+}
 
 // LOGO AND NAVIGATION
 .site-header {
@@ -13,7 +43,7 @@ body {
     width: 100%;
     @include box-shadow;
 
-    nav { 
+    .header-container { 
         @include outer-container; 
         @include media($mobile) { text-align: center; }
     }
@@ -21,11 +51,11 @@ body {
     #mobile-menu-button {
         float: left;
         position: relative;
-        top: 20px;
+        top: 15px;
         left: 20px;
         font-size: 30px;
-        color: $medium-grey;
         @include media($not-mobile) { display: none; }
+        i { color: lighten($blue, 40%); }
     }
 
     #logo {

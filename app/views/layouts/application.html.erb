@@ -14,7 +14,6 @@
 <!-- MOBILE MENU -->
 <nav id="mobile-menu">
   <%= render "layouts/menu", :type => 'mobile' %>
-
 </nav>
 
 <div id="page-wrapper"><!-- This isn't needed strictly speaking, but we're using it to make mmenu happy. -->
@@ -22,7 +21,7 @@
   <header class="site-header">
     <a id="mobile-menu-button" href="#mobile-menu"><i class="icon-menu2"><span>Menu</span></i></a>
     
-    <nav>
+    <nav class="header-container">
       <!-- LOGO -->
       <%= link_to root_path do %>
         <%= image_tag("suitor.png", :alt => "suitor", :id => "logo") %>
