@@ -50,8 +50,10 @@
 #tagline {
   text-align: center;
   margin-top: 15%;
-  @include span-columns(8);
-  @include shift(2);
+  @include media($large-screen-up) {
+    @include span-columns(8);
+    @include shift(2);
+  }
 }
 
 
@@ -66,20 +68,37 @@
   }
 
   .image {
-    @include span-columns(4);
-    &:first-child { @include shift(1); }
-
     img {
-      border: 10px solid $white;
+      border: 6px solid $white;
       border-radius: 50%;
       @include box-shadow;
+    }
+
+    @include media($mobile) {
+      text-align: center;
+      
+      img {
+        width: 80%;
+        margin: 10px 10%;
+      }
+    }
+
+    @include media($medium-screen-up) {
+      img { border-width: 10px; }
+    }
+
+    @include media($large-screen-up) {
+      @include span-columns(4);
+      &:first-child { @include shift(1); }
     }
   }
 
   .large-text {
-    margin: 3em 0;
-    @include span-columns(6); 
-    &:first-child { @include shift(1); }
+    @include media($large-screen-up) {
+      margin: 3em 0;
+      @include span-columns(6); 
+      &:first-child { @include shift(1); }
+    }
   }
 }
 
@@ -88,15 +107,18 @@
 #signup {
 
   .large-text {
-    @include span-columns(6);
-    @include shift(3);
+    @include media($large-screen-up) {
+      @include span-columns(6);
+      @include shift(3);
+    }
 
   }
 
+  @include media($large-screen-up) {
   form {
     margin-top: 5em;
-    @include span-columns(8);
-    @include shift(2);
+      @include span-columns(8);
+      @include shift(2);
 
     input[type="email"] {
       width: 53%;
@@ -107,13 +129,20 @@
       display: none;
     }
 
-    input[type="submit"] {
-      margin-left: 2%;
-      width: 45%;
+    .actions {
       float: left;
       clear: none;
+      width: 45%;
+      background: red;
+      margin-left: 2%;
+    }
+
+    input[type="submit"] {
+      margin: 0;
+      width: 100%;
     }
   }
+}
 
 }
 
