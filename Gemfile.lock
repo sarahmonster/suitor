@@ -66,6 +66,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     colorize (0.7.3)
+    dalli (2.7.2)
     date_time_attribute (0.1.1)
       activesupport (>= 3.0.0)
     devise (3.2.4)
@@ -226,6 +227,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.1.1)
   capistrano-rvm!
   coffee-rails (~> 4.0.0)
+  dalli
   date_time_attribute
   devise
   dotenv-deployment

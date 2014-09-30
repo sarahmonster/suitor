@@ -7,6 +7,7 @@ gem 'rails', '4.1.1'
 gem 'dotenv-rails'
 
 # Page caching.
+gem 'dalli'
 gem 'actionpack-page_caching'
 
 # Development and test-only gems
