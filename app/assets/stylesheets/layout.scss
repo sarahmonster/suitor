@@ -45,7 +45,7 @@ html.mm-opened .mm-page {
 
     .header-container { 
         @include outer-container; 
-        @include media($mobile) { text-align: center; }
+        @include media($large-screen-down) { text-align: center; }
     }
 
     #mobile-menu-button {
@@ -54,23 +54,23 @@ html.mm-opened .mm-page {
         top: 15px;
         left: 20px;
         font-size: 30px;
-        @include media($not-mobile) { display: none; }
+        @include media($large-screen) { display: none; }
         i { color: lighten($blue, 40%); }
     }
 
     #logo {
-        @include media($not-mobile) {
-            @include span-columns(3);
-        }
-
-        @include media($mobile) {
+        @include media($large-screen-down) {
             width: 45%;
             margin: 0 auto;
+        }
+
+        @include media($large-screen) {
+            @include span-columns(3);
         }
     }
 
     ul.navigation {
-        @include media($mobile) { display: none; }
+        @include media($large-screen-down) { display: none; }
         @include span-columns(8);
         @include shift(1);
         margin-top: 2em;
@@ -85,6 +85,7 @@ html.mm-opened .mm-page {
         a {
             font-family: $sans-serif;
             font-size: 1.4em;
+            @include media($max-width-down) { font-size: 1.2em; }
             color: $blue;
             font-weight: 300;
             line-height: 1;
