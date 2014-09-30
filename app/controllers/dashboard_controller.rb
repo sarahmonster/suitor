@@ -12,10 +12,16 @@ class DashboardController < ApplicationController
     @postings_archived = policy_scope Posting.archived
     @postings_with_interviews = policy_scope Posting.with_interviews
     @postings_applied_this_week = policy_scope Posting.applied_this_week
-    @date_started = current_user.activity_start_date
-    @applications_per_week = current_user.applications_per_week.round(1)
-    @percent_difference = (100 * (@postings_applied_this_week.size / @applications_per_week)) - 100
-    @application_goal = current_user.application_goal
-    @progress = (@postings_applied_this_week.size.to_f / @application_goal.to_f) * 100 
+    if @postings_applied_for.count > 0
+      @date_started = current_user.activity_start_date
+      @applications_per_week = current_user.applications_per_week.round(1)
+      @percent_difference = (100 * (@postings_applied_this_week.size / @applications_per_week)) - 100
+      @application_goal = current_user.application_goal
+      @progress = (@postings_applied_this_week.size.to_f / @application_goal.to_f) * 100
+    else 
+      @date_started = Time.now
+      @percent_difference = 0
+      @progress = 0
+    end 
   end
 end

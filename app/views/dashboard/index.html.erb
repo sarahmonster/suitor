@@ -103,31 +103,33 @@
     <!-- END WEEKLY PROGRESS -->
 
     <!-- OVERALL STATISTICS -->
-    <div class="statistics">
-      <h3>Your overall statistics</h3>
-      <ul>
-        <li class="total-applications">
-          <i class="icon-checkmark"><span><%= @postings_applied_for.size %> down</span></i>
-          In total, you&rsquo;ve applied for <strong><%= @postings_applied_for.size %></strong> <%= "job".pluralize(@postings_applied_for.size) %> since <%= short_date(@date_started) %>
-        </li>
-        
-        <li class="success">
-          <i class="icon-bubbles3"><span><%= (@postings_with_interviews.size.to_f / @postings_applied_for.size.to_f * 100).round(0) %>% rockstar</span></i>
-          You&rsquo;ve had <strong><%= @postings_with_interviews.size %></strong> <%= "interview".pluralize(@postings_with_interviews.size) %> so far.
-        </li>
+    <% if @postings_applied_for.size != 0 %>
+      <div class="statistics">
+        <h3>Your overall statistics</h3>
+        <ul>
+          <li class="total-applications">
+            <i class="icon-checkmark"><span><%= @postings_applied_for.size %> down</span></i>
+            In total, you&rsquo;ve applied for <strong><%= @postings_applied_for.size %></strong> <%= "job".pluralize(@postings_applied_for.size) %> since <%= short_date(@date_started) %>
+          </li>
+          
+          <li class="success">
+            <i class="icon-bubbles3"><span><%= (@postings_with_interviews.size.to_f / @postings_applied_for.size.to_f * 100).round(0) %>% rockstar</span></i>
+            You&rsquo;ve had <strong><%= @postings_with_interviews.size %></strong> <%= "interview".pluralize(@postings_with_interviews.size) %> so far.
+          </li>
 
-        <li class="failure">
-          <i class="icon-thumbs-down3"><span><%= (@postings_archived.size.to_f / @postings_applied_for.size.to_f * 100).round(0) %>% sadface</span></i> 
-          <strong><%= @postings_archived.size %></strong> of your <%= "job".pluralize(@postings_archived.size) %> just didn&rsquo;t work out.
-        </li>
+          <li class="failure">
+            <i class="icon-thumbs-down3"><span><%= (@postings_archived.size.to_f / @postings_applied_for.size.to_f * 100).round(0) %>% sadface</span></i> 
+            <strong><%= @postings_archived.size %></strong> of your <%= "job".pluralize(@postings_archived.size) %> just didn&rsquo;t work out.
+          </li>
+          
+          <li class="weekly-average">
+            <i class="icon-calendar"><span><%= @applications_per_week.ceil %> a week</span></i>
+            On average, you send out <strong><%= @applications_per_week.ceil %></strong> <%= "application".pluralize(@applications_per_week.ceil) %> a week.
+          </li>
         
-        <li class="weekly-average">
-          <i class="icon-calendar"><span><%= @applications_per_week.ceil %> a week</span></i>
-          On average, you send out <strong><%= @applications_per_week.ceil %></strong> <%= "application".pluralize(@applications_per_week.ceil) %> a week.
-        </li>
-      
-      </ul>
-    </div>
+        </ul>
+      </div>
+    <% end %>
 
   </section>
   <!-- END PROGRESS AND STATISTICS -->

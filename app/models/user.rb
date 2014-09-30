@@ -34,7 +34,9 @@ class User < ActiveRecord::Base
   end
 
   def activity_start_date
-    job_applications.order('date_sent ASC').limit(1).first.date_sent
+    if !job_applications.nil?
+      job_applications.order('date_sent ASC').limit(1).first.date_sent
+    end
   end
 
   def total_applications
@@ -42,7 +44,9 @@ class User < ActiveRecord::Base
   end
 
   def applications_per_week
-     ((Time.now - activity_start_date.to_datetime).to_i / (60 * 60 * 24 * 7)).to_f / total_applications.to_f
+    if !job_applications.nil?
+      ((Time.now - activity_start_date.to_datetime).to_i / (60 * 60 * 24 * 7)).to_f / total_applications.to_f
+    end
   end
 
   def update_tracked_fields!(request)
