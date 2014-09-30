@@ -7,46 +7,46 @@
     <%= f.hidden_field :remember_me, value: 1 %>
   <% end %>
 
-  <%= devise_error_messages! %>
-
   <p>Sign in with your existing account.<br> Don't have an account? <%= link_to t("Sign up"), user_signup_path %></p>
 
   <fieldset class="secondary">
-  <h3>Log into your account</h3>
+    <h3>Log into your account</h3>
 
-  <h4><span><%= t('Log in with') %></span></h4>
+    <h4><span><%= t('Log in with') %></span></h4>
 
-  <div>
-    <button id="facebook"><i class="icon-facebook"></i>Facebook</button>
-    <button id="twitter"><i class="icon-twitter"></i>Twitter</button>
-  </div>
-  
-  <h4><span><%= t('or with your email') %></span></h4>
-  
-  <div>
-    <!--
-    <%- if devise_mapping.registerable? %>
-      <%= link_to 'Sign up', user_signup_path, class: 'right'  %>
-      <br>
-    <% end -%>
-    -->
-    <%= f.label :email %>
-    <%= f.text_field :email, placeholder: t("users.email.placeholder"), type: 'email' %>
-  </div>
+    <div>
+      <button id="facebook"><i class="icon-facebook"></i>Facebook</button>
+      <button id="twitter"><i class="icon-twitter"></i>Twitter</button>
+    </div>
 
-  <div>
-    <!--
-    <%- if devise_mapping.recoverable? %>
-      <%= link_to "Forgot password?", new_password_path(resource_name), class: 'right' %>
-      <br>
-    <% end -%>
-    -->
-    <%= f.label :password %>
-    <%= f.password_field :password, placeholder: '······' %>
-  </div>
+    <h4><span><%= t('or with your email') %></span></h4>
 
-  <div class="actions">
-    <%= f.submit 'Log in' %>
-  </div>
+    <%= devise_error_messages! %>
 
+    <div>
+      <!--
+      <%- if devise_mapping.registerable? %>
+        <%= link_to 'Sign up', user_signup_path, class: 'right'  %>
+        <br>
+      <% end -%>
+      -->
+      <%= f.label :email %>
+      <%= f.text_field :email, placeholder: t("users.email.placeholder"), type: 'email' %>
+    </div>
+
+    <div>
+      <!--
+      <%- if devise_mapping.recoverable? %>
+        <%= link_to "Forgot password?", new_password_path(resource_name), class: 'right' %>
+        <br>
+      <% end -%>
+      -->
+      <%= f.label :password %>
+      <%= f.password_field :password, placeholder: '······' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Log in' %>
+    </div>
+  </fieldset>
 <% end %>
