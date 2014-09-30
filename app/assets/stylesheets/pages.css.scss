@@ -65,6 +65,7 @@
 
   .row {
     clear: both;
+    @include media($medium-screen-up) { margin: 2em 0; }
   }
 
   .image {
@@ -84,16 +85,20 @@
     }
 
     @include media($medium-screen-up) {
-      img { border-width: 10px; }
+      @include span-columns(4);
     }
 
     @include media($large-screen-up) {
-      @include span-columns(4);
       &:first-child { @include shift(1); }
+      img { border-width: 10px; }
     }
   }
 
   .large-text {
+    @include media($medium-screen-up) {
+      margin: 1em 0;
+      @include span-columns(8);
+    }
     @include media($large-screen-up) {
       margin: 3em 0;
       @include span-columns(6); 
@@ -107,6 +112,10 @@
 #signup {
 
   .large-text {
+    @include media($medium-screen-up) {
+      @include span-columns(10);
+      @include shift(1);
+    }
     @include media($large-screen-up) {
       @include span-columns(6);
       @include shift(3);
@@ -114,37 +123,43 @@
 
   }
 
-  @include media($large-screen-up) {
   form {
-    margin-top: 5em;
+    @include media($medium-screen-up) {
+      margin-top: 2em;
+      @include span-columns(10);
+      @include shift(1);
+    }
+
+    @include media($large-screen-up) {
+      margin-top: 5em;
       @include span-columns(8);
       @include shift(2);
 
-    input[type="email"] {
-      width: 53%;
-      float: left;
-    }
+      input[type="email"] {
+        width: 53%;
+        float: left;
+      }
 
-    .mce-responses {
-      display: none;
-    }
+      .mce-responses {
+        //display: none;
+      }
 
-    .actions {
-      float: left;
-      clear: none;
-      width: 45%;
-      background: red;
-      margin-left: 2%;
-    }
+      .actions {
+        float: left;
+        clear: none;
+        width: 45%;
+        background: red;
+        margin-left: 2%;
+      }
 
-    input[type="submit"] {
-      margin: 0;
-      width: 100%;
+      input[type="submit"] {
+        margin: 0;
+        width: 100%;
+      }
     }
   }
 }
 
-}
 
 
 
