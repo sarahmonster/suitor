@@ -46,6 +46,7 @@ html.mm-opened .mm-page {
     .header-container { 
         @include outer-container; 
         @include media($large-screen-down) { text-align: center; }
+        position: relative;
     }
 
     #mobile-menu-button {
@@ -67,6 +68,22 @@ html.mm-opened .mm-page {
         @include media($large-screen) {
             @include span-columns(3);
         }
+    }
+
+    .login-bar {
+        @include media($large-screen-down) { display: none; }
+        position: absolute;
+        top: -8px;
+        right: 0;
+        background: lighten($green, 40%);
+        border-bottom: 2px solid $green;
+        padding: 10px 10px 5px;
+        font-size: .8em;
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-family: $sans-serif;
+        a { color: $green; }
     }
 
     ul.navigation {

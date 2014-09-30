@@ -4,7 +4,7 @@
     <%= link_to dashboard_path do %>
       <i class="icon-dashboard2"></i>
       <%= t('Dashboard') %> 
-      <% if type != "mobile" %>
+      <% if device != "mobile" %>
         <span><%= t('Your progress') %></span>
       <% end %>
     <% end %>
@@ -30,10 +30,18 @@
     <%= link_to about_path do %>
       <i class="icon-suitcase"></i>
       <%= t('About') %> <span>
-      <% if type != "mobile" %>
+      <% if device != "mobile" %>
         <%= t('Learn more') %></span>
       <% end %>
     <% end %>
   </li>
+
+  <% if device == "mobile" %>
+    <li>
+      <%= link_to destroy_user_session_path, method: 'delete' do %>
+        <%= t('Log out') %>
+      <% end %>
+    </li>
+  <% end %>
 
 </ul>
