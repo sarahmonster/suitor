@@ -199,31 +199,25 @@ i {
     }
 }
 
-// flash/error messages
-.alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
+// Flash/error messages
+@mixin error-colours($color) {
+  border-color: $color;
+  color: saturate($color, 20%);
+  background: lighten($color, 60%);
+}
 
-.alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
+.alert {
+    margin: 30px 0 15px;
+    border: 1px solid $medium-grey;
+    border-left: 4px solid $medium-grey;
+    padding: 10px;
+    font-style: italic;
 
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
+    &.alert-error { @include error-colours($red); }
+    &.alert-alert { @include error-colours($medium-grey); }
+    &.alert-success { @include error-colours($green); }
+    &.alert-notice { @include error-colours($blue); }
 
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
+}
+
+

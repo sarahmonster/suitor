@@ -2,11 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Registration form
+// Signup form
+.signup-intro {
+    @include media($large-screen-up) {
+        @include span-columns(6);
+    } 
+}
+
 #new_user {
     @include media($large-screen-up) {
-        @include span-columns(4);
-        @include shift(4);
+        @include span-columns(5);
+        @include shift(1);
     }
 
     p {
@@ -14,6 +20,7 @@
     }
 
     #twitter, #facebook {
+        @extend %small-button;
         clear: none;
         float: left;
         padding: .75em 1em;
