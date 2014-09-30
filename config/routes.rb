@@ -1,7 +1,9 @@
 Suitor::Application.routes.draw do
 
   devise_for :users, skip: [:sessions], controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    confirmations: 'users/confirmations',
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
   }
   as :user do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
@@ -16,6 +18,7 @@ Suitor::Application.routes.draw do
   get 'about' => 'pages#about'
   get 'help' => 'pages#help'
   get 'dashboard' => 'dashboard#index'
+  get 'confirm-your-email' => 'pages#confirm_email_notice', as: :confirm_email_notice
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
