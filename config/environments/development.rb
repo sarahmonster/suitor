@@ -1,6 +1,5 @@
 Suitor::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.default_url_options = { :host => 'localhost', :port => 3000 }
 
   # Use the memory store for development caching stuff.
   config.cache_store = :memory_store
@@ -17,8 +16,29 @@ Suitor::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # Set up mailer
+  config.action_mailer.default_url_options = { :host => 'localhost', :port => 3000 }
+
+  # Use Mandrill if environment variables are set
+  if ENV["MANDRILL_USERNAME"] 
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address   => "smtp.mandrillapp.com",
+      :port      => 587,
+      :user_name => ENV["MANDRILL_USERNAME"],
+      :password  => ENV["MANDRILL_PASSWORD"],
+      :enable_starttls_auto => true, 
+      :authentication => 'login', 
+      :domain => 'localhost'
+    }
+
+  # Otherwise don't bother sending mail
+  else
+    config.action_mailer.raise_delivery_errors = false
+    config.action_mailer.perform_deliveries = false
+  end
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
