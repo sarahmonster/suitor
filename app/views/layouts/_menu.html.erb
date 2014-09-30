@@ -1,0 +1,39 @@
+<ul class="navigation">
+  
+  <li>
+    <%= link_to dashboard_path do %>
+      <i class="icon-dashboard2"></i>
+      <%= t('Dashboard') %> 
+      <% if type != "mobile" %>
+        <span><%= t('Your progress') %></span>
+      <% end %>
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to new_posting_path do %>
+      <i class="icon-plus3"></i>
+      <%= t('Add new') %> 
+      <span><%= t('job posting') %></span>
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to postings_path do %>
+      <i class="icon-list"></i>
+      <%= t('List all') %> 
+      <span><%= t('job postings') %></span>
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to about_path do %>
+      <i class="icon-suitcase"></i>
+      <%= t('About') %> <span>
+      <% if type != "mobile" %>
+        <%= t('Learn more') %></span>
+      <% end %>
+    <% end %>
+  </li>
+
+</ul>

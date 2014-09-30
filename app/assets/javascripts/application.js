@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require turbolinks
+//= require mmenu
 //= require pickadate/picker 
 //= require pickadate/picker.date 
 //= require pickadate/picker.time 

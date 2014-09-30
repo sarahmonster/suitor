@@ -103,8 +103,10 @@ section.job-posting {
     text-align: center;
     position: relative;
     border-top-color: $green;
-    @include span-columns(4);
-    @include omega(3n);
+    @include media($large-screen-up) {
+        @include span-columns(4 of 12);
+        @include omega(3n);
+    }
 
     h3 {margin: .75em 0 0 0;}
     h2 {margin: .25em 0 .5em 0;}
@@ -177,7 +179,7 @@ section.job-posting {
 // INDIVIDUAL JOB POSTING PAGE
 
 section.job-information {
-    @include span-columns(6);
+    @include media($large-screen-up) { @include span-columns(6 of 12); }
 
     .job-details {
         clear: both;
@@ -208,7 +210,9 @@ section.job-information {
 
 
 section.job-actions {
-    @include span-columns(6);
+    @include media($large-screen-up) {
+        @include span-columns(6 of 12);
+    }
 
     form {
         @extend %box;
@@ -254,15 +258,20 @@ section.job-actions {
 
 
 
-#new_posting {
-    @include outer-container;
+
+// ADD NEW JOB SCREEN
+@include media($large-screen-up) {
+    #new_posting {
+        @include outer-container;
+
+        .job-information { @include span-columns(7 of 12); }
+
+        .company-information, .application-information {
+            @include span-columns(5 of 12);
+            margin-right: 0;
+        }
+}
 }
 
-.job-information {
-    @include span-columns(7);
-}
 
-.company-information, .application-information {
-    @include span-columns(5);
-    margin-right: 0;
-}
+

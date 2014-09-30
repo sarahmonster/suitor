@@ -1,15 +1,40 @@
-$max-width: 1140px;
-$grid-columns: 12;
-
 body { 
     background: $base-body-color image-url('pinstriped_suit_@2X.png'); 
     background-size: 400px 330px;
     overflow-x: hidden;
 }
 
-aside   { @include span-columns(3); }
-//section { @include outer-container; }
+// MOBILE MENU
+html.mm-opened .mm-page {
+    border: none none none 5px solid $white;
+    @include box-shadow;
+}
+#mobile-menu {
+    &:not(.mm-menu) { display: none; }
+    background: lighten($blue, 66.5%) image-url('whitey_@2X.png');
+    background-size: 654px 654px;
+    color: $blue;
 
+    .mm-list {
+        padding-top: 0;
+
+        li {
+            border-top: 1px solid transparentize($medium-grey, .8);
+            border-bottom: 1px solid $white;
+        }
+        > li:after { display: none; }
+        
+        li > a, li > span {
+            padding: 15px 20px;
+            font-family: $sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+    }
+
+    i { color: lighten($blue, 40%); }
+}
 
 // LOGO AND NAVIGATION
 .site-header {
@@ -18,14 +43,34 @@ aside   { @include span-columns(3); }
     width: 100%;
     @include box-shadow;
 
-    div {
-        @include outer-container;
+    .header-container { 
+        @include outer-container; 
+        @include media($large-screen-down) { text-align: center; }
     }
+
+    #mobile-menu-button {
+        float: left;
+        position: relative;
+        top: 15px;
+        left: 20px;
+        font-size: 30px;
+        @include media($large-screen) { display: none; }
+        i { color: lighten($blue, 40%); }
+    }
+
     #logo {
-        @include span-columns(3);
+        @include media($large-screen-down) {
+            width: 45%;
+            margin: 0 auto;
+        }
+
+        @include media($large-screen) {
+            @include span-columns(3);
+        }
     }
 
     ul.navigation {
+        @include media($large-screen-down) { display: none; }
         @include span-columns(8);
         @include shift(1);
         margin-top: 2em;
@@ -40,6 +85,7 @@ aside   { @include span-columns(3); }
         a {
             font-family: $sans-serif;
             font-size: 1.4em;
+            @include media($max-width-down) { font-size: 1.2em; }
             color: $blue;
             font-weight: 300;
             line-height: 1;
@@ -73,7 +119,10 @@ aside   { @include span-columns(3); }
 
 
 // GENERAL PAGE STRUCTURE & STYLES
-.container {@include outer-container;}
+.container {
+    @include outer-container;
+    @include media($max-width-down) { margin: 10px; }
+}
 
 .page-header {
     text-align: center;
@@ -82,7 +131,7 @@ aside   { @include span-columns(3); }
 
     .controls {
         display: inline-block;
-        margin: 1em 0;
+        margin: .5em 0 0;
         line-height: 1em;
         span {display: inline;}
         i {margin: 0;}
@@ -90,11 +139,16 @@ aside   { @include span-columns(3); }
 
     .controls > a, button {
         @extend %small-button;
-        width: 100%;
+        display: inline-block;
+        margin-bottom: 6px;
         padding: 8px 12px;
         text-align: left;
         font-size: .85em;
         i {color: $medium-grey;}
+    }
+
+    @include media($mobile) {
+        h1 { font-size: 2em; }
     }
 }
 

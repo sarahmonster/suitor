@@ -6,6 +6,12 @@ GIT
       capistrano (~> 3.0)
       sshkit (~> 1.2)
 
+GIT
+  remote: git://github.com/sarahsemark/mmenu-rails.git
+  revision: 2e52a13fcf2ebf9a92c98143b523bea5e1dbbd4f
+  specs:
+    mmenu-rails (0.0.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -236,6 +242,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   jquery-ui-sass-rails
+  mmenu-rails!
   mysql2
   neat
   omniauth-facebook
