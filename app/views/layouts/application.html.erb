@@ -29,15 +29,6 @@
 
       <!-- MAIN NAVBAR -->
       <%= render "layouts/menu", :device => 'desktop' %>
-
-      <!-- LOGIN/OUT BAR -->
-      <div class="login-bar">
-        <% unless current_user %>
-          <%= link_to "Log in", new_user_session_path %>
-        <% else %>
-          Hello<% if current_user.name %>, <%= current_user.name %><% end %>. <%= link_to "Log out", destroy_user_session_path, method: 'delete' %>
-        <% end %>
-      </div>
     
     </nav>
 
