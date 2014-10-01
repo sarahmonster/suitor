@@ -30,6 +30,12 @@ en:
   'Learn more': "Learn more"
   'Applied': "Applied"
   'Sign up': "Sign up"
+  'Account': "Account"
+  'Your settings': "Your settings"
+  'For a free account': "Create account"
+  'Log in': "Log in"
+  'Track your jobs': "Track your jobs"
+
 
   'job_applications':
     'marked_as_sent_dialog': "Your application for this job has been marked as sent today. You can undo this, add notes, or change the date below."

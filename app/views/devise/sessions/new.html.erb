@@ -1,15 +1,14 @@
 <header class="page-header">
+  <h3>Oh, hello again. Let&rsquo;s get to work!</h3>
   <h1><%= t('Log in') %></h1>
 </header>
 
 <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form', :class => 'skinny-form' }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form', :id => 'login-form' }) do |f| %>
   <% if devise_mapping.rememberable? -%>
     <%= f.hidden_field :remember_me, value: 1 %>
   <% end %>
-
-  <p>Sign in with your existing account.<br> Don't have an account? <%= link_to t("Sign up"), user_signup_path %></p>
 
   <fieldset class="secondary">
     <h3>Log into your account</h3>
@@ -49,4 +48,6 @@
       <%= f.submit 'Log in' %>
     </div>
   </fieldset>
+
+    <p class="footnote">(Don&rsquo;t have an account yet? <%= link_to "Sign up here", user_signup_path %>)</p>
 <% end %>
