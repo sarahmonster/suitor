@@ -18,10 +18,10 @@ class DashboardController < ApplicationController
       @percent_difference = (100 * (@postings_applied_this_week.size / @applications_per_week)) - 100
       @application_goal = current_user.application_goal
       @progress = (@postings_applied_this_week.size.to_f / @application_goal.to_f) * 100
-    else 
+    else
       @date_started = Time.now
       @percent_difference = 0
       @progress = 0
-    end 
+    end
   end
 end

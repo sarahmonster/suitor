@@ -1,0 +1,19 @@
+<header class="page-header">
+  <h3>Whoops! Looks like it&rsquo;s time for a new password.</h3>
+  <h1><%= t('Password reset') %></h1>
+</header>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, id: 'password-reset' }) do |f| %>
+  <fieldset class="primary">
+    <h3>Set your new password</h3>
+    <%= devise_error_messages! %>
+    <%= f.hidden_field :reset_password_token %>
+    <%= f.label :password, "New password" %>
+    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+    <%= f.label :password_confirmation, "Once more, just so we’re sure" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <div class="actions">
+      <%= f.submit "Change my password" %>
+    </div>
+  </fieldset>
+<% end %>

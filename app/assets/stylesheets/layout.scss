@@ -1,5 +1,5 @@
-body { 
-    background: $base-body-color image-url('pinstriped_suit_@2X.png'); 
+body {
+    background: $base-body-color image-url('pinstriped_suit_@2X.png');
     background-size: 400px 330px;
     overflow-x: hidden;
 }
@@ -10,7 +10,9 @@ html.mm-opened .mm-page {
     @include box-shadow;
 }
 #mobile-menu {
-    &:not(.mm-menu) { display: none; }
+    &:not(.mm-menu) {
+        display: none;
+    }
     background: lighten($blue, 66.5%) image-url('whitey_@2X.png');
     background-size: 654px 654px;
     color: $blue;
@@ -22,8 +24,10 @@ html.mm-opened .mm-page {
             border-top: 1px solid transparentize($medium-grey, .8);
             border-bottom: 1px solid $white;
         }
-        > li:after { display: none; }
-        
+        > li:after {
+            display: none;
+        }
+
         li > a, li > span {
             padding: 15px 20px;
             font-family: $sans-serif;
@@ -33,7 +37,9 @@ html.mm-opened .mm-page {
         }
     }
 
-    i { color: lighten($blue, 40%); }
+    i {
+        color: lighten($blue, 40%);
+    }
 }
 
 // LOGO AND NAVIGATION
@@ -43,9 +49,11 @@ html.mm-opened .mm-page {
     width: 100%;
     @include box-shadow;
 
-    .header-container { 
-        @include outer-container; 
-        @include media($large-screen-down) { text-align: center; }
+    .header-container {
+        @include outer-container;
+        @include media($large-screen-down) {
+            text-align: center;
+        }
     }
 
     #mobile-menu-button {
@@ -54,8 +62,12 @@ html.mm-opened .mm-page {
         top: 15px;
         left: 20px;
         font-size: 30px;
-        @include media($large-screen) { display: none; }
-        i { color: lighten($blue, 40%); }
+        @include media($large-screen) {
+            display: none;
+        }
+        i {
+            color: lighten($blue, 40%);
+        }
     }
 
     #logo {
@@ -70,7 +82,9 @@ html.mm-opened .mm-page {
     }
 
     ul.navigation {
-        @include media($large-screen-down) { display: none; }
+        @include media($large-screen-down) {
+            display: none;
+        }
         @include span-columns(8);
         @include shift(1);
         margin-top: 2em;
@@ -85,7 +99,9 @@ html.mm-opened .mm-page {
         a {
             font-family: $sans-serif;
             font-size: 1.4em;
-            @include media($max-width-down) { font-size: 1.2em; }
+            @include media($max-width-down) {
+                font-size: 1.2em;
+            }
             color: $blue;
             font-weight: 300;
             line-height: 1;
@@ -121,7 +137,9 @@ html.mm-opened .mm-page {
 // GENERAL PAGE STRUCTURE & STYLES
 .container {
     @include outer-container;
-    @include media($max-width-down) { margin: 10px; }
+    @include media($max-width-down) {
+        margin: 10px;
+    }
 }
 
 .page-header {
@@ -133,8 +151,12 @@ html.mm-opened .mm-page {
         display: inline-block;
         margin: .5em 0 0;
         line-height: 1em;
-        span {display: inline;}
-        i {margin: 0;}
+        span {
+            display: inline;
+        }
+        i {
+            margin: 0;
+        }
     }
 
     .controls > a, button {
@@ -144,11 +166,15 @@ html.mm-opened .mm-page {
         padding: 8px 12px;
         text-align: left;
         font-size: .85em;
-        i {color: $medium-grey;}
+        i {
+            color: $medium-grey;
+        }
     }
 
     @include media($mobile) {
-        h1 { font-size: 2em; }
+        h1 {
+            font-size: 2em;
+        }
     }
 }
 
@@ -196,5 +222,34 @@ i {
         background: $medium-grey;
         border-radius: 50%;
         color: $white;
+    }
+}
+
+// Flash/error messages
+@mixin error-colours($color) {
+    border-color: $color;
+    color: saturate($color, 20%);
+    background: lighten($color, 60%);
+}
+
+.alert {
+    max-width: 560px;
+    margin: 30px auto 15px;
+    border: 1px solid $medium-grey;
+    border-left: 4px solid $medium-grey;
+    padding: 10px;
+    font-style: italic;
+
+    &.alert-error {
+        @include error-colours($red);
+    }
+    &.alert-alert {
+        @include error-colours($medium-grey);
+    }
+    &.alert-success {
+        @include error-colours($green);
+    }
+    &.alert-notice {
+        @include error-colours($blue);
     }
 }

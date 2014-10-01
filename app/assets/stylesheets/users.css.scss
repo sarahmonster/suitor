@@ -2,18 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Registration form
-#new_user {
+// Signup form and login
+.signup-intro {
     @include media($large-screen-up) {
-        @include span-columns(4);
-        @include shift(4);
-    }
+        @include span-columns(6);
+    } 
+}
 
+@include media($large-screen-up) {
+    #signup-form {
+        @include span-columns(5);
+        @include shift(1);
+    }
+    #login-form, #password-reset, #confirmation-resend {
+        @include span-columns(6);
+        @include shift(3);
+    }
+}
+
+#signup-form, #login-form {
     p {
         margin: -1em 0 2em;
     }
 
     #twitter, #facebook {
+        @extend %small-button;
         clear: none;
         float: left;
         padding: .75em 1em;
@@ -82,9 +95,21 @@
         }
     }
 
+    .forgot-password-link {
+        float: right;
+    }
+    
     input[type=submit] {
         padding-left: 5em;
         padding-right: 5em;
     }
 
+}
+
+#login-form .footnote {
+    margin-top: 5em;
+    border-top: 1px solid $light-grey;
+    padding: 10px 0;
+    text-align: center;
+    font-size: .8em;
 }

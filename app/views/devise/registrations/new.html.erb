@@ -1,34 +1,50 @@
 <header class="page-header">
+  <h3>Get a jump-start on your job hunt</h3>
   <h1><%= t('Sign up') %></h1>
 </header>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "skinny-form"}) do |f| %>
-  <%= devise_error_messages! %>
 
-  <p>It&rsquo;s <strong>free</strong> and takes less than <strong>30 seconds.</strong> Already have an account? <%= link_to "Login", new_user_session_path %></p>
+
+<div class="signup-intro large-text">
+  <p>Job-hunting is the <em>worst</em>. Whether you send out ten resumes or ten hundred, it&rsquo;s important to keep track of your process. Using suitor, you can easily track your application status, send follow-ups, and keep a record of what you said to who, so you&rsquo;ll never accidentally say the wrong thing to the wrong person.</p>
+
+  <p>Sign up for an account now! It&rsquo;s <strong>free</strong> and takes less than <strong>30 seconds.</strong></p>
+
+  <p>(PS: Already have an account? <%= link_to "Log in here.", new_user_session_path %>)</p>
+</div>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :role => 'form', :id => 'signup-form' }) do |f| %>
 
   <fieldset class="primary">
 
-  <h3>Register an account</h3>
+  <h3>Sign up for a free account</h3>
 
   <h4><span><%= t('Sign up with') %></span></h4>
 
   <div>
-    <button id="facebook"><i class="icon-facebook"></i>Facebook</button>
-    <button id="twitter"><i class="icon-twitter"></i>Twitter</button>
-    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+    <%= link_to user_omniauth_authorize_path(:facebook), id: 'facebook' do %>
+      <i class="icon-facebook"></i>Facebook
+    <% end %>
+    <!--
+    <%= link_to user_omniauth_authorize_path(:facebook), id: 'twitter' do %>
+      <i class="icon-twitter"></i>Twitter
+    <% end %>
+    -->
+    <a id="twitter"><i class="icon-twitter"></i>Twitter</a>
   </div>
 
   <h4><span><%= t('or with email') %></span></h4>
 
+  <%= devise_error_messages! %>
+
   <div>
     <%= f.label :email %>
-    <%= f.text_field :email, placeholder: t("users.email.placeholder"), type: 'email' %>
+    <%= f.text_field :email, placeholder: t("users.email.placeholder"), type: 'text' %>
   </div>
 
   <div>
     <%= f.label :password %>
-    <%= f.password_field :password, placeholder: '······' %>
+    <%= f.password_field :password, placeholder: '' %>
   </div>
 
   <div class="actions">

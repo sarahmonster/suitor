@@ -1,14 +1,52 @@
 <ul class="navigation">
-  
-  <li>
-    <%= link_to dashboard_path do %>
-      <i class="icon-dashboard2"></i>
-      <%= t('Dashboard') %> 
-      <% if type != "mobile" %>
-        <span><%= t('Your progress') %></span>
+
+  <!-- LOGGED OUT USER -->
+  <% unless current_user %>
+
+    <li>
+      <%= link_to user_signup_path do %>
+        <i class="icon-suitcase"></i>
+        <%= t('Sign up') %>          
+        <% if device != "mobile" %>
+          <span><%= t('For a free account') %></span>
+        <% end %>
       <% end %>
-    <% end %>
-  </li>
+    </li>
+
+    <li>
+      <%= link_to about_path do %>
+        <i class="icon-suitcase"></i>
+        <%= t('About') %>
+        <% if device != "mobile" %>
+          <span><%= t('Learn more') %></span>
+        <% end %>
+      <% end %>
+    </li>
+
+    <li>
+      <%= link_to new_user_session_path do %>
+        <i class="icon-suitcase"></i>
+        <%= t('Log in') %>          
+        <% if device != "mobile" %>
+          <span><%= t('Track your jobs') %></span>
+        <% end %>
+      <% end %>
+    </li>
+
+
+
+  <!-- LOGGED IN USER -->
+  <% else %>
+    
+    <li>
+      <%= link_to dashboard_path do %>
+        <i class="icon-dashboard2"></i>
+        <%= t('Dashboard') %> 
+        <% if device != "mobile" %>
+            <span><%= t('Your progress') %></span>
+        <% end %>
+      <% end %>
+    </li>
 
   <li>
     <%= link_to new_posting_path do %>
@@ -26,14 +64,16 @@
     <% end %>
   </li>
 
-  <li>
-    <%= link_to about_path do %>
-      <i class="icon-suitcase"></i>
-      <%= t('About') %> <span>
-      <% if type != "mobile" %>
-        <%= t('Learn more') %></span>
+    <li>
+      <%= link_to destroy_user_session_path, method: 'delete' do %>
+        <i class="icon-user2"></i>
+        <%= t('Account') %>
+        <% if device != "mobile" %>
+          <span><%= t('Your settings') %></span>
+        <% end %>
       <% end %>
-    <% end %>
-  </li>
+    </li>
+
+  <% end %>
 
 </ul>
