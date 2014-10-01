@@ -1,5 +1,5 @@
-body { 
-    background: $base-body-color image-url('pinstriped_suit_@2X.png'); 
+body {
+    background: $base-body-color image-url('pinstriped_suit_@2X.png');
     background-size: 400px 330px;
     overflow-x: hidden;
 }
@@ -23,7 +23,7 @@ html.mm-opened .mm-page {
             border-bottom: 1px solid $white;
         }
         > li:after { display: none; }
-        
+
         li > a, li > span {
             padding: 15px 20px;
             font-family: $sans-serif;
@@ -43,8 +43,8 @@ html.mm-opened .mm-page {
     width: 100%;
     @include box-shadow;
 
-    .header-container { 
-        @include outer-container; 
+    .header-container {
+        @include outer-container;
         @include media($large-screen-down) { text-align: center; }
     }
 
@@ -201,9 +201,9 @@ i {
 
 // Flash/error messages
 @mixin error-colours($color) {
-  border-color: $color;
-  color: saturate($color, 20%);
-  background: lighten($color, 60%);
+    border-color: $color;
+    color: saturate($color, 20%);
+    background: lighten($color, 60%);
 }
 
 .alert {
@@ -220,5 +220,3 @@ i {
     &.alert-notice { @include error-colours($blue); }
 
 }
-
-
