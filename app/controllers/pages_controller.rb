@@ -10,9 +10,6 @@ class PagesController < ApplicationController
   def about
   end
 
-  def confirm_email_notice
-  end
-
   def launch
     render :layout => 'skeleton'
   end
