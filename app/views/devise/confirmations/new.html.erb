@@ -1,0 +1,17 @@
+<header class="page-header">
+  <h3>Check your spam filter, okay?</h3>
+  <h1><%= t('Resend confirmation') %></h1>
+</header>
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post, id: 'confirmation-resend' }) do |f| %>
+  <fieldset class="primary">
+    <%= devise_error_messages! %>
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Send me an email" %>
+    </div>
+  </fieldset>
+<% end %>

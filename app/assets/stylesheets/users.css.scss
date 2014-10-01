@@ -14,7 +14,7 @@
         @include span-columns(5);
         @include shift(1);
     }
-    #login-form, #password-reset {
+    #login-form, #password-reset, #confirmation-resend {
         @include span-columns(6);
         @include shift(3);
     }
