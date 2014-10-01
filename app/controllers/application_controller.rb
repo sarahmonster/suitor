@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
 
   private
 
+    # Overwriting the sign_out redirect path method
+    def after_sign_out_path_for(resource_or_scope)
+      home_path
+    end
+
     def require_admin
       unless current_user and current_user.admin?
         redirect_to root_path
