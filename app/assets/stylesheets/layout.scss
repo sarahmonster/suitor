@@ -207,7 +207,8 @@ i {
 }
 
 .alert {
-    margin: 30px 0 15px;
+    max-width: 500px;
+    margin: 30px auto 15px;
     border: 1px solid $medium-grey;
     border-left: 4px solid $medium-grey;
     padding: 10px;

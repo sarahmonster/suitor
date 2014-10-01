@@ -34,14 +34,15 @@
     </div>
 
     <div>
-      <!--
-      <%- if devise_mapping.recoverable? %>
-        <%= link_to "Forgot password?", new_password_path(resource_name), class: 'right' %>
-        <br>
-      <% end -%>
-      -->
-      <%= f.label :password %>
-      <%= f.password_field :password, placeholder: '······' %>
+
+    <div>
+      <%= f.label :password do %>
+        Password
+        <% if devise_mapping.recoverable? %>
+          <%= link_to "(Forgot it?)", new_password_path(resource_name), class: 'forgot-password-link' %>
+        <% end %>
+      <% end %>
+      <%= f.password_field :password, placeholder: '' %>
     </div>
 
     <div class="actions">
