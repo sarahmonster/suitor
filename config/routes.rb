@@ -9,7 +9,7 @@ Suitor::Application.routes.draw do
     get 'login' => 'devise/sessions#new', :as => :new_user_session
     post 'login' => 'devise/sessions#create', :as => :user_session
     delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
-    get 'sign-up' => 'devise/registrations#new', as: :user_signup
+    get 'sign-up' => 'users/registrations#new', as: :user_signup
     # post 'signup' => 'devise/registrations#create', as: :user_signup
   end
 
@@ -22,12 +22,12 @@ Suitor::Application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
- 
+
   # If user is logged in, show the dashboard as root
   authenticated do
     root :to => 'dashboard#index', as: :authenticated
   end
-  
+
   # If user isn't logged in, show the launch page as root
   root :to => 'pages#launch'
 

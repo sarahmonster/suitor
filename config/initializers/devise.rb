@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # config.secret_key = 'e6a08a8908146cdb0de140c35fa97c039197407e9bee6d1db02cf93cdae44fc931e46717aafc35fc0bb79a183b8ac634b99a3fdbe64df911dddbf0157bebb915'
   config.secret_key = Rails.application.secrets.devise_key
- 
+
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
@@ -99,6 +99,45 @@ Devise.setup do |config|
 
   # Setup a pepper to generate the encrypted password.
   # config.pepper = '04012f1a84ac0fded0d676e62d4e4990a52a95a56abb0672bd28211c67f228e482e676ab06fd7b7356ecfbba50d1951b3175fa84edd4a6156f03a8d6d49353f3'
+
+  # ==> Configuration for :invitable
+  # The period the generated invitation token is valid, after
+  # this period, the invited resource won't be able to accept the invitation.
+  # When invite_for is 0 (the default), the invitation won't expire.
+  config.invite_for = 2.weeks
+
+  # Number of invitations users can send.
+  # - If invitation_limit is nil, there is no limit for invitations, users can
+  # send unlimited invitations, invitation_limit column is not used.
+  # - If invitation_limit is 0, users can't send invitations by default.
+  # - If invitation_limit n > 0, users can send n invitations.
+  # You can change invitation_limit column for some users so they can send more
+  # or less invitations, even with global invitation_limit = 0
+  # Default: nil
+  config.invitation_limit = 0
+
+  # The key to be used to check existing users when sending an invitation
+  # and the regexp used to test it when validate_on_invite is not set.
+  # config.invite_key = {:email => /\A[^@]+@[^@]+\z/}
+  # config.invite_key = {:email => /\A[^@]+@[^@]+\z/, :username => nil}
+
+  # Flag that force a record to be valid before being actually invited
+  # Default: false
+  # config.validate_on_invite = true
+
+  # Resend invitation if user with invited status is invited again
+  # Default: true
+  # config.resend_invitation = false
+
+  # The class name of the inviting model. If this is nil,
+  # the #invited_by association is declared to be polymorphic.
+  # Default: nil
+  # config.invited_by_class_name = 'User'
+
+  # The column name used for counter_cache column. If this is nil,
+  # the #invited_by association is declared without counter_cache.
+  # Default: nil
+  # config.invited_by_counter_cache = :invitations_count
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -234,8 +273,6 @@ Devise.setup do |config|
     config.omniauth :developer
     OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end
-  puts Rails.application.secrets.facebook_id
-  puts Rails.application.secrets.facebook_secret
   config.omniauth :facebook, Rails.application.secrets.facebook_id, Rails.application.secrets.facebook_secret
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 

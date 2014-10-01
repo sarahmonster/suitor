@@ -1,4 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :require_invite, only: [:new, :create]
+
+  def new
+    super
+  end
 
   protected
 
