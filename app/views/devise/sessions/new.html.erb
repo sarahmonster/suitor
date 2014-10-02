@@ -13,6 +13,7 @@
   <fieldset class="secondary">
     <h3>Log into your account</h3>
 
+    <!--
     <h4><span><%= t('Log in with') %></span></h4>
 
     <div>
@@ -21,19 +22,12 @@
     </div>
 
     <h4><span><%= t('or with your email') %></span></h4>
+    -->
 
     <div>
-      <!--
-      <%- if devise_mapping.registerable? %>
-        <%= link_to 'Sign up', user_signup_path, class: 'right'  %>
-        <br>
-      <% end -%>
-      -->
       <%= f.label :email %>
       <%= f.text_field :email, placeholder: t("users.email.placeholder"), type: 'email', tabindex: 1 %>
     </div>
-
-    <div>
 
     <div>
       <%= f.label :password do %>
@@ -50,5 +44,7 @@
     </div>
   </fieldset>
 
-    <p class="footnote">(Don&rsquo;t have an account yet? <%= link_to "Sign up here", user_signup_path %>)</p>
+  <!--
+  <p class="footnote">(Don&rsquo;t have an account yet? <%= link_to "Sign up here", user_signup_path %>)</p>
+  -->
 <% end %>

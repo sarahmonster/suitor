@@ -1,9 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :require_invite, only: [:new, :create]
-
-  def new
-    super
-  end
+  before_action :redirect_to_root
 
   protected
 
@@ -13,5 +9,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def after_sign_up_path_for(resource)
       home_path#(resource)
+    end
+
+    def redirect_to_root
+      redirect_to root_path
     end
 end

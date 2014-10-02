@@ -6,7 +6,7 @@
     <li>
       <%= link_to user_signup_path do %>
         <i class="icon-suitcase"></i>
-        <%= t('Sign up') %>          
+        <%= t('Sign up') %>
         <% if device != "mobile" %>
           <span><%= t('For a free account') %></span>
         <% end %>
@@ -26,7 +26,7 @@
     <li>
       <%= link_to new_user_session_path do %>
         <i class="icon-suitcase"></i>
-        <%= t('Log in') %>          
+        <%= t('Log in') %>
         <% if device != "mobile" %>
           <span><%= t('Track your jobs') %></span>
         <% end %>
@@ -37,11 +37,11 @@
 
   <!-- LOGGED IN USER -->
   <% else %>
-    
+
     <li>
       <%= link_to dashboard_path do %>
         <i class="icon-dashboard2"></i>
-        <%= t('Dashboard') %> 
+        <%= t('Dashboard') %>
         <% if device != "mobile" %>
             <span><%= t('Your progress') %></span>
         <% end %>
@@ -51,7 +51,7 @@
   <li>
     <%= link_to new_posting_path do %>
       <i class="icon-plus3"></i>
-      <%= t('Add new') %> 
+      <%= t('Add new') %>
       <span><%= t('job posting') %></span>
     <% end %>
   </li>
@@ -59,7 +59,7 @@
   <li>
     <%= link_to postings_path do %>
       <i class="icon-list"></i>
-      <%= t('List all') %> 
+      <%= t('List all') %>
       <span><%= t('job postings') %></span>
     <% end %>
   </li>
