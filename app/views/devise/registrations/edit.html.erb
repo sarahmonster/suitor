@@ -1,0 +1,61 @@
+<header class="page-header">
+  <h3>Settings and junk!</h3>
+  <h1>Edit <%= resource_name.to_s.humanize %></h1>
+</header>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <fieldset class="primary">
+    <h3>Your details</h3>
+    <div><%= f.label :email %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>
+        Currently waiting confirmation for: <%= resource.unconfirmed_email %>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="half-width">
+      <%= f.label :"application_goal" %><em>How many jobs do you want to apply for per week?</em>
+      <%= f.text_field :application_goal %>
+    </div>
+
+    <div class="half-width">
+      <%= f.label :"followup_offset" %><em>This is the number of days after applying you want to send a follow-up message.</em>
+      <%= f.text_field :followup_offset %>
+    </div>
+
+  </fieldset>
+
+  <fieldset class="secondary">
+    <h3>Change your password</h3>
+    <div>
+      <%= f.label :password %> <em>(leave blank if you don't want to change it)</em>
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+  </fieldset>
+
+  <fieldset class="important">
+    <div>
+      <%= f.label :"Enter your current password to confirm your changes" %> 
+      <%= f.password_field :current_password, autocomplete: "off" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  </fieldset>
+<% end %>
