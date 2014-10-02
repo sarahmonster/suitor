@@ -4,7 +4,6 @@
 
 
 
-
 // LAUNCH PAGE
 
 .pages.launch, html {height: 100%;}
@@ -33,16 +32,17 @@
     color: lighten($blue, 20%);
     font-size: 3em;
     @include box-shadow;
-
-    &:hover {
-      background: $blue;
-    }
+    &:hover { background: $blue; }
   }
 }
 
 .large-text {
   font-size: 1.2em;
   line-height: 1.8em;
+  
+  @include media($mobile) {
+    font-size: 1em;
+  }
 }
 
 
@@ -65,16 +65,10 @@
 
   .row {
     clear: both;
-    @include media($medium-screen-up) { margin: 2em 0; }
+    @include media($medium-screen-up) { padding-top: 5em; }
   }
 
   .image {
-    img {
-      border: 6px solid $white;
-      border-radius: 50%;
-      @include box-shadow;
-    }
-
     @include media($mobile) {
       text-align: center;
       
@@ -84,25 +78,24 @@
       }
     }
 
-    @include media($medium-screen-up) {
-      @include span-columns(4);
-    }
+    @include media($medium-screen-up) { @include span-columns(6); }
 
     @include media($large-screen-up) {
-      &:first-child { @include shift(1); }
-      img { border-width: 10px; }
+      @include span-columns(5);
+      &:last-child { @include shift(1); }
     }
   }
 
   .large-text {
+
     @include media($medium-screen-up) {
-      margin: 1em 0;
-      @include span-columns(8);
-    }
-    @include media($large-screen-up) {
-      margin: 3em 0;
+      margin: -1em 0;
       @include span-columns(6); 
-      &:first-child { @include shift(1); }
+    }
+
+    @include media($large-screen-up) {
+      margin: 2em 0;
+      &:last-child { @include shift(1); }
     }
   }
 }
@@ -172,9 +165,7 @@
     @include shift(3);
   }
   
-  p {
-    text-align: left;
-  }
+  p { text-align: left; }
   
   p:last-of-type {
     margin: 1em 0 3em;
@@ -195,3 +186,47 @@
   }
 }
 
+
+// ERROR PAGES 
+.error {
+  i {
+    color: lighten($red, 20%);
+    span { display: inline; }
+  }
+
+  .panel {
+    border-bottom: 0;
+    box-shadow: none;
+  }
+
+  p:last-of-type { text-align: right; }
+
+  @include media($medium-screen-up) {
+    .logo {
+      @include span-columns(6);
+      @include shift(3);
+    }
+
+    .page-header {
+      clear: both;
+      padding-top: 2em;
+    }
+
+    .large-text {
+      @include span-columns(8);
+      @include shift(2);
+    }
+  }
+
+  @include media($large-screen-up) {
+    .logo {
+      @include span-columns(4);
+      @include shift(4);
+    }
+
+    .large-text {
+      @include span-columns(6);
+      @include shift(3);
+    }
+  }
+}
