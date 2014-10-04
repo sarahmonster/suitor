@@ -44,6 +44,11 @@ Now your development version of suitor is available at [localhost][].
 [localhost]: http://localhost:3000/
 [Ruby]: http://www.ruby-lang.org/
 
----
+
+# License information
+
+Mail templates based on [the always fantastic MailChimp](http://www.mailchimp.com/)'s [email blueprints](https://github.com/mailchimp/Email-Blueprints), originally licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
+
+Background patterns from my go-to resource, the [Subtle Patterns library](http://subtlepatterns.com), also licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
 
 Copyright (c) 2014 [sarah ✈ semark](http://triggersandsparks.com).
