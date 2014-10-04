@@ -9,9 +9,7 @@ Suitor::Application.routes.draw do
     get 'login' => 'devise/sessions#new', as: :new_user_session
     post 'login' => 'devise/sessions#create', as: :user_session
     delete 'logout' => 'devise/sessions#destroy', as: :destroy_user_session
-    unless Rails.env.production?
-      get 'sign-up' => 'users/registrations#new', as: :user_signup
-    end
+    get 'sign-up' => 'users/registrations#new', as: :user_signup
     get 'use-invite' => 'users/invitations#edit', as: :invitation_accept
     get 'invite' => 'users/invitations#new', as: :new_invitation
   end
