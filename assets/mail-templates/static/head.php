@@ -132,6 +132,46 @@
         /*@editable*/ text-align:left;
       }
 
+      .suitor {
+        font-weight: 500;
+        color: #666;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .button {
+        background: #1B568C;
+        border-bottom: 4px solid #8ABCE9;
+        padding: 1.25em 2.5em;
+        font-size: 16px;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #B5D4F1 !important;
+        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 600;
+        line-height: 1em;
+        text-decoration: none !important;
+        margin: 20px auto;
+        display: inline-block;
+      }
+
+      .button:hover, .button:active {
+        color: #B5D4F1;
+        border: 2px solid #FFF;
+        background: #174977;
+      }
+
+      .xo {
+        font-family: "American Typewriter", Rockwell, Courier, Cambria, Georgia, sans-serif;
+        text-align: right;
+        font-size: 21px;
+        font-weight: 500;
+        color: #DA3440;
+      }
+
       /* ========== Header Styles ========== */
 
       /**
@@ -226,6 +266,7 @@
       #templateBody{
         /*@editable*/ background-color: rgba(255, 255, 255, 0.8);
         /*@editable*/ border-top: 4px solid #8ABCE9;
+        /*@editable*/ margin-bottom: 30px;
       }
 
       /**
@@ -235,15 +276,16 @@
       * @theme main
       */
       .bodyContent{
-        /*@editable*/ color:#505050;
+        /*@editable*/ color: #505050;
         /*@editable*/ font-family: "Helvetica Neue", Helvetica, sans-serif;
-        /*@editable*/ font-size:14px;
-        /*@editable*/ line-height:150%;
-        padding-top:40px;
-        padding-right:35px;
-        padding-bottom:30px;
-        padding-left:35px;
-        /*@editable*/ text-align:left;
+        /*@editable*/ font-size: 18px;
+        /*@editable*/ line-height: 150%;
+        /*@editable*/ font-weight: 300;
+        padding-top: 40px;
+        padding-right: 35px;
+        padding-bottom: 10px;
+        padding-left: 35px;
+        /*@editable*/ text-align: left;
       }
 
       /**
@@ -258,9 +300,9 @@
       }
 
       .bodyContent img{
-        display:inline;
-        height:auto;
-        max-width:560px;
+        display: inline;
+        height: auto;
+        max-width: 560px;
       }
 
       /* ========== Footer Styles ========== */

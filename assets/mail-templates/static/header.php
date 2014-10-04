@@ -7,6 +7,8 @@
                       <table border="0" cellpadding="0" cellspacing="0" id="templateContainer">
                           <tr>
                               <td align="center" valign="top">
+
+                              <?php if ($showpreheader === true): ?>
                                   <!-- BEGIN PREHEADER // -->
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templatePreheader">
                                         <tr>
@@ -21,6 +23,8 @@
                                         </tr>
                                     </table>
                                     <!-- // END PREHEADER -->
+                                  <?php endif; ?>
+                                  
                                 </td>
                             </tr>
                           <tr>
