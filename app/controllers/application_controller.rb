@@ -20,6 +20,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def require_invite
+      unless current_user and current_user.invited_to_sign_up?
+        redirect_to home_path
+      end
+    end
+
     def require_login
       unless current_user
         redirect_to new_user_session_path

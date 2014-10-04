@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // Signup form and login
-.signup-intro {
+.signup-intro, .invitation-intro {
     @include media($large-screen-up) {
         @include span-columns(6);
     } 
@@ -14,7 +14,7 @@
         @include span-columns(5);
         @include shift(1);
     }
-    #login-form, #password-reset, #confirmation-resend {
+    #login-form, #password-reset, #confirmation-resend, #invitation-form {
         @include span-columns(6);
         @include shift(3);
     }

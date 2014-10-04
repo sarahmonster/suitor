@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   # EMAIL_REGEX = /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/
-  devise :database_authenticatable, :confirmable, :lockable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, omniauth_providers: [:facebook]
+  devise :database_authenticatable, :confirmable, :invitable, :lockable,
+         :registerable, :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook]
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?
   # validates_presence_of :email

@@ -1,11 +1,11 @@
 <div class="panel" id="teaser">
   <div class="container">
-    
+
     <header id="tagline">
         <%= image_tag("suitor.png", :alt => "suitor") %>
         <h1>Get a job, hippie.</h1>
     </header>
-  
+
   </div>
   <a class="next jump" href="#about"><i class="icon-arrow-down9"><span>Next panel</span></i></a>
 </div>
@@ -80,7 +80,6 @@
     </div>
 
     <form action="//triggersandsparks.us1.list-manage.com/subscribe/post?u=7cf7b38d641914fc60e63954f&amp;id=2c3bb4988b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-
       <fieldset class="primary">
         <h3>Join our private beta</h3>
           <label for="mce-EMAIL">Email Address</label>
@@ -91,8 +90,9 @@
           </div>
         </fieldset>
     </form>
-
   </div>
+
+  <p class="footnote">Or <%= link_to t('log in'), new_user_session_path %> if you already have an account.</p>
 </div>
 
 
