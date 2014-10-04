@@ -49,7 +49,7 @@ three:
   user: one
 
 four:
-  title: Clown Shoe Manufacturer
+  title: Tidal Wave Maker
   description: <%= Faker::Lorem.paragraph(2) %>
   url: <%= Faker::Internet.url %>
   date_posted:
@@ -65,7 +65,7 @@ four:
   user: one
 
 five:
-  title: Clown Shoe Manufacturer
+  title: Bank Robber
   description: <%= Faker::Lorem.paragraph(1) %>
   url: <%= Faker::Internet.url %>
   date_posted:
@@ -97,7 +97,7 @@ one_usertwo:
   user: two
 
 two_usertwo:
-  title: Clown Shoe Manufacturer
+  title: Lawyer
   description: <%= Faker::Lorem.paragraph(2) %>
   url: <%= Faker::Internet.url %>
   date_posted:
@@ -113,7 +113,7 @@ two_usertwo:
   user: two
 
 three_usertwo:
-  title: Clown Shoe Manufacturer
+  title: Car Maker
   description: <%= Faker::Lorem.paragraph(2) %>
   url: <%= Faker::Internet.url %>
   date_posted:
@@ -129,7 +129,7 @@ three_usertwo:
   user: two
 
 four_usertwo:
-  title: Clown Shoe Manufacturer
+  title: Car Driver
   description: <%= Faker::Lorem.paragraph(2) %>
   url: <%= Faker::Internet.url %>
   date_posted:
@@ -145,23 +145,7 @@ four_usertwo:
   user: two
 
 five_usertwo:
-  title: Clown Shoe Manufacturer
-  description: <%= Faker::Lorem.paragraph(2) %>
-  url: <%= Faker::Internet.url %>
-  date_posted:
-  job_location: Portland, Oregon
-  hiring_organization: <%= Faker::Company.name %>
-  hiring_organization_url: <%= Faker::Internet.url %>
-  contact_name: <%= Faker::Name.name %>
-  contact_email: <%= Faker::Internet.free_email %>
-  application_url:
-  deadline: <%= Date.today + 3 %>
-  application_instructions:
-  archived: true
-  user: two
-
-six_usertwo:
-  title: Clown Shoe Manufacturer
+  title: Babysitter
   description: <%= Faker::Lorem.paragraph(2) %>
   url: <%= Faker::Internet.url %>
   date_posted:
@@ -174,6 +158,23 @@ six_usertwo:
   deadline: <%= Date.today + 3 %>
   application_instructions:
   archived: false
+  user: two
+
+archived_usertwo:
+  id: 500
+  title: Scotch Sampler
+  description: <%= Faker::Lorem.paragraph(2) %>
+  url: <%= Faker::Internet.url %>
+  date_posted:
+  job_location: Portland, Oregon
+  hiring_organization: <%= Faker::Company.name %>
+  hiring_organization_url: <%= Faker::Internet.url %>
+  contact_name: <%= Faker::Name.name %>
+  contact_email: <%= Faker::Internet.free_email %>
+  application_url:
+  deadline: <%= Date.today + 3 %>
+  application_instructions:
+  archived: true
   user: two
 
 one_admin:

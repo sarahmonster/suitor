@@ -30,7 +30,7 @@ migrations. You can use a custom email for the admin user by specifying an
 environment variable:
 
 ```bash
-ADMIN_EMAIL=youremail@gmail.com rake db:setup
+ADMIN_EMAIL=youremail@gmail.com ADMIN_PASSWORD=yourpassword rake db:setup
 ```
 
 Finally, to run the rails server:
