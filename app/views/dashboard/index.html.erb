@@ -84,7 +84,7 @@
       <h3>Your progress this week</h3>
 
       <div class="progress-bar">
-        <div class="meter" style="width: <%= @progress %>%"><span class="label"><%= @postings_applied_this_week.size %>
+        <div class="meter" style="width: <%= @progress > 100 ? 100 : @progress %>%"><span class="label"><%= @postings_applied_this_week.size %>
         <% if @progress > 16 %>
          of <%= @application_goal %>
         <% end %>
