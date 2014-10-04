@@ -1,11 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date_sent: 2014-03-17
-  cover_letter: MyText
+  date_sent: <%= Date.current.advance(:days => -2) %>
+  cover_letter:
   posting: one
 
 two:
-  date_sent: 2014-03-17
-  cover_letter: MyText
+  date_sent: <%= Date.current %>
+  cover_letter: <%= Faker::Lorem.paragraph(2) %>
   posting: two
+
+three:
+  date_sent: Date.current.advance(:days => -4)
+  cover_letter: <%= Faker::Lorem.paragraph(2) %>
+  posting: four
+
+four:
+  date_sent: Date.current.advance(:days => -4)
+  cover_letter: <%= Faker::Lorem.paragraph(2) %>
+  posting: three_usertwo

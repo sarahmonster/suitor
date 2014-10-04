@@ -1,15 +1,43 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  date: 2014-05-24 14:35:12
-  posting_id: 
-  interviewer: MyString
-  notes: MyText
-  contact_method: MyString
+  datetime: <%= Time.current.end_of_hour.advance(:hours => 1, :minutes => 1) %>
+  posting: two
+  interviewer: Count Chocula
+  notes: Took 1.5h. Should hear back in two weeks. He kept talking about cereal.
+  contact_method: On Skype
 
 two:
-  date: 2014-05-24 14:35:12
-  posting_id: 
-  interviewer: MyString
-  notes: MyText
-  contact_method: MyString
+  datetime: <%= Time.current.end_of_hour.advance(:days => -7, :hours => 12, :minutes => -29) %>
+  posting: two
+  interviewer: Richard Nixon
+  notes: Scheduled until 6.30p apparently!
+  contact_method: "Skype username: not-a-crook"
+
+three:
+  datetime: <%= Time.current.end_of_hour.advance(:days => 7, :hours => 4, :minutes => -29) %>
+  posting: three
+  interviewer: Oscar Wilde
+  notes: Only lasts four ten minutes.
+  contact_method: Google Hangout
+
+four:
+  datetime: <%= Time.current.end_of_hour.advance(:days=> 1, :hours => 7, :minutes => 1) %>
+  posting: six_usertwo
+  interviewer: Alfred Hitchcock
+  notes: SUPER awkward interview. Asked questions at the beginning AND the end, and was totally cagey about what tools they use. OH WELL.
+  contact_method: He'll phone
+
+five:
+  datetime: <%= Time.current.end_of_hour.advance(:days => -1) %>
+  posting: one_admin
+  interviewer: Lady Ada Lovelace
+  notes: Why can't I think of any interesting ladies in history? That's pretty terrible.
+  contact_method: Ask Babbage what she's up to.
+
+six:
+  datetime: <%= Time.current.end_of_hour.advance(:hours => -1, :minutes => -29) %>
+  posting: four_usertwo
+  interviewer: Statler & Waldorf
+  notes: Try not to do anything that would invite mockery.
+  contact_method: Check the balcony.

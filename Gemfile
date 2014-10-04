@@ -12,6 +12,9 @@ gem 'actionpack-page_caching'
 
 # Development and test-only gems
 group :development, :test do
+  # For fixture data
+  gem 'faker'
+
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 
@@ -25,7 +28,6 @@ group :development do
   gem 'quiet_assets'
   gem 'rails-footnotes', '>= 4.0.0', '<5'
   gem 'spring'
-  gem 'seed_dump'
 end
 
 # Production-only gems
