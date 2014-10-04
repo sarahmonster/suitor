@@ -1,14 +1,33 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
+<header class="page-header">
+  <h3>Welcome to suitor! We&rsquo;re so excited you&rsquo;re here!</h3>
+  <h1>Create your account</h1>
+</header>
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put, :id => 'invitation-form' } do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :invitation_token %>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+  <p>Hello there! Welcome to suitor, an easy-to-use and easy on the eyes way to track and manage your job applications. You&rsquo;ve been invited to participate in our super-secret beta launch, so keep in mind that things might be a little rough around the edges right now.</p>
 
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <p>That said, you&rsquo;ll be super-important in shaping how the app looks and feels, so if there are features you think are missing, or things you think could be improved, or you just don&rsquo;t like the way we spell &ldquo;colour,&rdquo; you can just drop us a line, and we&rsquo;ll make sure your every need is met.</p>
 
-  <p><%= f.submit t("devise.invitations.edit.submit_button") %></p>
+  <p>What are we waiting for? Set your password to get started!</p>
+
+  <fieldset class="primary">
+    <h3>Choose a password</h3>
+    <div>
+      <%= f.label :"Enter a password" %>
+      <%= f.password_field :password %>
+    </div>
+
+    <div>
+      <%= f.label :"Once more, just to be sure" %>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit t("devise.invitations.edit.submit_button") %>
+    </div>
+
+  </fieldset>
 <% end %>
