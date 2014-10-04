@@ -2,8 +2,9 @@ class Posting < ActiveRecord::Base
   VALID_FILTER_SCOPES = [:applied, :archived, :interview_completed, :interview_scheduled]
 
   validates :user, presence: true
-  validates :title, presence: true,
-                    length: { minimum: 5 }
+  validates :title, presence: true, length: { minimum: 5 }
+  validates :hiring_organization, presence: true, length: { minimum: 5 }
+
   belongs_to :user
   has_one :job_application, dependent: :destroy
   has_many :interviews, dependent: :destroy
@@ -36,7 +37,7 @@ class Posting < ActiveRecord::Base
   }
   scope :with_interviews, -> {
     where("EXISTS (SELECT null FROM interviews where interviews.posting_id = postings.id)")
-  }  
+  }
   scope :no_interviews, -> {
     where("NOT EXISTS (SELECT null FROM interviews where interviews.posting_id = postings.id)")
   }
