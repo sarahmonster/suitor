@@ -16,11 +16,15 @@ end
 class ActionController::TestCase
   include Devise::TestHelpers
 
-  def sign_in(*args)
+  setup do
     @request.env["devise.mapping"] = Devise.mappings[:user]
-
-    super(*args)
   end
+
+  # def sign_in(*args)
+  #   @request.env["devise.mapping"] = Devise.mappings[:user]
+  #
+  #   super(*args)
+  # end
 end
 
 class ActionDispatch::IntegrationTest
