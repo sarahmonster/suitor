@@ -19,12 +19,6 @@ class ActionController::TestCase
   setup do
     @request.env["devise.mapping"] = Devise.mappings[:user]
   end
-
-  # def sign_in(*args)
-  #   @request.env["devise.mapping"] = Devise.mappings[:user]
-  #
-  #   super(*args)
-  # end
 end
 
 class ActionDispatch::IntegrationTest

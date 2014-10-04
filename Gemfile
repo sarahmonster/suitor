@@ -15,6 +15,9 @@ group :development, :test do
   # For fixture data
   gem 'faker'
 
+  # Fixes issue with Rails tests with guard.
+  gem 'ruby-prof'
+
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 
@@ -25,6 +28,12 @@ end
 # Better Development
 group :development do
   gem 'better_errors'
+
+  # Run tasks on file update with guard.
+  gem 'guard'
+  # Run tests on save.
+  gem 'guard-minitest'
+
   gem 'quiet_assets'
   gem 'rails-footnotes', '>= 4.0.0', '<5'
   gem 'spring'
