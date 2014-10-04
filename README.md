@@ -23,11 +23,14 @@ cd suitor
 bundle install
 ```
 
-Now you're ready to start hacking on suitor! You'll want to run the initial
-database migrations to get the development database set up:
+Now you're ready to start hacking on suitor! Instead of running migrations
+one-by-one when you start developing, you're better off running `rake db:setup`
+This will install the admin user for you as well as run all the initial
+migrations. You can use a custom email for the admin user by specifying an
+environment variable:
 
 ```bash
-rake db:migrate
+ADMIN_EMAIL=youremail@gmail.com rake db:setup
 ```
 
 Finally, to run the rails server:
