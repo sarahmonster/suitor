@@ -200,6 +200,14 @@ input[type="submit"] {
   white-space: nowrap;
 }
 
+input[disabled] {
+  border-color: none;
+  box-shadow: none;
+  background: transparentize($white, .2);
+  color: $light-grey;
+  font-style: italic;
+}
+
 
 // Text editor!
 .froala-box {

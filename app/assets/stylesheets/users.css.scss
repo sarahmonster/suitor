@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // Signup form and login
-.signup-intro {
+.signup-intro, .invitation-intro {
     @include media($large-screen-up) {
         @include span-columns(6);
     } 

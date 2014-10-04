@@ -9,6 +9,10 @@
   <p>Want to invite your best friend to use suitor? Okay!</p>
   <%= devise_error_messages! %>
   <fieldset class="primary">
+        <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
     <% resource.class.invite_key_fields.each do |field| -%>
       <div>
         <%= f.label field %>
