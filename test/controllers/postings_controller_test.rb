@@ -73,6 +73,8 @@ class PostingsControllerTest < ActionController::TestCase
     assert_response :success
 
     assert_select ".job-posting"
+    # HACK: Hardcode in 500 id for posting that can't be found due to default
+    # scope.
     assert_select "\#posting-500", false
   end
 
@@ -84,6 +86,103 @@ class PostingsControllerTest < ActionController::TestCase
 
     # This fixture user has only one archived posting.
     assert_select ".job-posting", @user2.postings.archived.count
+    # HACK: Hardcode in 500 id for posting that can't be found due to default
+    # scope.
     assert_select "\#posting-500"
+  end
+
+  test "archive toggle should work without JSON format" do
+    sign_in @user2
+
+    assert_difference -> { Posting.where(user_id: @user2.id).archived.count } do
+      patch :archivetoggle, id: postings(:one_usertwo)
+
+      assert_response :redirect
+    end
+  end
+
+  test "archive toggle should archive and unarchive a posting" do
+    sign_in @user2
+
+    assert_difference -> { Posting.where(user_id: @user2.id).archived.count } do
+      patch :archivetoggle, format: :json, id: postings(:one_usertwo)
+
+      assert_response :success
+    end
+
+    assert_difference -> { Posting.where(user_id: @user2.id).count } do
+      # HACK: Hardcode in 500 id for posting that can't be found due to default
+      # scope.
+      patch :archivetoggle, format: :json, id: Posting.unscoped.find(500)
+
+      assert_response :success
+    end
+
+    assert_no_difference -> {
+      Posting.where(user_id: @user2.id).archived.count
+    } do
+      patch :archivetoggle, format: :json, id: postings(:one_usertwo)
+      patch :archivetoggle, format: :json, id: postings(:one_usertwo)
+    end
+  end
+
+  test "archive toggle cannot access another user's postings" do
+    sign_in @user2
+
+    assert_raises Pundit::NotAuthorizedError do
+      patch :archivetoggle, id: postings(:one)
+
+      assert_response :redirect
+    end
+  end
+
+  test "archive toggle doesn't work when not signed in" do
+    assert_no_difference -> {
+      Posting.where(user_id: @user.id).archived.count
+    } do
+      patch :archivetoggle, id: postings(:one)
+
+      assert_response :redirect
+      assert_redirected_to new_user_session_path
+    end
+  end
+
+  test "posting requires a position (title) and company" do
+    sign_in @user
+
+    assert_no_difference -> {
+      Posting.where(user_id: @user.id).count
+    } do
+      post :create, posting: {
+        hiring_organization: 'Mozzarella Firefox'
+      }
+
+      assert_response :success
+    end
+
+    assert_no_difference -> {
+      Posting.where(user_id: @user.id).count
+    } do
+      post :create, posting: {
+        title: 'Rodent Wrangler'
+      }
+
+      assert_response :success
+    end
+  end
+
+  test "posting can be created with only a position (title) and company" do
+    sign_in @user
+
+    assert_difference -> {
+      Posting.where(user_id: @user.id).count
+    } do
+      post :create, posting: {
+        title: 'Web Developer',
+        hiring_organization: 'Mozzarella Firefox'
+      }
+
+      assert_response :redirect
+    end
   end
 end
