@@ -8,15 +8,13 @@
 
   <fieldset class="primary">
     <h3>Your details</h3>
-    <div><%= f.label :email %>
+    <div>
+      <%= f.label :email %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <em>(<%= resource.unconfirmed_email %> is waiting for confirmation)</em>
+      <% end %>
       <%= f.email_field :email, autofocus: true %>
     </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>
-        Currently waiting confirmation for: <%= resource.unconfirmed_email %>
-      </div>
-    <% end %>
 
     <div>
       <%= f.label :name %>
@@ -24,12 +22,12 @@
     </div>
 
     <div class="half-width">
-      <%= f.label :"application_goal" %><em>How many jobs do you want to apply for per week?</em>
+      <%= f.label :"application_goal", title: 'How many jobs do you want to apply for per week?' %><em></em>
       <%= f.text_field :application_goal %>
     </div>
 
     <div class="half-width">
-      <%= f.label :"followup_offset" %><em>This is the number of days after applying you want to send a follow-up message.</em>
+      <%= f.label :"followup_offset", title: 'This is the number of days after applying you want to send a follow-up message.' %>
       <%= f.text_field :followup_offset %>
     </div>
 
