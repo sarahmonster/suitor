@@ -2,6 +2,7 @@ class PostingsController < ApplicationController
   after_action :verify_authorized, except: [:index, :archived]
   after_action :verify_policy_scoped, only: [:index, :archived]
   before_action :require_login
+  before_filter :set_current_user
 
   def index
     @sortorder = params[:sort]

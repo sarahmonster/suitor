@@ -54,7 +54,7 @@ class Posting < ActiveRecord::Base
      joins(:job_application).where('followup IS NOT NULL')
   }
   scope :without_followup, -> {
-     joins(:job_application).where('followup IS NULL AND job_applications.date_sent < ?', Date.current.advance(days: 14))
+     joins(:job_application).where('followup IS NULL AND job_applications.date_sent < ?', Date.current.advance(days: -User.current.followup_offset))
   }
 
   def self.valid_scope?(scope_name)
@@ -178,7 +178,7 @@ class Posting < ActiveRecord::Base
 
   def followup_needed?
     if job_application
-      job_application.date_sent.advance(:days => 14) < Date.current and interviews.empty? and !job_application.followup?
+      job_application.date_sent.advance(:days => followup_offset) < Date.current and interviews.empty? and !job_application.followup?
     end
   end
 
@@ -188,6 +188,10 @@ class Posting < ActiveRecord::Base
 
   def interview_scheduled?
     !interviews.empty? and !interviews.upcoming.empty?
+  end
+
+  def followup_offset
+    User.current.followup_offset
   end
 
   def actionable
