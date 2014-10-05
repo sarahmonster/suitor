@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  Welcome to suitor!
+<% end %>
+
 <h3>You&rsquo;ve been invited!</h3>
 
 <p>Hello there, <%= @resource.name %>! Your friend (or maybe your enemy, we don't know for sure) <%= @resource.invited_by.name %> thought you&rsquo;d like to try a free <a class="suitor" href="http://mrsuitor.com">suitor</a> account.</p>
