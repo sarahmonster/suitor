@@ -6,6 +6,10 @@ gem 'rails', '4.1.1'
 # Use dotenv to manage secrets and things of that nature
 gem 'dotenv-rails'
 
+# Inline CSS used in emails
+gem 'premailer-rails'
+gem 'nokogiri', '~> 1.6.3'
+
 # Page caching.
 gem 'dalli'
 gem 'actionpack-page_caching'
