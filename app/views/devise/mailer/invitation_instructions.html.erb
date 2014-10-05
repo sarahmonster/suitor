@@ -1,7 +1,9 @@
-<p><%= I18n.t("devise.mailer.invitation_instructions.hello", email: @resource.email) %></p>
+<h3>You&rsquo;ve been invited!</h3>
 
-<p><%= I18n.t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url) %></p>
+<p>Hello there, <%= @resource.name %>! Your friend (or maybe your enemy, we don't know for sure) <%= @resource.invited_by.name %> thought you&rsquo;d like to try a free <a class="suitor" href="http://mrsuitor.com">suitor</a> account.</p>
 
-<p><%= link_to I18n.t("devise.mailer.invitation_instructions.accept"), invitation_accept_url(invitation_token: @token) %></p>
+<%= link_to I18n.t("devise.mailer.invitation_instructions.accept"), invitation_accept_url(invitation_token: @token), class: 'button' %>
 
-<p><%= I18n.t("devise.mailer.invitation_instructions.ignore").html_safe %></p>
+<p><a class="suitor" href="http://mrsuitor.com">Suitor</a> is a web app that allows you track and manage your job applications from your phone, tablet, or computer. It&rsquo;s simple, elegant, and useful, and it'll help you focus on the important stuff, so you can get a great job faster.</p>
+
+<p>And it&rsquo;s free, so what are you waiting for? <%= link_to "Claim your account now!", invitation_accept_url(invitation_token: @token) %></p>
