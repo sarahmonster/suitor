@@ -6,6 +6,10 @@ class User::InvitationsController < Devise::InvitationsController
     current_user
   end
 
+  def header
+    "Email title"
+  end
+
   protected
 
     def configure_permitted_parameters
