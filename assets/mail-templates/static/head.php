@@ -132,9 +132,10 @@
         /*@editable*/ text-align:left;
       }
 
-      .suitor {
-        font-weight: 500;
-        color: #666;
+      .suitor, .bodyContent .suitor {
+        font-weight: 500 !important;
+        color: #666 !important;
+        text-decoration: none !important;
       }
 
       .center {
@@ -145,14 +146,14 @@
         background: #1B568C;
         border-bottom: 4px solid #8ABCE9;
         padding: 1.25em 2.5em;
-        font-size: 16px;
+        font-size: 14px;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         color: #B5D4F1 !important;
         text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15);
         text-transform: uppercase;
         letter-spacing: 1px;
-        font-weight: 600;
-        line-height: 1em;
+        font-weight: 500 !important;
+        line-height: 18px !important;
         text-decoration: none !important;
         margin: 20px auto;
         display: inline-block;
@@ -164,12 +165,13 @@
         background: #174977;
       }
 
-      .xo {
+      .xo, .bodyContent .xo a:link {
         font-family: "American Typewriter", Rockwell, Courier, Cambria, Georgia, sans-serif;
         text-align: right;
         font-size: 21px;
         font-weight: 500;
-        color: #DA3440;
+        color: #DA3440 !important;
+        text-decoration: none !important;
       }
 
       /* ========== Header Styles ========== */
@@ -355,7 +357,7 @@
                 body{width:100% !important; min-width:100% !important;} /* Prevent iOS Mail from adding padding to the body */
 
         /* /\/\/\/\/\/\/ MOBILE RESET STYLES /\/\/\/\/\/\/ */
-        #bodyCell{padding:10px !important;}
+        #bodyCell{padding: 0px 10px 10px 10px !important;}
 
         /* /\/\/\/\/\/\/ MOBILE TEMPLATE STYLES /\/\/\/\/\/\/ */
 
@@ -377,8 +379,9 @@
         * @tip Make the first-level headings larger in size for better readability on small screens.
         */
         h1{
-          /*@editable*/ font-size:24px !important;
-          /*@editable*/ line-height:100% !important;
+          /*@editable*/ font-size: 27px !important;
+          /*@editable*/ margin: 10px 0 10px;
+          /*@editable*/ line-height: 100% !important;
         }
 
         /**
@@ -397,7 +400,7 @@
         * @tip Make the third-level headings larger in size for better readability on small screens.
         */
         h3{
-          /*@editable*/ font-size:18px !important;
+          /*@editable*/ font-size: 24px !important;
           /*@editable*/ line-height:100% !important;
         }
 
@@ -432,8 +435,8 @@
         * @tip Make the header content text larger in size for better readability on small screens. We recommend a font size of at least 16px.
         */
         .headerContent{
-          /*@editable*/ font-size:20px !important;
-          /*@editable*/ line-height:125% !important;
+          /*@editable*/ font-size: 20px !important;
+          /*@editable*/ line-height: 125% !important;
         }
 
         /* ======== Body Styles ======== */
@@ -444,8 +447,9 @@
         * @tip Make the body content text larger in size for better readability on small screens. We recommend a font size of at least 16px.
         */
         .bodyContent{
-          /*@editable*/ font-size:18px !important;
-          /*@editable*/ line-height:125% !important;
+          /*@editable*/ font-size: 18px !important;
+          /*@editable*/ line-height: 125% !important;
+          /*@editable*/ padding: 20px 20px 5px;
         }
 
         /* ======== Footer Styles ======== */

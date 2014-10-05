@@ -24,7 +24,7 @@
                                     </table>
                                     <!-- // END PREHEADER -->
                                   <?php endif; ?>
-                                  
+
                                 </td>
                             </tr>
                           <tr>
@@ -33,8 +33,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
                                         <tr>
                                             <td valign="top" class="headerContent">
-                                              <img src="http://mrsuitor.com/suitor.png" style="max-width:350px;" id="headerImage" mc:label="header_image" mc:edit="header_image" mc:allowdesigner mc:allowtext />
-
+                                              <a href="http://mrsuitor.com"><img src="http://mrsuitor.com/suitor.png" style="max-width:350px;" id="headerImage" mc:label="header_image" mc:edit="header_image" mc:allowdesigner mc:allowtext /></a>
                                               <h1><?php echo $title; ?></h1>
                                             </td>
                                         </tr>
