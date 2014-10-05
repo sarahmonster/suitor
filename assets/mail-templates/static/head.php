@@ -184,7 +184,9 @@
       */
       #templatePreheader{
         /*@editable*/ background-color: none;
-        /*@editable*/ border-bottom: 2px solid #ffffff;
+        /*@editable*/ border-bottom: 2px solid #fff;
+        /*@editable*/ border-top: 1px solid #fff;
+        /*@editable*/ margin-top: 10px;
       }
 
       /**
@@ -193,11 +195,11 @@
       * @tip Set the styling for your email's preheader text. Choose a size and color that is easy to read.
       */
       .preheaderContent{
-        /*@editable*/ color:#808080;
+        /*@editable*/ color: #808080;
         /*@editable*/ font-family: "Helvetica Neue", Helvetica, sans-serif;
-        /*@editable*/ font-size:10px;
-        /*@editable*/ line-height:125%;
-        /*@editable*/ text-align:left;
+        /*@editable*/ font-size: 12px;
+        /*@editable*/ line-height: 125%;
+        /*@editable*/ text-align: left;
       }
 
       /**
@@ -316,8 +318,8 @@
       * @theme footer
       */
       #templateFooter{
-        /*@editable*/ background-color:#F4F4F4;
-        /*@editable*/ border-top:1px solid #FFFFFF;
+        /*@editable*/ background-color: none
+        /*@editable*/ border-top: 1px solid #FFFFFF;
       }
 
       /**
@@ -327,10 +329,10 @@
       * @theme footer
       */
       .footerContent{
-        /*@editable*/ color:#808080;
+        /*@editable*/ color: #808080;
         /*@editable*/ font-family: "Helvetica Neue", Helvetica, sans-serif;
-        /*@editable*/ font-size:10px;
-        /*@editable*/ line-height:150%;
+        /*@editable*/ font-size: 12px;
+        /*@editable*/ line-height: 150%;
         padding-top:20px;
         padding-right:20px;
         padding-bottom:20px;
