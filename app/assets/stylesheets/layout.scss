@@ -257,24 +257,52 @@ i {
 
 // Tooltips
 
-[title]{
-    position:relative;
+.tooltip {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    background: transparentize($white, .2);
+    border: 2px solid lighten($blue, 40%);
+    padding: 10px;
+    z-index: 4000;
+    color: $blue;
+    font-size: .8em;
+    line-height: 1.6em;
+    font-family: $serif;
+
+    &:after, &:before { 
+        content: '';
+        position: absolute; 
+        bottom: 100%; 
+        left: 50%; 
+        height: 0; 
+        width: 0;
+        border: solid transparent; 
+        pointer-events: none; 
+    } 
+    &:after { 
+        border-color: none; 
+        border-bottom-color: $white; 
+        border-width: 10px; 
+        margin-left: -10px; 
+    } 
+    &:before { 
+        border-color: none; 
+        border-bottom-color: lighten($blue, 40%); 
+        border-width: 13px; 
+        margin-left: -13px; 
+    }
 }
-[title]:after{
-    content:attr(title);
-    color:#fff;
-    background:#333;
-    background:rgba(51,51,51,0.75);
-    padding:5px;
-    position:absolute;
-    left:-9999px;
-    opacity:0;
-    bottom:100%;
-    white-space:nowrap;
-    -webkit-transition:0.25s linear opacity;
+
+form {
+    .tooltip {
+        width: 100%;
+        top: 85px;
+        left: 0px;
+    }
 }
-[title]:hover:after{
-    left:5px;
-    opacity:1;
-}
+
+
+
+
 
