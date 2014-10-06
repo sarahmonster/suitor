@@ -14,10 +14,6 @@ class ApplicationController < ActionController::Base
       home_path
     end
 
-    def set_current_user
-      User.current = current_user
-    end
-
     def require_admin
       unless current_user and current_user.admin?
         redirect_to root_path

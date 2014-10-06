@@ -2,7 +2,6 @@ class PostingsController < ApplicationController
   after_action :verify_authorized, except: [:index, :archived]
   after_action :verify_policy_scoped, only: [:index, :archived]
   before_action :require_login
-  before_filter :set_current_user
 
   def index
     @sortorder = params[:sort]
@@ -15,7 +14,7 @@ class PostingsController < ApplicationController
         @method = :sorted_by_status
     else
       @sortorder = 'importance'
-      @method = :sorted_by_importance
+      @method = :sorted_by_importance, current_user.followup_offset
     end
   end
 

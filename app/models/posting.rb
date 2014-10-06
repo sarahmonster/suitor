@@ -53,8 +53,8 @@ class Posting < ActiveRecord::Base
   scope :with_followup, -> {
      joins(:job_application).where('followup IS NOT NULL')
   }
-  scope :without_followup, -> {
-     joins(:job_application).where('followup IS NULL AND job_applications.date_sent < ?', Date.current.advance(days: -User.current.followup_offset))
+  scope :without_followup, -> (followup_offset) {
+     joins(:job_application).where('followup IS NULL AND job_applications.date_sent < ?', Date.current.advance(days: -followup_offset))
   }
 
   def self.valid_scope?(scope_name)
@@ -64,10 +64,10 @@ class Posting < ActiveRecord::Base
   end
 
   # Sort all posts by "importance", as defined by methods below
-  def self.sorted_by_importance
+  def self.sorted_by_importance(followup_offset)
     postings = interview_scheduled_or_deadline_approaching +
                unapplied_or_interview_completed +
-               without_followup.where('deadline IS NULL').no_interviews.order('job_applications.date_sent DESC') +
+               without_followup(followup_offset).where('deadline IS NULL').no_interviews.order('job_applications.date_sent DESC') +
                recently_applied_or_followed_up_or_deadline_passed
 
     # Squash duplicates.
@@ -191,7 +191,7 @@ class Posting < ActiveRecord::Base
   end
 
   def followup_offset
-    User.current.followup_offset
+    user.followup_offset
   end
 
   def actionable

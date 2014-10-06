@@ -12,8 +12,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       home_path
     end
 
-    def redirect_if_in_production
-      redirect_to root_path if Rails.env.production?
+    def after_update_path_for(resource)
+      edit_user_registration_path
     end
 
     def configure_permitted_parameters
@@ -21,5 +21,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
       [:sign_up, :account_update].each do |c|
         devise_parameter_sanitizer.for(c).concat [:name, :followup_offset, :application_goal]
       end
+    end
+
+    def redirect_if_in_production
+      redirect_to root_path if Rails.env.production?
     end
 end
