@@ -184,9 +184,10 @@
       */
       #templatePreheader{
         /*@editable*/ background-color: none;
-        /*@editable*/ border-bottom: 2px solid #fff;
-        /*@editable*/ border-top: 1px solid #fff;
-        /*@editable*/ margin-top: 10px;
+        /*@editable*/ border-bottom: 2px solid #BFBFBF;
+        /*@editable*/ border-top: 1px solid #BFBFBF;
+        /*@editable*/ margin-top: 20px;
+        /*@editable*/ margin-bottom: 20px;
       }
 
       /**
@@ -337,7 +338,7 @@
         padding-right:20px;
         padding-bottom:20px;
         padding-left:20px;
-        /*@editable*/ text-align:left;
+        /*@editable*/ text-align: center;
       }
 
       /**

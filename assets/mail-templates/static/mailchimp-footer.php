@@ -10,11 +10,9 @@
             <tr>
                 <td valign="top" class="footerContent" style="padding-top:0;" mc:edit="footer_content01">
                 
-                    *|IFNOT:ARCHIVE_PAGE|* *|LIST:DESCRIPTION|*
-                    <br />
-                    <br />
-                    <strong>Our mailing address is:</strong>
-                    <br />
+                    *|IFNOT:ARCHIVE_PAGE|* 
+                    *|LIST:DESCRIPTION|*
+                    You can send us cookies and death threats in the post here:
                     *|HTML:LIST_ADDRESS_HTML|* *|END:IF|* 
                 </td>
             </tr>

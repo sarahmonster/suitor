@@ -1,4 +1,4 @@
-    <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" bgcolor="f7f7f7" background="<%= image_path('pinstriped_suit.jpg') %>">
+    <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" bgcolor="f7f7f7" background="http://mrsuitor.com/assets/pinstriped_suit-47d5b1841dc0b111accba9dd972415a4.jpg">
       <center>
           <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable">
               <tr>
@@ -13,13 +13,12 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templatePreheader">
                                         <tr>
                                             <td valign="top" class="preheaderContent" style="padding-top:10px; padding-right:20px; padding-bottom:10px; padding-left:20px;" mc:edit="preheader_content00">
-                                                Welcome to suitor! Let's talk.  &nbsp; &nbsp; 
+                                                <span style="float:left">Let&#39;s chat.</span>  
                                           
                                             <!-- *|IFNOT:ARCHIVE_PAGE|* -->
-                                          
-                                                | &nbsp; &nbsp; Does this email look wonky? <a href="*|ARCHIVE|*" target="_blank">Try this instead</a>.
-                                            </td>
+                                                <span style="float:right">&nbsp; &nbsp; Does this email look wonky? <a href="*|ARCHIVE|*" target="_blank">Try this instead</a></span>
                                             <!-- *|END:IF|* -->
+                                          </td>
                                         </tr>
                                     </table>
                                     <!-- // END PREHEADER -->
