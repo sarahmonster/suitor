@@ -300,7 +300,11 @@ form .tooltip {
     top: 85px;
 }
 
-section .tooltip {
+li .tooltip {
+    top: 40px;
+}
+
+span .tooltip {
     width: 70%;
     top: -70px;
     left: 15%;

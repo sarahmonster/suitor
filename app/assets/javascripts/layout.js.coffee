@@ -29,11 +29,16 @@ $ ->
       $(this).parent().find('label').hideTooltip("div")
 
     # Let's try span elements now, too
-    $('span').mouseover ->
+    $('.status span').mouseover ->
       if $(this).attr("title")
         $(this).showTooltip("section")
     .mouseout ->
       $(this).hideTooltip("section")
 
+    $('li span').mouseover ->
+      if $(this).attr("title")
+        $(this).showTooltip("li")
+    .mouseout ->
+      $(this).hideTooltip("li")
 
 
