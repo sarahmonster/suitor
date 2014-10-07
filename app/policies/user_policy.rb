@@ -5,9 +5,10 @@ class UserPolicy
     @active_user = active_user
     @user = user
 
-    [:index, :archivetoggle, :edit, :update, :show, :destroy].each do |m|
+    [:edit, :update, :show, :destroy].each do |m|
       self.class.send(:define_method, (m.to_s + '?').to_sym) do
-        @user and (@user.admin? or @user.id == @posting.user_id)
+        @active_user and (@active_user.admin? or
+                          @active_user.id == @user.id)
       end
     end
   end

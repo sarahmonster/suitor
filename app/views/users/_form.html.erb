@@ -1,89 +1,59 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+<header class="page-header">
+  <h3>Settings and junk!</h3>
+  <h1>Edit Your Profile</h1>
+</header>
 
-      <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= form_for(@user, url: profile_path, html: { method: :put }) do |f| %>
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <div class="alert alert-error">
+        <ul>
+          <li>
+            <%= message %>
+          </li>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :encrypted_password %><br>
-    <%= f.text_field :encrypted_password %>
-  </div>
-  <div class="field">
-    <%= f.label :reset_password_token %><br>
-    <%= f.text_field :reset_password_token %>
-  </div>
-  <div class="field">
-    <%= f.label :reset_password_sent_at %><br>
-    <%= f.datetime_select :reset_password_sent_at %>
-  </div>
-  <div class="field">
-    <%= f.label :remember_created_at %><br>
-    <%= f.datetime_select :remember_created_at %>
-  </div>
-  <div class="field">
-    <%= f.label :sign_in_count %><br>
-    <%= f.number_field :sign_in_count %>
-  </div>
-  <div class="field">
-    <%= f.label :current_sign_in_at %><br>
-    <%= f.datetime_select :current_sign_in_at %>
-  </div>
-  <div class="field">
-    <%= f.label :last_sign_in_at %><br>
-    <%= f.datetime_select :last_sign_in_at %>
-  </div>
-  <div class="field">
-    <%= f.label :current_sign_in_ip %><br>
-    <%= f.text_field :current_sign_in_ip %>
-  </div>
-  <div class="field">
-    <%= f.label :last_sign_in_ip %><br>
-    <%= f.text_field :last_sign_in_ip %>
-  </div>
-  <div class="field">
-    <%= f.label :confirmation_token %><br>
-    <%= f.text_field :confirmation_token %>
-  </div>
-  <div class="field">
-    <%= f.label :confirmed_at %><br>
-    <%= f.datetime_select :confirmed_at %>
-  </div>
-  <div class="field">
-    <%= f.label :confirmation_sent_at %><br>
-    <%= f.datetime_select :confirmation_sent_at %>
-  </div>
-  <div class="field">
-    <%= f.label :unconfirmed_email %><br>
-    <%= f.text_field :unconfirmed_email %>
-  </div>
-  <div class="field">
-    <%= f.label :failed_attempts %><br>
-    <%= f.number_field :failed_attempts %>
-  </div>
-  <div class="field">
-    <%= f.label :unlock_token %><br>
-    <%= f.text_field :unlock_token %>
-  </div>
-  <div class="field">
-    <%= f.label :locked_at %><br>
-    <%= f.datetime_select :locked_at %>
-  </div>
-  <div class="field">
-    <%= f.label :role %><br>
-    <%= f.number_field :role %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <fieldset class="primary">
+    <h3>Your details</h3>
+    <div>
+      <%= f.label :email %>
+        <% if @user.pending_reconfirmation? %>
+        <em>(<%= @user.unconfirmed_email %> is waiting for confirmation)</em>
+      <% end %>
+      <%= f.email_field :email, autofocus: true %>
+    </div>
+
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="half-width">
+      <%= f.label :"application_goal", title: 'How many jobs do you want to apply for per week?' %><em></em>
+      <%= f.text_field :application_goal %>
+    </div>
+
+    <div class="half-width">
+      <%= f.label :"followup_offset", title: 'This is the number of days after applying you want to send a follow-up message.' %>
+      <%= f.text_field :followup_offset %>
+    </div>
+
+  </fieldset>
+
+  <fieldset class="secondary">
+    <h3>Change your password</h3>
+    <div>
+      <%= f.label :password %> <em>(leave blank if you don't want to change it)</em>
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
+  </fieldset>
+
+  <fieldset class="important">
+    <div class="actions">
+      <%= f.submit "Update" %>
+    </div>
+  </fieldset>
 <% end %>

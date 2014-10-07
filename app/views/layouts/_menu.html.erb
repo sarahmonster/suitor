@@ -4,7 +4,7 @@
   <% unless current_user %>
 
     <li>
-      <%= link_to user_signup_path do %>
+      <%= link_to signup_path do %>
         <i class="icon-suitcase"></i>
         <%= t('Sign up') %>
         <% if device != "mobile" %>
@@ -24,7 +24,7 @@
     </li>
 
     <li>
-      <%= link_to new_user_session_path do %>
+      <%= link_to login_path do %>
         <i class="icon-suitcase"></i>
         <%= t('Log in') %>
         <% if device != "mobile" %>
@@ -43,7 +43,7 @@
         <i class="icon-dashboard2"></i>
         <%= t('Dashboard') %>
         <% if device != "mobile" %>
-            <span><%= t('Your progress') %></span>
+          <span><%= t('Your progress') %></span>
         <% end %>
       <% end %>
     </li>
@@ -65,7 +65,7 @@
   </li>
 
     <li>
-      <%= link_to edit_user_registration_path do %>
+      <%= link_to edit_profile_path do %>
         <i class="icon-user2"></i>
         <%= t('Account') %>
         <% if device != "mobile" %>

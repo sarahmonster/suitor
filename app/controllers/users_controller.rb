@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :require_admin
   before_action :require_login
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
@@ -21,8 +20,6 @@ class UsersController < ApplicationController
 
   # GET /users/edit
   def edit
-    @user = current_user
-    authorize @user
   end
 
   # POST /users
@@ -46,7 +43,14 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        # If we're changing the user's password, Devise will invalidate all
+        # sessions as this user, so let's check to see if that's happened and
+        # reauthenticate them if so.
+        if user_params.key?(:password) and current_user.id == @user.id
+          sign_in(@user, bypass: true)
+        end
+
+        format.html { redirect_to edit_profile_path, notice: 'Your profile has been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -60,7 +64,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end
@@ -68,11 +72,20 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      if params[:id]
+        @user = User.find(params[:id])
+      else
+        @user = current_user
+      end
+
+      authorize @user
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet, only allow the
+    # whitelist through.
     def user_params
-      params.require(:user).permit(:email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :failed_attempts, :unlock_token, :locked_at, :role, :application_goal, :followup_offset, :name)
+      params.require(:user).permit(:email, :password, :application_goal,
+                                   :followup_offset, :name)
+                           .delete_if {|key, value| value.empty?}
     end
 end

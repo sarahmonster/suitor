@@ -1,4 +1,4 @@
-class Users::RegistrationsController < Devise::RegistrationsController
+class User::RegistrationsController < Devise::RegistrationsController
   before_filter :configure_permitted_parameters
   before_filter :redirect_if_in_production
 
@@ -10,10 +10,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def after_sign_up_path_for(resource)
       home_path
-    end
-
-    def after_update_path_for(resource)
-      edit_user_registration_path
     end
 
     def configure_permitted_parameters

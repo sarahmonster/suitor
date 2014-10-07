@@ -6,7 +6,7 @@
 .signup-intro, .invitation-intro {
     @include media($large-screen-up) {
         @include span-columns(6);
-    } 
+    }
 }
 
 @include media($large-screen-up) {
@@ -63,18 +63,18 @@
         i { color: lighten($facebook, 30%) }
     }
 
-    h4 {        
-        span {    
+    h4 {
+        span {
             display: inline-block;
-            position: relative;  
+            position: relative;
 
             &::before, &::after {
                 content: '';
-                position: absolute; 
+                position: absolute;
                 display: block;
                 height: 2px;
                 width: 75px;
-                top: 2px;  
+                top: 2px;
                 border-top: 1px solid $light-grey;
                 border-bottom: 2px solid $light-grey;
             }
@@ -92,7 +92,7 @@
     }
 
     .forgot-password-link { float: right; }
-    
+
     input[type=submit] {
         padding-left: 5em;
         padding-right: 5em;
@@ -110,16 +110,18 @@
 
 
 
-// Edit settings screen 
-.registrations.edit {
-    @include media($large-screen-up) {
-        .primary, .secondary {
-            @include span-columns(6);
-            @include omega(2n);
-        }
-        .important {
-            @include span-columns(6);
-            @include shift(3);
+// Edit settings screen
+.users {
+    &.edit, &.update {
+        @include media($large-screen-up) {
+            .primary, .secondary {
+                @include span-columns(6);
+                @include omega(2n);
+            }
+            .important {
+                @include span-columns(6);
+                @include shift(3);
+            }
         }
     }
 }

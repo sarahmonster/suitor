@@ -62,7 +62,8 @@ class PostingsControllerTest < ActionController::TestCase
     get :index, sort: 'date-the-dog-barked-loudly'
     assert_response :success
 
-    assert_equal assigns(:method), :sorted_by_importance
+    assert_equal assigns(:method),
+                 [:sorted_by_importance, @user.followup_offset]
     assert_not_nil assigns(:sortorder)
   end
 

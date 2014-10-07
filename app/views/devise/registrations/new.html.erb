@@ -10,7 +10,7 @@
 
   <p>Sign up for an account now! It&rsquo;s <strong>free</strong> and takes less than <strong>30 seconds.</strong></p>
 
-  <p>(PS: Already have an account? <%= link_to "Log in here.", new_user_session_path %>)</p>
+  <p>(PS: Already have an account? <%= link_to "Log in here.", login_path %>)</p>
 </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :role => 'form', :id => 'signup-form' }) do |f| %>
