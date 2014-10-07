@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
+    @user2 = users(:two)
   end
 
   test "user index should not exist" do
@@ -17,55 +18,55 @@ class UsersControllerTest < ActionController::TestCase
     end
   end
 
-  test "user controller POST doesn't exist" do
-    assert_raises ActionController::UrlGenerationError do
-      post :create, user: users(:two)
+  test "user can update their own profile" do
+    sign_in @user
+
+    patch :update, user: {name: 'Slim Shady'}
+
+    assert_response :redirect
+  end
+
+  test "user cannot update another user's profile" do
+    sign_in @user2
+
+    assert_raises Pundit::NotAuthorizedError do
+      patch :update, id: @user.id, user: {name: 'Slim Shady'}
     end
   end
 
-  test "cannot view another user's profile" do
+  test "cannot view profiles" do
     assert_raises ActionController::UrlGenerationError do
       get :show, id: users(:two)
     end
   end
 
   test "cannot mark an existing user as admin" do
-    assert_raises ActionController::UrlGenerationError do
-      patch :update, id: @user, user: {role: 1}
-      assert_redirected_to user_path(assigns(:user))
-      assert_not User.find(@user).admin?
-    end
+    sign_in @user
+
+    patch :update, id: @user, user: {role: 1}
+
+    assert_not User.find(@user.id).admin?
   end
 
-  test "cannot mark a new user as admin" do
-    assert_raises ActionController::UrlGenerationError do
-      email = Faker::Internet.free_email
-      post :create, user: {email: email, role: 1}
-      assert_not User.find(email: email).admin?
-    end
-  end
+  # test "cannot mark a new user as admin" do
+  #   email = Faker::Internet.free_email
+  #   post :create, user: {email: email, role: 1}
+  #   assert_not User.find(email: email).admin?
+  # end
 
-  test "cannot edit own user's profile" do
-    assert_raises ActionController::UrlGenerationError do
-      get :edit, id: @user
-    end
+  test "can edit own user's profile" do
+    sign_in @user
+
+    get :edit
+
+    assert_equal assigns(:user), @user
   end
 
   test "cannot edit another user's profile" do
-    assert_raises ActionController::UrlGenerationError do
-      get :edit, id: users(:two)
-    end
-  end
+    sign_in @user
 
-  test "cannot update own user's profile" do
-    assert_raises ActionController::UrlGenerationError do
-      patch :update, id: @user
-    end
-  end
-
-  test "cannot update another user's profile" do
-    assert_raises ActionController::UrlGenerationError do
-      patch :update, id: users(:two)
+    assert_raises Pundit::NotAuthorizedError do
+      get :edit, id: @user2
     end
   end
 

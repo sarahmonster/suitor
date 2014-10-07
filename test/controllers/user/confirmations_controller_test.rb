@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Users::ConfirmationsControllerTest < ActionController::TestCase
+class User::ConfirmationsControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
 
