@@ -31,6 +31,7 @@
       */
       body, #bodyTable{
         /*@editable*/ background: url("http://mrsuitor.com/assets/pinstriped_suit_@2X-2743ea1a1975c2a557f361f8c19ea618.png") repeat scroll 0% 0% / 400px 330px #FFF;
+        color: #333333;
       }
 
       /**
@@ -96,7 +97,7 @@
       h3{
         /*@editable*/ color: #1B568C !important;
         display: block;
-        /*@editable*/ font-family: "American Typewriter", Rockwell, Courier, Cambria, Georgia, sans-serif;
+        /*@editable*/ font-family: "American Typewriter", "Helvetica Neue", Helvetica, sans-serif;
         /*@editable*/ font-size: 24px;
         /*@editable*/ font-style: normal;
         /*@editable*/ font-weight: 500;
@@ -104,10 +105,13 @@
         /*@editable*/ letter-spacing: 0px;
         /*@editable*/ text-transform: none;
         margin-top: 10px;
-        margin-right:0;
+        margin-right: 0;
         margin-bottom: 30px;
-        margin-left:0;
+        margin-left: 0;
         /*@editable*/ text-align:left;
+      }
+      p + h3 {
+        margin-top: 40px;
       }
 
       /**
