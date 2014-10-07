@@ -7,8 +7,8 @@ application process.
 
 # Installation / Setup
 
-suitor is a Rails app (built with Rails 4.0 and developed mostly on OS X using
-Ruby 2.1.0), so you'll need to have [Ruby][] installed. After that, run:
+suitor is a Rails app (built with Rails 4.1 and developed mostly on OS X using
+Ruby 2.1), so you'll need to have [Ruby][] installed. After that, run:
 
 ```bash
 gem install bundler rails
