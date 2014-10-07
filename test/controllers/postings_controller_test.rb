@@ -8,12 +8,12 @@ class PostingsControllerTest < ActionController::TestCase
 
   test "should redirect to login if not authorized to see postings" do
     get :index
-    assert_redirected_to new_user_session_path
+    assert_redirected_to login_path
   end
 
   test "should redirect to login if not authorized to see archived postings" do
     get :archived
-    assert_redirected_to new_user_session_path
+    assert_redirected_to login_path
   end
 
   test "should get index if authorized" do
@@ -62,7 +62,8 @@ class PostingsControllerTest < ActionController::TestCase
     get :index, sort: 'date-the-dog-barked-loudly'
     assert_response :success
 
-    assert_equal assigns(:method), :sorted_by_importance
+    assert_equal assigns(:method),
+                 [:sorted_by_importance, @user.followup_offset]
     assert_not_nil assigns(:sortorder)
   end
 
@@ -143,7 +144,7 @@ class PostingsControllerTest < ActionController::TestCase
       patch :archivetoggle, id: postings(:one)
 
       assert_response :redirect
-      assert_redirected_to new_user_session_path
+      assert_redirected_to login_path
     end
   end
 

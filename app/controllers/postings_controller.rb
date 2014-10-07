@@ -14,7 +14,7 @@ class PostingsController < ApplicationController
         @method = :sorted_by_status
     else
       @sortorder = 'importance'
-      @method = :sorted_by_importance
+      @method = :sorted_by_importance, current_user.followup_offset
     end
   end
 

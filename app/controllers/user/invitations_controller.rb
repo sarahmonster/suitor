@@ -1,4 +1,4 @@
-class Users::InvitationsController < Devise::InvitationsController
+class User::InvitationsController < Devise::InvitationsController
   before_filter :configure_permitted_parameters
   before_filter :require_admin, only: [:new, :remove, :destroy]
 

@@ -5,7 +5,7 @@
 
 <%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form', :id => 'login-form' }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => session_path, :html => { :role => 'form', :id => 'login-form' }) do |f| %>
   <% if devise_mapping.rememberable? -%>
     <%= f.hidden_field :remember_me, value: 1 %>
   <% end %>
@@ -45,6 +45,6 @@
   </fieldset>
 
   <!--
-  <p class="footnote">(Don&rsquo;t have an account yet? <%= link_to "Sign up here", user_signup_path %>)</p>
+  <p class="footnote">(Don&rsquo;t have an account yet? <%= link_to "Sign up here", signup_path %>)</p>
   -->
 <% end %>

@@ -253,3 +253,78 @@ i {
         @include error-colours($blue);
     }
 }
+
+
+// Tooltips
+
+.tooltip {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    background: transparentize($white, .2);
+    border: 2px solid lighten($blue, 40%);
+    padding: 13px;
+    z-index: 4000;
+    color: $blue;
+    font-size: .8em;
+    line-height: 1.6em;
+    font-family: $serif;
+    font-style: italic;
+
+    &:after, &:before { 
+        content: '';
+        position: absolute; 
+        bottom: 100%; 
+        left: 50%; 
+        height: 0; 
+        width: 0;
+        border: solid transparent; 
+        pointer-events: none; 
+    } 
+    &:after { 
+        border-color: transparentize($white, 1); 
+        border-bottom-color: $white; 
+        border-width: 10px; 
+        margin-left: -10px; 
+    } 
+    &:before { 
+        border-color: transparentize($white, 1); 
+        border-bottom-color: lighten($blue, 40%); 
+        border-width: 13px; 
+        margin-left: -13px; 
+    }
+}
+
+form .tooltip {
+    width: 100%;
+    top: 85px;
+}
+
+li .tooltip {
+    top: 40px;
+}
+
+section.job-posting .tooltip {
+    width: 70%;
+    top: -70px;
+    left: 15%;
+
+    &:after, &:before {
+        top: 100%;
+    }
+
+    &:after { 
+        border-color: transparentize($white, 1); 
+        border-top-color: $white; 
+    } 
+    &:before { 
+        border-color: transparentize($white, 1); 
+        border-top-color: lighten($blue, 40%); 
+    }
+}
+
+
+
+
+
+
