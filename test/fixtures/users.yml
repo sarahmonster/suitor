@@ -1,41 +1,62 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+# password for all users: thisismypassword
 one:
-  email: MyString
-  encrypted_password: MyString
-  reset_password_token: MyString
-  reset_password_sent_at: 2014-05-09 19:19:32
-  remember_created_at: 2014-05-09 19:19:32
+  email: bob@hotmail.com
+  encrypted_password: $2a$10$4.2rPg0Pcm6zZ5R3a7n9dufWK736Kcbqfqet254/idXR.HNQFXcs.
+  reset_password_token:
+  reset_password_sent_at:
+  remember_created_at:
   sign_in_count: 1
   current_sign_in_at: 2014-05-09 19:19:32
   last_sign_in_at: 2014-05-09 19:19:32
-  current_sign_in_ip: MyString
-  last_sign_in_ip: MyString
-  confirmation_token: MyString
-  confirmed_at: 2014-05-09 19:19:32
-  confirmation_sent_at: 2014-05-09 19:19:32
-  unconfirmed_email: MyString
-  failed_attempts: 1
-  unlock_token: MyString
-  locked_at: 2014-05-09 19:19:32
-  role: 1
+  current_sign_in_ip:
+  last_sign_in_ip:
+  confirmation_token:
+  confirmed_at: 2014-09-02 04:30:34
+  confirmation_sent_at: 2014-09-02 03:30:34
+  unconfirmed_email: bob@hotmail.com
+  failed_attempts: 0
+  unlock_token:
+  locked_at:
+  role: 0
 
 two:
-  email: MyString
-  encrypted_password: MyString
-  reset_password_token: MyString
-  reset_password_sent_at: 2014-05-09 19:19:32
-  remember_created_at: 2014-05-09 19:19:32
+  email: jack@hotmail.com
+  encrypted_password: $2a$10$4.2rPg0Pcm6zZ5R3a7n9dufWK736Kcbqfqet254/idXR.HNQFXcs.
+  reset_password_token:
+  reset_password_sent_at:
+  remember_created_at:
   sign_in_count: 1
   current_sign_in_at: 2014-05-09 19:19:32
   last_sign_in_at: 2014-05-09 19:19:32
-  current_sign_in_ip: MyString
-  last_sign_in_ip: MyString
-  confirmation_token: MyString
-  confirmed_at: 2014-05-09 19:19:32
-  confirmation_sent_at: 2014-05-09 19:19:32
-  unconfirmed_email: MyString
-  failed_attempts: 1
-  unlock_token: MyString
-  locked_at: 2014-05-09 19:19:32
+  current_sign_in_ip:
+  last_sign_in_ip:
+  confirmation_token:
+  confirmed_at: 2014-09-03 04:30:34
+  confirmation_sent_at: 2014-09-02 01:30:34
+  unconfirmed_email: jack@hotmail.com
+  failed_attempts: 0
+  unlock_token:
+  locked_at:
+  role: 0
+
+admin:
+  email: admin@heaven.net
+  encrypted_password: $2a$10$4.2rPg0Pcm6zZ5R3a7n9dufWK736Kcbqfqet254/idXR.HNQFXcs.
+  reset_password_token:
+  reset_password_sent_at:
+  remember_created_at:
+  sign_in_count: 1
+  current_sign_in_at: 2014-05-09 19:19:32
+  last_sign_in_at: 2014-05-09 19:19:32
+  current_sign_in_ip:
+  last_sign_in_ip:
+  confirmation_token:
+  confirmed_at: 2014-09-03 04:30:34
+  confirmation_sent_at: 2014-09-02 01:30:34
+  unconfirmed_email: admin@heaven.net
+  failed_attempts: 0
+  unlock_token:
+  locked_at:
   role: 1

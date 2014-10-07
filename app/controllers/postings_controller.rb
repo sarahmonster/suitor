@@ -27,7 +27,16 @@ class PostingsController < ApplicationController
   def archivetoggle
     @posting = Posting.unscoped.find(params[:id])
     authorize @posting
-    @posting.toggle!(:archived)
+
+    respond_to do |format|
+      if @posting.toggle!(:archived)
+        format.html { redirect_to @posting, notice: "Posting was archived." }
+        format.json { render json: @posting }
+      else
+        format.html { redirect_to @posting, error: "Posting couldn't be archived." }
+        format.json { render json: @posting.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def show

@@ -20,5 +20,4 @@ class PagesControllerTest < ActionController::TestCase
     get :launch
     assert_response :success
   end
-
 end
