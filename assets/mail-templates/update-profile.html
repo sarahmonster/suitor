@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tell us a little more about yourself.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link data-turbolinks-track="true" href="http://mrsuitor.com/style.css" media="all" rel="stylesheet" />
+  <link href="http://mrsuitor.com/favicon.png" rel="shortcut icon" type="image/png" />
+  <style>
+    .secondary, .left-column { float: left; }
+    .left-column {
+      margin-right: 2.35765%;
+      width: 40.2914%;
+     }
+     .secondary {
+      width: 57.351%;
+      margin-right: 0px;
+     }
+    input[type="radio"] {
+      margin-top: 5px;
+      margin-bottom: 20px;
+    }
+    .radio-list input[type="radio"]:not(.last) {
+      margin-bottom: 0;
+    }
+    input[type="radio"] + span {
+      margin-right: 10px;
+      font-size: .9em;
+    }
+    input + .alert, textarea + .alert, input[type="radio"] + span + .alert, .radio-list + .alert  {
+      margin-top: 0px;
+      max-width: none;
+    }
+    input[type="radio"] + span + .alert, .radio-list + .alert {
+      margin-top: -10px;
+    }
+    textarea {
+      height: 7em;
+    }
+    .alert {
+      display: none;
+    }
+  </style>
+</head>
+<body class="pages error">
+
+  <div class="panel">
+  <div class="container">
+
+    <img alt="suitor" src="http://mrsuitor.com/suitor.png" class="logo" />
+
+    <header class="page-header">
+      <h3>Let's get to know one another</h3>
+      <h1>Talk to us!</h1>
+    </header>
+
+
+
+    <div class="large-text">
+      <p>We don&rsquo;t mean to pry, but we&rsquo;d <em>love</em> to know a little more about you. The more we know about what bothers you about job-hunting right now, the more we&rsquo;ll be able to build something that solves your problems. Fill out as much or as little as you&rsquo;d like (only your email is required)!</p>
+      <p style="text-align: right;"><i style="font-style: normal;">&hearts;<span>suitor xox</span></i></p>
+    </div>
+
+    <form action="http://mrsuitor.us1.list-manage.com/profile/post" method="post">
+      <input type="hidden" name="u" value="7cf7b38d641914fc60e63954f">
+      <input type="hidden" name="id" value="2c3bb4988b">
+      <input type="hidden" name="e" value="*|UNIQID|*">
+
+      <div class="left-column">
+        <fieldset class="primary">
+          <h3>About your lovely self</h3>
+          <div>
+            <label class="required" for="MERGE0">Email</label>
+            <input type="email" autocapitalize="off" autocorrect="off" name="MERGE0" id="MERGE0" size="25" value  ="*|MERGE0|*">
+            <div class="alert alert-error">*|HTML:EMAILERROR|*</div>
+          </div>
+
+          <div class="half-width">
+            <label for="MERGE1">First Name</label>
+            <input type="text" name="MERGE1" id="MERGE1" size="25" value="*|MERGE1|*">
+            <div class="alert alert-error">*|HTML:FNAMEERROR|*</div>
+          </div>
+
+          <div class="half-width">
+            <label for="MERGE2">Last Name</label>
+            <input type="text" name="MERGE2" id="MERGE2" size="25" value="*|MERGE2|*">
+            <div class="alert alert-error">*|HTML:LNAMEERROR|*</div>
+          </div>
+
+          <div>
+            <label for="MERGE3">Where do you call home?</label>
+            <input type="text" name="MERGE3" id="MERGE3" size="25" value="*|MERGE3|*">
+            <div class="alert alert-error">*|HTML:HOMEERROR|*</div>
+          </div>
+
+          <div>
+            <label for="MERGE4">What&rsquo;s your job title?</label>
+            <input type="text" name="MERGE4" id="MERGE4" size="25" value="*|MERGE4|*">
+            <div class="alert alert-error">*|HTML:JOBERROR|*</div>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <input type="submit" class="button"  name="submit" value="Send 'er over!" />
+        </div>
+      </div>
+
+      <fieldset class="secondary">
+        <h3>About your job-hunt</h3>
+      
+        <div>
+          <label for="MERGE5">Are you currently actively looking for work?</label>
+          <div class="radio-list" id="MERGE5"> 
+            <div>
+              <input type="radio" data-dojo-type="dijit/form/RadioButton" name="MERGE5" id="MERGE5-0" value="Yes"><span>Yes, I&rsquo;m job-hunting</span>
+            </div>
+            <div>
+              <input type="radio" data-dojo-type="dijit/form/RadioButton" name="MERGE5" id="MERGE5-1" value="No"><span>No, I&rsquo;m not looking for a new job</span>
+            </div>
+            <div>
+              <input type="radio" data-dojo-type="dijit/form/RadioButton" name="MERGE5" id="MERGE5-2" value="Always looking" class="last"><span>I&rsquo;m always looking!</span>
+            </div>
+          </div>
+          <div class="alert alert-error">*|HTML:LOOKINGERROR|*</div>
+        </div>
+
+        <div>
+          <label for="MERGE6">Are you currently employed?</label>
+          <input type="radio" data-dojo-type="dijit/form/RadioButton" name="MERGE6" id="MERGE6-0" value="Yes"><span>Yes</span>
+          <input type="radio" data-dojo-type="dijit/form/RadioButton" name="MERGE6" id="MERGE6-1" value="No"  ><span>No</span> 
+        <div class="alert alert-error">*|HTML:EMPLOYEDERROR|*</div>
+        </div>
+
+        <div>
+          <label for="MERGE7">What frustrates you about the job-hunt process?</label>
+          <textarea name="MERGE7" id="MERGE7" value="*|MERGE7|*" maxlength="255"></textarea>
+          <div class="alert alert-error">*|HTML:BEEFSERROR|*</div>
+        </div>
+
+        <div>
+          <label for="MERGE8" title="Excel spreadsheet, online apps, pen and paper...">Do you currently use any tools to track your job-hunt?</label>
+          <textarea name="MERGE8" id="MERGE8" value="*|MERGE8|*" maxlength="255"></textarea>
+          <div class="alert alert-error">*|HTML:TRACKERERROR|*</div>
+        </div>
+
+      </fieldset>
+
+      </form>
+
+
+  </div>
+</div>
+
+
+
+
+</body>
+</html>
