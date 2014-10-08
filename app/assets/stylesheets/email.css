@@ -26,7 +26,8 @@
       * @theme page
       */
       body, #bodyTable{
-        /*@editable*/ 
+        /*@editable*/ background: url("http://mrsuitor.com/assets/pinstriped_suit_@2X-2743ea1a1975c2a557f361f8c19ea618.png") repeat scroll 0% 0% / 400px 330px #f7f7f7; 
+
       }
 
       /**
