@@ -1,0 +1,10 @@
+<% content_for :title do %>
+  Confirm you&rsquo;re you
+<% end %>
+
+<p>Hello there<% if @resource.name %>, <%= @resource.name %><% end %>! To make sure your emails get sent to the right place, we need you to <%= link_to 'confirm your email', confirmation_url(@resource, confirmation_token: @token) %>. Promise it&rsquo;ll only take two seconds.</p>
+
+
+<p class="center">
+  <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: 'button' %>
+</p>

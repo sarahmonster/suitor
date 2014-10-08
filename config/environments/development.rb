@@ -16,11 +16,20 @@ Suitor::Application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Set up mailer
+  # Set up mailer URLS
   config.action_mailer.default_url_options = { :host => 'localhost', :port => 3000 }
+  config.action_controller.asset_host =
+  config.action_mailer.asset_host     = 'http://localhost:3000/'
 
-  # Use Mandrill if environment variables are set
-  if ENV["MANDRILL_USERNAME"] 
+  # Use the MailCatcher gem if it's set up
+  if ENV["MAILCATCHER"] == "true"
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.perform_deliveries = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
+  # Alternatively, use Mandrill if environment variables are set
+  elsif ENV["MANDRILL_USERNAME"] 
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :smtp

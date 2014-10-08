@@ -5,7 +5,8 @@ Suitor::Application.routes.draw do
     confirmations: 'user/confirmations',
     invitations: 'user/invitations',
     omniauth_callbacks: 'user/omniauth_callbacks',
-    registrations: 'user/registrations'
+    registrations: 'user/registrations',
+    passwords: 'user/passwords'
   }
   devise_scope :user do
     get 'use-invite' => 'user/invitations#edit', as: :invitation_accept

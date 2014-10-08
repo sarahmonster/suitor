@@ -24,5 +24,10 @@ module Suitor
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/page_cache"
+
+    # Use a custom mailer layout for Devise
+    config.to_prepare do
+        Devise::Mailer.layout "email"
+    end
   end
 end
