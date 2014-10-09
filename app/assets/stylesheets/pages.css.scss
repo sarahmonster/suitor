@@ -46,15 +46,37 @@
 }
 
 
-// tagline/intro panel
-#tagline {
-  text-align: center;
-  margin-top: 15%;
-  @include media($large-screen-up) {
-    @include span-columns(8);
-    @include shift(2);
+// teaser/intro panel
+#teaser {
+  padding-top: 10%;
+
+  .image {
+    @include media($large-screen-up) {
+      @include span-columns(5);
+    }
+  }
+
+  .intro {
+    @include media($large-screen-up) {
+      @include span-columns(6);
+      @include shift(1);
+    }
+
+    .large-text {
+      @extend %box;
+    }
+
+    a {
+      @extend %button;
+      display: inline-block;
+      clear: none;
+      float: none;
+    }
+
+    h3 { display: none; }
   }
 }
+
 
 
 // about panel
