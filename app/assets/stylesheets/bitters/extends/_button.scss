@@ -27,8 +27,6 @@
         color: lighten($base-secondary-color, 50%); 
         border-color: darken($base-secondary-color, 10%);
         background: darken($base-secondary-color, 5%);
-
-        i {color: lighten($base-accent-color, 60%); }
     }
 
     &.secondary {
@@ -52,13 +50,15 @@
     clear: none;
     margin: 1px 2px 2px;
     background: $light-grey;
-    border-bottom: 0;
+    border: 0;
     border-left: 2px solid $medium-grey;
     font-size: .8em;
     color: $medium-grey;
     text-shadow: 1px 1px 1px rgba(255,255,255,.25);
 
     &:hover {
-        border-width: 0 0 0 2px;
+        background: darken($light-grey, 10%);
+        color: darken($medium-grey, 20%);
+        i { color: darken($medium-grey, 20%); }
     }
 }
