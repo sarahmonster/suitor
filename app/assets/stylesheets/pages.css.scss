@@ -9,31 +9,9 @@
 .pages.launch, html {height: 100%;}
 
 .panel {
-  position: relative;
   min-height: 100%;
   width: 100%;
   margin: 0;
-  border-bottom: 2px solid $medium-grey;
-  border-top: 1px solid $white;
-  @include box-shadow;
-}
-
-.next {
-  clear: both;
-  position: absolute;
-  bottom: 2em;
-  width: 100%;
-  text-align: center;
-
-  i {
-    background: lighten($blue, 60%);
-    border: 4px solid lighten($blue, 40%);
-    border-radius: 50%;
-    color: lighten($blue, 20%);
-    font-size: 3em;
-    @include box-shadow;
-    &:hover { background: $blue; }
-  }
 }
 
 .large-text {
@@ -49,22 +27,26 @@
 // teaser/intro panel
 #teaser {
   padding-top: 10%;
-
-  .image {
-    @include media($large-screen-up) {
-      @include span-columns(5);
-    }
-  }
+  background: image-url('suit-man.jpg');
+  background-size: cover;
+  @include box-shadow($opacity: .2);
 
   .intro {
     @include media($large-screen-up) {
       @include span-columns(6);
-      @include shift(1);
+      @include shift(4);
     }
 
-    .large-text {
-      @extend %box;
+    p { 
+      color: lighten($light-grey, 10%);
+      font-size: 2em;
+      line-height: 1.4em;
+      text-align: left;
+      text-shadow: 1px 1px 1px transparentize(#000, .5);
     }
+    
+    em { color: $white; }
+    ul { display: none; }
 
     a {
       @extend %button;
@@ -73,7 +55,10 @@
       float: none;
     }
 
-    h3 { display: none; }
+    h3 { 
+      display: inline-block; 
+      span { color: $white; }
+    }
   }
 }
 
@@ -84,6 +69,7 @@
   background: lighten($blue, 66.5%) image-url('whitey_@2X.png');
   background-size: 654px 654px;
   padding-bottom: 5em;
+  @include box-shadow;
 
   .row {
     clear: both;
@@ -125,8 +111,7 @@
 
 // signup panel
 #signup {
-  border-bottom: none;
-  box-shadow: none;
+  border-top: 2px solid $white;
 
   .large-text {
     @include media($medium-screen-up) {
