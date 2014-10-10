@@ -5,3 +5,4 @@
 $ ->
   $(document).on "page:change", ->
     $("a.jump").smoothScroll speed: 800
+    $("#teaser a").smoothScroll speed: 800
