@@ -28,7 +28,7 @@
 #teaser {
   padding-top: 10%;
   padding-bottom: 5%;
-  background: image-url('suit-man.jpg');
+  background: darken($medium-grey, 10%) image-url('suit-man.jpg');
   background-size: cover;
   @include box-shadow($opacity: .2);
 
