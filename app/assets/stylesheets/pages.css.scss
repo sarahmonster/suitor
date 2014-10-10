@@ -27,21 +27,29 @@
 // teaser/intro panel
 #teaser {
   padding-top: 10%;
+  padding-bottom: 5%;
   background: image-url('suit-man.jpg');
   background-size: cover;
   @include box-shadow($opacity: .2);
 
   .intro {
+    text-align: center;
+
     @include media($large-screen-up) {
+      @include span-columns(7);
+      @include shift(4);
+    }
+    @include media($max-width-up) {
       @include span-columns(6);
       @include shift(4);
     }
 
     p { 
       color: lighten($light-grey, 10%);
-      font-size: 2em;
+      font-size: 1.8em;
+      @include media($max-width-up) { font-size: 2em; }
       line-height: 1.4em;
-      text-align: left;
+      text-align: center;
       text-shadow: 1px 1px 1px transparentize(#000, .5);
     }
     
@@ -53,9 +61,12 @@
       display: inline-block;
       clear: none;
       float: none;
+      margin: 10px 0;
+      @include media($large-screen-down) { margin: 10px 20px; }
     }
 
     h3 { 
+      @include media($large-screen-down) { display: none; }
       display: inline-block; 
       span { color: $white; }
     }
