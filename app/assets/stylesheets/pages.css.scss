@@ -39,10 +39,6 @@
       @include span-columns(7);
       @include shift(4);
     }
-    @include media($max-width-up) {
-      @include span-columns(6);
-      @include shift(4);
-    }
 
     p { 
       color: lighten($light-grey, 10%);
