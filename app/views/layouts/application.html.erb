@@ -6,13 +6,13 @@
   <%= stylesheet_link_tag "application", media: "all",
                           "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= favicon_link_tag 'favicon.png?v=5', type: 'image/png' %>
+  <%= favicon_link_tag "favicon.png?v=5", type: "image/png" %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
   <!-- MOBILE MENU -->
   <nav id="mobile-menu">
-    <%= render "layouts/menu", :device => 'mobile' %>
+    <%= render "layouts/menu", device: "mobile" %>
   </nav>
   <!-- END MOBILE MENU -->
 
@@ -28,17 +28,17 @@
       <nav class="header-container">
         <!-- LOGO -->
         <%= link_to root_path do %>
-          <%= image_tag("suitor.png", :alt => "suitor", :id => "logo") %>
+          <%= image_tag("suitor.png", alt: "suitor", id: "logo") %>
         <% end %>
 
         <!-- MAIN NAVBAR -->
-        <%= render "layouts/menu", :device => 'desktop' %>
+        <%= render "layouts/menu", device: "desktop" %>
       </nav>
     </header>
 
     <!-- PAGE CONTENT -->
     <div class="container">
-      <%= render 'layouts/messages' %>
+      <%= render "layouts/messages" %>
 
       <%= yield %>
     </div>
