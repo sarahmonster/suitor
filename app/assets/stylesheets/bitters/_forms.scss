@@ -15,13 +15,13 @@ fieldset {
   }
 
   &.primary {
-      border-top-color: lighten($base-accent-color, 40%);
-      h3 { color: $base-accent-color; }
+    border-top-color: lighten($base-secondary-color, 40%);
+    h3 { color: $base-secondary-color; }
   }
 
   &.secondary {
-      border-top-color: lighten($base-secondary-color, 40%);
-      h3 { color: $base-secondary-color; }
+    border-top-color: lighten($base-accent-color, 40%);
+    h3 { color: $base-accent-color; }
   }
 }
 

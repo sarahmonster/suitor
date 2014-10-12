@@ -1,32 +1,41 @@
 %button {
-    background: $base-secondary-color;
+    background: lighten($base-accent-color, 50%);
     border: none;
-    border: 2px solid lighten($base-secondary-color, 40%);
+    border: 2px solid lighten($base-accent-color, 10%);
     padding: 1.25em 2.5em;
     clear: both;
     font-size: .85em;
     font-family: $sans-serif;
-    color: lighten($base-secondary-color, 50%);
-    text-shadow: 1px 1px 0px rgba(0, 0, 0, .15);
+    color: lighten($base-accent-color, 10%);
+    text-shadow: 1px 1px 0px transparentize($white, .6);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 600;
     line-height: 1em;
-    float: right;
 
     @include media($mobile) {
         display: block;
         margin-bottom: 10px;
     }
 
-    i {
-         color: lighten($base-accent-color, 20%);
-    }
+    i { color: lighten($base-accent-color, 20%); }
 
     &:hover {
-        color: lighten($base-secondary-color, 50%); 
-        border-color: darken($base-secondary-color, 10%);
-        background: darken($base-secondary-color, 5%);
+        background: lighten($base-accent-color, 40%); 
+        border-color: $base-accent-color;
+        color: $base-accent-color;
+    }
+
+    &.primary {
+        background: lighten($base-secondary-color, 50%);
+        border-color: lighten($base-secondary-color, 10%);
+        color: lighten($base-secondary-color, 10%);
+
+        &:hover {
+            background: lighten($base-secondary-color, 40%); 
+            border-color: $base-secondary-color;
+            color: $base-secondary-color;
+        }
     }
 
     &.secondary {

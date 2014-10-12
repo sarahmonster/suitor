@@ -1,7 +1,9 @@
 %box {
     background-color: rgba($white, .8);
-    border-top: 5px solid $light-grey;
+    border-top: 5px solid lighten($base-accent-color, 40%);
     padding: $base-line-height $base-line-height ($base-line-height * 2);
     text-align: center;
     @include box-shadow($pre-shadow: 0px 0px 1px $light-grey);
+    
+    h3 { color: $base-accent-color; }
 }
