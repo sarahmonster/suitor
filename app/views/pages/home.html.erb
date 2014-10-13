@@ -8,11 +8,14 @@
   
   <p>Job-hunting is a pain in the butt. Whether you send out ten resumes or ten hundred, it&rsquo;s important to keep track of your process. Using suitor, you can easily track your application status, send follow-ups, and keep a record of what you said to who, so you&rsquo;ll never accidentally say the wrong thing to the wrong person.</p>
 
-  <% unless current_user %>
-    <%= link_to t("Get a free account"), signup_path, class: "primary" %>
-    <h3><span>or</span></h3>
-    <%= link_to "Log in", login_path, class: "secondary" %>
-  <% else %>
-    <%= link_to "Log out", logout_path, method: 'delete' %>
-  <% end %>
+  <div class="actions">
+    <% unless current_user %>
+      <%= link_to t("Get a free account"), signup_path, class: "primary" %>
+      <h3><span>or</span></h3>
+      <%= link_to "Log in", login_path, class: "secondary" %>
+    <% else %>
+      <%= link_to "Log out", logout_path, method: 'delete' %>
+    <% end %>
+  </div>
+  
 </div>
