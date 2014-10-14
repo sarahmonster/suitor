@@ -5,9 +5,9 @@ class DashboardTest < ActionDispatch::IntegrationTest
     get "/login"
     assert_response :success
 
-    post_via_redirect "/login", {
-      'user[email]' => users(:one).email,
-      'user[password]' => "thisismypassword"
+    post_via_redirect "/login", user: {
+      email: users(:one).email,
+      password: "thisismypassword"
     }
     assert_equal "/", path
   end
