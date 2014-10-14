@@ -91,13 +91,18 @@
         </span></div>
       </div>
 
-      <p>You have applied to <strong><%= @postings_applied_this_week.size %></strong> <%= "job".pluralize(@postings_applied_this_week.size) %> this week.
-      <br>That&rsquo;s
-      <% if @percent_difference > 0 %>
-        <span class="success"><i class="icon-double-angle-up"><span><%= @percent_difference.round(0) %>% higher</span></i></span> than your average. Way to go!
+      <p>You have applied to <strong><%= @postings_applied_this_week.size %></strong> <%= "job".pluralize(@postings_applied_this_week.size) %> this week.<br>
+    
+      <% if @percent_difference.infinite? %>
+        Great start! Apply for <strong><%= (@application_goal-@postings_applied_this_week.size) %></strong> more <%= "job".pluralize(@application_goal-@postings_applied_this_week.size) %> this week to reach your goal.
+      <% elsif @percent_difference > 0 %>
+        <span class="success"><i class="icon-double-angle-up"><span>
+          <%= @percent_difference %>% higher
+        </span></i></span> than your average. Way to go!
       <% else %>
         <span class="failure"><i class="icon-double-angle-down"><span><%= @percent_difference.abs.round(0) %>% lower</span></i></span> than your average. Keep at it, okay?
       <% end %>
+
       </p>
     </div>
     <!-- END WEEKLY PROGRESS -->
