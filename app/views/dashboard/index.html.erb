@@ -92,8 +92,10 @@
       </div>
 
       <p>You have applied to <strong><%= @postings_applied_this_week.size %></strong> <%= "job".pluralize(@postings_applied_this_week.size) %> this week.<br>
-    
-      <% if @percent_difference.infinite? %>
+      
+      <% if @percent_difference == 0 %>
+        That number could probably be a bit higher, hmm? Let&rsquo;s get started!
+      <% elsif @percent_difference.infinite? %>
         Great start! Apply for <strong><%= (@application_goal-@postings_applied_this_week.size) %></strong> more <%= "job".pluralize(@application_goal-@postings_applied_this_week.size) %> this week to reach your goal.
       <% elsif @percent_difference > 0 %>
         <span class="success"><i class="icon-double-angle-up"><span>
