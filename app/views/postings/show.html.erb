@@ -53,19 +53,19 @@
       <% else %>
         <%= @posting.hiring_organization %>
       <% end %>
-      <% if !@posting.job_location.empty? %>(<%= @posting.job_location %>)<% end %>
+      <% unless @posting.job_location.blank? %>(<%= @posting.job_location %>)<% end %>
       </li>
     <% end %>
 
-    <% if !@posting.application_url.empty? %>
+    <% unless @posting.application_url.blank? %>
       <li><i class="icon-external-link"><span>Online application</span></i><%= link_to 'URL', @posting.application_url %></li>
     <% end %>
 
-    <% if !@posting.contact_name.empty? or !@posting.contact_email.empty? %>
+    <% unless @posting.contact_name.blank? or !@posting.contact_email.blank? %>
       <li><i class="icon-user6"><span>Contact</span></i>
-      <% if @posting.contact_name.empty? %>
+      <% if @posting.contact_name.blank? %>
         <%= link_to @posting.contact_email, @posting.contact_email %>
-      <% elsif @posting.contact_email.empty? %>
+      <% elsif @posting.contact_email.blank? %>
         <%= @posting.contact_name %>
       <% else %>
         <%= link_to @posting.contact_name, @posting.contact_email %>
