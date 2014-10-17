@@ -29,7 +29,7 @@ Suitor::Application.configure do
     config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
 
   # Alternatively, use Mandrill if environment variables are set
-  elsif ENV["MANDRILL_USERNAME"] 
+  elsif ENV["MANDRILL_USERNAME"]
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.perform_deliveries = true
     config.action_mailer.delivery_method = :smtp
@@ -38,8 +38,8 @@ Suitor::Application.configure do
       :port      => 587,
       :user_name => ENV["MANDRILL_USERNAME"],
       :password  => ENV["MANDRILL_PASSWORD"],
-      :enable_starttls_auto => true, 
-      :authentication => 'login', 
+      :enable_starttls_auto => true,
+      :authentication => 'login',
       :domain => 'localhost'
     }
 
