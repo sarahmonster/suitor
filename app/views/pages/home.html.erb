@@ -3,17 +3,19 @@
   <h1>Let&rsquo;s find you a job.</h1>
 </header>
 
-<div class="intro">
-
+<div class="intro primary">
+  <h3>Get your foot in the door, not in your mouth.</h3>
+  
   <p>Job-hunting is a pain in the butt. Whether you send out ten resumes or ten hundred, it&rsquo;s important to keep track of your process. Using suitor, you can easily track your application status, send follow-ups, and keep a record of what you said to who, so you&rsquo;ll never accidentally say the wrong thing to the wrong person.</p>
 
-  <p>Get your foot in the door, not in your mouth.</p>
-
-  <% unless current_user %>
-    <%= link_to t("Sign up"), signup_path %>
-    <%= link_to "Log in", login_path, class: "secondary" %>
-  <% else %>
-    Signed in as <%= current_user.email %>
-    <%= link_to "Log out", logout_path, method: 'delete' %>
-  <% end %>
+  <div class="actions">
+    <% unless current_user %>
+      <%= link_to t("Get a free account"), signup_path, class: "primary" %>
+      <h3><span>or</span></h3>
+      <%= link_to "Log in", login_path, class: "secondary" %>
+    <% else %>
+      <%= link_to "Log out", logout_path, method: 'delete' %>
+    <% end %>
+  </div>
+  
 </div>

@@ -58,16 +58,10 @@ html.mm-opened .mm-page {
 
     #mobile-menu-button {
         float: left;
-        position: relative;
-        top: 15px;
-        left: 20px;
+        margin: 18px -25px 0 20px;
         font-size: 30px;
-        @include media($large-screen) {
-            display: none;
-        }
-        i {
-            color: lighten($blue, 40%);
-        }
+        @include media($large-screen) { display: none; }
+        i { color: lighten($blue, 40%); }
     }
 
     #logo {
