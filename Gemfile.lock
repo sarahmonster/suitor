@@ -54,6 +54,8 @@ GEM
     bourbon (3.2.3)
       sass (~> 3.2)
       thor
+    browser_details (0.0.6)
+      useragent (>= 0.4)
     builder (3.2.2)
     capistrano (3.1.0)
       i18n
@@ -315,6 +317,7 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    useragent (0.10.0)
     warden (1.2.3)
       rack (>= 1.0)
     websocket (1.2.1)
@@ -333,6 +336,7 @@ DEPENDENCIES
   bcrypt
   better_errors
   bourbon
+  browser_details
   capistrano (~> 3.1.0)
   capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1.1)

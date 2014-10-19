@@ -59,6 +59,7 @@ group :production do
 
   # Email me when errors happen!
   gem 'exception_notification'
+  gem 'browser_details'
 end
 
 # User authentication
