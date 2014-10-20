@@ -101,6 +101,6 @@ end
 Suitor::Application.config.middleware.use ExceptionNotification::Rack,
 :email => {
   :email_prefix => "[sad-suitor] ",
-  :sender_address => %{"sad-suitor" <helpme@suitor.com>},
-  :exception_recipients => %w{help@suitor.com}
+  :sender_address => %{"sad-suitor" <helpme@mrsuitor.com>},
+  :exception_recipients => %w{help@mrsuitor.com}
 }
