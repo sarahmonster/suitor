@@ -113,6 +113,9 @@
         </span>
         than your average. Way to go!
 
+      <% elsif @percent_difference.nan? %>
+        Gnarly, dude. Totally not a number.
+
       <% else %>
         That&rsquo;s
         <span class="failure">

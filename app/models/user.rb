@@ -39,8 +39,16 @@ class User < ActiveRecord::Base
   end
 
   def activity_start_date
-    if !job_applications.nil?
-      job_applications.order('date_sent ASC').limit(1).first.date_sent
+    unless job_applications.blank?
+      job_application = job_applications.order('date_sent ASC').limit(1).first
+
+      unless job_application.blank?
+        job_application.date_sent
+      else
+        nil
+      end
+    else
+      nil
     end
   end
 
