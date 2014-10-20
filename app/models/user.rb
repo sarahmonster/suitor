@@ -40,15 +40,7 @@ class User < ActiveRecord::Base
 
   def activity_start_date
     unless job_applications.blank?
-      job_application = job_applications.order('date_sent ASC').limit(1).first
-
-      unless job_application.blank?
-        job_application.date_sent
-      else
-        Date.today
-      end
-    else
-      Date.today
+      job_applications.order('date_sent ASC').limit(1).first.date_sent
     end
   end
 

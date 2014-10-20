@@ -8,11 +8,7 @@ class PostingPolicy
     end
 
     def resolve
-      if user.admin?
-        postings.all
-      else
-        postings.where(user_id: user.id)
-      end
+      postings.where(user_id: user.id)
     end
   end
 
