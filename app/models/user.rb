@@ -45,10 +45,10 @@ class User < ActiveRecord::Base
       unless job_application.blank?
         job_application.date_sent
       else
-        nil
+        Date.today
       end
     else
-      nil
+      Date.today
     end
   end
 
