@@ -43,24 +43,15 @@ $ ->
       return
 
     showDialog = ($element) ->
-      dialog = $element.dialog
-        modal: true
-        width: "auto"
-
-        close: ->
-          dialog.dialog "destroy"
-
-        show:
-          effect: "fade"
-          duration: 800
-
-        hide:
-          effect: "fade"
-          duration: 200
+      vex.dialog.confirm
+        message: $element
+        callback: (value) ->
+          console.log if value then 'Successfully destroyed the planet.' else 'Chicken.'
 
     # Show submitted information in a modal
     $(".applied.done").on "click", ->
       showDialog $(this).next(".dialog")
+
 
     # Create a new application instance when "apply now" is clicked from postings index page
     $(".applied.todo").on "click", (event) ->
