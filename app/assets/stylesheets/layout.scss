@@ -145,30 +145,23 @@ html.mm-opened .mm-page {
         display: inline-block;
         margin: .5em 0 0;
         line-height: 1em;
-        span {
-            display: inline;
-        }
-        i {
-            margin: 0;
-        }
+        span { display: inline; }
+        i { margin: 0; }
     }
 
     .controls > a, button {
         @extend %small-button;
+        float: left;
         display: inline-block;
-        margin-bottom: 6px;
+        margin: 0 0 6px 0;
         padding: 8px 12px;
         text-align: left;
         font-size: .85em;
-        i {
-            color: $medium-grey;
-        }
+        i { color: $medium-grey; }
     }
 
     @include media($mobile) {
-        h1 {
-            font-size: 2em;
-        }
+        h1 { font-size: 2em; }
     }
 }
 

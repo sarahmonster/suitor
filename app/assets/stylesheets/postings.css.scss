@@ -42,6 +42,7 @@
         width: 100%;
         text-align: left;
         padding-right: 5px;
+        position: relative;
 
         &:hover {
             border-color: lighten($dark-grey, 20%);
@@ -72,6 +73,7 @@
 
         li:not(.title) {
             @extend %small-button;
+            display: block;
             background-color: lighten($light-grey, 10%);
             border-color: lighten($medium-grey, 10%);
             text-align: left;
