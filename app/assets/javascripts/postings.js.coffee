@@ -45,13 +45,10 @@ $ ->
     showDialog = ($element) ->
       vex.dialog.confirm
         message: $element
-        callback: (value) ->
-          console.log if value then 'Successfully destroyed the planet.' else 'Chicken.'
 
     # Show submitted information in a modal
     $(".applied.done").on "click", ->
-      showDialog $(this).next(".dialog")
-
+      showDialog $(this).next(".dialog").html()
 
     # Create a new application instance when "apply now" is clicked from postings index page
     $(".applied.todo").on "click", (event) ->

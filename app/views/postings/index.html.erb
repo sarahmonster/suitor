@@ -85,7 +85,8 @@
         <% elsif posting.applied? %>
           <i class="applied icon-checkmark done"><span title="Application sent on <%= short_date(posting.job_application.date_sent) %>"><%= t('Applied') %> <%= friendly_datetime(posting.job_application.date_sent) %></span></i>
 
-          <div class="dialog" title="<%= t('job_applications.sent_at_time', time: short_date(posting.job_application.date_sent)) %>">
+          <div class="dialog">
+            <h3><%= t('job_applications.sent_at_time', time: short_date(posting.job_application.date_sent)) %></h3>
             <p><%= simple_format(posting.job_application.cover_letter) %></p>
           </div>
 

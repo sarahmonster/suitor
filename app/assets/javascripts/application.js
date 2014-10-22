@@ -22,4 +22,4 @@
 //= require froala_editor.min.js
 //= require_tree .
 
-vex.defaultOptions.className = 'vex-theme-os';
+vex.defaultOptions.className = 'vex-theme-default';
