@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20141001050230) do
     t.text     "application_instructions"
     t.boolean  "archived",                 default: false
     t.integer  "user_id"
+    t.string   "contact_number"
   end
 
   add_index "postings", ["archived"], name: "index_postings_on_archived"

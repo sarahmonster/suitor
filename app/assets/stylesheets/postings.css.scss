@@ -267,16 +267,14 @@ section.job-actions {
 
 // ADD NEW JOB SCREEN
 @include media($large-screen-up) {
-    #new_posting {
+    #new_posting, .edit-posting {
         @include outer-container;
-
         .job-information { @include span-columns(7 of 12); }
-
         .company-information, .application-information {
             @include span-columns(5 of 12);
             margin-right: 0;
         }
-}
+    }
 }
 
 

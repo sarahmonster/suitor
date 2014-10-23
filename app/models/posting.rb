@@ -2,8 +2,8 @@ class Posting < ActiveRecord::Base
   VALID_FILTER_SCOPES = [:applied, :archived, :interview_completed, :interview_scheduled]
 
   validates :user, presence: true
-  validates :title, presence: true, length: { minimum: 5 }
-  validates :hiring_organization, presence: true, length: { minimum: 5 }
+  validates :title, presence: true, length: { minimum: 3 }
+  validates :hiring_organization, presence: true, length: { minimum: 3 }
 
   belongs_to :user
   has_one :job_application, dependent: :destroy

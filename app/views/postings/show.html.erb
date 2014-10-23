@@ -73,6 +73,11 @@
       </li>
     <% end %>
 
+    <% if !@posting.contact_number.nil? %>
+      <li><i class="icon-phone2"><span>Phone number</span></i>
+      <%= @posting.contact_number %>
+    <% end %>
+
   </ul>
 
   <div class="job-description">
