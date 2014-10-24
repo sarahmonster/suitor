@@ -86,7 +86,7 @@ gem 'pickadate-rails'
 gem 'date_time_attribute'
 
 # Use Vex for modal windows
-gem 'vex_rails'
+gem 'vex_rails', :git => 'git://github.com/sarahsemark/vex_rails.git'
 
 # Use a custom-updated version of mmenu for the mobile menu
 gem 'mmenu-rails', :git => 'git://github.com/sarahsemark/mmenu-rails.git'
