@@ -43,8 +43,9 @@ $ ->
       return
 
     showDialog = ($element) ->
-      vex.dialog.confirm
+      vex.dialog.alert
         message: $element
+        vex.dialog.buttons.YES.text = 'Gotcha!'
 
     # Show submitted information in a modal
     $(".applied.done").on "click", ->
@@ -52,22 +53,55 @@ $ ->
 
     # Create a new application instance when "apply now" is clicked from postings index page
     $(".applied.todo").on "click", (event) ->
-      $.ajax
-        url: "#{$(this).data("uri")}.json"
-        type: "POST"
-        data:
-          job_application:
-            posting_id: $(this).data("posting-id")
-        success: (response) =>
-          $(this).next(".dialog").replaceWith(response.html)
-          $dialog = showDialog $(this).next(".dialog")
-          $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
-          $(this).replaceWith response.replacementHTML
-          $(this).parents('section').removeClass('action-required')
-          $(".edit_job_application").on "ajax:success", ->
-            $dialog.dialog "destroy"
-        error: (response) ->
-          console.log "Error: ", response
+
+        # First, create the application
+        $.ajax
+          url: "#{$(this).data("uri")}.json"
+          type: "POST"
+          data:
+            job_application:
+              posting_id: $(this).data("posting-id")
+
+          # Then, open a dialog window
+          success: (response) =>
+            vex.dialog.open
+              input: response.html
+              buttons: [
+                $.extend({}, vex.dialog.buttons.NO,
+                  className: "primary"
+                  text: "Update application"
+                  click: ($vexContent, event) ->
+                    $vexContent.data().vex.value = "update"
+                    vex.close $vexContent.data().vex.id
+                    return
+                )
+                $.extend({}, vex.dialog.buttons.NO,
+                  className: "secondary"
+                  text: "Undo"
+                  click: ($vexContent, event) ->
+                    $vexContent.data().vex.value = "undo"
+                    vex.close $vexContent.data().vex.id
+                    return
+                )
+              ]
+              callback: (value) ->
+                if value is "undo"
+                  console.log "Undo application"
+                else
+                  console.log "Save application"
+                return
+
+              error: (response) ->
+                console.log "Error: ", response
+
+
+
+
+        $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
+
+        $(this).replaceWith response.replacementHTML
+        $(this).parents('section').removeClass('action-required')
+          
 
 
     # Mark application as followed-up when "follow up" is clicked (from index or detail page)
