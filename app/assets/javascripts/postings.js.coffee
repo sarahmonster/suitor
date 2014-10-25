@@ -100,32 +100,23 @@ $ ->
                     return
                 )
               ]
-              # callback: (value) =>
-              #   if value is "undo"
-              #     $.ajax
-              #       url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
-              #       type: "DELETE"
-              #       success: ->
-              #         vex.close $vexContent.data().vex.id
-              #   else
-              #     $.ajax
-              #       url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
-              #       type: "PUT"
-              #       data:
-              #         job_application:
-              #           cover_letter: $("input[name=job_application\\[cover_letter\\]]").attr("value")
-              #           date_sent: $("input[name=job_application\\[date_sent\\]]").attr("value")
-              #       success: ->
-              #         vex.close $vexContent.data().vex.id
-              #   return
+              
+              # Give a visual confirmation of what's happened (either way)
+              callback: (value) =>
+                if value is "undo"
+                  console.log "Application destroyed!"
+                else
+                  console.log "Application saved!"
+                  $(this).parents('section').removeClass('action-required')
+                  $(this).replaceWith response.replacementHTML
+                return
 
               error: (response) ->
                 console.log "Error: ", response
         
         $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
 
-        $(this).replaceWith response.replacementHTML
-        $(this).parents('section').removeClass('action-required')
+
 
     # Mark application as followed-up when "follow up" is clicked (from
     # index or detail page)
