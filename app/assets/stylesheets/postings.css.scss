@@ -26,7 +26,10 @@
             }
         }
     }
-    .done { color: $green; }
+    .done { 
+        color: $green; 
+        &.applied:hover { cursor: pointer; }
+    }
 
     & > .dialog { display: none; }
 }

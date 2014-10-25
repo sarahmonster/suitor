@@ -42,14 +42,11 @@ $ ->
       $(this).parent().removeClass "focus"
       return
 
-    # showDialog = ($element) ->
-    #   vex.dialog.alert
-    #     message: $element
-    #     vex.dialog.buttons.YES.text = 'Gotcha!'
-
-    # Show submitted information in a modal
-    # $(".applied.done").on "click", ->
-    #   showDialog $(this).next(".dialog").html()
+    # Show submitted application details in a modal
+    $(".applied.done").on "click", ->
+        vex.dialog.alert
+          message: $(this).next(".dialog").html()
+          vex.dialog.buttons.YES.text = 'Gotcha!'
 
     # Create a new application instance when "apply now" is clicked from
     # postings index page
@@ -124,10 +121,11 @@ $ ->
 
               error: (response) ->
                 console.log "Error: ", response
-            $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
+        
+        $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
 
-        # $(this).replaceWith response.replacementHTML
-        # $(this).parents('section').removeClass('action-required')
+        $(this).replaceWith response.replacementHTML
+        $(this).parents('section').removeClass('action-required')
 
     # Mark application as followed-up when "follow up" is clicked (from
     # index or detail page)
