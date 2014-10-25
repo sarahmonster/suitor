@@ -5,7 +5,7 @@
 $ ->
   $(document).on "page:change", ->
 
-    $("textarea.wysiwyg").editable 
+    $("textarea.wysiwyg").editable
       inlineMode: false
       borderColor: "#dddddd"
       height: 500
@@ -42,18 +42,18 @@ $ ->
       $(this).parent().removeClass "focus"
       return
 
-    showDialog = ($element) ->
-      vex.dialog.alert
-        message: $element
-        vex.dialog.buttons.YES.text = 'Gotcha!'
+    # showDialog = ($element) ->
+    #   vex.dialog.alert
+    #     message: $element
+    #     vex.dialog.buttons.YES.text = 'Gotcha!'
 
     # Show submitted information in a modal
-    $(".applied.done").on "click", ->
-      showDialog $(this).next(".dialog").html()
+    # $(".applied.done").on "click", ->
+    #   showDialog $(this).next(".dialog").html()
 
-    # Create a new application instance when "apply now" is clicked from postings index page
-    $(".applied.todo").on "click", (event) ->
-
+    # Create a new application instance when "apply now" is clicked from
+    # postings index page
+    $(".applied.todo").on "click", ->
         # First, create the application
         $.ajax
           url: "#{$(this).data("uri")}.json"
@@ -64,47 +64,73 @@ $ ->
 
           # Then, open a dialog window
           success: (response) =>
+            jobApplicationId = response.id
+
             vex.dialog.open
-              input: response.html
+              message: response.html
               buttons: [
                 $.extend({}, vex.dialog.buttons.NO,
                   className: "primary"
                   text: "Update application"
-                  click: ($vexContent, event) ->
+                  click: ($vexContent, event) =>
                     $vexContent.data().vex.value = "update"
-                    vex.close $vexContent.data().vex.id
+
+                    $.ajax
+                      url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
+                      type: "PUT"
+                      data:
+                        job_application:
+                          cover_letter: $("[name=job_application\\[cover_letter\\]]").val()
+                          date_sent: $("[name=job_application\\[date_sent\\]]").val()
+                          posting_id: $(this).data("posting-id")
+                      success: ->
+                        vex.close $vexContent.data().vex.id
+
                     return
                 )
                 $.extend({}, vex.dialog.buttons.NO,
                   className: "secondary"
                   text: "Undo"
-                  click: ($vexContent, event) ->
+                  click: ($vexContent, event) =>
                     $vexContent.data().vex.value = "undo"
-                    vex.close $vexContent.data().vex.id
+
+                    $.ajax
+                      url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
+                      type: "DELETE"
+                      success: ->
+                        vex.close $vexContent.data().vex.id
+
                     return
                 )
               ]
-              callback: (value) ->
-                if value is "undo"
-                  console.log "Undo application"
-                else
-                  console.log "Save application"
-                return
+              # callback: (value) =>
+              #   if value is "undo"
+              #     $.ajax
+              #       url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
+              #       type: "DELETE"
+              #       success: ->
+              #         vex.close $vexContent.data().vex.id
+              #   else
+              #     $.ajax
+              #       url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
+              #       type: "PUT"
+              #       data:
+              #         job_application:
+              #           cover_letter: $("input[name=job_application\\[cover_letter\\]]").attr("value")
+              #           date_sent: $("input[name=job_application\\[date_sent\\]]").attr("value")
+              #       success: ->
+              #         vex.close $vexContent.data().vex.id
+              #   return
 
               error: (response) ->
                 console.log "Error: ", response
+            $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
 
+        # $(this).replaceWith response.replacementHTML
+        # $(this).parents('section').removeClass('action-required')
 
-
-
-        $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
-
-        $(this).replaceWith response.replacementHTML
-        $(this).parents('section').removeClass('action-required')
-          
-
-
-    # Mark application as followed-up when "follow up" is clicked (from index or detail page)
+    # Mark application as followed-up when "follow up" is clicked (from
+    # index or detail page)
     $(".followup.todo").on "click", (event) ->
       $.ajax
         url: "#{$(this).data("uri")}.json"
@@ -117,7 +143,6 @@ $ ->
         error: (response) ->
           console.log "Error: ", response
 
-    
     # Swap down arrow for up
     $.fn.expanderSwap = ->
       if this.find(".expand-icon").hasClass('icon-arrow-down9')
@@ -141,21 +166,20 @@ $ ->
           $(".dropdown ul").slideUp(400)
           $(".dropdown ul").parent().find("button").expanderSwap()
 
-    # Show and hide postings according to user's filter 
+    # Show and hide postings according to user's filter
     $(".filter-buttons a").click (event) ->
       event.preventDefault()
       # Change appearance of button
       if $(this).find('li').hasClass('checked')
         $(this).find('li i').switchClass('icon-checkmark', 'icon-circle-blank')
-      else 
+      else
         $(this).find('li i').switchClass('icon-circle-blank', 'icon-checkmark')
       $(this).find('li').toggleClass('checked')
       # Toggle postings of the given class
       buttonClass = $(this).data('class')
       $("section.#{buttonClass}").toggle(400)
 
-
-    # Fade out posting listing when archived     
+    # Fade out posting listing when archived
     $(".archive-toggle").on "ajax:complete", ->
       $(this).fadeOut(100).fadeIn(300)
       if $(this).find("span").text() is "Unarchive"
