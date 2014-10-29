@@ -82,8 +82,6 @@ $ ->
                           posting_id: $(this).data("posting-id")
                       success: ->
                         vex.close $vexContent.data().vex.id
-
-                    return
                 )
                 $.extend({}, vex.dialog.buttons.NO,
                   className: "secondary"
@@ -94,29 +92,20 @@ $ ->
                     $.ajax
                       url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
                       type: "DELETE"
-                      success: ->
+                      success: =>
                         vex.close $vexContent.data().vex.id
-
-                    return
                 )
               ]
-              
-              # Give a visual confirmation of what's happened (either way)
               callback: (value) =>
-                if value is "undo"
-                  console.log "Application destroyed!"
-                else
-                  console.log "Application saved!"
+                unless value is "undo"
                   $(this).parents('section').removeClass('action-required')
-                  $(this).replaceWith response.replacementHTML
-                return
+                  $(this).replaceWith(response.replacementHTML)
 
-              error: (response) ->
-                console.log "Error: ", response
-        
-        $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
+            $("#job_application_cover_letter").trigger "focus"
+            $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
 
-
+          error: (response) ->
+            console.log "Error: ", response
 
     # Mark application as followed-up when "follow up" is clicked (from
     # index or detail page)
