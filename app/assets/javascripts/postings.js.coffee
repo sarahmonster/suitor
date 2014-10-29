@@ -96,13 +96,15 @@ $ ->
                         vex.close $vexContent.data().vex.id
                 )
               ]
+
+              # Provide a visual indication of what's happened
               callback: (value) =>
                 unless value is "undo"
                   $(this).parents('section').removeClass('action-required')
                   $(this).replaceWith(response.replacementHTML)
 
             $("#job_application_cover_letter").trigger "focus"
-            $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
+            $("input[type=date]").pickadate();
 
           error: (response) ->
             console.log "Error: ", response
