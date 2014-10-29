@@ -48,7 +48,6 @@ class JobApplicationsController < ApplicationController
     end
   end
 
-
   # PATCH/PUT /job_applications/1/followup.json
   def followup
     respond_to do |format|
@@ -59,7 +58,6 @@ class JobApplicationsController < ApplicationController
       end
     end
   end
-
 
   # PATCH/PUT /job_applications/1
   # PATCH/PUT /job_applications/1.json

@@ -2,5 +2,7 @@ json.extract! @job_application, :id, :date_sent, :cover_letter, :posting_id, :cr
 
 if @job_application_is_new
   json.html render("dialog.html")
-  json.replacementHTML render("replacement_checkmark.html")
+  json.replacementHTML render(partial: "checkmark.html", locals: {
+    posting: @job_application.posting
+  })
 end

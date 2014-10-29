@@ -5,7 +5,7 @@
 $ ->
   $(document).on "page:change", ->
 
-    $("textarea.wysiwyg").editable 
+    $("textarea.wysiwyg").editable
       inlineMode: false
       borderColor: "#dddddd"
       height: 500
@@ -42,47 +42,73 @@ $ ->
       $(this).parent().removeClass "focus"
       return
 
-    showDialog = ($element) ->
-      dialog = $element.dialog
-        modal: true
-        width: "auto"
-
-        close: ->
-          dialog.dialog "destroy"
-
-        show:
-          effect: "fade"
-          duration: 800
-
-        hide:
-          effect: "fade"
-          duration: 200
-
-    # Show submitted information in a modal
+    # Show submitted application details in a modal
     $(".applied.done").on "click", ->
-      showDialog $(this).next(".dialog")
+        vex.dialog.alert
+          message: $(this).next(".dialog").html()
+          vex.dialog.buttons.YES.text = 'Gotcha!'
 
-    # Create a new application instance when "apply now" is clicked from postings index page
-    $(".applied.todo").on "click", (event) ->
-      $.ajax
-        url: "#{$(this).data("uri")}.json"
-        type: "POST"
-        data:
-          job_application:
-            posting_id: $(this).data("posting-id")
-        success: (response) =>
-          $(this).next(".dialog").replaceWith(response.html)
-          $dialog = showDialog $(this).next(".dialog")
-          $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
-          $(this).replaceWith response.replacementHTML
-          $(this).parents('section').removeClass('action-required')
-          $(".edit_job_application").on "ajax:success", ->
-            $dialog.dialog "destroy"
-        error: (response) ->
-          console.log "Error: ", response
+    # Create a new application instance when "apply now" is clicked from
+    # postings index page
+    $(".applied.todo").on "click", ->
+        # First, create the application
+        $.ajax
+          url: "#{$(this).data("uri")}.json"
+          type: "POST"
+          data:
+            job_application:
+              posting_id: $(this).data("posting-id")
 
+          # Then, open a dialog window
+          success: (response) =>
+            jobApplicationId = response.id
 
-    # Mark application as followed-up when "follow up" is clicked (from index or detail page)
+            vex.dialog.open
+              message: response.html
+              buttons: [
+                $.extend({}, vex.dialog.buttons.NO,
+                  className: "primary"
+                  text: "Update application"
+                  click: ($vexContent, event) =>
+                    $vexContent.data().vex.value = "update"
+
+                    $.ajax
+                      url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
+                      type: "PUT"
+                      data:
+                        job_application:
+                          cover_letter: $("[name=job_application\\[cover_letter\\]]").val()
+                          date_sent: $("[name=job_application\\[date_sent\\]]").val()
+                          posting_id: $(this).data("posting-id")
+                      success: ->
+                        vex.close $vexContent.data().vex.id
+                )
+                $.extend({}, vex.dialog.buttons.NO,
+                  className: "secondary"
+                  text: "Undo"
+                  click: ($vexContent, event) =>
+                    $vexContent.data().vex.value = "undo"
+
+                    $.ajax
+                      url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
+                      type: "DELETE"
+                      success: =>
+                        vex.close $vexContent.data().vex.id
+                )
+              ]
+              callback: (value) =>
+                unless value is "undo"
+                  $(this).parents('section').removeClass('action-required')
+                  $(this).replaceWith(response.replacementHTML)
+
+            $("#job_application_cover_letter").trigger "focus"
+            $("input[type=date]").datepicker {dateFormat: "yy-mm-dd"}
+
+          error: (response) ->
+            console.log "Error: ", response
+
+    # Mark application as followed-up when "follow up" is clicked (from
+    # index or detail page)
     $(".followup.todo").on "click", (event) ->
       $.ajax
         url: "#{$(this).data("uri")}.json"
@@ -95,7 +121,6 @@ $ ->
         error: (response) ->
           console.log "Error: ", response
 
-    
     # Swap down arrow for up
     $.fn.expanderSwap = ->
       if this.find(".expand-icon").hasClass('icon-arrow-down9')
@@ -119,21 +144,20 @@ $ ->
           $(".dropdown ul").slideUp(400)
           $(".dropdown ul").parent().find("button").expanderSwap()
 
-    # Show and hide postings according to user's filter 
+    # Show and hide postings according to user's filter
     $(".filter-buttons a").click (event) ->
       event.preventDefault()
       # Change appearance of button
       if $(this).find('li').hasClass('checked')
         $(this).find('li i').switchClass('icon-checkmark', 'icon-circle-blank')
-      else 
+      else
         $(this).find('li i').switchClass('icon-circle-blank', 'icon-checkmark')
       $(this).find('li').toggleClass('checked')
       # Toggle postings of the given class
       buttonClass = $(this).data('class')
       $("section.#{buttonClass}").toggle(400)
 
-
-    # Fade out posting listing when archived     
+    # Fade out posting listing when archived
     $(".archive-toggle").on "ajax:complete", ->
       $(this).fadeOut(100).fadeIn(300)
       if $(this).find("span").text() is "Unarchive"

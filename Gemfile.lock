@@ -12,6 +12,12 @@ GIT
   specs:
     mmenu-rails (4.5.5)
 
+GIT
+  remote: git://github.com/sarahsemark/vex_rails.git
+  revision: e45dbd3b159f77978296bb3814b5ddc49d2943a5
+  specs:
+    vex_rails (0.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -379,4 +385,5 @@ DEPENDENCIES
   thin
   turbolinks
   uglifier (>= 1.3.0)
+  vex_rails!
   wysiwyg-rails

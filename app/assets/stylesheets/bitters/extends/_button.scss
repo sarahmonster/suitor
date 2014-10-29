@@ -28,7 +28,7 @@
         color: lighten($base-accent-color, 5%);
     }
 
-    &.primary {
+    &.primary, &.vex-dialog-button-primary {
         background: lighten($base-secondary-color, 50%);
         border-color: lighten($base-secondary-color, 10%);
         color: lighten($base-secondary-color, 10%);
@@ -40,7 +40,7 @@
         }
     }
 
-    &.secondary {
+    &.secondary, &.vex-dialog-button-secondary {
         background: transparentize($white, .7);
         border-color: $dark-grey;
         color: $dark-grey;

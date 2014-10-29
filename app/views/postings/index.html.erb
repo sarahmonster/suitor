@@ -1,10 +1,10 @@
 <header class="page-header">
   <!-- PAGE TITLE -->
   <% if @archive_page %>
-    <h3>Sorted by: date added</h3> 
+    <h3>Sorted by: date added</h3>
     <h1>Archived <span class="hide-small">job</span> postings</h1>
   <% else %>
-    <h3>Sorted by: <%= @sortorder.titleize %></h3> 
+    <h3>Sorted by: <%= @sortorder.titleize %></h3>
     <h1>Open <span class="hide-small">job</span> postings</h1>
   <% end %>
   <!-- END PAGE TITLE -->
@@ -83,11 +83,7 @@
           <i class="followup icon-circle-blank todo" data-uri="<%= followup_posting_job_application_path(posting, posting.job_application) %>" data-posting-id="<%= posting.id %>"><span title="Application sent <%= friendly_datetime(posting.job_application.date_sent) %>">Follow up</span></i>
 
         <% elsif posting.applied? %>
-          <i class="applied icon-checkmark done"><span title="Application sent on <%= short_date(posting.job_application.date_sent) %>"><%= t('Applied') %> <%= friendly_datetime(posting.job_application.date_sent) %></span></i>
-
-          <div class="dialog" title="<%= t('job_applications.sent_at_time', time: short_date(posting.job_application.date_sent)) %>">
-            <p><%= simple_format(posting.job_application.cover_letter) %></p>
-          </div>
+          <%= render partial: "job_applications/checkmark", locals: {posting: posting} %>
 
         <% else %>
           <i class="applied icon-circle-blank todo" data-uri="<%= posting_job_applications_path(posting) %>" data-posting-id="<%= posting.id %>"><span>Apply now!</span></i>

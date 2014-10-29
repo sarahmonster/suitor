@@ -26,7 +26,10 @@
             }
         }
     }
-    .done { color: $green; }
+    .done { 
+        color: $green; 
+        &.applied:hover { cursor: pointer; }
+    }
 
     & > .dialog { display: none; }
 }
@@ -35,6 +38,7 @@
 // Filter toggles 
 .filter-buttons, .sort-buttons {
     display: inline-block;
+    position: relative;
 
     span { display: inline; }
     
@@ -42,6 +46,7 @@
         width: 100%;
         text-align: left;
         padding-right: 5px;
+        position: relative;
 
         &:hover {
             border-color: lighten($dark-grey, 20%);
@@ -58,6 +63,8 @@
 
     ul {
         position: absolute;
+        display: block;
+        top: 29px;
         z-index: 4000;
         background: transparentize($white, .2);
         padding: .25em;
@@ -72,9 +79,11 @@
 
         li:not(.title) {
             @extend %small-button;
+            display: block;
             background-color: lighten($light-grey, 10%);
             border-color: lighten($medium-grey, 10%);
             text-align: left;
+            white-space: nowrap;
             i {color: lighten($medium-grey, 10%);}
             &:hover {
                 background-color: $light-grey;
@@ -261,16 +270,14 @@ section.job-actions {
 
 // ADD NEW JOB SCREEN
 @include media($large-screen-up) {
-    #new_posting {
+    #new_posting, .edit-posting {
         @include outer-container;
-
         .job-information { @include span-columns(7 of 12); }
-
         .company-information, .application-information {
             @include span-columns(5 of 12);
             margin-right: 0;
         }
-}
+    }
 }
 
 

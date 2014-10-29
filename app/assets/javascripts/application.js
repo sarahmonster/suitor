@@ -15,8 +15,11 @@
 //= require jquery.ui.all
 //= require turbolinks
 //= require mmenu
+//= require vex.combined.min.js
 //= require pickadate/picker 
 //= require pickadate/picker.date 
 //= require pickadate/picker.time 
 //= require froala_editor.min.js
 //= require_tree .
+
+vex.defaultOptions.className = 'vex-theme-default';
