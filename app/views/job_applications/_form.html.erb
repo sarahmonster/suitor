@@ -13,7 +13,7 @@
 
   <div>
     <%= f.label :date_applied %>
-    <%= date_field(:job_application, :date_sent) %>
+    <%= date_field(:job_application, :date_sent, value: short_date(@job_application.date_sent)) %>
   </div>
 
   <div>
