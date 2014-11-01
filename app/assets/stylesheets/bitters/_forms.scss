@@ -51,17 +51,11 @@ form div {
   }
 
   &.date, &.time {
-    @include media($medium-screen-up) { width: 170px; }
-
     i {
       display: inline-block;
       margin-left: -35px;
       color: $medium-grey;
     }
-  }
-
-  &.partial, &.date + .time {
-    @include media($medium-screen-up) { width: calc(100% - 190px); }
   }
 
   @include media($medium-screen-up) { 

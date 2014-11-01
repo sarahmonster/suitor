@@ -30,7 +30,7 @@ class PostingsController < ApplicationController
 
     respond_to do |format|
       if @posting.toggle!(:archived)
-        format.html { redirect_to @posting, notice: "Posting was archived." }
+        format.html { redirect_to @posting }
         format.json { render json: @posting }
       else
         format.html { redirect_to @posting, error: "Posting couldn't be archived." }

@@ -4,5 +4,5 @@
 
 $ ->
   $(document).on "page:change", ->
-    $("input[type=date]").pickadate();
+    $("input[type=date]").pickadate({format: 'mmmm d'});
     $("input[type=time]").pickatime();

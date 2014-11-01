@@ -189,7 +189,7 @@
       <%= f.hidden_field :posting_id %>
 
       <%= f.label :"Date applied" %>
-      <%= date_field :job_application, :date_sent, value: @posting.job_application.date_sent %>
+      <%= date_field :job_application, :date_sent, value: short_date(@posting.job_application.date_sent) %>
 
       <%= f.label :"Enter cover letter and/or notes." %>
       <%= f.text_area :cover_letter %>

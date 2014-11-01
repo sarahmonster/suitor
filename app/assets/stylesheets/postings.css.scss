@@ -39,6 +39,8 @@
 .filter-buttons, .sort-buttons {
     display: inline-block;
     position: relative;
+    margin-left: -5px;
+    margin-right: -1px;
 
     span { display: inline; }
     
