@@ -39,11 +39,17 @@ class JobApplicationsController < ApplicationController
     respond_to do |format|
       if @job_application.save
         @job_application_is_new = true
-        format.html { redirect_to @job_application.posting, notice: 'Job application was successfully created.' }
+        format.html {
+          redirect_to @job_application.posting,
+          notice: 'Job application was successfully created.'
+        }
         format.json { render action: 'show', status: :created }
       else
         format.html { render action: 'new' }
-        format.json { render json: @job_application.errors, status: :unprocessable_entity }
+        format.json {
+          render json: @job_application.errors,
+          status: :unprocessable_entity
+        }
       end
     end
   end
@@ -54,7 +60,10 @@ class JobApplicationsController < ApplicationController
       if @job_application.update(followup: Time.now)
         format.json { render action: 'show' }
       else
-        format.json { render json: @job_application.errors, status: :unprocessable_entity }
+        format.json {
+          render json: @job_application.errors,
+          status: :unprocessable_entity
+        }
       end
     end
   end
@@ -65,10 +74,13 @@ class JobApplicationsController < ApplicationController
     respond_to do |format|
       if @job_application.update(job_application_params)
         format.html { redirect_to @job_application.posting, notice: 'Job application was successfully updated.' }
-        format.json { render action: 'show', location: @job_application.posting }
+        format.json { render action: 'show', status: :ok }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @job_application.errors, status: :unprocessable_entity }
+        format.json {
+          render json: @job_application.errors,
+          status: :unprocessable_entity
+        }
       end
     end
   end
