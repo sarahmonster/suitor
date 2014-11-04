@@ -107,7 +107,11 @@ $ ->
                   $(this).replaceWith(replacementHTML)
 
             $("#job_application_cover_letter").trigger "focus"
-            $("input[type=date]").pickadate({format: 'mmmm d'});
+            $("input[type=date]").pickadate({
+              format: "mmmm d",
+              formatSubmit: "yy-mm-dd",
+              hiddenName: true
+            })
 
           error: (response) ->
             console.log "Error: ", response
