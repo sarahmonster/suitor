@@ -271,6 +271,11 @@ Devise.setup do |config|
   # up on your models and hooks.
   unless Rails.env.production?
     config.omniauth :developer
+
+    # Prevent annoying warning about redefining constants in console.
+    if OpenSSL::SSL.const_defined?(:VERIFY_PEER)
+      OpenSSL::SSL.send(:remove_const, :VERIFY_PEER)
+    end
     OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
   end
   config.omniauth :facebook, Rails.application.secrets.facebook_id, Rails.application.secrets.facebook_secret
