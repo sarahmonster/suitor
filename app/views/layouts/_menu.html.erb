@@ -4,7 +4,8 @@
   <% unless current_user %>
 
     <li>
-      <%= link_to signup_path do %>
+      <%= link_to (Rails.env.production? ? "#{root_path}#signup" :
+                                           signup_path) do %>
         <i class="icon-suitcase"></i>
         <%= t('Sign up') %>
         <% if device != "mobile" %>
