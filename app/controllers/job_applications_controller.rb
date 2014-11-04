@@ -100,7 +100,6 @@ class JobApplicationsController < ApplicationController
     def set_job_application
       @job_application = JobApplication.find(params[:id])
       authorize @job_application
-      @job_application_is_new = false
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
