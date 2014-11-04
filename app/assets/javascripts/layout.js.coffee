@@ -44,6 +44,6 @@ $ ->
     # Pick a date across the site.
     $("input[type=date]").pickadate({
       format: "mmmm d",
-      formatSubmit: "yy-mm-dd",
+      formatSubmit: "yyyy-mm-dd",
       hiddenName: true
     })

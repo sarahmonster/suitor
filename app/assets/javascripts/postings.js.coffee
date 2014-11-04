@@ -109,7 +109,7 @@ $ ->
             $("#job_application_cover_letter").trigger "focus"
             $("input[type=date]").pickadate({
               format: "mmmm d",
-              formatSubmit: "yy-mm-dd",
+              formatSubmit: "yyyy-mm-dd",
               hiddenName: true
             })
 
