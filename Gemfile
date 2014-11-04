@@ -127,6 +127,8 @@ gem 'bcrypt'
 group :test do
   # Client tests
   gem 'capybara'
+  gem 'poltergeist'
+  # gem 'selenium-webdriver'
 
   # Use Sauce Labs for browser testing.
   gem 'sauce'

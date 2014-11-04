@@ -1,6 +1,6 @@
 $ ->
   $(document).on "page:change", ->
-    
+
     # Use mmenu plugin for a slick mobile menu
     $("#mobile-menu").mmenu()
 
@@ -16,7 +16,7 @@ $ ->
 
     # Make some custom tooltips happen (for form elements only, at least right now)
     $('label').mouseover ->
-      if $(this).attr("title") 
+      if $(this).attr("title")
         $(this).showTooltip("div")
     .mouseout ->
       $(this).hideTooltip("div")
@@ -41,4 +41,9 @@ $ ->
     .mouseout ->
       $(this).hideTooltip("li")
 
-
+    # Pick a date across the site.
+    $("input[type=date]").pickadate({
+      format: "mmmm d",
+      formatSubmit: "yyyy-mm-dd",
+      hiddenName: true
+    })

@@ -3,44 +3,49 @@
 <head>
   <title>suitor</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "application", media: "all",
+                          "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= favicon_link_tag 'favicon.png?v=5', type: 'image/png' %>
+  <%= favicon_link_tag "favicon.png?v=5", type: "image/png" %>
   <%= csrf_meta_tags %>
 </head>
-
 <body class="<%= controller_name %> <%= action_name %>">
+  <!-- MOBILE MENU -->
+  <nav id="mobile-menu">
+    <%= render "layouts/menu", device: "mobile" %>
+  </nav>
+  <!-- END MOBILE MENU -->
 
-<!-- MOBILE MENU -->
-<nav id="mobile-menu">
-  <%= render "layouts/menu", :device => 'mobile' %>
-</nav>
+  <!-- This isn't needed strictly speaking, but we're using it to make
+       mmenu happy. -->
+  <!-- PAGE-WRAPPER -->
+  <div id="page-wrapper">
+    <header class="site-header">
+      <a id="mobile-menu-button" href="#mobile-menu">
+        <i class="icon-menu2"><span>Menu</span></i>
+      </a>
 
-<div id="page-wrapper"><!-- This isn't needed strictly speaking, but we're using it to make mmenu happy. -->
+      <nav class="header-container">
+        <!-- LOGO -->
+        <%= link_to root_path do %>
+          <%= image_tag("suitor.png", alt: "suitor", id: "logo") %>
+        <% end %>
 
-  <header class="site-header">
-    <a id="mobile-menu-button" href="#mobile-menu"><i class="icon-menu2"><span>Menu</span></i></a>
+        <!-- MAIN NAVBAR -->
+        <%= render "layouts/menu", device: "desktop" %>
+      </nav>
+    </header>
 
-    <nav class="header-container">
-      <!-- LOGO -->
-      <%= link_to root_path do %>
-        <%= image_tag("suitor.png", :alt => "suitor", :id => "logo") %>
-      <% end %>
+    <!-- PAGE CONTENT -->
+    <div class="container">
+      <%= render "layouts/messages" %>
 
-      <!-- MAIN NAVBAR -->
-      <%= render "layouts/menu", :device => 'desktop' %>
-    </nav>
-
-  </header>
-
-  <!-- PAGE CONTENT -->
-  <div class="container">
-    <%= render 'layouts/messages' %>
-
-    <%= yield %>
+      <%= yield %>
+    </div>
+    <!-- END PAGE CONTENT -->
   </div>
-
-</div><!-- END PAGE-WRAPPER -->
-
+  <!-- END PAGE-WRAPPER -->
 </body>
 </html>
+<!-- Father make believe for your daughters
+     Mother take it easy on your sons -->

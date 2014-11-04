@@ -16,9 +16,9 @@
 //= require turbolinks
 //= require mmenu
 //= require vex.combined.min.js
-//= require pickadate/picker 
-//= require pickadate/picker.date 
-//= require pickadate/picker.time 
+//= require pickadate/picker
+//= require pickadate/picker.date
+//= require pickadate/picker.time
 //= require froala_editor.min.js
 //= require_tree .
 

@@ -3,7 +3,7 @@ module DateHelper
   # take a regular old date and turn it into something human-parseable
   def friendly_datetime(datetime)
     date = datetime.to_date
-    
+
     # THE PAST
     if datetime < Time.now 
       # today: 2 hours ago
@@ -15,9 +15,10 @@ module DateHelper
       # any other time in the past: 5 days ago
       elsif date < Date.yesterday
         distance_of_time_in_words(date, Date.today) + " ago"
+      else
+        datetime.strftime("%B #{datetime.day.ordinalize}")
       end
 
-    
     # FUTURE
     elsif datetime > Time.now 
       # today: in two hours, or today at 5pm
@@ -34,13 +35,14 @@ module DateHelper
       # next week: next Thursday, March 28th
       elsif date < Date.current.advance(days: 14)
         datetime.strftime("next %A, %B #{datetime.day.ordinalize}")
+      else
+        datetime.strftime("%B #{datetime.day.ordinalize}")
       end
     
     # default
     else
       datetime.strftime("%B #{datetime.day.ordinalize}")
     end
-  
   end
 
   def short_time(time)
@@ -58,8 +60,6 @@ module DateHelper
 
   # take a date and output it in a simple, short format
   def short_date(date)
-    date.strftime("%B #{date.day.ordinalize}")
-    
+    date.strftime("%B #{date.day.ordinalize}") 
   end
-
 end

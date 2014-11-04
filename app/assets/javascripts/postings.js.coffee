@@ -63,6 +63,8 @@ $ ->
           success: (response) =>
             jobApplicationId = response.id
 
+            replacementHTML = response.replacementHTML
+
             vex.dialog.open
               message: response.html
               buttons: [
@@ -80,7 +82,8 @@ $ ->
                           cover_letter: $("[name=job_application\\[cover_letter\\]]").val()
                           date_sent: $("[name=job_application\\[date_sent\\]]").val()
                           posting_id: $(this).data("posting-id")
-                      success: ->
+                      success: (response) ->
+                        replacementHTML = response.replacementHTML
                         vex.close $vexContent.data().vex.id
                 )
                 $.extend({}, vex.dialog.buttons.NO,
@@ -101,10 +104,14 @@ $ ->
               callback: (value) =>
                 unless value is "undo"
                   $(this).parents('section').removeClass('action-required')
-                  $(this).replaceWith(response.replacementHTML)
+                  $(this).replaceWith(replacementHTML)
 
             $("#job_application_cover_letter").trigger "focus"
-            $("input[type=date]").pickadate({format: 'mmmm d'});
+            $("input[type=date]").pickadate({
+              format: "mmmm d",
+              formatSubmit: "yyyy-mm-dd",
+              hiddenName: true
+            })
 
           error: (response) ->
             console.log "Error: ", response
