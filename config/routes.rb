@@ -1,4 +1,6 @@
 Suitor::Application.routes.draw do
+  resources :offers
+
   devise_for :user, skip: [
     :sessions
   ], controllers: {

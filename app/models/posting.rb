@@ -26,6 +26,9 @@ class Posting < ActiveRecord::Base
   scope :havent_applied, -> {
     where("NOT EXISTS (SELECT null FROM job_applications where job_applications.posting_id = postings.id)")
   }
+  scope :needs_application, -> {
+    where("NOT EXISTS (SELECT null FROM job_applications where job_applications.posting_id = postings.id) AND deadline > ?", Time.now)
+  }
   scope :archived, -> {
     unscoped.where(archived: true)
   }
