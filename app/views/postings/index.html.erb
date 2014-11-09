@@ -31,11 +31,9 @@
         <li class="checked"><i class="icon-checkmark"><span>Interview completed</span></i></li>
       <% end %>
 
-      <!--
-      <%= link_to "#", data: {class: "offer-made"} do %>
+      <%= link_to '#', data: {class: "offer-made"} do %>
         <li class="checked"><i class="icon-checkmark"><span>Offer made</span></i></li>
       <% end %>
-      -->
     </ul>
   </div>
   <!-- END FILTER BUTTONS -->
@@ -122,8 +120,10 @@
           <%= link_to new_posting_interview_path(posting) do %>
             <i class="icon-bubbles3"><span>Interview</span></i>
           <% end %>
+        <% end %>
 
-          <!--<a href="#"><i class="icon-dollar"><span>Offer</span></i></a>-->
+        <%= link_to new_offer_path(posting) do %>
+          <i class="icon-dollar"><span>Offer</span></i>
         <% end %>
       </div>
       <!-- END ACTION BUTTONS -->
