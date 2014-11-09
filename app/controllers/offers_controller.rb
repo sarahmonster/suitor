@@ -12,16 +12,17 @@ class OffersController < ApplicationController
 
   def new
     @offer = Offer.new
-    respond_with(@offer)
+    #authorize @offer
+    @offer.posting = Posting.unscoped.find(params[:posting_id])
   end
 
   def edit
   end
 
   def create
-    @offer = Offer.new(offer_params)
-    @offer.save
-    respond_with(@offer)
+    @offer = Offer.new
+    #authorize @offer
+    @offer.posting = Posting.unscoped.find(params[:posting_id])
   end
 
   def update
@@ -35,8 +36,11 @@ class OffersController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
     def set_offer
       @offer = Offer.find(params[:id])
+      @offer.posting = Posting.unscoped.find(params[:posting_id])
+      authorize @offer
     end
 
     def offer_params
