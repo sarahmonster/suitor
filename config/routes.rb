@@ -1,6 +1,4 @@
 Suitor::Application.routes.draw do
-  resources :offers
-
   devise_for :user, skip: [
     :sessions
   ], controllers: {
@@ -50,5 +48,6 @@ Suitor::Application.routes.draw do
       end
     end
     resources :interviews
+    resources :offers
   end
 end

@@ -1,18 +1,19 @@
 class OffersController < ApplicationController
+  after_action :verify_authorized, except: [:index]
+  after_action :verify_policy_scoped, only: [:index]
+  before_action :require_login
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @offers = Offer.all
-    respond_with(@offers)
+    @offers = policy_scope Offer.all
   end
 
   def show
-    respond_with(@offer)
   end
 
   def new
     @offer = Offer.new
-    respond_with(@offer)
+    authorize @offer
   end
 
   def edit
@@ -20,23 +21,32 @@ class OffersController < ApplicationController
 
   def create
     @offer = Offer.new(offer_params)
-    @offer.save
-    respond_with(@offer)
+    @offer.posting = Posting.unscoped.find(params[:posting_id])
+
+    if @offer.save
+      redirect_to @offer
+    else
+      render 'new'
+    end
   end
 
   def update
-    @offer.update(offer_params)
-    respond_with(@offer)
+    if @offer.update(offer_params)
+      redirect_to @offer
+    else
+      render 'edit'
+    end
   end
 
   def destroy
     @offer.destroy
-    respond_with(@offer)
+    redirect_to @offer.posting
   end
 
   private
     def set_offer
       @offer = Offer.find(params[:id])
+      authorize @offer
     end
 
     def offer_params
