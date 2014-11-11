@@ -20,9 +20,20 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = Offer.new
-    #authorize @offer
+    @offer = Offer.new(offer_params)
     @offer.posting = Posting.unscoped.find(params[:posting_id])
+    #authorize @offer
+    #authorize @offer.posting, :update?
+
+    respond_to do |format|
+      if @offer.save
+        format.html { redirect_to [@offer.posting], notice: 'Hey, way to go! That offer has been saved.' }
+        format.json { render action: 'show', status: :created, location: @offer }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @offer.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def update
