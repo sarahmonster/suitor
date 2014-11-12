@@ -16,6 +16,26 @@
   <!-- ACTIONABLE ITEMS -->
   <section class="action-items">
 
+
+    <!-- OFFERS -->
+    <% unless @postings_with_offers.empty? %>
+      <div class="job-offers">
+        <h3>You have <%= @postings_with_offers.size %> <%= "job offer".pluralize(@postings_with_offers.size) %>.</h3>
+        <p>Way to go, champ! Who are you going to pick?</p>
+        <ul>
+          <% @postings_with_offers.each do |posting| %>
+            <li>
+              <%= link_to posting do %>
+                <i class="icon-coin"><span><%= posting.offer.salary %></span></i>
+                <%= posting.title %> at <%= posting.hiring_organization %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+
+      </div>
+    <% end %>
+
     <!-- UPCOMING INTERVIEWS -->
     <% unless @postings_with_upcoming_interviews.empty? %>
       <div class="upcoming-interviews">

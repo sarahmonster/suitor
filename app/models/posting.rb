@@ -15,6 +15,9 @@ class Posting < ActiveRecord::Base
   default_scope -> {
     where(archived: false)
   }
+  scope :offer_made, -> {
+    joins(:offer).where('offers.posting_id IS NOT NULL')
+  }
   scope :applied, -> {
     joins(:job_application).where('job_applications.date_sent IS NOT NULL')
   }

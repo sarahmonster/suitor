@@ -27,7 +27,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to [@offer.posting], notice: 'Hey, way to go! That offer has been saved.' }
+        format.html { redirect_to [@offer.posting], notice: 'Hey, way to go on the job offer! (We&rsquo;ve saved it for you.)' }
         format.json { render action: 'show', status: :created, location: @offer }
       else
         format.html { render action: 'new' }

@@ -47,6 +47,11 @@
         h3 { color: $red; }
     }
 
+    .job-offers {
+        border-color: lighten($green, 40%);
+        h3, i { color: $green; }
+    }
+
 }
 
 .dashboard .progress-and-statistics {
