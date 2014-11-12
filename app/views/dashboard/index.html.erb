@@ -32,9 +32,9 @@
             </li>
           <% end %>
         </ul>
-
       </div>
     <% end %>
+    <!-- END OFFERS -->
 
     <!-- UPCOMING INTERVIEWS -->
     <% unless @postings_with_upcoming_interviews.empty? %>
@@ -158,6 +158,11 @@
           <li class="total-applications">
             <i class="icon-checkmark"><span><%= @postings_applied_for.size %> down</span></i>
             In total, you&rsquo;ve applied for <strong><%= @postings_applied_for.size %></strong> <%= "job".pluralize(@postings_applied_for.size) %> since <%= short_date(@date_started) %>
+          </li>
+
+          <li class="offers">
+            <i class="icon-coin"><span><%= (@postings_with_offers.size.to_f / @postings_applied_for.size.to_f * 100).round(0) %>% new-job-having badass!</span></i>
+            You&rsquo;ve received <strong><%= @postings_with_offers.size %></strong> <%= "job offer".pluralize(@postings_with_offers.size) %>. 
           </li>
 
           <li class="success">

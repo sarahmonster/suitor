@@ -65,7 +65,7 @@
     }
     i span { display: inline; }
     .failure i { color: $red;}
-    .success i { color: $green; }
+    .success i, .offers i { color: $green; }
     .total-applications i, .weekly-average i { color: $blue; }
     
     strong { 
