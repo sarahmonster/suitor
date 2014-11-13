@@ -164,8 +164,9 @@ section.job-posting {
     }
 
     &.offer-made {
-        border-top-color: lighten($green, 10%);
-        .status {background: lighten($green, 50%);}
+        border-top-color: lighten($purple, 10%);
+        .status {background: lighten($purple, 50%);}
+        i { color: $purple; }
     }
 
     .actions {
