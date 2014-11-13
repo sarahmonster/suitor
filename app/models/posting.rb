@@ -72,7 +72,7 @@ class Posting < ActiveRecord::Base
 
   # Sort all posts by "importance", as defined by methods below
   def self.sorted_by_importance(followup_offset)
-    postings = offer_made + 
+    postings = offer_made +
               interview_scheduled_or_deadline_approaching +
               unapplied_or_interview_completed +
               without_followup(followup_offset).where('deadline IS NULL').no_interviews.order('job_applications.date_sent DESC') +
@@ -166,10 +166,11 @@ class Posting < ActiveRecord::Base
 
   # Sort all posts by their application statuses
   def self.sorted_by_status
-    postings = interview_scheduled.order('interviews.datetime ASC') +
-               havent_applied +
-               no_interviews.joins(:job_application).order('job_applications.followup ASC') +
-               interview_completed
+    postings = offer_made +
+              interview_scheduled.order('interviews.datetime ASC') +
+              havent_applied +
+              no_interviews.joins(:job_application).order('job_applications.followup ASC') +
+              interview_completed
 
     # Squash duplicates.
     postings.uniq { |p| p.id }
