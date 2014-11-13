@@ -72,16 +72,17 @@ class Posting < ActiveRecord::Base
 
   # Sort all posts by "importance", as defined by methods below
   def self.sorted_by_importance(followup_offset)
-    postings = interview_scheduled_or_deadline_approaching +
-               unapplied_or_interview_completed +
-               without_followup(followup_offset).where('deadline IS NULL').no_interviews.order('job_applications.date_sent DESC') +
-               recently_applied_or_followed_up_or_deadline_passed
+    postings = offer_made + 
+              interview_scheduled_or_deadline_approaching +
+              unapplied_or_interview_completed +
+              without_followup(followup_offset).where('deadline IS NULL').no_interviews.order('job_applications.date_sent DESC') +
+              recently_applied_or_followed_up_or_deadline_passed
 
     # Squash duplicates.
     postings.uniq { |p| p.id }
   end
 
-  # Find all postingss with an interview scheduled, or with an application due for a deadline
+  # Find all postings with an interview scheduled, or with an application due for a deadline
   # and sort by their key dates (interview date and deadline, respectively)
   def self.interview_scheduled_or_deadline_approaching
     postings = interview_scheduled +
