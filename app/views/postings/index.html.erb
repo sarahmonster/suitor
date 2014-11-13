@@ -125,8 +125,10 @@
           <% end %>
         <% end %>
 
-        <%= link_to new_posting_offer_path(posting) do %>
-          <i class="icon-dollar"><span>Offer</span></i>
+        <% if !posting.offer_made? %>
+          <%= link_to new_posting_offer_path(posting) do %>
+            <i class="icon-dollar"><span>Offer</span></i>
+          <% end %>
         <% end %>
       </div>
       <!-- END ACTION BUTTONS -->
