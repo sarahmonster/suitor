@@ -197,6 +197,10 @@ class Posting < ActiveRecord::Base
     !interviews.empty? and !interviews.upcoming.empty?
   end
 
+  def offer_made?
+    offer
+  end
+
   def followup_offset
     user.followup_offset
   end
@@ -205,7 +209,9 @@ class Posting < ActiveRecord::Base
     return @actionable if @actionable
 
     @actionable ||=
-      if interview_scheduled?
+      if offer_made?
+        "offer-made"
+      elsif interview_scheduled?
         "interview-scheduled"
       elsif interview_completed?
         "interview-completed"

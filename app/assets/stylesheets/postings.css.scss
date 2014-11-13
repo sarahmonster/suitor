@@ -163,6 +163,10 @@ section.job-posting {
         .status {background: lighten($blue, 60%);}
     }
 
+    &.offer-made {
+        border-top-color: lighten($green, 10%);
+        .status {background: lighten($green, 50%);}
+    }
 
     .actions {
         line-height: 1.8em;

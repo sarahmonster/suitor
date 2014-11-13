@@ -71,7 +71,10 @@
     <section class="job-posting <%= posting.actionable %> <% if posting.action_required? %>action-required<% end %>" id="posting-<%= posting.id %>">
       <!-- STATUS BAR -->
       <div class="status">
-        <% if posting.interview_scheduled? %>
+        <% if posting.offer_made? %>
+          <i class="icon-coin"><span>Got the job!</span></i>
+
+        <% elsif posting.interview_scheduled? %>
           <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>">Interview <%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
 
         <% elsif posting.interview_completed? %>
