@@ -11,11 +11,11 @@ two:
   posting: two
 
 three:
-  date_sent: Date.current.advance(:days => -4)
+  date_sent: <%= Date.current.advance(:days => -4) %>
   cover_letter: <%= Faker::Lorem.paragraph(2) %>
   posting: four
 
 four:
-  date_sent: Date.current.advance(:days => -4)
+  date_sent: <%= Date.current.advance(:days => -4) %>
   cover_letter: <%= Faker::Lorem.paragraph(2) %>
   posting: three_usertwo
