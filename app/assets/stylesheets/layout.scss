@@ -225,7 +225,6 @@ i {
     border: 1px solid $medium-grey;
     border-left: 4px solid $medium-grey;
     padding: 10px;
-    font-style: italic;
 
     &.alert-error {
         @include error-colours($red);
@@ -256,7 +255,6 @@ i {
     font-size: .8em;
     line-height: 1.6em;
     font-family: $serif;
-    font-style: italic;
 
     &:after, &:before { 
         content: '';
