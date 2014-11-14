@@ -185,7 +185,7 @@ html.mm-opened .mm-page {
 // ICONS
 i {
     color: $dark-grey;
-    margin-right: 5px;
+    margin-right: 2px;
 
     &.greyed {
         color: $light-grey;
@@ -194,12 +194,11 @@ i {
     span {
         display: none;
         font-family: $sans-serif;
-        font-weight: 700;
-        font-size: .9em;
-        letter-spacing: 1px;
+        font-weight: 600;
+        font-size: .8em;
+        letter-spacing: .5px;
         text-transform: uppercase;
         padding-left: 5px;
-        vertical-align: middle;
     }
 
     & + i {margin-left: 15px;}
