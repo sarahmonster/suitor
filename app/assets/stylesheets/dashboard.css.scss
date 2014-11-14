@@ -47,6 +47,11 @@
         h3 { color: $red; }
     }
 
+    .job-offers {
+        border-color: lighten($purple, 40%);
+        h3, i { color: $purple; }
+    }
+
 }
 
 .dashboard .progress-and-statistics {
@@ -61,6 +66,7 @@
     i span { display: inline; }
     .failure i { color: $red;}
     .success i { color: $green; }
+    .offers i { color: $purple; }
     .total-applications i, .weekly-average i { color: $blue; }
     
     strong { 

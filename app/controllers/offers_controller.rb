@@ -14,6 +14,7 @@ class OffersController < ApplicationController
   def new
     @offer = Offer.new
     authorize @offer
+    @offer.posting = Posting.unscoped.find(params[:posting_id])
   end
 
   def edit
@@ -22,11 +23,17 @@ class OffersController < ApplicationController
   def create
     @offer = Offer.new(offer_params)
     @offer.posting = Posting.unscoped.find(params[:posting_id])
+    authorize @offer
+    authorize @offer.posting, :update?
 
-    if @offer.save
-      redirect_to @offer
-    else
-      render 'new'
+    respond_to do |format|
+      if @offer.save
+        format.html { redirect_to [@offer.posting], notice: 'Hey, way to go on the job offer! (We&rsquo;ve saved it for you.)' }
+        format.json { render action: 'show', status: :created, location: @offer }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @offer.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -44,8 +51,10 @@ class OffersController < ApplicationController
   end
 
   private
+    # Use callbacks to share common setup or constraints between actions.
     def set_offer
       @offer = Offer.find(params[:id])
+      @offer.posting = Posting.unscoped.find(params[:posting_id])
       authorize @offer
     end
 

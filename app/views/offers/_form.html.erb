@@ -1,4 +1,4 @@
-<%= form_for([@offer.posting, @offer], remote: true, format: :json) do |f| %>
+<%= form_for([@offer.posting, @offer]) do |f| %>
   <% if @offer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
@@ -11,19 +11,18 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :salary %><br>
-    <%= f.number_field :salary %>
+  <div>
+    <%= f.label :salary %>
+    <%= f.text_field :salary %>
   </div>
-  <div class="field">
-    <%= f.label :details %><br>
+
+  <div>
+    <%= f.label :details %>
     <%= f.text_area :details %>
   </div>
-  <div class="field">
-    <%= f.label :posting_id %><br>
-    <%= f.text_field :posting_id %>
-  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+  
 <% end %>

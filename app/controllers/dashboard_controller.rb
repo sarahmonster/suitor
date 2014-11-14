@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
 
   def index
     @postings = policy_scope Posting.all
+    @postings_with_offers = policy_scope Posting.offer_made
     @postings_with_upcoming_interviews = policy_scope Posting.interview_scheduled
     @postings_needing_followup = policy_scope Posting.without_followup(current_user.followup_offset)
     @postings_needing_application = policy_scope Posting.havent_applied
