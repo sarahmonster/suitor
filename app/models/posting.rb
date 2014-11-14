@@ -7,6 +7,7 @@ class Posting < ActiveRecord::Base
 
   belongs_to :user
   has_one :job_application, dependent: :destroy
+  has_one :offer
   has_many :interviews, dependent: :destroy
   has_one :offer, dependent: :destroy
   enum role: [:user, :admin]
