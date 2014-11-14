@@ -46,7 +46,7 @@ module DateHelper
   end
 
   def short_time(time)
-    if time.min == 0
+    if time.strftime('%M') == "00"
       time.strftime("%l%P")
     else
       time.strftime("%l:%M %P")
