@@ -127,7 +127,6 @@ section.job-posting {
         i span {
             display: inline;
             color: $medium-grey;
-            font-size: .9em;
             vertical-align: baseline;
         }
     }
@@ -139,7 +138,7 @@ section.job-posting {
         position: absolute;
         top: -10px;
         right: 10px;
-        font-size: .85em;
+        font-size: .9em;
 
         i {
             padding: 0;
@@ -213,7 +212,6 @@ section.job-information {
             span {
                 display: inline;
                 color: $medium-grey;
-                font-size: .9em;
                 vertical-align: baseline;
             }
         }
