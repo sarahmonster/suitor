@@ -131,9 +131,8 @@ html.mm-opened .mm-page {
 // GENERAL PAGE STRUCTURE & STYLES
 .container {
     @include outer-container;
-    @include media($max-width-down) {
-        margin: 10px;
-    }
+    @include media($max-width-down) { margin: 10px; }
+    margin-bottom: 5em;
 }
 
 .page-header {
@@ -311,15 +310,36 @@ section.job-posting .tooltip {
 
 // SITE FOOTER
 
-//#footnotes_debug { display: none; }
+/* Sticky footer hack */
+html {
+    height: 100%;
+    overflow: hidden;
+}
+ 
+body {
+    height: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+ 
+#page-wrapper, .mm-page {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+ 
+.site-footer {
+    display: table-row;
+    height: 1px;
+}
+
+#footnotes_debug { display: none; }
 
 .site-footer {
-    margin-top: 5em;
     border-top: 2px solid $light-grey;
     background: darken($medium-grey, 10%) image-url('stressed_linen_@2X.png');
     background-size: 256px 256px;
     width: 100%;
-    padding: .5em 2em;
     @include box-shadow;
 
     &:after {
@@ -330,6 +350,7 @@ section.job-posting .tooltip {
     }
 
     .footer-container {
+        padding: .5em 0em;
         @include outer-container;
         @include media($large-screen-down) {
             text-align: center;
