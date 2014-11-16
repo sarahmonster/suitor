@@ -21,6 +21,7 @@ h1 {
 
 h2 {
   font-size: $base-font-size * 2; // 16 * 2 = 32px
+  font-family: $serif;
   margin: .25em 0 .5em;
   font-weight: 500;
   line-height: 1em;
@@ -92,7 +93,7 @@ p {
 a {
   color: $base-link-color;
   text-decoration: none;
-  @include transition(color 0.1s linear);
+  @include transition(color 0.5s linear);
 
   &:hover {
     color: $hover-link-color;

@@ -102,9 +102,9 @@
       <!-- DEADLINE AND/OR DATE POSTED -->
       <div class="date">
         <% if posting.deadline %>
-          <i class="icon-clock4"><span>Deadline</span></i><%= short_date(posting.deadline) %>
+          <i class="icon-clock4"><span>Deadline</span></i> <%= short_date(posting.deadline) %>
         <% elsif posting.date_posted %>
-          <i class="icon-clock4"><span>Posted</span></i><%= short_date(posting.date_posted) %>
+          <i class="icon-clock4"><span>Posted</span></i> <%= short_date(posting.date_posted) %>
         <% end %>
       </div>
       <!-- END DEADLINE-->
