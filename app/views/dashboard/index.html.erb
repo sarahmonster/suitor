@@ -6,12 +6,6 @@
 <!-- END PAGE HEADER -->
 
 
-<!-- HELLO MESSAGE -->
-<div class="intro large-text">
-  <p>Hello<% if current_user.name %>, <%= current_user.name %><% end %>. Here&rsquo;s a look at your progress.</p>
-</div>
-<!-- END HELLO MESSAGE -->
-
 <div class="main-content">
   <!-- ACTIONABLE ITEMS -->
   <section class="action-items">
@@ -157,7 +151,7 @@
         <ul>
           <li class="total-applications">
             <i class="icon-checkmark"><span><%= @postings_applied_for.size %> down</span></i>
-            In total, you&rsquo;ve applied for <strong><%= @postings_applied_for.size %></strong> <%= "job".pluralize(@postings_applied_for.size) %> since <%= short_date(@date_started) %>
+            You&rsquo;ve applied for <strong><%= @postings_applied_for.size %></strong> <%= "job".pluralize(@postings_applied_for.size) %> since <%= short_date(@date_started) %>.
           </li>
 
           <li class="offers">
