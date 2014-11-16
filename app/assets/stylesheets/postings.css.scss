@@ -278,6 +278,14 @@ section.job-actions {
         border-top-color: lighten($blue, 40%);
         h3 { color: $blue; }
     }
+
+    .add-offer {
+        @include span-columns(12);
+        @include shift(0);
+        border-top-color: lighten($purple, 40%);
+        h3 { color: $purple; }
+        a { @extend %button; }
+    }
 }
 
 
