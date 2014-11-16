@@ -71,7 +71,7 @@ html.mm-opened .mm-page {
         }
 
         @include media($large-screen) {
-            @include span-columns(3);
+            @include span-columns(2);
         }
     }
 
@@ -81,7 +81,7 @@ html.mm-opened .mm-page {
         }
         @include span-columns(8);
         @include shift(1);
-        margin-top: 2em;
+        margin-top: 1em;
 
         li {
             display: inline-block;
@@ -115,13 +115,13 @@ html.mm-opened .mm-page {
         i {
             margin: -1px 10px 0 0;
             color: $blue;
-            font-size: 16px;
-            line-height: 16px;
+            font-size: 18px;
+            line-height: 18px;
             height: 40px;
             width: 40px;
             float: left;
             border: 2px solid lighten($blue, 20%);
-            padding: 10px;
+            padding: 9px;
             border-radius: 50%;
         }
     }
@@ -307,8 +307,6 @@ section.job-posting .tooltip {
         border-top-color: lighten($blue, 40%); 
     }
 }
-
-
 
 
 
