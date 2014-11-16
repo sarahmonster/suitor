@@ -147,12 +147,12 @@
       }
 
       .button {
-        background: #B5D4F1;
-        border: 2px solid #2370B7;
+        background: #CCEBCC;
+        border: 2px solid #44A744;
         padding: 1.25em 2.5em;
         font-size: 14px;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #2370B7 !important;
+        color: #44A744 !important;
         text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4);
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -164,9 +164,9 @@
       }
 
       .button:hover, .button:active {
-        background: #8ABCE9;
-        border-color: #1F63A1;
-        color: #1F63A1;
+        background: #A8DCA8;
+        border-color: #358335;
+        color: #358335 !important;
       }
 
       .xo, .bodyContent .xo a:link {
