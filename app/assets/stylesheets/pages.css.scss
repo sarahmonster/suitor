@@ -228,12 +228,19 @@ a + h3 {
 
 // ABOUT PAGE
 .about .intro {
-  
   @include media($large-screen-up) {
     @include span-columns(6);
     @include shift(3);
   }
-  
+}
+
+
+// HELP PAGE
+.help .intro {
+  @include media($large-screen-up) {
+    @include span-columns(6);
+    @include shift(3);
+  }
 }
 
 
