@@ -309,5 +309,59 @@ section.job-posting .tooltip {
 }
 
 
+// SITE FOOTER
 
+//#footnotes_debug { display: none; }
 
+.site-footer {
+    margin-top: 5em;
+    border-top: 2px solid $light-grey;
+    background: darken($medium-grey, 10%) image-url('stressed_linen_@2X.png');
+    background-size: 256px 256px;
+    width: 100%;
+    padding: .5em 2em;
+    @include box-shadow;
+
+    &:after {
+        display: block;
+        content: '';
+        clear: both;
+        width: 100%;
+    }
+
+    .footer-container {
+        @include outer-container;
+        @include media($large-screen-down) {
+            text-align: center;
+        }
+    }
+
+    ul {
+
+        &.primary {
+            @include span-columns(1 of 2);
+            @include media($large-screen-up) { @include span-columns(4 of 6); }
+            text-align: left;
+        }
+        
+        &.secondary {
+            @include span-columns(1 of 2);
+            @include media($large-screen-up) { @include span-columns(2 of 6); }
+            font-size: .8em;
+            text-align: right;
+        }
+
+        li {
+            padding: 0 .75em;
+            font-weight: 400;
+            @include media($large-screen) { display: inline; }
+        }
+
+        a {
+            color: $medium-grey;
+            &:hover { color: transparentize($white, 0); }
+        }
+
+        i { color: $light-grey; }
+    }
+}

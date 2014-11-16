@@ -5,11 +5,9 @@
 </header>
 <!-- END PAGE HEADER -->
 
-
 <div class="main-content">
   <!-- ACTIONABLE ITEMS -->
   <section class="action-items">
-
 
     <!-- OFFERS -->
     <% unless @postings_with_offers.empty? %>
@@ -182,9 +180,3 @@
   <!-- END PROGRESS AND STATISTICS -->
 
 </div>
-
-<!-- LOGOUT IN FOOTER (FOR NOW) -->
-<footer class="logout">
-  <%= link_to "Log out", logout_path, method: 'delete' %>
-</footer>
-<!-- END FOOTER -->
