@@ -140,7 +140,7 @@ select[multiple=multiple] {
   font-size: $form-font-size;
   color: $dark-grey;
   margin-bottom: $base-line-height / 2;
-  padding: $base-line-height / 1.75;
+  padding: $base-line-height / 1.5;
   width: 100%;
   @include box-shadow($size: 1px);
 
