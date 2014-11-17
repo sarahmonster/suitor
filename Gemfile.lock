@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/capistrano/rvm.git
-  revision: 9cfef39cf0022839dca6b5b330dfefeb5fc363e7
-  specs:
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
-
-GIT
   remote: git://github.com/sarahsemark/mmenu-rails.git
   revision: 15d49c5bcb792ee58999f418c6e8ebf9e5cc7e73
   specs:
@@ -358,7 +350,6 @@ DEPENDENCIES
   capistrano (~> 3.1.0)
   capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1.1)
-  capistrano-rvm!
   capybara
   coffee-rails (~> 4.0.0)
   dalli
