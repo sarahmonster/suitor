@@ -1,0 +1,12 @@
+// Place all the styles related to the Offers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#new_offer, #edit_offer {
+    // @extend %box;
+    @include media($large-screen-up) {
+      @include span-columns(6);
+      @include shift(3);
+    }
+}

@@ -91,6 +91,9 @@ gem 'vex_rails', :git => 'git://github.com/sarahsemark/vex_rails.git'
 # Use a custom-updated version of mmenu for the mobile menu
 gem 'mmenu-rails', :git => 'git://github.com/sarahsemark/mmenu-rails.git'
 
+# Encode email addresses, because I'm that kind of paranoid
+gem 'actionview-encoded_mail_to'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 

@@ -43,9 +43,43 @@
       <%= yield %>
     </div>
     <!-- END PAGE CONTENT -->
+
+    <!-- SITE FOOTER -->
+    <div class="block push"></div>
+    <footer class="site-footer block">
+      <div class="footer-container">
+        <ul class="primary">
+          <li><a href="http://twitter.com/mrsuitor"><i class="icon-twitter2"></i> Twitter</a></li>
+          <li><a href="http://github.com/sarahsemark/suitor"><i class="icon-github"></i> GitHub</a></li>
+          <li>
+            <%= link_to about_path do %>
+              <i class="icon-suitcase"></i> About
+            <% end %>
+          </li>
+          <li>
+            <%= link_to help_path do %>
+             <i class="icon-help"></i> Help!
+            <% end %>
+          </li>
+        </ul>
+
+        <ul class="secondary">
+          <li>
+            <% if current_user %>
+              <%= link_to "Log out", logout_path, method: 'delete' %>
+            <% else %>
+              <%= link_to "Log in", login_path %>
+            <% end %>
+            </li>
+          <li><a href="javascript:void(0)">Privacy Policy</a></li>
+        </ul>
+
+        </div>
+    </footer>
+    <!-- END SITE FOOTER -->
+
   </div>
   <!-- END PAGE-WRAPPER -->
+
 </body>
 </html>
-<!-- Father make believe for your daughters
-     Mother take it easy on your sons -->

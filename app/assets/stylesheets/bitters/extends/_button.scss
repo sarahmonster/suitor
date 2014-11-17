@@ -51,6 +51,18 @@
             color: $base-accent-color;
         }
     }
+
+    &.offer {
+        background: lighten($purple, 50%);
+        border-color: lighten($purple, 5%);
+        color: lighten($purple, 5%);
+
+        &:hover {
+            background: lighten($purple, 40%); 
+            border-color: $purple;
+            color: $purple;
+        }           
+    }
 }
 
 
@@ -63,7 +75,7 @@
     background: $light-grey;
     border: 0;
     border-left: 2px solid $medium-grey;
-    font-size: .8em;
+    font-size: .9em;
     color: $medium-grey;
     text-shadow: 1px 1px 1px rgba(255,255,255,.25);
 

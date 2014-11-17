@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  salary: £12,000
+  details: It's pretty low.
+  posting: one
+
+two:
+  salary: $15,000
+  details: It's even worse.
+  posting: two

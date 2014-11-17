@@ -38,10 +38,10 @@
     <% if @posting.date_posted or @posting.deadline %>
       <li>
       <% if @posting.date_posted %>
-        <i class="icon-clock4"><span>Posted</span></i><%= short_date(@posting.date_posted) %>
+        <i class="icon-clock4"><span>Posted</span></i> <%= short_date(@posting.date_posted) %>
       <% end %>
       <% if @posting.deadline %>
-        <i class="icon-alarm2"><span>Deadline</span></i><%= friendly_datetime(@posting.deadline) %>
+        <i class="icon-alarm2"><span>Deadline</span></i> <%= friendly_datetime(@posting.deadline) %>
       <% end %>
       </li>
     <% end %>
@@ -102,25 +102,37 @@
 
   <ul class="pending-tasks">
 
-    <% if @posting.actionable == "interview-scheduled" %>
-      <li class="expander" title="Show interview details"><i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled</i> <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span><i class="expand-icon icon-arrow-down9"></i></li>
-        <div class="expand-panel" style="display: none">
-          <h3>
-          <% if @posting.interviews.upcoming.first.interviewer %>
-            <%= @posting.interviews.upcoming.first.interviewer %>
-          <% end %>
-          <% if @posting.interviews.upcoming.first.contact_method %>
-            <span>via</span> <%= @posting.interviews.upcoming.first.contact_method%>
-          <% end %>
-          </h3>
-          <div class="notes">
-            <%= simple_format(@posting.interviews.upcoming.first.notes) %>
-          </div>
-        </div>
-    <% end %>
+    <% if @posting.actionable == "offer-made" %>
+      <div class="job-offer">
+        <h3>Congratulations! You got the job!</h3>
+        <ul>
+          <li><i class="icon-coin"><span>Salary:</i> <%= @posting.offer.salary %></span></li>
+        </ul>
+        <p><%= @posting.offer.details %></p>
+      </div>
+    <% else %>
 
-    <% if @posting.followup_needed? %>
-      <li><i class="followup icon-circle-blank todo" data-uri="<%= followup_posting_job_application_path(@posting, @posting.job_application) %>" data-posting-id="<%= @posting.id %>"><span>Send a follow-up</span></i></li>
+      <% if @posting.actionable == "interview-scheduled" %>
+        <li class="expander" title="Show interview details"><i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled</i> <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span><i class="expand-icon icon-arrow-down9"></i></li>
+          <div class="expand-panel" style="display: none">
+            <h3>
+            <% if @posting.interviews.upcoming.first.interviewer %>
+              <%= @posting.interviews.upcoming.first.interviewer %>
+            <% end %>
+            <% if @posting.interviews.upcoming.first.contact_method %>
+              <span>via</span> <%= @posting.interviews.upcoming.first.contact_method%>
+            <% end %>
+            </h3>
+            <div class="notes">
+              <%= simple_format(@posting.interviews.upcoming.first.notes) %>
+            </div>
+          </div>
+      <% end %>
+
+      <% if @posting.followup_needed? %>
+        <li><i class="followup icon-circle-blank todo" data-uri="<%= followup_posting_job_application_path(@posting, @posting.job_application) %>" data-posting-id="<%= @posting.id %>"><span>Send a follow-up</span></i></li>
+      <% end %>
+
     <% end %>
 
   </ul>
@@ -181,7 +193,7 @@
   </ul>
 
 
-  <% if @posting.actionable != "interview-scheduled" and @posting.actionable != "interview-completed" and !@posting.applied? %>
+  <% if @posting.actionable != "interview-scheduled" and @posting.actionable != "interview-completed" and !@posting.applied? and @posting.actionable != "offer-made" %>
 
     <%= form_for([@posting, @posting.job_application]) do |f| %>
     <h3>Apply now!</h3>
@@ -204,12 +216,21 @@
 
   <% end %>
 
-  <% if @posting.actionable != "interview-scheduled"  %>
+  <% if @posting.actionable != "interview-scheduled" and @posting.actionable != "offer-made" %>
     <% if @posting.actionable == "interview-completed" %>
       <%= render 'interviews/form', location: "posting-detail", interview: "second" %>
     <% else %>
       <%= render 'interviews/form', location: "posting-detail", interview: "first" %>
     <% end %>
+  <% end %>
+
+  <% if @posting.actionable != "offer-made" %>
+    <form class="add-offer">
+      <h3>Landed <span>this</span> job?</h3>
+      <%= link_to new_posting_offer_path(@posting), class: 'offer' do %>
+        Add offer details
+      <% end %>
+    </form>
   <% end %>
 
 </section>

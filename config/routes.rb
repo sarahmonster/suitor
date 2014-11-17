@@ -48,5 +48,6 @@ Suitor::Application.routes.draw do
       end
     end
     resources :interviews
+    resources :offers
   end
 end

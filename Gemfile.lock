@@ -36,6 +36,8 @@ GEM
       activesupport (= 4.1.1)
       builder (~> 3.1)
       erubis (~> 2.7.0)
+    actionview-encoded_mail_to (1.0.5)
+      rails
     activemodel (4.1.1)
       activesupport (= 4.1.1)
       builder (~> 3.1)
@@ -345,6 +347,7 @@ PLATFORMS
 
 DEPENDENCIES
   actionpack-page_caching
+  actionview-encoded_mail_to
   attr_extras
   bcrypt
   better_errors

@@ -5,21 +5,33 @@
 </header>
 <!-- END PAGE HEADER -->
 
-
-<!-- HELLO MESSAGE -->
-<div class="intro large-text">
-  <p>Hello<% if current_user.name %>, <%= current_user.name %><% end %>. Here&rsquo;s a look at your progress.</p>
-</div>
-<!-- END HELLO MESSAGE -->
-
 <div class="main-content">
   <!-- ACTIONABLE ITEMS -->
   <section class="action-items">
 
+    <!-- OFFERS -->
+    <% unless @postings_with_offers.empty? %>
+      <div class="job-offers">
+        <h3>You have <%= @postings_with_offers.size %> <%= "job offer".pluralize(@postings_with_offers.size) %></h3>
+        <p>Way to go, champ!</p>
+        <ul>
+          <% @postings_with_offers.each do |posting| %>
+            <li>
+              <%= link_to posting do %>
+                <i class="icon-coin"><span><%= posting.offer.salary %></span></i>
+                <%= posting.title %> <em>at</em> <%= posting.hiring_organization %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <!-- END OFFERS -->
+
     <!-- UPCOMING INTERVIEWS -->
     <% unless @postings_with_upcoming_interviews.empty? %>
       <div class="upcoming-interviews">
-        <h3>You have <%= @postings_with_upcoming_interviews.size %> upcoming interviews</h3>
+        <h3>You have <%= @postings_with_upcoming_interviews.size %> upcoming <%= "interview".pluralize(@postings_with_upcoming_interviews.size) %></h3>
         <p>You get &lsquo;em, tiger!</p>
         <ul>
           <% @postings_with_upcoming_interviews.each do |posting| %>
@@ -28,7 +40,7 @@
                 <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>"><%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
 
                 <% unless posting.interviews.upcoming.first.interviewer.blank? %>
-                  <%= posting.interviews.upcoming.first.interviewer %> at
+                  <%= posting.interviews.upcoming.first.interviewer %> <em>at</em>
                 <% end %>
 
                 <%= posting.hiring_organization %>
@@ -43,7 +55,7 @@
     <!-- APPLICATION NEEDED -->
     <% unless @postings_needing_application.empty? %>
       <div class="application-needed">
-        <h3>You have <%= @postings_needing_application.size %> jobs to apply for</h3>
+        <h3>You have <%= @postings_needing_application.size %> <%= "job".pluralize(@postings_needing_application.size) %> to apply for</h3>
         <p>What are you waiting for? Start sending out applications today!</p>
         <ul>
           <% @postings_needing_application.each do |posting| %>
@@ -54,7 +66,7 @@
                 <% else %>
                   <i class="icon-circle-blank no-deadline"><span>No deadline</span></i>
                 <% end %>
-                <%= posting.title %> at <%= posting.hiring_organization %>
+                <%= posting.title %> <em>at</em> <%= posting.hiring_organization %>
               <% end %>
             </li>
           <% end %>
@@ -66,7 +78,7 @@
     <!-- FOLLOW-UP NEEDED -->
     <% unless @postings_needing_followup.empty? %>
     <div class="followup-needed">
-      <h3>You need to send <%= @postings_needing_followup.size %> follow-up messages.</h3>
+      <h3>You need to send <%= @postings_needing_followup.size %> follow-up <%= "message".pluralize(@postings_needing_followup.size) %>.</h3>
       <p>Let&rsquo;s get going, mister and/or missy!</p>
     </div>
     <% end %>
@@ -86,7 +98,7 @@
       <div class="progress-bar">
         <div class="meter" style="width: <%= @progress > 100 ? 100 : @progress %>%"><span class="label"><%= @postings_applied_this_week.size %>
         <% if @progress > 16 %>
-         of <%= @application_goal %>
+         <em>of</em> <%= @application_goal %>
         <% end %>
         </span></div>
       </div>
@@ -137,7 +149,12 @@
         <ul>
           <li class="total-applications">
             <i class="icon-checkmark"><span><%= @postings_applied_for.size %> down</span></i>
-            In total, you&rsquo;ve applied for <strong><%= @postings_applied_for.size %></strong> <%= "job".pluralize(@postings_applied_for.size) %> since <%= short_date(@date_started) %>
+            You&rsquo;ve applied for <strong><%= @postings_applied_for.size %></strong> <%= "job".pluralize(@postings_applied_for.size) %> since <%= short_date(@date_started) %>.
+          </li>
+
+          <li class="offers">
+            <i class="icon-coin"><span><%= (@postings_with_offers.size.to_f / @postings_applied_for.size.to_f * 100).round(0) %>% new-job-having badass!</span></i>
+            You&rsquo;ve received <strong><%= @postings_with_offers.size %></strong> <%= "job offer".pluralize(@postings_with_offers.size) %>. 
           </li>
 
           <li class="success">
@@ -147,7 +164,7 @@
 
           <li class="failure">
             <i class="icon-thumbs-down3"><span><%= (@postings_archived.size.to_f / @postings_applied_for.size.to_f * 100).round(0) %>% sadface</span></i>
-            <strong><%= @postings_archived.size %></strong> of your <%= "job".pluralize(@postings_archived.size) %> just didn&rsquo;t work out.
+            <strong><%= @postings_archived.size %></strong> of your jobs just didn&rsquo;t work out.
           </li>
 
           <li class="weekly-average">
@@ -163,9 +180,3 @@
   <!-- END PROGRESS AND STATISTICS -->
 
 </div>
-
-<!-- LOGOUT IN FOOTER (FOR NOW) -->
-<footer class="logout">
-  <%= link_to "Log out", logout_path, method: 'delete' %>
-</footer>
-<!-- END FOOTER -->

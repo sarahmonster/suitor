@@ -30,7 +30,7 @@
       * @theme page
       */
       body, #bodyTable{
-        /*@editable*/ background: url("http://mrsuitor.com/assets/pinstriped_suit_@2X-2743ea1a1975c2a557f361f8c19ea618.png") repeat scroll 0% 0% / 400px 330px #FFF;
+        /*@editable*/ background: url("http://mrsuitor.com/pinstriped_suit.jpg") repeat #FFF;
         color: #333333;
       }
 
@@ -147,13 +147,13 @@
       }
 
       .button {
-        background: #1B568C;
-        border-bottom: 4px solid #8ABCE9;
+        background: #CCEBCC;
+        border: 2px solid #44A744;
         padding: 1.25em 2.5em;
         font-size: 14px;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        color: #B5D4F1 !important;
-        text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.15);
+        color: #44A744 !important;
+        text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.4);
         text-transform: uppercase;
         letter-spacing: 1px;
         font-weight: 500 !important;
@@ -164,9 +164,9 @@
       }
 
       .button:hover, .button:active {
-        color: #B5D4F1;
-        border: 2px solid #FFF;
-        background: #174977;
+        background: #A8DCA8;
+        border-color: #358335;
+        color: #358335 !important;
       }
 
       .xo, .bodyContent .xo a:link {

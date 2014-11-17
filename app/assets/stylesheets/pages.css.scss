@@ -68,8 +68,14 @@ a + h3 {
       &.primary {
         background: $base-secondary-color;
         border-color: lighten($base-secondary-color, 40%);
-        text-shadow: 1px 1px 0px transparentize(black, .6);
+        text-shadow: -1px -1px 0px transparentize(black, .6);
         color: lighten($base-secondary-color, 40%);
+        
+        &:hover { 
+          background: lighten($base-secondary-color, 10%);
+          border-color: lighten($base-secondary-color, 50%);
+          color: lighten($base-secondary-color, 50%);
+        }
       }
     }
 
@@ -158,7 +164,7 @@ a + h3 {
       }
 
       .mce-responses {
-        //display: none;
+        display: none;
       }
 
       .actions {
@@ -222,12 +228,19 @@ a + h3 {
 
 // ABOUT PAGE
 .about .intro {
-  
   @include media($large-screen-up) {
     @include span-columns(6);
     @include shift(3);
   }
-  
+}
+
+
+// HELP PAGE
+.help .intro {
+  @include media($large-screen-up) {
+    @include span-columns(6);
+    @include shift(3);
+  }
 }
 
 

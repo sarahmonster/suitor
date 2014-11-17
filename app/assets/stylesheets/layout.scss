@@ -71,7 +71,7 @@ html.mm-opened .mm-page {
         }
 
         @include media($large-screen) {
-            @include span-columns(3);
+            @include span-columns(2);
         }
     }
 
@@ -81,7 +81,7 @@ html.mm-opened .mm-page {
         }
         @include span-columns(8);
         @include shift(1);
-        margin-top: 2em;
+        margin-top: 1em;
 
         li {
             display: inline-block;
@@ -91,13 +91,13 @@ html.mm-opened .mm-page {
         }
 
         a {
-            font-family: $sans-serif;
+            font-family: $serif;
             font-size: 1.4em;
             @include media($max-width-down) {
                 font-size: 1.2em;
             }
             color: $blue;
-            font-weight: 300;
+            font-weight: 400;
             line-height: 1;
 
             span {
@@ -115,13 +115,13 @@ html.mm-opened .mm-page {
         i {
             margin: -1px 10px 0 0;
             color: $blue;
-            font-size: 16px;
-            line-height: 16px;
+            font-size: 18px;
+            line-height: 18px;
             height: 40px;
             width: 40px;
             float: left;
             border: 2px solid lighten($blue, 20%);
-            padding: 10px;
+            padding: 9px;
             border-radius: 50%;
         }
     }
@@ -131,9 +131,8 @@ html.mm-opened .mm-page {
 // GENERAL PAGE STRUCTURE & STYLES
 .container {
     @include outer-container;
-    @include media($max-width-down) {
-        margin: 10px;
-    }
+    @include media($max-width-down) { margin: 10px; }
+    margin-bottom: 5em;
 }
 
 .page-header {
@@ -156,7 +155,6 @@ html.mm-opened .mm-page {
         margin: 0 2px 6px;
         padding: 8px 12px;
         text-align: left;
-        font-size: .85em;
         i { color: $medium-grey; }
     }
 
@@ -177,6 +175,8 @@ html.mm-opened .mm-page {
 }
 .notes {
     font-style: italic;
+    font-family: $italic;
+    font-size: 1.05em;
     color: darken($medium-grey, 20%);
     font-weight: 100;
 }
@@ -185,7 +185,7 @@ html.mm-opened .mm-page {
 // ICONS
 i {
     color: $dark-grey;
-    margin-right: 5px;
+    margin-right: 2px;
 
     &.greyed {
         color: $light-grey;
@@ -195,11 +195,10 @@ i {
         display: none;
         font-family: $sans-serif;
         font-weight: 700;
-        font-size: .9em;
-        letter-spacing: 1px;
+        font-size: .8em;
+        letter-spacing: .5px;
         text-transform: uppercase;
         padding-left: 5px;
-        vertical-align: middle;
     }
 
     & + i {margin-left: 15px;}
@@ -225,7 +224,6 @@ i {
     border: 1px solid $medium-grey;
     border-left: 4px solid $medium-grey;
     padding: 10px;
-    font-style: italic;
 
     &.alert-error {
         @include error-colours($red);
@@ -256,7 +254,6 @@ i {
     font-size: .8em;
     line-height: 1.6em;
     font-family: $serif;
-    font-style: italic;
 
     &:after, &:before { 
         content: '';
@@ -311,7 +308,81 @@ section.job-posting .tooltip {
 }
 
 
+// SITE FOOTER
 
+/* Sticky footer hack */
+html {
+    height: 100%;
+    overflow: hidden;
+}
+ 
+body {
+    height: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+ 
+#page-wrapper, .mm-page {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+ 
+.site-footer {
+    display: table-row;
+    height: 1px;
+}
 
+#footnotes_debug { display: none; }
 
+.site-footer {
+    border-top: 2px solid $light-grey;
+    background: darken($medium-grey, 10%) image-url('stressed_linen_@2X.png');
+    background-size: 256px 256px;
+    width: 100%;
+    @include box-shadow;
 
+    &:after {
+        display: block;
+        content: '';
+        clear: both;
+        width: 100%;
+    }
+
+    .footer-container {
+        padding: .5em 0em;
+        @include outer-container;
+        @include media($large-screen-down) {
+            text-align: center;
+        }
+    }
+
+    ul {
+
+        &.primary {
+            @include span-columns(1 of 2);
+            @include media($large-screen-up) { @include span-columns(4 of 6); }
+            text-align: left;
+        }
+        
+        &.secondary {
+            @include span-columns(1 of 2);
+            @include media($large-screen-up) { @include span-columns(2 of 6); }
+            font-size: .8em;
+            text-align: right;
+        }
+
+        li {
+            padding: 0 .75em;
+            font-weight: 400;
+            @include media($large-screen) { display: inline; }
+        }
+
+        a {
+            color: $medium-grey;
+            &:hover { color: transparentize($white, 0); }
+        }
+
+        i { color: $light-grey; }
+    }
+}

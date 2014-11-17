@@ -7,12 +7,17 @@ class Posting < ActiveRecord::Base
 
   belongs_to :user
   has_one :job_application, dependent: :destroy
+  has_one :offer
   has_many :interviews, dependent: :destroy
+  has_one :offer, dependent: :destroy
   enum role: [:user, :admin]
 
   # Define scopes for easier access
   default_scope -> {
     where(archived: false)
+  }
+  scope :offer_made, -> {
+    joins(:offer).where('offers.salary IS NOT NULL')
   }
   scope :applied, -> {
     joins(:job_application).where('job_applications.date_sent IS NOT NULL')
@@ -25,6 +30,9 @@ class Posting < ActiveRecord::Base
   }
   scope :havent_applied, -> {
     where("NOT EXISTS (SELECT null FROM job_applications where job_applications.posting_id = postings.id)")
+  }
+  scope :needs_application, -> {
+    where("NOT EXISTS (SELECT null FROM job_applications where job_applications.posting_id = postings.id) AND deadline > ?", Time.now)
   }
   scope :archived, -> {
     unscoped.where(archived: true)
@@ -65,16 +73,17 @@ class Posting < ActiveRecord::Base
 
   # Sort all posts by "importance", as defined by methods below
   def self.sorted_by_importance(followup_offset)
-    postings = interview_scheduled_or_deadline_approaching +
-               unapplied_or_interview_completed +
-               without_followup(followup_offset).where('deadline IS NULL').no_interviews.order('job_applications.date_sent DESC') +
-               recently_applied_or_followed_up_or_deadline_passed
+    postings = offer_made +
+              interview_scheduled_or_deadline_approaching +
+              unapplied_or_interview_completed +
+              without_followup(followup_offset).where('deadline IS NULL').no_interviews.order('job_applications.date_sent DESC') +
+              recently_applied_or_followed_up_or_deadline_passed
 
     # Squash duplicates.
     postings.uniq { |p| p.id }
   end
 
-  # Find all postingss with an interview scheduled, or with an application due for a deadline
+  # Find all postings with an interview scheduled, or with an application due for a deadline
   # and sort by their key dates (interview date and deadline, respectively)
   def self.interview_scheduled_or_deadline_approaching
     postings = interview_scheduled +
@@ -158,10 +167,11 @@ class Posting < ActiveRecord::Base
 
   # Sort all posts by their application statuses
   def self.sorted_by_status
-    postings = interview_scheduled.order('interviews.datetime ASC') +
-               havent_applied +
-               no_interviews.joins(:job_application).order('job_applications.followup ASC') +
-               interview_completed
+    postings = offer_made +
+              interview_scheduled.order('interviews.datetime ASC') +
+              havent_applied +
+              no_interviews.joins(:job_application).order('job_applications.followup ASC') +
+              interview_completed
 
     # Squash duplicates.
     postings.uniq { |p| p.id }
@@ -190,6 +200,10 @@ class Posting < ActiveRecord::Base
     !interviews.empty? and !interviews.upcoming.empty?
   end
 
+  def offer_made?
+    offer
+  end
+
   def followup_offset
     user.followup_offset
   end
@@ -198,7 +212,9 @@ class Posting < ActiveRecord::Base
     return @actionable if @actionable
 
     @actionable ||=
-      if interview_scheduled?
+      if offer_made?
+        "offer-made"
+      elsif interview_scheduled?
         "interview-scheduled"
       elsif interview_completed?
         "interview-completed"

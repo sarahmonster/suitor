@@ -1,6 +1,7 @@
 // DASHBOARD CONTROLLER STYLES
 
 .dashboard {
+
     .action-items > div, .progress-and-statistics > div {
         @extend %box;
         margin-bottom: 1em;
@@ -47,6 +48,11 @@
         h3 { color: $red; }
     }
 
+    .job-offers {
+        border-color: lighten($purple, 40%);
+        h3, i { color: $purple; }
+    }
+
 }
 
 .dashboard .progress-and-statistics {
@@ -61,14 +67,15 @@
     i span { display: inline; }
     .failure i { color: $red;}
     .success i { color: $green; }
+    .offers i { color: $purple; }
     .total-applications i, .weekly-average i { color: $blue; }
     
     strong { 
         color: $medium-grey; 
-        font-size: 1.2em;
-        font-family: $sans-serif;
-        font-weight: 500;
-        padding: .1em;
+        font-size: 1.5em;
+        font-family: $display;
+        font-weight: 400;
+        padding: 0.01em;
     }
 
 }
@@ -119,6 +126,7 @@
         font-weight: 800;
         color: $white;   
         text-shadow: 0 0 1px black;
+        em { color: $white; }
     }
 }
 

@@ -75,7 +75,6 @@
         li.title {
             margin-top: 0;
             color: lighten($medium-grey, 15%);
-            font-style: italic;
             font-size: .9em;
         }
 
@@ -128,7 +127,6 @@ section.job-posting {
         i span {
             display: inline;
             color: $medium-grey;
-            font-size: .9em;
             vertical-align: baseline;
         }
     }
@@ -140,7 +138,7 @@ section.job-posting {
         position: absolute;
         top: -10px;
         right: 10px;
-        font-size: .85em;
+        font-size: .9em;
 
         i {
             padding: 0;
@@ -163,6 +161,11 @@ section.job-posting {
         .status {background: lighten($blue, 60%);}
     }
 
+    &.offer-made {
+        border-top-color: lighten($purple, 10%);
+        .status {background: lighten($purple, 50%);}
+        i { color: $purple; }
+    }
 
     .actions {
         line-height: 1.8em;
@@ -189,6 +192,7 @@ section.job-posting {
 
 // INDIVIDUAL JOB POSTING PAGE
 
+// Job details
 section.job-information {
     @include media($large-screen-up) { @include span-columns(6 of 12); }
 
@@ -208,7 +212,6 @@ section.job-information {
             span {
                 display: inline;
                 color: $medium-grey;
-                font-size: .9em;
                 vertical-align: baseline;
             }
         }
@@ -219,7 +222,7 @@ section.job-information {
     }
 }
 
-
+// Job actions
 section.job-actions {
     @include media($large-screen-up) {
         @include span-columns(6 of 12);
@@ -236,6 +239,7 @@ section.job-actions {
     span {display: inline;}
 
     form + form, ul + form, ul li + ul {margin-top: 1em;}
+    form:first-of-type { margin-top: 0; }
     li {
         padding: .5em;
         border-top: 1px solid $light-grey;
@@ -251,6 +255,17 @@ section.job-actions {
 
         i.done { color: $green; }
 
+        .job-offer {
+            @extend %box;
+            border-top-color: lighten($purple, 40%);
+            h3, i { color: $purple; }
+            li, p { text-align: left; }
+            li {
+                border-top: 0;
+                padding-left: 0;
+            }
+        }
+
     }
 
     .completed-tasks {
@@ -262,6 +277,14 @@ section.job-actions {
         @include shift(0);
         border-top-color: lighten($blue, 40%);
         h3 { color: $blue; }
+    }
+
+    .add-offer {
+        @include span-columns(12);
+        @include shift(0);
+        border-top-color: lighten($purple, 40%);
+        h3 { color: $purple; }
+        a { @extend %button; }
     }
 }
 

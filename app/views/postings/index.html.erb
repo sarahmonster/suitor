@@ -31,11 +31,9 @@
         <li class="checked"><i class="icon-checkmark"><span>Interview completed</span></i></li>
       <% end %>
 
-      <!--
-      <%= link_to "#", data: {class: "offer-made"} do %>
+      <%= link_to '#', data: {class: "offer-made"} do %>
         <li class="checked"><i class="icon-checkmark"><span>Offer made</span></i></li>
       <% end %>
-      -->
     </ul>
   </div>
   <!-- END FILTER BUTTONS -->
@@ -73,7 +71,10 @@
     <section class="job-posting <%= posting.actionable %> <% if posting.action_required? %>action-required<% end %>" id="posting-<%= posting.id %>">
       <!-- STATUS BAR -->
       <div class="status">
-        <% if posting.interview_scheduled? %>
+        <% if posting.offer_made? %>
+          <i class="icon-coin"><span>Got the job!</span></i>
+
+        <% elsif posting.interview_scheduled? %>
           <i class="icon-bubbles3"><span title="<%= full_datetime(posting.interviews.upcoming.first.datetime) %>">Interview <%= friendly_datetime(posting.interviews.upcoming.first.datetime) %></span></i>
 
         <% elsif posting.interview_completed? %>
@@ -101,9 +102,9 @@
       <!-- DEADLINE AND/OR DATE POSTED -->
       <div class="date">
         <% if posting.deadline %>
-          <i class="icon-clock4"><span>Deadline</span></i><%= short_date(posting.deadline) %>
+          <i class="icon-clock4"><span>Deadline</span></i> <%= short_date(posting.deadline) %>
         <% elsif posting.date_posted %>
-          <i class="icon-clock4"><span>Posted</span></i><%= short_date(posting.date_posted) %>
+          <i class="icon-clock4"><span>Posted</span></i> <%= short_date(posting.date_posted) %>
         <% end %>
       </div>
       <!-- END DEADLINE-->
@@ -122,8 +123,12 @@
           <%= link_to new_posting_interview_path(posting) do %>
             <i class="icon-bubbles3"><span>Interview</span></i>
           <% end %>
+        <% end %>
 
-          <!--<a href="#"><i class="icon-dollar"><span>Offer</span></i></a>-->
+        <% if !posting.offer_made? %>
+          <%= link_to new_posting_offer_path(posting) do %>
+            <i class="icon-dollar"><span>Offer</span></i>
+          <% end %>
         <% end %>
       </div>
       <!-- END ACTION BUTTONS -->
