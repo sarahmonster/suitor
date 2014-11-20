@@ -81,7 +81,7 @@ class PostingsController < ApplicationController
   end
 
   def destroy
-    @posting = policy_scope Posting.unscoped.find(params[:id])
+    @posting = Posting.unscoped.find(params[:id])
     authorize @posting
     @posting.destroy
     redirect_to postings_path
