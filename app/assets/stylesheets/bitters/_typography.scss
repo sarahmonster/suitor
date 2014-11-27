@@ -13,10 +13,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: $base-font-size * 3.5; // 16 * 2.25 = 36px
-  font-weight: 400;
-  font-family: $display;
-  color: lighten($medium-grey, 15%);
+  font-size: $base-font-size * 3; // 16 * 2.25 = 36px
+  font-weight: 700;
+  font-family: $serif;
+  color: lighten($medium-grey, 5%);
+  text-shadow: 1px 1px #fff;
+  text-transform: capitalize;
 }
 
 h2 {
