@@ -26,9 +26,6 @@ class JobApplicationsController < ApplicationController
   # GET /job_applications/1/edit
   def edit
     @job_application = JobApplication.find(params[:id])
-    @job_application.posting = Posting.unscoped.find(params[:posting_id])
-    authorize @job_application
-    authorize @job_application.posting
   end
 
   # POST /job_applications
@@ -76,7 +73,8 @@ class JobApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @job_application.update(job_application_params)
-        redirect_to @job_application.posting, notice: 'Job application was successfully updated.'
+        format.html { redirect_to @job_application.posting, notice: 'Changes saved!' }
+        format.json { redirect_to @job_application.posting, notice: 'Changes saved!' }
       else
         format.html { render action: 'edit' }
         format.json {
