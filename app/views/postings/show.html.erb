@@ -130,7 +130,18 @@
 
       <!-- Upcoming interview -->
       <% if @posting.actionable == "interview-scheduled" %>
-        <li class="expander" title="Show interview details"><i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled</i> <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span><i class="expand-icon icon-arrow-down9"></i></li>
+        <li class="expander" title="Show interview details">
+          <i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled</i> <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span><i class="expand-icon icon-arrow-down9"></i>
+
+          <%= link_to edit_posting_interview_path(@posting, @posting.interviews.last) do %>
+            <i class="icon-pencil2" title="Edit"></i>
+          <% end %>
+
+          <%= link_to posting_interview_path(@posting, @posting.interviews.last), method: :delete, data: { confirm: 'Are you sure?' }  do %>
+          <i class="icon-trash2" title="Delete"></i>
+          <% end %>
+        </li>
+          
           <div class="expand-panel" style="display: none">
             <h3>
             <% if @posting.interviews.upcoming.first.interviewer %>
@@ -160,7 +171,7 @@
   <!-- COMPLETED TASKS -->
   <ul class="completed-tasks">
 
-  <!-- Show application details -->
+    <!-- Submitted application -->
     <% if @posting.applied? %>
       
       <% if @posting.job_application.cover_letter? %>
@@ -194,7 +205,7 @@
 
     <% end %>
 
-    <!-- Show completed interview details -->
+    <!-- Completed interview -->
     <% if @posting.actionable == "interview-completed" %>
       
       <li class="expander" title="Show interview details">
@@ -228,7 +239,7 @@
 
     <% end %>
 
-    <!-- Show follow-up date -->
+    <!-- Sent follow-up -->
     <% if @posting.job_application.followup %>
       <li>
         <i class="icon-checkmark"><span>Follow-up sent</span></i>
