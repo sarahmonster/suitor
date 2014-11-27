@@ -408,7 +408,7 @@ DEPENDENCIES
   guard
   guard-minitest
   jbuilder (~> 1.2)
-  jekyll (~> 2.0.0.alpha)
+  jekyll
   jquery-rails
   jquery-ui-sass-rails
   mmenu-rails!

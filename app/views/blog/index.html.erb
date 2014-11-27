@@ -1,8 +1,11 @@
-<h1>Blog</h1>
+<header class="page-header">
+  <h3>Ramblings, updates, other stuff</h3>
+  <h1>Blog</h1>
+</header>
 
 <% @posts.each do |post| %>
 
-  <%= link_to post.slug do%>
+  <%= link_to blog_path(post.slug) do%>
     <%= friendly_datetime(post.date) %>: <%= post.title %>
   <% end %>
   <%= post.excerpt %>

@@ -73,7 +73,7 @@ gem 'pundit'
 gem 'attr_extras'
 
 # Integrate Jekyll blog
-gem 'jekyll', '~> 2.0.0.alpha'
+gem 'jekyll'
 gem 'redcarpet'
 gem 'rouge'
 

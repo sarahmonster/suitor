@@ -16,8 +16,6 @@
   </nav>
   <!-- END MOBILE MENU -->
 
-  <!-- This isn't needed strictly speaking, but we're using it to make
-       mmenu happy. -->
   <!-- PAGE-WRAPPER -->
   <div id="page-wrapper">
     <header class="site-header">
@@ -39,8 +37,17 @@
     <!-- PAGE CONTENT -->
     <div class="container">
       <%= render "layouts/messages" %>
-
+      
+      <% if blog_post? %>
+        <%= render "blog/header" %>
+      <% end %>
+      
       <%= yield %>
+
+      <% if blog_post? %>
+        <%= render "blog/footer" %>
+      <% end %>
+
     </div>
     <!-- END PAGE CONTENT -->
 
@@ -51,6 +58,11 @@
         <ul class="primary">
           <li><a href="http://twitter.com/mrsuitor"><i class="icon-twitter2"></i> Twitter</a></li>
           <li><a href="http://github.com/sarahsemark/suitor"><i class="icon-github"></i> GitHub</a></li>
+          <li>
+            <%= link_to blog_index_path do %>
+              <i class="icon-blog"></i> Blog
+            <% end %>
+          </li>
           <li>
             <%= link_to about_path do %>
               <i class="icon-suitcase"></i> About
