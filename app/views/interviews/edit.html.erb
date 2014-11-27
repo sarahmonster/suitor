@@ -1,6 +1,6 @@
-<h1>Editing interview</h1>
+<header class="page-header">
+  <h3><%= @interview.posting.title %> <span>at</span> <%= @interview.posting.hiring_organization %></h3>
+  <h1>Edit interview</h1>
+</header>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @interview %> |
-<%# = link_to 'Back', interviews_path %>
+<%= render 'form', location: 'edit-interview' %>
