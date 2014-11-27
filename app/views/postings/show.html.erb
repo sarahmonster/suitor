@@ -121,7 +121,17 @@
       <div class="job-offer">
         <h3>Congratulations! You got the job!</h3>
         <ul>
-          <li><i class="icon-coin"><span>Salary:</i> <%= @posting.offer.salary %></span></li>
+          <li>
+            <i class="icon-coin"><span>Salary:</i> <%= @posting.offer.salary %></span>
+            
+            <%= link_to edit_posting_offer_path(@posting, @posting.offer) do %>
+              <i class="icon-pencil2" title="Edit"></i>
+            <% end %>
+
+            <%= link_to posting_offer_path(@posting, @posting.offer), method: :delete, data: { confirm: 'Are you sure?' }  do %>
+              <i class="icon-trash2" title="Delete"></i>
+            <% end %>
+          </li>
         </ul>
         <p><%= @posting.offer.details %></p>
       </div>

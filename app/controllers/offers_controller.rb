@@ -39,7 +39,7 @@ class OffersController < ApplicationController
 
   def update
     if @offer.update(offer_params)
-      redirect_to @offer
+      redirect_to [@offer.posting], notice: 'We&rsquo;ve updated your job offer for you.'
     else
       render 'edit'
     end
