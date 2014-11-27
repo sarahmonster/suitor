@@ -162,32 +162,56 @@
 
   <!-- Show application details -->
     <% if @posting.applied? %>
-      <!-- with cover letter/notes -->
+      
       <% if @posting.job_application.cover_letter? %>
         <li class="expander" title="Show application">
-          <i class="icon-checkmark"><span>Application sent </span></i>
-          <%= short_date(@posting.job_application.date_sent) %>
+      <% else %>
+        <li>
+      <% end %>
+      
+        <i class="icon-checkmark"><span>Application sent </span></i>
+        <%= short_date(@posting.job_application.date_sent) %>
+
+        <%= link_to edit_posting_job_application_path(@posting, @posting.job_application) do %>
+          <i class="icon-pencil2" title="Edit"></i>
+        <% end %>
+
+        <%= link_to posting_job_application_path(@posting, @posting.job_application), method: :delete, data: { confirm: 'Are you sure?' }  do %>
+          <i class="icon-trash2" title="Delete"></i>
+        <% end %>
+        
+        <% if @posting.job_application.cover_letter? %>  
           <i class="expand-icon icon-arrow-down9"></i>
-        </li>
+        <% end %>
+        
+      </li>
+
+      <% if @posting.job_application.cover_letter? %>
         <div class="expand-panel notes" style="display: none">
           <%= simple_format(@posting.job_application.cover_letter) %>
         </div>
-      <!-- without cover letter/notes -->
-      <% else %>
-        <li>
-          <i class="icon-checkmark"><span>Application sent</span></i>
-          <%= short_date(@posting.job_application.date_sent) %>
-        </li>
       <% end %>
+
     <% end %>
 
     <!-- Show completed interview details -->
     <% if @posting.actionable == "interview-completed" %>
+      
       <li class="expander" title="Show interview details">
         <i class="icon-checkmark"><span title="<%= full_datetime(@posting.interviews.last.datetime) %>">Interviewed</span></i>
         <%= friendly_datetime(@posting.interviews.last.datetime) %>
+
+        <%= link_to edit_posting_interview_path(@posting, @posting.interviews.last) do %>
+          <i class="icon-pencil2" title="Edit"></i>
+        <% end %>
+
+        <%= link_to posting_interview_path(@posting, @posting.interviews.last), method: :delete, data: { confirm: 'Are you sure?' }  do %>
+          <i class="icon-trash2" title="Delete"></i>
+        <% end %>
+
         <i class="expand-icon icon-arrow-down9"></i>
       </li>
+      
       <div class="expand-panel" style="display: none">
         <h3>
         <% if @posting.interviews.last.interviewer %>
@@ -201,6 +225,7 @@
           <%= simple_format(@posting.interviews.last.notes) %>
         </div>
       </div>
+
     <% end %>
 
     <!-- Show follow-up date -->

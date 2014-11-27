@@ -10,6 +10,7 @@ one:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
+  contact_phone: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline: <%= Date.today + 7 %>
   application_instructions:
@@ -26,6 +27,7 @@ two:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
+  contact_phone: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline:
   application_instructions:
@@ -42,6 +44,7 @@ three:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
+  contact_phone: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline: <%= Date.today - 10 %>
   application_instructions:
@@ -57,7 +60,8 @@ four:
   hiring_organization: <%= Faker::Company.name %>
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
-  contact_email: <%= Faker::Internet.free_email %>
+  contact_email: 
+  contact_phone: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline: <%= Date.today + 4 %>
   application_instructions:
@@ -74,6 +78,7 @@ five:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
+  contact_phone: 
   application_url:
   deadline: <%= Date.today + 19 %>
   application_instructions:
@@ -90,6 +95,7 @@ one_usertwo:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
+  contact_phone: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline:
   application_instructions:
@@ -104,8 +110,9 @@ two_usertwo:
   job_location: Portland, Oregon
   hiring_organization: <%= Faker::Company.name %>
   hiring_organization_url: <%= Faker::Internet.url %>
-  contact_name: <%= Faker::Name.name %>
+  contact_name: 
   contact_email: <%= Faker::Internet.free_email %>
+  contact_phone: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline: <%= Date.today + 1 %>
   application_instructions:
@@ -122,6 +129,7 @@ three_usertwo:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
+  contact_phone: 
   application_url:
   deadline: <%= Date.today %>
   application_instructions:
@@ -137,7 +145,8 @@ four_usertwo:
   hiring_organization: <%= Faker::Company.name %>
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
-  contact_email: <%= Faker::Internet.free_email %>
+  contact_email: 
+  contact_phone: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline: <%= Date.today - 1 %>
   application_instructions:
@@ -154,6 +163,7 @@ five_usertwo:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
+  contact_phone: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline: <%= Date.today + 3 %>
   application_instructions:
@@ -171,6 +181,7 @@ archived_usertwo:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
+  contact_phone: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline: <%= Date.today + 3 %>
   application_instructions:
@@ -187,6 +198,7 @@ one_admin:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
+  contact_phone: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline: <%= Date.today + 7 %>
   application_instructions:
