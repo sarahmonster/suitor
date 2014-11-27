@@ -210,6 +210,16 @@ i {
         color: $white;
     }
 }
+.delete-link i, .edit-link i {
+    display: inline-block;
+    float: right;
+    padding: 2px 3px;
+    line-height: 1;
+    font-size: 12px;
+    background: $medium-grey;
+    border-radius: 50%;
+    color: $white !important;
+}
 
 // Flash/error messages
 @mixin error-colours($color) {

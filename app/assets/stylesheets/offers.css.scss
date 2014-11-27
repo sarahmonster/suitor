@@ -3,8 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-#new_offer, #edit_offer {
-    // @extend %box;
+#new_offer, .edit_offer {
     @include media($large-screen-up) {
       @include span-columns(6);
       @include shift(3);

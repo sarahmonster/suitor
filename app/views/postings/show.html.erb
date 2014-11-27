@@ -124,11 +124,11 @@
           <li>
             <i class="icon-coin"><span>Salary:</i> <%= @posting.offer.salary %></span>
             
-            <%= link_to edit_posting_offer_path(@posting, @posting.offer) do %>
+            <%= link_to edit_posting_offer_path(@posting, @posting.offer), class: 'edit-link' do %>
               <i class="icon-pencil2" title="Edit"></i>
             <% end %>
 
-            <%= link_to posting_offer_path(@posting, @posting.offer), method: :delete, data: { confirm: 'Are you sure?' }  do %>
+            <%= link_to posting_offer_path(@posting, @posting.offer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link'  do %>
               <i class="icon-trash2" title="Delete"></i>
             <% end %>
           </li>
@@ -143,11 +143,11 @@
         <li class="expander" title="Show interview details">
           <i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled</i> <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span><i class="expand-icon icon-arrow-down9"></i>
 
-          <%= link_to edit_posting_interview_path(@posting, @posting.interviews.last) do %>
+          <%= link_to edit_posting_interview_path(@posting, @posting.interviews.last), class: 'edit-link' do %>
             <i class="icon-pencil2" title="Edit"></i>
           <% end %>
 
-          <%= link_to posting_interview_path(@posting, @posting.interviews.last), method: :delete, data: { confirm: 'Are you sure?' }  do %>
+          <%= link_to posting_interview_path(@posting, @posting.interviews.last), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link'  do %>
           <i class="icon-trash2" title="Delete"></i>
           <% end %>
         </li>
@@ -193,11 +193,11 @@
         <i class="icon-checkmark"><span>Application sent </span></i>
         <%= short_date(@posting.job_application.date_sent) %>
 
-        <%= link_to edit_posting_job_application_path(@posting, @posting.job_application) do %>
+        <%= link_to edit_posting_job_application_path(@posting, @posting.job_application), class: 'edit-link' do %>
           <i class="icon-pencil2" title="Edit"></i>
         <% end %>
 
-        <%= link_to posting_job_application_path(@posting, @posting.job_application), method: :delete, data: { confirm: 'Are you sure?' }  do %>
+        <%= link_to posting_job_application_path(@posting, @posting.job_application), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link'  do %>
           <i class="icon-trash2" title="Delete"></i>
         <% end %>
         
@@ -222,11 +222,11 @@
         <i class="icon-checkmark"><span title="<%= full_datetime(@posting.interviews.last.datetime) %>">Interviewed</span></i>
         <%= friendly_datetime(@posting.interviews.last.datetime) %>
 
-        <%= link_to edit_posting_interview_path(@posting, @posting.interviews.last) do %>
+        <%= link_to edit_posting_interview_path(@posting, @posting.interviews.last), class: 'edit-link' do %>
           <i class="icon-pencil2" title="Edit"></i>
         <% end %>
 
-        <%= link_to posting_interview_path(@posting, @posting.interviews.last), method: :delete, data: { confirm: 'Are you sure?' }  do %>
+        <%= link_to posting_interview_path(@posting, @posting.interviews.last), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link'  do %>
           <i class="icon-trash2" title="Delete"></i>
         <% end %>
 
