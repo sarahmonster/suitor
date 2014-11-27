@@ -1,0 +1,10 @@
+<h1>Blog</h1>
+
+<% @posts.each do |post| %>
+
+  <%= link_to post.slug do%>
+    <%= friendly_datetime(post.date) %>: <%= post.title %>
+  <% end %>
+  <%= post.excerpt %>
+
+<% end %>

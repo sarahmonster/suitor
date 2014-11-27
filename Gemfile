@@ -72,6 +72,11 @@ gem 'pundit'
 # See: http://thepugautomatic.com/2013/08/struct-inheritance-is-overused/
 gem 'attr_extras'
 
+# Integrate Jekyll blog
+gem 'jekyll', '~> 2.0.0.alpha'
+gem 'redcarpet'
+gem 'rouge'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

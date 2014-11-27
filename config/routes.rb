@@ -23,6 +23,8 @@ Suitor::Application.routes.draw do
   resource :user, as: :profile, path: 'profile',
                   except: [:new, :show, :index, :create, :destroy]
 
+  resources :blog, only: [:index, :show]
+
   get 'home' => 'pages#home'
   get 'launch' => 'pages#launch'
   get 'about' => 'pages#about'
