@@ -4,10 +4,16 @@
 </header>
 
 <% @posts.each do |post| %>
+  <section class="post-snippet">
+    <h3><%= friendly_datetime(post.date) %></h3>
+    <h2>
+      <%= link_to blog_path(post.slug) do %> 
+        <%= post.title %>
+      <% end %>
+    </h2>
 
-  <%= link_to blog_path(post.slug) do%>
-    <%= friendly_datetime(post.date) %>: <%= post.title %>
-  <% end %>
-  <%= post.excerpt %>
-
+    <p><%= post.excerpt %></p>
+    
+    <%= link_to 'Read more', blog_path(post.slug), class: 'read-more' %>
+  </section>
 <% end %>

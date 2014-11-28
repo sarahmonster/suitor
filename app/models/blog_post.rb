@@ -51,7 +51,7 @@ class BlogPost
 
   def excerpt
     first_ptag = Nokogiri::HTML(html).css('p:first').text.squish
-    truncate strip_tags(first_ptag), length: 200, separator: ' '
+    truncate strip_tags(first_ptag), length: 400, separator: ' '
   end
 
   def path

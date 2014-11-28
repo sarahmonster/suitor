@@ -1,0 +1,23 @@
+// Styles related to the blog section
+
+section.post-snippet {
+    @extend %box;
+    margin-bottom: 2em;
+    padding-bottom: 1em;
+    text-align: center;
+    position: relative;
+    border-top-color: lighten($blue, 40%);
+    @include media($large-screen-up) {
+        @include span-columns(6 of 12);
+        @include omega(2n);
+    }
+
+    h3 { margin: .75em 0 0 0; }
+    h2 { margin: .25em 0 .5em 0; }
+
+    p { text-align: left; }
+
+    .read-more {
+      @extend %button;
+    }
+}
