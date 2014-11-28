@@ -50,8 +50,12 @@ class BlogPost
   end
 
   def excerpt
-    first_ptag = Nokogiri::HTML(html).css('p:first').text.squish
-    truncate strip_tags(first_ptag), length: 400, separator: ' '
+    if @data['excerpt']
+      @data['excerpt']
+    else 
+      first_ptag = Nokogiri::HTML(html).css('p:first').text.squish
+      truncate strip_tags(first_ptag), length: 400, separator: ' '
+    end
   end
 
   def path
