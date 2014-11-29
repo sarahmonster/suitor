@@ -1,6 +1,7 @@
 class BlogController < ApplicationController
-  before_filter :find_post, only: [:show]
   POSTS_PER_PAGE = 6
+
+  before_filter :find_post, only: [:show]
 
   def index
     unless params[:page] and params[:page].to_i >= 0
