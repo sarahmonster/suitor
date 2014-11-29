@@ -49,10 +49,16 @@
 }
 
 footer.post-footer {
-    margin-top: 4em;
-    padding-top: 2em;
+    margin-top: 6em;
+    padding-top: 3em;
     border-top: 2px solid $light-grey;
     text-align: center;
+    p {
+        font-style: italic;
+        font-family: $italic;
+        color: $medium-grey;
+        font-size: 1.2em;
+    }
 
     .back-link { @extend %button; }
     #disqus_thread { margin-top: 4em; }
