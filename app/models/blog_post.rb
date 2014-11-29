@@ -62,6 +62,10 @@ class BlogPost
     "/blog/#{slug}"
   end
 
+  def permalink
+    "http://mrsuitor.com/blog/#{slug}"
+  end
+  
   def inspect
     "<#{self.class.name} date: #{date.iso8601}, title: #{title.inspect}, slug: #{slug.inspect}>"
   end

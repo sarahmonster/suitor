@@ -1,5 +1,4 @@
 class BlogController < ApplicationController
-  
   layout 'application'
   before_filter :find_post, only: [:show]
 
@@ -9,10 +8,9 @@ class BlogController < ApplicationController
 
   def show
     if stale?(@post, public: true)
-      render text: @post.html, layout: 'application'
+      render text: @post.html, layout: true
     end
   end
-
 
   private
 

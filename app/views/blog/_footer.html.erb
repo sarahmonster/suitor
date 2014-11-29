@@ -1,5 +1,26 @@
-<header class="page-footer">
+<footer class="page-footer">
   Like this post? <a href="http://twitter.com/home?status=Hey @suitor, loved your blog post!">Talk to us on Twitter</a>.
   Hate this post?
   <%= link_to 'Read a different one.', blog_index_path %>
-</header>
+  
+
+  <div id="disqus_thread">  
+  </div>
+
+  <script type="text/javascript">
+      var disqus_shortname = 'suitor';
+      var disqus_identifier = <%= @post.slug.to_json.html_safe %>;
+      var disqus_title = <%= @post.title.to_json.html_safe %>;
+      var disqus_url = <%= @post.permalink.to_json.html_safe %>;
+      <% unless Rails.env.production? %>
+        var disqus_developer = 1;
+      <% end %>
+
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+    
+</footer>
