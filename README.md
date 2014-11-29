@@ -71,6 +71,16 @@ Make sure that `MAILCATCHER` is set to false (or anything other than true, reall
 
 After changing environment variables, make sure to **restart your Rails server** so that changes are applied!
 
+# Using the blog
+
+The blog in suitor is [powered by Jekyll](https://homemarks.com/blog/2014-04-19-jekyll-style-blogging-on-rails). To create a new blog post, use the `rake blog` command:
+
+* `rake blog:post['My New Post']` creates a new post with today's date
+* `rake blog:post['Blog post title', 2014-09-21]` if you need to set a particular date
+
+If you're using ZSH, you may get an error trying to pass parameters; read this
+article for a fix: http://mikeballou.com/blog/2011/07/18/zsh-and-rake-parameters/
+
 # License information
 
 Mail templates based on [the always fantastic MailChimp](http://www.mailchimp.com/)'s [email blueprints](https://github.com/mailchimp/Email-Blueprints), originally licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
