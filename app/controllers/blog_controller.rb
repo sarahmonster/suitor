@@ -12,10 +12,8 @@ class BlogController < ApplicationController
   end
 
   private
-
-  def find_post
-    @post = BlogPost.find params[:id]
-    redirect_to blog_index_path unless @post
-  end
-
+    def find_post
+      @post = BlogPost.find params[:id]
+      redirect_to blog_index_path unless @post
+    end
 end
