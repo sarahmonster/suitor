@@ -1,0 +1,34 @@
+<header class="page-header">
+  <h3>Ramblings, updates, other stuff</h3>
+  <h1>Blog</h1>
+</header>
+
+<% @posts.each do |post| %>
+  <section class="post-snippet">
+    <h3>
+      <%= link_to blog_path(post.slug) do %>
+        <%= friendly_datetime(post.date) %>
+      <% end %>
+    </h3>
+    <h2>
+      <%= link_to blog_path(post.slug) do %>
+        <%= post.title %>
+      <% end %>
+    </h2>
+
+    <p><%= post.excerpt %></p>
+
+    <%= link_to 'Read more', blog_path(post.slug), class: 'read-more' %>
+  </section>
+<% end %>
+
+<section class="pagination">
+  <% if @total_pages > 0 %>
+    <% unless @page - 1 < 0 %>
+      <%= link_to("Previous page", blog_index_path(page: @page - 1)) %>
+    <% end %>
+    <% unless @page + 1 > @total_pages %>
+      <%= link_to("Next page", blog_index_path(page: @page + 1)) %>
+    <% end %>
+  <% end %>
+</section>
