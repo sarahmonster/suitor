@@ -1,5 +1,4 @@
 class BlogController < ApplicationController
-  layout 'application'
   before_filter :find_post, only: [:show]
 
   def index
