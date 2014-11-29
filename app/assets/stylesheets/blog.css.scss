@@ -1,6 +1,6 @@
 // Styles related to the blog section
 
-section.post-snippet {
+.post-snippet {
     @extend %box;
     margin-bottom: 2em;
     padding-bottom: 1em;
@@ -20,4 +20,40 @@ section.post-snippet {
     .read-more {
       @extend %button;
     }
+}
+
+
+// INDIVIDUAL POST PAGES
+.post-content, .post-footer, .disqus_thread {
+  @include media($large-screen-up) {
+    @include span-columns(8);
+    @include shift(2);
+  }
+}
+
+.post-content {
+    font-size: 1.15em;
+    line-height: 2.2em;
+    p { margin: .5em 0 1.5em; }
+    h2 { margin: 2em 0 1em; }
+    h3 { margin: 3em 0 1.5em; }
+    ul {
+        margin: 1em 0 2em;
+
+        li { 
+            list-style-type: disc; 
+            list-style-position: inside;
+            margin: .25em 0;
+        }
+    }
+}
+
+footer.post-footer {
+    margin-top: 4em;
+    padding-top: 2em;
+    border-top: 2px solid $light-grey;
+    text-align: center;
+
+    .back-link { @extend %button; }
+    #disqus_thread { margin-top: 4em; }
 }

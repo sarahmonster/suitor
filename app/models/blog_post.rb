@@ -113,7 +113,7 @@ class BlogPost
     Jekyll::Converters::Markdown::RedcarpetParser.new({
       'highlighter' => 'rouge',
       'redcarpet' => {
-        'extensions' => ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "lax_spacing", "superscript", "with_toc_data"]
+        'extensions' => ["no_intra_emphasis", "fenced_code_blocks", "autolink", "strikethrough", "lax_spacing", "superscript", "with_toc_data", "smart"]
       }
     }).convert(markdown)
   end

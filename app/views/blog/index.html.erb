@@ -5,7 +5,11 @@
 
 <% @posts.each do |post| %>
   <section class="post-snippet">
-    <h3><%= friendly_datetime(post.date) %></h3>
+    <h3>
+      <%= link_to blog_path(post.slug) do %>
+        <%= friendly_datetime(post.date) %>
+      <% end %>
+    </h3>
     <h2>
       <%= link_to blog_path(post.slug) do %> 
         <%= post.title %>
