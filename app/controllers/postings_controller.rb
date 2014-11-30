@@ -83,8 +83,11 @@ class PostingsController < ApplicationController
   def destroy
     @posting = policy_scope Posting.unscoped.find(params[:id])
     authorize @posting
-    @posting.destroy
-    redirect_to postings_path
+    if @posting.destroy
+      redirect_to postings_path
+    else
+      redirect_to postings_path, error: "Posting couldn't be deleted."
+    end
   end
 
   private

@@ -38,6 +38,7 @@ class JobApplicationsController < ApplicationController
 
     respond_to do |format|
       if @job_application.save
+        # TODO: Is this line still needed?
         @job_application_is_new = true
         format.html {
           redirect_to @job_application.posting,
