@@ -90,7 +90,7 @@ class JobApplicationsController < ApplicationController
   def destroy
     @job_application.destroy
     respond_to do |format|
-      format.html { redirect_to job_applications_url }
+      format.html { redirect_to @job_application.posting }
       format.json { head :no_content }
     end
   end
