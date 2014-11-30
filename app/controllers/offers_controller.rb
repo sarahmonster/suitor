@@ -5,7 +5,7 @@ class OffersController < ApplicationController
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @offers = policy_scope Offer.all
+    @offers = policy_scope(Offer.all)
   end
 
   def show
@@ -28,7 +28,7 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to [@offer.posting], notice: 'Hey, way to go on the job offer! (We&rsquo;ve saved it for you.)' }
+        format.html { redirect_to @offer.posting, notice: 'Hey, way to go on the job offer! (We&rsquo;ve saved it for you.)' }
         format.json { render action: 'show', status: :created, location: @offer }
       else
         format.html { render action: 'new' }
@@ -39,7 +39,7 @@ class OffersController < ApplicationController
 
   def update
     if @offer.update(offer_params)
-      redirect_to [@offer.posting], notice: 'We&rsquo;ve updated your job offer for you.'
+      redirect_to @offer.posting, notice: 'We&rsquo;ve updated your job offer for you.'
     else
       render 'edit'
     end
