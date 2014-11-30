@@ -55,7 +55,7 @@ group :production do
   gem 'capistrano', '~> 3.3.0'
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'capistrano-rails', '~> 1.1.1'
-  gem 'capistrano-rvm'
+  #gem 'capistrano-rvm'
 
   # Email me when errors happen!
   gem 'exception_notification'
@@ -117,6 +117,9 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+# Just to test Bundler
+# gem 'lorem_ipsum_amet'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
