@@ -1,6 +1,7 @@
-<h1>Editing offer</h1>
+<header class="page-header">
+  <h3><%= @offer.posting.title %> <span>at</span> <%= @offer.posting.hiring_organization %></h3>
+  <h1>Edit job offer</h1>
+</header>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @offer %> |
-<%= link_to 'Back', @offer.posting %>

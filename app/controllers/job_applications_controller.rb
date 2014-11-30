@@ -9,7 +9,6 @@ class JobApplicationsController < ApplicationController
   def index
     @posting = Posting.unscoped.find(params[:posting_id])
     authorize @posting, :show?
-
     @job_applications = JobApplication.all
   end
 
@@ -26,6 +25,7 @@ class JobApplicationsController < ApplicationController
 
   # GET /job_applications/1/edit
   def edit
+    @job_application = JobApplication.find(params[:id])
   end
 
   # POST /job_applications
@@ -74,8 +74,8 @@ class JobApplicationsController < ApplicationController
   def update
     respond_to do |format|
       if @job_application.update(job_application_params)
-        format.html { redirect_to @job_application.posting, notice: 'Job application was successfully updated.' }
-        format.json { render action: 'show', status: :ok }
+        format.html { redirect_to @job_application.posting, notice: 'Changes saved!' }
+        format.json { render action: 'show', notice: 'Changes saved!' }
       else
         format.html { render action: 'edit' }
         format.json {
@@ -91,7 +91,7 @@ class JobApplicationsController < ApplicationController
   def destroy
     @job_application.destroy
     respond_to do |format|
-      format.html { redirect_to job_applications_url }
+      format.html { redirect_to @job_application.posting }
       format.json { head :no_content }
     end
   end

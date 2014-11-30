@@ -39,7 +39,7 @@ class InterviewsController < ApplicationController
 
     respond_to do |format|
       if @interview.save
-        format.html { redirect_to [@interview.posting], notice: 'Interview scheduled. Good luck!' }
+        format.html { redirect_to @interview.posting, notice: 'Interview scheduled. Good luck!' }
         format.json { render action: 'show', status: :created, location: @interview }
       else
         format.html { render action: 'new' }
@@ -53,7 +53,7 @@ class InterviewsController < ApplicationController
   def update
     respond_to do |format|
       if @interview.update(interview_params)
-        format.html { redirect_to @interview, notice: 'Interview was successfully updated.' }
+        format.html { redirect_to [@interview.posting], notice: 'Interview details have been updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

@@ -163,7 +163,6 @@ html.mm-opened .mm-page {
     }
 }
 
-.expander:hover {cursor: pointer;}
 .expand-panel {
     border-bottom: 2px solid $light-grey;
 
@@ -205,10 +204,21 @@ i {
 
     &.expand-icon {
         float: right;
+        cursor: pointer;
         background: $medium-grey;
         border-radius: 50%;
         color: $white;
     }
+}
+.delete-link i, .edit-link i {
+    display: inline-block;
+    float: right;
+    padding: 2px 3px;
+    line-height: 1;
+    font-size: 12px;
+    background: $medium-grey;
+    border-radius: 50%;
+    color: $white !important;
 }
 
 // Flash/error messages

@@ -1,40 +1,46 @@
+<!-- PAGE TITLE -->
 <header class="page-header">
+  
   <h3><%= @posting.title %></h3>
   <h1><%= @posting.hiring_organization %></h1>
 
+  <!-- CONTROL LINKS -->
   <div class="controls">
-  <%= link_to edit_posting_path(@posting) do %>
-    <i class="icon-pencil2"><span>Edit</span></i>
-  <% end %>
-
-  <%= link_to posting_path(@posting), method: :delete, data: { confirm: 'Are you sure?' } do %>
-    <i class="icon-trash2"><span>Delete</span></i>
-  <% end %>
-
-  <% if @posting.url %>
-    <%= link_to @posting.url do %>
-        <i class="icon-link3"><span>Original posting</span></i>
+    <%= link_to edit_posting_path(@posting) do %>
+      <i class="icon-pencil2"><span>Edit</span></i>
     <% end %>
-  <% end %>
 
-  <%= link_to archivetoggle_posting_path(@posting), remote: true, method: :put, class: "archive-toggle", data: {id: "posting-#{@posting.id}"} do %>
-        <% if @posting.archived %>
-          <i class="icon-thumbs-up3"><span>Unarchive</span></i>
-        <% else %>
-          <i class="icon-thumbs-down3"><span>Archive</span></i>
-        <% end %>
+    <%= link_to posting_path(@posting), method: :delete, data: { confirm: 'Are you sure?' } do %>
+      <i class="icon-trash2"><span>Delete</span></i>
+    <% end %>
+
+    <% if @posting.url %>
+      <%= link_to @posting.url do %>
+          <i class="icon-link3"><span>Original posting</span></i>
       <% end %>
+    <% end %>
+
+    <%= link_to archivetoggle_posting_path(@posting), remote: true, method: :put, class: "archive-toggle", data: {id: "posting-#{@posting.id}"} do %>
+      <% if @posting.archived %>
+        <i class="icon-thumbs-up3"><span>Unarchive</span></i>
+      <% else %>
+        <i class="icon-thumbs-down3"><span>Archive</span></i>
+      <% end %>
+    <% end %>
   </div>
+  <!-- END CONTROL LINKS -->
 
 </header>
+<!-- END PAGE TITLE -->
 
 
 
-
+<!-- JOB INFORMATION -->
 <section class="job-information">
 
   <ul class="job-details">
 
+    <!-- Deadline or date posted -->
     <% if @posting.date_posted or @posting.deadline %>
       <li>
       <% if @posting.date_posted %>
@@ -46,6 +52,7 @@
       </li>
     <% end %>
 
+    <!-- Company and location -->
     <% if @posting.hiring_organization %>
       <li><i class="icon-location4"><span>Employer</span></i>
       <% if @posting.hiring_organization_url %>
@@ -57,10 +64,12 @@
       </li>
     <% end %>
 
+    <!-- URL to apply online -->
     <% unless @posting.application_url.blank? %>
       <li><i class="icon-external-link"><span>Online application</span></i><%= link_to 'URL', @posting.application_url %></li>
     <% end %>
 
+    <!-- Contact name & email -->
     <% unless @posting.contact_name.blank? or !@posting.contact_email.blank? %>
       <li><i class="icon-user6"><span>Contact</span></i>
       <% if @posting.contact_name.blank? %>
@@ -73,17 +82,20 @@
       </li>
     <% end %>
 
-    <% if !@posting.contact_number.nil? %>
+    <!-- Contact number for people who like those things -->
+    <% if !@posting.contact_number.empty? %>
       <li><i class="icon-phone2"><span>Phone number</span></i>
       <%= @posting.contact_number %>
     <% end %>
 
   </ul>
 
+  <!-- Job description -->
   <div class="job-description">
     <%= simple_format(@posting.description) %>
   </div>
 
+  <!-- Application instructions -->
   <div class="application-instructions">
     <% if @posting.application_instructions %>
       <% if !@posting.application_instructions.empty? %>
@@ -94,26 +106,55 @@
   </div>
 
 </section>
+<!-- END JOB INFORMATION -->
 
 
 
-
+<!-- JOB ACTIONS -->
 <section class="job-actions">
 
+  <!-- PENDING TASKS -->
   <ul class="pending-tasks">
-
     <% if @posting.actionable == "offer-made" %>
+      
+      <!-- Job offer -->     
       <div class="job-offer">
         <h3>Congratulations! You got the job!</h3>
         <ul>
-          <li><i class="icon-coin"><span>Salary:</i> <%= @posting.offer.salary %></span></li>
+          <li>
+            <i class="icon-coin"><span>Salary:</i> <%= @posting.offer.salary %></span>
+            
+            <%= link_to edit_posting_offer_path(@posting, @posting.offer), class: 'edit-link' do %>
+              <i class="icon-pencil2" title="Edit"></i>
+            <% end %>
+
+            <%= link_to posting_offer_path(@posting, @posting.offer), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link'  do %>
+              <i class="icon-trash2" title="Delete"></i>
+            <% end %>
+          </li>
         </ul>
         <p><%= @posting.offer.details %></p>
       </div>
+    
     <% else %>
 
+      <!-- Upcoming interview -->
       <% if @posting.actionable == "interview-scheduled" %>
-        <li class="expander" title="Show interview details"><i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled</i> <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span><i class="expand-icon icon-arrow-down9"></i></li>
+        <li class="expander" title="Show interview details">
+          <i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled</i> <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span>
+
+          <%= link_to edit_posting_interview_path(@posting, @posting.interviews.last), class: 'edit-link' do %>
+            <i class="icon-pencil2" title="Edit"></i>
+          <% end %>
+
+          <%= link_to posting_interview_path(@posting, @posting.interviews.last), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link'  do %>
+          <i class="icon-trash2" title="Delete"></i>
+          <% end %>
+
+          <i class="expand-icon icon-arrow-down9"></i>
+          
+        </li>
+          
           <div class="expand-panel" style="display: none">
             <h3>
             <% if @posting.interviews.upcoming.first.interviewer %>
@@ -129,43 +170,73 @@
           </div>
       <% end %>
 
+      <!-- Follow-up required -->
       <% if @posting.followup_needed? %>
         <li><i class="followup icon-circle-blank todo" data-uri="<%= followup_posting_job_application_path(@posting, @posting.job_application) %>" data-posting-id="<%= @posting.id %>"><span>Send a follow-up</span></i></li>
       <% end %>
 
     <% end %>
-
   </ul>
+  <!-- END PENDING TASKS -->
 
 
 
-
+  <!-- COMPLETED TASKS -->
   <ul class="completed-tasks">
 
+    <!-- Submitted application -->
     <% if @posting.applied? %>
-
+      
       <% if @posting.job_application.cover_letter? %>
         <li class="expander" title="Show application">
-          <i class="icon-checkmark"><span>Application sent </span></i>
-          <%= short_date(@posting.job_application.date_sent) %>
+      <% else %>
+        <li>
+      <% end %>
+      
+        <i class="icon-checkmark"><span>Application sent </span></i>
+        <%= short_date(@posting.job_application.date_sent) %>
+
+        <%= link_to edit_posting_job_application_path(@posting, @posting.job_application), class: 'edit-link' do %>
+          <i class="icon-pencil2" title="Edit"></i>
+        <% end %>
+
+        <%= link_to posting_job_application_path(@posting, @posting.job_application), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link'  do %>
+          <i class="icon-trash2" title="Delete"></i>
+        <% end %>
+        
+        <% if @posting.job_application.cover_letter? %>  
           <i class="expand-icon icon-arrow-down9"></i>
-        </li>
+        <% end %>
+        
+      </li>
+
+      <% if @posting.job_application.cover_letter? %>
         <div class="expand-panel notes" style="display: none">
           <%= simple_format(@posting.job_application.cover_letter) %>
         </div>
-      <% else %>
-        <li>
-          <i class="icon-checkmark"><span>Application sent</span></i>
-          <%= short_date(@posting.job_application.date_sent) %>
-        </li>
       <% end %>
 
+    <% end %>
+
+    <!-- Completed interview -->
     <% if @posting.actionable == "interview-completed" %>
+      
       <li class="expander" title="Show interview details">
         <i class="icon-checkmark"><span title="<%= full_datetime(@posting.interviews.last.datetime) %>">Interviewed</span></i>
         <%= friendly_datetime(@posting.interviews.last.datetime) %>
+
+        <%= link_to edit_posting_interview_path(@posting, @posting.interviews.last), class: 'edit-link' do %>
+          <i class="icon-pencil2" title="Edit"></i>
+        <% end %>
+
+        <%= link_to posting_interview_path(@posting, @posting.interviews.last), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link'  do %>
+          <i class="icon-trash2" title="Delete"></i>
+        <% end %>
+
         <i class="expand-icon icon-arrow-down9"></i>
+
       </li>
+      
       <div class="expand-panel" style="display: none">
         <h3>
         <% if @posting.interviews.last.interviewer %>
@@ -179,25 +250,31 @@
           <%= simple_format(@posting.interviews.last.notes) %>
         </div>
       </div>
+
     <% end %>
 
-      <% if @posting.job_application.followup %>
+    <!-- Sent follow-up -->
+    <% if @posting.job_application.followup %>
       <li>
         <i class="icon-checkmark"><span>Follow-up sent</span></i>
         <%= short_date(@posting.job_application.followup) %>
       </li>
-      <% end %>
-
     <% end %>
 
   </ul>
+  <!-- END COMPLETED TASKS -->
 
 
+
+  <!-- TO-DO TASKS -->
+
+  <!-- Apply now form (should probably be moved to a separate view) -->
   <% if @posting.actionable != "interview-scheduled" and @posting.actionable != "interview-completed" and !@posting.applied? and @posting.actionable != "offer-made" %>
 
     <%= form_for([@posting, @posting.job_application]) do |f| %>
-    <h3>Apply now!</h3>
-
+      
+      <h3>Apply now!</h3>
+      
       <%= f.hidden_field :posting_id %>
 
       <%= f.label :"Date applied" %>
@@ -211,11 +288,10 @@
           <i class="icon-checkmark"></i>Mark as applied
         <% end %>
       </div>
-
-      <% end %>
-
+    <% end %>
   <% end %>
 
+  <!-- Schedule interview form -->
   <% if @posting.actionable != "interview-scheduled" and @posting.actionable != "offer-made" %>
     <% if @posting.actionable == "interview-completed" %>
       <%= render 'interviews/form', location: "posting-detail", interview: "second" %>
@@ -224,6 +300,7 @@
     <% end %>
   <% end %>
 
+  <!-- Add job offer link (should probably be its own form) -->
   <% if @posting.actionable != "offer-made" %>
     <form class="add-offer">
       <h3>Landed <span>this</span> job?</h3>
@@ -232,5 +309,7 @@
       <% end %>
     </form>
   <% end %>
+  <!-- END TO-DO TASKS -->
 
 </section>
+<!-- END JOB ACTIONS -->
