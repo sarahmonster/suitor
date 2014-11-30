@@ -29,6 +29,6 @@ require 'capistrano/bundler'
 require 'capistrano/rails/migrations'
 
 # If you are using rvm add these lines:
-# require 'capistrano/rvm'
-# set :rvm_type, :user
-# set :rvm_ruby_version, '2.1.3p242'
+require 'capistrano/rvm'
+set :rvm_custom_path, '/usr/local/rvm'
+#set :rvm_ruby_version, '2.1.3p242'
