@@ -69,6 +69,9 @@ GEM
     capistrano-rails (1.1.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
     capistrano-stats (1.0.3)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -183,7 +186,6 @@ GEM
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    lorem_ipsum_amet (0.6.2)
     lumberjack (1.0.9)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -388,6 +390,7 @@ DEPENDENCIES
   capistrano (~> 3.3.0)
   capistrano-bundler (~> 1.1.2)
   capistrano-rails (~> 1.1.1)
+  capistrano-rvm
   capybara
   coffee-rails (~> 4.0.0)
   dalli
@@ -405,7 +408,6 @@ DEPENDENCIES
   jekyll
   jquery-rails
   jquery-ui-sass-rails
-  lorem_ipsum_amet
   mmenu-rails!
   mysql2
   neat
