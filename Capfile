@@ -27,11 +27,13 @@ Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 require 'capistrano/rails'
 require 'capistrano/rails/migrations'
 
+# bundler configuration
+set :bundle_path, '/usr/local/rvm/gems/ruby-2.1.3@global/bin/bundle' 
+require 'capistrano/bundler'
+
 # rvm configuration
 require 'capistrano/rvm'
 set :rvm_custom_path, '/usr/local/rvm'
 set :rvm_ruby_version, '2.1.3p242'
 
-# bundler configuration
-require 'capistrano/bundler'
-set :bundle_path, '/usr/local/rvm/gems/ruby-2.1.3@global/bin/bundle' 
+
