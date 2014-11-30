@@ -74,7 +74,7 @@ class JobApplicationsController < ApplicationController
     respond_to do |format|
       if @job_application.update(job_application_params)
         format.html { redirect_to @job_application.posting, notice: 'Changes saved!' }
-        format.json { redirect_to @job_application.posting, notice: 'Changes saved!' }
+        format.json { render action: 'show', notice: 'Changes saved!' }
       else
         format.html { render action: 'edit' }
         format.json {

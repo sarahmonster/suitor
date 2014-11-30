@@ -51,70 +51,70 @@ $ ->
     # Create a new application instance when "apply now" is clicked from
     # postings index page
     $(".applied.todo").on "click", ->
-        # First, create the application
-        $.ajax
-          url: "#{$(this).data("uri")}.json"
-          type: "POST"
-          data:
-            job_application:
-              posting_id: $(this).data("posting-id")
+      # First, create the application
+      $.ajax
+        url: "#{$(this).data("uri")}.json"
+        type: "POST"
+        data:
+          job_application:
+            posting_id: $(this).data("posting-id")
 
-          # Then, open a dialog window
-          success: (response) =>
-            jobApplicationId = response.id
+        # Then, open a dialog window
+        success: (response) =>
+          jobApplicationId = response.id
 
-            replacementHTML = response.replacementHTML
+          replacementHTML = response.replacementHTML
 
-            vex.dialog.open
-              message: response.html
-              buttons: [
-                $.extend({}, vex.dialog.buttons.NO,
-                  className: "primary"
-                  text: "Update application"
-                  click: ($vexContent, event) =>
-                    $vexContent.data().vex.value = "update"
+          vex.dialog.open
+            message: response.html
+            buttons: [
+              $.extend({}, vex.dialog.buttons.NO,
+                className: "primary"
+                text: "Update application"
+                click: ($vexContent, event) =>
+                  $vexContent.data().vex.value = "update"
 
-                    $.ajax
-                      url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
-                      type: "PUT"
-                      data:
-                        job_application:
-                          cover_letter: $("[name=job_application\\[cover_letter\\]]").val()
-                          date_sent: $("[name=job_application\\[date_sent\\]]").val()
-                          posting_id: $(this).data("posting-id")
-                      success: (response) ->
-                        replacementHTML = response.replacementHTML
-                        vex.close $vexContent.data().vex.id
-                )
-                $.extend({}, vex.dialog.buttons.NO,
-                  className: "secondary"
-                  text: "Undo"
-                  click: ($vexContent, event) =>
-                    $vexContent.data().vex.value = "undo"
+                  $.ajax
+                    url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
+                    type: "PUT"
+                    data:
+                      job_application:
+                        cover_letter: $("[name=job_application\\[cover_letter\\]]").val()
+                        date_sent: $("[name=job_application\\[date_sent\\]]").val()
+                        posting_id: $(this).data("posting-id")
+                    success: (response) ->
+                      replacementHTML = response.replacementHTML
+                      vex.close $vexContent.data().vex.id
+              )
+              $.extend({}, vex.dialog.buttons.NO,
+                className: "secondary"
+                text: "Undo"
+                click: ($vexContent, event) =>
+                  $vexContent.data().vex.value = "undo"
 
-                    $.ajax
-                      url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
-                      type: "DELETE"
-                      success: =>
-                        vex.close $vexContent.data().vex.id
-                )
-              ]
+                  $.ajax
+                    url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
+                    type: "DELETE"
+                    success: =>
+                      vex.close $vexContent.data().vex.id
+              )
+            ]
 
-              # Provide a visual indication of what's happened
-              callback: (value) =>
-                unless value is "undo"
-                  $(this).parents('section').removeClass('action-required')
-                  $(this).replaceWith(replacementHTML)
+            # Provide a visual indication of what's happened
+            callback: (value) =>
+              unless value is "undo"
+                $(this).parents('section').removeClass('action-required')
+                $(this).replaceWith(replacementHTML)
 
-            $("#job_application_cover_letter").trigger "focus"
-            $("input[type=date]").pickadate({
-              format: "mmmm d",
-              formatSubmit: "yyyy-mm-dd",
-              hiddenName: true
-            })
+          $("#job_application_cover_letter").trigger "focus"
+          $("input[type=date]").pickadate({
+            format: "mmmm d",
+            formatSubmit: "yyyy-mm-dd",
+            hiddenName: true
+          })
 
-          error: (response) ->
-            console.log "Error: ", response
+        error: (response) ->
+          console.log "Error: ", response
 
     # Mark application as followed-up when "follow up" is clicked (from
     # index or detail page)
