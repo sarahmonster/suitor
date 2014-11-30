@@ -130,7 +130,7 @@ $ ->
         error: (response) ->
           console.log "Error: ", response
 
-    # Swap down arrow for up
+    # Function to swap down arrow for up
     $.fn.expanderSwap = ->
       if this.find(".expand-icon").hasClass('icon-arrow-down9')
         this.find(".expand-icon").switchClass('icon-arrow-down9', 'icon-arrow-up8')
@@ -176,7 +176,7 @@ $ ->
       $("##{$(this).data('id')}").fadeOut 500, =>
         $("##{$(this).data('id')}").remove()
 
-    # Show application data on click
-    $(".expander").on "click", (event) ->
-      $(this).next(".expand-panel").slideToggle(400, 'easeInOutBounce')
-      $(this).expanderSwap()
+    # Show additional data in expanded box on click
+    $(".expander .expand-icon").on "click", (event) ->
+      $(this).parent().next(".expand-panel").slideToggle(400, 'easeInOutBounce')
+      $(this).parent().expanderSwap()

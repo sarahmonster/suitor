@@ -141,7 +141,7 @@
       <!-- Upcoming interview -->
       <% if @posting.actionable == "interview-scheduled" %>
         <li class="expander" title="Show interview details">
-          <i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled</i> <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span><i class="expand-icon icon-arrow-down9"></i>
+          <i class="icon-bubbles3"><span title="<%= full_datetime(@posting.interviews.upcoming.first.datetime) %>">Interview scheduled</i> <%= friendly_datetime(@posting.interviews.upcoming.first.datetime) %></span>
 
           <%= link_to edit_posting_interview_path(@posting, @posting.interviews.last), class: 'edit-link' do %>
             <i class="icon-pencil2" title="Edit"></i>
@@ -150,6 +150,9 @@
           <%= link_to posting_interview_path(@posting, @posting.interviews.last), method: :delete, data: { confirm: 'Are you sure?' }, class: 'delete-link'  do %>
           <i class="icon-trash2" title="Delete"></i>
           <% end %>
+
+          <i class="expand-icon icon-arrow-down9"></i>
+          
         </li>
           
           <div class="expand-panel" style="display: none">
@@ -231,6 +234,7 @@
         <% end %>
 
         <i class="expand-icon icon-arrow-down9"></i>
+
       </li>
       
       <div class="expand-panel" style="display: none">

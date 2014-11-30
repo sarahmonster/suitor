@@ -163,7 +163,6 @@ html.mm-opened .mm-page {
     }
 }
 
-.expander:hover {cursor: pointer;}
 .expand-panel {
     border-bottom: 2px solid $light-grey;
 
@@ -205,6 +204,7 @@ i {
 
     &.expand-icon {
         float: right;
+        cursor: pointer;
         background: $medium-grey;
         border-radius: 50%;
         color: $white;

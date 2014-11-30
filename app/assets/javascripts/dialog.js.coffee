@@ -4,7 +4,7 @@ $ ->
       $link = $(this)
 
       vex.dialog.open
-        message: "Are you sure you want to delete this item?"
+        message: "Are you sure you want to delete this? No changing your mind!"
         buttons: [
           $.extend({}, vex.dialog.buttons.NO,
             className: "secondary"
