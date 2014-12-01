@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.edit_job_application {
+.job_applications.edit .edit_job_application {
     @include media($large-screen-up) {
       @include span-columns(6);
       @include shift(3);
