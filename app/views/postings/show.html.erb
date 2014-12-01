@@ -83,7 +83,7 @@
     <% end %>
 
     <!-- Contact number for people who like those things -->
-    <% if !@posting.contact_number.empty? %>
+    <% if !@posting.contact_number.blank? %>
       <li><i class="icon-phone2"><span>Phone number</span></i>
       <%= @posting.contact_number %>
     <% end %>
