@@ -66,6 +66,7 @@ $ ->
           replacementHTML = response.replacementHTML
 
           vex.dialog.open
+            appendLocation: '#page-wrapper'
             message: response.html
             buttons: [
               $.extend({}, vex.dialog.buttons.NO,
