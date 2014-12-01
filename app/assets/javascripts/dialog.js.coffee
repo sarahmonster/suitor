@@ -1,6 +1,6 @@
 $ ->
   $(document).on "page:change", ->
-    $('a[data-method="delete"]').on "click", (e) ->
+    $('a[data-method="delete"]:not(.logout)').on "click", (e) ->
       $link = $(this)
 
       vex.dialog.open

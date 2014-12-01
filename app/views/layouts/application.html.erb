@@ -78,7 +78,7 @@
         <ul class="secondary">
           <li>
             <% if current_user %>
-              <%= link_to "Log out", logout_path, method: 'delete' %>
+              <%= link_to "Log out", logout_path, method: 'delete', class: 'logout' %>
             <% else %>
               <%= link_to "Log in", login_path %>
             <% end %>
