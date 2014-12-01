@@ -67,7 +67,7 @@ class InterviewsController < ApplicationController
   def destroy
     @interview.destroy
     respond_to do |format|
-      format.html { redirect_to interviews_url }
+      format.html { redirect_to [@interview.posting], notice: 'You got it! Your interview&rsquo;s been removed.' }
       format.json { head :no_content }
     end
   end
