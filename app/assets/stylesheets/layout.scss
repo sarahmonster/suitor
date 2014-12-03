@@ -320,6 +320,29 @@ section.job-posting .tooltip {
 
 // SITE FOOTER
 
+/* Sticky footer hack */
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+#page-wrapper, .mm-page {
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+.site-footer {
+    display: table-row;
+    height: 1px;
+}
+
 #footnotes_debug { display: none; }
 
 .site-footer {
