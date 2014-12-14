@@ -4,32 +4,31 @@ class JobApplicationsController < ApplicationController
   before_action :require_login
   before_action :set_job_application, only: [:show, :edit, :update, :destroy, :followup]
 
-  # GET /job_applications
-  # GET /job_applications.json
-  def index
-    @posting = Posting.unscoped.find(params[:posting_id])
-    authorize @posting, :show?
-    @job_applications = JobApplication.all
-  end
+  # GET /posting/1/job_application
+  # GET /posting/1/job_application.json
+  # def index
+  #   @posting = Posting.unscoped.find(params[:posting_id])
+  #   authorize @posting, :show?
+  #   @job_applications = JobApplication.all
+  # end
 
-  # GET /job_applications/1
-  # GET /job_applications/1.json
+  # GET /posting/1/job_application
+  # GET /posting/1/job_application.json
   def show
   end
 
-  # GET /job_applications/new
+  # GET /posting/1/job_application/new
   def new
     @job_application = JobApplication.new
     authorize @job_application
   end
 
-  # GET /job_applications/1/edit
+  # GET /posting/1/job_application/edit
   def edit
-    @job_application = JobApplication.find(params[:id])
   end
 
-  # POST /job_applications
-  # POST /job_applications.json
+  # POST /posting/1/job_application
+  # POST /posting/1/job_application.json
   def create
     @job_application = JobApplication.new(job_application_params)
     @job_application.posting = Posting.unscoped.find(params[:posting_id])
@@ -55,7 +54,7 @@ class JobApplicationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /job_applications/1/followup.json
+  # PATCH/PUT /posting/1/job_application/followup.json
   def followup
     respond_to do |format|
       if @job_application.update(followup: Time.now)
@@ -69,8 +68,8 @@ class JobApplicationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /job_applications/1
-  # PATCH/PUT /job_applications/1.json
+  # PATCH/PUT /posting/1/job_application
+  # PATCH/PUT /posting/1/job_application.json
   def update
     respond_to do |format|
       if @job_application.update(job_application_params)
@@ -86,8 +85,8 @@ class JobApplicationsController < ApplicationController
     end
   end
 
-  # DELETE /job_applications/1
-  # DELETE /job_applications/1.json
+  # DELETE /posting/1/job_application
+  # DELETE /posting/1/job_application.json
   def destroy
     @job_application.destroy
     respond_to do |format|
@@ -99,7 +98,7 @@ class JobApplicationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job_application
-      @job_application = JobApplication.find(params[:id])
+      @job_application = Posting.unscoped.find(params[:posting_id]).job_application
       authorize @job_application
     end
 

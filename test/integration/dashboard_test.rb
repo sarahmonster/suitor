@@ -31,7 +31,7 @@ class DashboardTest < ActionDispatch::IntegrationTest
     }
     assert_match /\/postings\/\d+/, path
     path_to_posting = path
-    path_to_create_job_application = "#{path}/job_applications"
+    path_to_create_job_application = "#{path}/job_application"
 
     get postings_path
     assert_response :success

@@ -87,7 +87,7 @@
           <%= render partial: "job_applications/checkmark", locals: {posting: posting} %>
 
         <% else %>
-          <i class="applied icon-circle-blank todo" data-uri="<%= posting_job_applications_path(posting) %>" data-posting-id="<%= posting.id %>"><span>Apply now!</span></i>
+          <i class="applied icon-circle-blank todo" data-uri="<%= posting_job_application_path(posting) %>" data-posting-id="<%= posting.id %>"><span>Apply now!</span></i>
 
           <div class="dialog"></div>
         <% end %>

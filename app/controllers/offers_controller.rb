@@ -4,9 +4,9 @@ class OffersController < ApplicationController
   before_action :require_login
   before_action :set_offer, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @offers = policy_scope(Offer.all)
-  end
+  # def index
+  #   @offers = policy_scope(Offer.all)
+  # end
 
   def show
   end
@@ -53,8 +53,7 @@ class OffersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
-      @offer = Offer.find(params[:id])
-      @offer.posting = Posting.unscoped.find(params[:posting_id])
+      @offer = Posting.unscoped.find(params[:posting_id]).offer
       authorize @offer
     end
 
