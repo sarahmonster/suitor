@@ -17,4 +17,9 @@ class SuitorMailer < Devise::Mailer
     headers["X-MC-Tags"] = "unlock,devise"
     super
   end
+
+  def invitation_instructions(record, token, opts={})
+    headers["X-MC-Tags"] = "invitation,devise"
+    super
+  end
 end
