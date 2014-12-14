@@ -44,12 +44,12 @@ Suitor::Application.routes.draw do
     member do
       put :archivetoggle
     end
-    resources :job_applications do
+    resource :job_application do
       member do
         put 'followup'
       end
     end
     resources :interviews
-    resources :offers
+    resource :offer
   end
 end

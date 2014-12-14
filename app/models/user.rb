@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :postings, dependent: :destroy
   has_many :job_applications, through: :postings
 
+  validates :email, uniqueness: true
+
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.provider = auth.provider

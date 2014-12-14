@@ -60,7 +60,7 @@ four:
   hiring_organization: <%= Faker::Company.name %>
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
-  contact_email: 
+  contact_email:
   contact_number: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline: <%= Date.today + 4 %>
@@ -78,7 +78,7 @@ five:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
-  contact_number: 
+  contact_number:
   application_url:
   deadline: <%= Date.today + 19 %>
   application_instructions:
@@ -110,7 +110,7 @@ two_usertwo:
   job_location: Portland, Oregon
   hiring_organization: <%= Faker::Company.name %>
   hiring_organization_url: <%= Faker::Internet.url %>
-  contact_name: 
+  contact_name:
   contact_email: <%= Faker::Internet.free_email %>
   contact_number: <%= Faker::PhoneNumber.phone_number %>
   application_url:
@@ -129,7 +129,7 @@ three_usertwo:
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
   contact_email: <%= Faker::Internet.free_email %>
-  contact_number: 
+  contact_number:
   application_url:
   deadline: <%= Date.today %>
   application_instructions:
@@ -145,7 +145,7 @@ four_usertwo:
   hiring_organization: <%= Faker::Company.name %>
   hiring_organization_url: <%= Faker::Internet.url %>
   contact_name: <%= Faker::Name.name %>
-  contact_email: 
+  contact_email:
   contact_number: <%= Faker::PhoneNumber.phone_number %>
   application_url:
   deadline: <%= Date.today - 1 %>
@@ -204,3 +204,20 @@ one_admin:
   application_instructions:
   archived: false
   user: admin
+
+unique_tester:
+  title: Special Butterfly
+  description: <%= Faker::Lorem.paragraph(2) %>
+  url: <%= Faker::Internet.url %>
+  date_posted:
+  job_location: San Francisco
+  hiring_organization: <%= Faker::Company.name %>
+  hiring_organization_url: <%= Faker::Internet.url %>
+  contact_name: <%= Faker::Name.name %>
+  contact_email: <%= Faker::Internet.free_email %>
+  contact_number: <%= Faker::PhoneNumber.phone_number %>
+  application_url:
+  deadline: <%= Date.today + 7 %>
+  application_instructions:
+  archived: false
+  user: one

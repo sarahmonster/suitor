@@ -75,7 +75,7 @@ $ ->
                   $vexContent.data().vex.value = "update"
 
                   $.ajax
-                    url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
+                    url: "#{$(this).data("uri")}.json"
                     type: "PUT"
                     data:
                       job_application:
@@ -93,7 +93,7 @@ $ ->
                   $vexContent.data().vex.value = "undo"
 
                   $.ajax
-                    url: "#{$(this).data("uri")}/#{jobApplicationId}.json"
+                    url: "#{$(this).data("uri")}.json"
                     type: "DELETE"
                     success: =>
                       vex.close $vexContent.data().vex.id
