@@ -7,7 +7,7 @@ class JobApplication < ActiveRecord::Base
   before_validation :ensure_datetime_not_date
 
   validates :date_sent, presence: true
-  validates :posting, presence: true
+  validates :posting, presence: true, uniqueness: true
 
   private
     def dont_change_time_for_same_date
