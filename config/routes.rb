@@ -26,7 +26,6 @@ Suitor::Application.routes.draw do
   resources :blog, only: [:index, :show]
 
   get 'home' => 'pages#home'
-  get 'launch' => 'pages#launch'
   get 'about' => 'pages#about'
   get 'help' => 'pages#help'
 
