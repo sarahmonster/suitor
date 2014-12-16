@@ -25,8 +25,6 @@ Suitor::Application.routes.draw do
 
   resources :blog, only: [:index, :show]
 
-  # TODO: This should possibly not exist at all eventually? But certainly not
-  # for authenticated users.
   get 'home' => 'pages#home'
   get 'about' => 'pages#about'
   get 'help' => 'pages#help'
