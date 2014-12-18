@@ -8,6 +8,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= favicon_link_tag "favicon.png?v=5", type: "image/png" %>
   <%= csrf_meta_tags %>
+  <%= render partial: 'layouts/ga' %>
 </head>
 <body class="<%= controller_name %> <%= action_name %>">
   <!-- MOBILE MENU -->
@@ -37,11 +38,11 @@
     <!-- PAGE CONTENT -->
     <div class="container">
       <%= render "layouts/messages" %>
-      
+
       <% if blog_post? %>
         <%= render "blog/header" %>
       <% end %>
-      
+
       <%= yield %>
 
       <% if blog_post? %>
