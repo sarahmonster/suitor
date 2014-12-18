@@ -26,12 +26,10 @@ Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 
 
 require 'capistrano/bundler'
+set :bundle_flags, "--deployment --quiet --binstubs"
 require 'capistrano/rails'
 require 'capistrano/rails/migrations'
 
-
-# If you are using rvm add these lines:
-# require 'capistrano/rvm'
-# set :rvm_type, :user
-# set :rvm_ruby_version, '2.1.3p242'
-# set :rvm_custom_path, '/usr/local/rvm/bin/rvm'
+require 'capistrano/rbenv'
+set :rbenv_type, :user
+set :rbenv_ruby, '2.1.5'

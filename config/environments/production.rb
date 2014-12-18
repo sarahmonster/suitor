@@ -68,7 +68,7 @@ Suitor::Application.configure do
   # Make sure Premailer compiles assets with the correct URL
   config.action_controller.asset_host =
   config.action_mailer.asset_host     = 'http://mrsuitor.com/'
-  
+
   # Use Mandrill for email
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
@@ -79,8 +79,8 @@ Suitor::Application.configure do
     :port      => 587,
     :user_name => ENV["MANDRILL_USERNAME"],
     :password  => ENV["MANDRILL_PASSWORD"],
-    :enable_starttls_auto => true, 
-    :authentication => 'login', 
+    :enable_starttls_auto => true,
+    :authentication => 'login',
     :domain => 'mrsuitor.com'
   }
 
