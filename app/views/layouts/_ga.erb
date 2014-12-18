@@ -4,8 +4,11 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-975356-6', 'auto');
-  ga('set', '&uid', 'xxx');
+  ga('create', '<%= ENV["GA_ID"] %>', 'auto');
+  <% if @userid %>
+    ga('set', '&uid', '<%= @userid %>');
+    ga('set', 'dimension1', '<%= @userid %>');
+  <% end %>
   ga('send', 'pageview');
 
 </script>
