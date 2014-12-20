@@ -16,9 +16,9 @@ set :rbenv_map_bins, %w{rake gem bundle ruby rails}
 # We keep the last 5 deploys; good enough.
 set :keep_releases, 5
 
-# Our DB configs and .env are all we copy. We don't copy secrets.yml because
+# The .env is all we copy. We don't copy database.yml or secrets.yml because
 # we use dotenv and environment variables for our secrets.
-set :linked_files, %w{config/database.yml .env}
+set :linked_files, %w{.env}
 
 # These are the dirs we keep between releases
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
