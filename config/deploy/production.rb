@@ -1,43 +1,41 @@
+# mrsuitor.com app servers, yo!
 set :stage, :production
+set :branch, "master"
 
-# Simple Role Syntax
-# ==================
-# Supports bulk-adding hosts to roles, the primary
-# server in each group is considered to be the first
-# unless any hosts have the primary property set.
-# Don't declare `role :all`, it's a meta role
-# role :app, %w{deploy@example.com}
-# role :web, %w{deploy@example.com}
-# role :db,  %w{deploy@example.com}
+# These are the hostnames to which our nginx server will respond. Keep in
+# mind that ONLY THE HOSTNAMES HERE WILL GET A RESPONSE FROM OUR HTTP SERVER.
+# They specify our VirtualHost directives in the nginx config on the server,
+# so if you don't have DNS set up for these hosts, you'll need to edit your
+# /etc/hosts or the requests will fail. You cannot make straight-up IP requests
+# to these servers by default.
+set :server_name, "mrsuitor.com"
 
-# Extended Server Syntax
-# ======================
-# This can be used to drop a more detailed server
-# definition into the server list. The second argument
-# something that quacks like a hash can be used to set
-# extended properties on the server.
-# server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
-# server 'mrsuitor.com', user: 'deploy', roles: %w{web app}
-server '188.226.190.134', user: 'suitor', roles: %w{web app db}, primary: true
+# This is useful if we're running multiple apps on the same app server (we
+# currently don't, but it's possible). It also provides sanity checks when
+# looking at file paths, especially if you have a server that runs different
+# stages of the same app (staging and production).
+set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 
-# you can set custom ssh options
-# it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
-# you can see them in [net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start)
-# set it globally
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
-# and/or per server
-# server 'example.com',
-#   user: 'user_name',
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: 'user_name', # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: 'please use keys'
-#   }
-# setting per server overrides global ssh_options
+# These are the servers we deploy our app to. Note that these are not the
+# hostnames that the servers will respond to re: HTTP requests but they are
+# the internally-used hostnames. Things like `cyrano.mrsuitor.com` are fine
+# here.
+#
+# Servers that include the `db` role are database servers.
+server 'mrsuitor.com', user: 'deploy', roles: %w{web app db}, primary: true
+
+# Where we deploy the app. Simple enough ;-)
+set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
+
+# Instead of trying to infer something as important as environment from the
+# stage name, we'll set it explicitly here:
+set :rails_env, :production
+
+# Number of unicorn workers, this will be reflected in the unicorn.rb and monit
+# configs.
+set :unicorn_worker_count, 5
+
+# Whether we're using ssl or not, used for building nginx config files.
+# For now it's off, but this should change in the future.
+# TODO: Enable SSL.
+set :enable_ssl, false
