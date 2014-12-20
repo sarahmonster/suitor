@@ -1,5 +1,5 @@
 # mrsuitor.com app servers, yo!
-set :stage, :production
+set :stage, :staging
 
 # We always deploy from master.
 set :branch, "master"
@@ -10,7 +10,7 @@ set :branch, "master"
 # so if you don't have DNS set up for these hosts, you'll need to edit your
 # /etc/hosts or the requests will fail. You cannot make straight-up IP requests
 # to these servers by default.
-set :server_name, "mrsuitor.com www.mrsuitor.com"
+set :server_name, "staging.mrsuitor.com"
 
 # This is useful if we're running multiple apps on the same app server (we
 # currently don't, but it's possible). It also provides sanity checks when
@@ -24,7 +24,7 @@ set :full_app_name, "#{fetch(:application)}_#{fetch(:stage)}"
 # here.
 #
 # Servers that include the `db` role are database servers.
-server 'mrsuitor.com', user: 'deploy', roles: %w{web app db}, primary: true
+server 'staging.mrsuitor.com', user: 'deploy', roles: %w{web app db}, primary: true
 
 # Where we deploy the app. Simple enough ;-)
 set :deploy_to, "/home/#{fetch(:deploy_user)}/apps/#{fetch(:full_app_name)}"
