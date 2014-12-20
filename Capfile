@@ -24,12 +24,16 @@ require 'capistrano/deploy'
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.cap').each { |r| import r }
 
-
-require 'capistrano/bundler'
 require 'capistrano/rails'
+require 'capistrano/rails/migrations'
+
+# bundler configuration
+set :bundle_path, '/usr/local/rvm/gems/ruby-2.1.3@global/bin/bundle' 
+require 'capistrano/bundler'
+
+# rvm configuration
+require 'capistrano/rvm'
+set :rvm_custom_path, '/usr/local/rvm'
+set :rvm_ruby_version, '2.1.3p242'
 
 
-# If you are using rvm add these lines:
-# require 'capistrano/rvm'
-# set :rvm_type, :user
-# set :rvm_ruby_version, '2.1.3p242'
