@@ -16,7 +16,7 @@ copy process. On a Mac, you can install this with `brew`:
 ## Server OS, Versions, etc.
 
 suitor (and this document) is optimised for deploys to a 64-bit, Ubuntu Linux
-(`14.10` LTS) Linode VPS. The version of Ruby used in production is `2.1.5`
+(`14.04` LTS) Linode VPS. The version of Ruby used in production is `2.1.5`
 (using [rbenv](https://github.com/sstephenson/rbenv)). We use nginx as our
 web server, with Unicorn to run our Ruby code.
 
