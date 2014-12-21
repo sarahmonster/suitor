@@ -12,6 +12,8 @@
 
 # Ignore dotenv stuff
 .env
+# Add DEFINITELY ignore this: it's only used for `cap deploy:setup_config`
+.env.production
 
 # Ignore all logfiles and tempfiles.
 /log/*.log

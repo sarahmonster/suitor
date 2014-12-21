@@ -18,8 +18,15 @@ test:
   pool: 5
   timeout: 5000
 
+# Production values are not stored in this file, instead they are loaded in
+# via environment variables.
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: mysql2
+  encoding: utf8
+  reconnect: true
+  database: <%= ENV["SUITOR_DB_NAME"] %>
+  pool: <%= ENV["SUITOR_DB_POOLS"] || 5 %>
+  username: <%= ENV["SUITOR_DB_USERNAME"] %>
+  password: <%= ENV["SUITOR_DB_PASSWORD"] %>
+  host: <%= ENV["SUITOR_DB_HOST"] %>
+  port: <%= ENV["SUITOR_DB_PORT"] %>

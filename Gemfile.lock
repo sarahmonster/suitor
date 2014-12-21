@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/capistrano/rvm.git
-  revision: 9cfef39cf0022839dca6b5b330dfefeb5fc363e7
-  specs:
-    capistrano-rvm (0.1.2)
-      capistrano (~> 3.0)
-      sshkit (~> 1.2)
-
-GIT
   remote: git://github.com/sarahsemark/mmenu-rails.git
   revision: 15d49c5bcb792ee58999f418c6e8ebf9e5cc7e73
   specs:
@@ -17,6 +9,13 @@ GIT
   revision: e45dbd3b159f77978296bb3814b5ddc49d2943a5
   specs:
     vex_rails (0.2.0)
+
+GIT
+  remote: git://github.com/tofumatt/capistrano-upload-config.git
+  revision: 53b1ba0064487989f550e86dbd10f0ea8328da29
+  specs:
+    capistrano-upload-config (0.5.0)
+      capistrano (>= 3.0)
 
 GEM
   remote: https://rubygems.org/
@@ -66,16 +65,21 @@ GEM
     browser_details (0.0.6)
       useragent (>= 0.4)
     builder (3.2.2)
-    capistrano (3.1.0)
+    capistrano (3.2.1)
       i18n
       rake (>= 10.0.0)
       sshkit (~> 1.3)
     capistrano-bundler (1.1.3)
       capistrano (~> 3.1)
       sshkit (~> 1.2)
+    capistrano-cookbook (0.2.1)
+      capistrano (~> 3.2)
     capistrano-rails (1.1.2)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
+    capistrano-rbenv (2.0.2)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -99,10 +103,9 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colorator (0.1)
-    colorize (0.7.3)
+    colorize (0.7.5)
     css_parser (1.3.5)
       addressable
-    daemons (1.1.9)
     dalli (2.7.2)
     date_time_attribute (0.1.2)
       activesupport (>= 3.0.0)
@@ -122,7 +125,6 @@ GEM
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
     erubis (2.7.0)
-    eventmachine (1.0.3)
     exception_notification (4.0.1)
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
@@ -150,7 +152,7 @@ GEM
     hike (1.2.3)
     hitimes (1.2.2)
     htmlentities (4.3.2)
-    i18n (0.6.11)
+    i18n (0.7.0)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -183,6 +185,7 @@ GEM
       railties (>= 3.1.0)
     json (1.8.1)
     jwt (1.0.0)
+    kgio (2.9.2)
     kramdown (1.5.0)
     liquid (2.5.5)
     listen (2.7.11)
@@ -282,7 +285,8 @@ GEM
       activesupport (= 4.1.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (10.3.2)
+    raindrops (0.13.0)
+    rake (10.4.2)
     rb-fsevent (0.9.4)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -341,15 +345,11 @@ GEM
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
     sqlite3 (1.3.10)
-    sshkit (1.5.1)
-      colorize
+    sshkit (1.6.1)
+      colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     talk_like_a_pirate (0.1.0)
-    thin (1.6.3)
-      daemons (~> 1.0, >= 1.0.9)
-      eventmachine (~> 1.0)
-      rack (~> 1.0)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
@@ -367,6 +367,10 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     useragent (0.10.0)
     warden (1.2.3)
       rack (>= 1.0)
@@ -390,10 +394,12 @@ DEPENDENCIES
   better_errors
   bourbon
   browser_details
-  capistrano (~> 3.1.0)
-  capistrano-bundler (~> 1.1.2)
-  capistrano-rails (~> 1.1.1)
-  capistrano-rvm!
+  capistrano (~> 3.2.1)
+  capistrano-bundler
+  capistrano-cookbook
+  capistrano-rails (~> 1.1.0)
+  capistrano-rbenv (~> 2.0)
+  capistrano-upload-config!
   capybara
   coffee-rails (~> 4.0.0)
   dalli
@@ -433,8 +439,8 @@ DEPENDENCIES
   spring
   sqlite3
   talk_like_a_pirate
-  thin
   turbolinks
   uglifier (>= 1.3.0)
+  unicorn (~> 4.8.3)
   vex_rails!
   wysiwyg-rails
