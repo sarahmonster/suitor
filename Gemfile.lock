@@ -10,6 +10,13 @@ GIT
   specs:
     vex_rails (0.2.0)
 
+GIT
+  remote: git://github.com/tofumatt/capistrano-upload-config.git
+  revision: 53b1ba0064487989f550e86dbd10f0ea8328da29
+  specs:
+    capistrano-upload-config (0.5.0)
+      capistrano (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -392,6 +399,7 @@ DEPENDENCIES
   capistrano-cookbook
   capistrano-rails (~> 1.1.0)
   capistrano-rbenv (~> 2.0)
+  capistrano-upload-config!
   capybara
   coffee-rails (~> 4.0.0)
   dalli
