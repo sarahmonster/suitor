@@ -63,8 +63,8 @@ Suitor::Application.configure do
   # config.assets.precompile += %w( search.js )
 
   # Make sure Premailer compiles assets with the correct URL
-  config.action_controller.asset_host = 'http://suitor.tofumatt.com'
-  config.action_mailer.asset_host     = 'http://suitor.tofumatt.com'
+  config.action_controller.asset_host = ENV["SUITOR_HOST"]
+  config.action_mailer.asset_host     = ENV["SUITOR_HOST"]
 
   # Use Mandrill for email
   config.action_mailer.raise_delivery_errors = true
