@@ -34,14 +34,6 @@ $ ->
         "h4"
       ]
 
-    $("input").focus ->
-      $(this).parent().addClass "focus"
-      return
-
-    $("input").blur ->
-      $(this).parent().removeClass "focus"
-      return
-
     # Show submitted application details in a modal
     $(".applied.done").on "click", ->
         vex.dialog.alert
