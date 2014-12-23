@@ -17,19 +17,15 @@ $ ->
     # Add focus classes to container divs when an input/textarea is focused on (used for styling)
     $("input").focus ->
       $(this).parent().addClass "focus"
-      return
-
+      
     $("input").blur ->
       $(this).parent().removeClass "focus"
-      return
 
     $("textarea").focus ->
       $(this).parent().addClass "focus"
-      return
 
     $("textarea").blur ->
       $(this).parent().removeClass "focus"
-      return
 
     # Make some custom tooltips happen (for form elements only, at least right now)
     $('label').mouseover ->
