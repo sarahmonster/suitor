@@ -15,16 +15,10 @@ $ ->
       this.closest(element).find('.tooltip').remove()
 
     # Add focus classes to container divs when an input/textarea is focused on (used for styling)
-    $("input").focus ->
-      $(this).parent().addClass "focus"
-      
-    $("input").blur ->
-      $(this).parent().removeClass "focus"
-
-    $("textarea").focus ->
+    $("input,textarea").focus ->
       $(this).parent().addClass "focus"
 
-    $("textarea").blur ->
+    $("input,textarea").blur ->
       $(this).parent().removeClass "focus"
 
     # Make some custom tooltips happen (for form elements only, at least right now)
