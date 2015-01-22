@@ -9,8 +9,9 @@
             </tr>
             <tr>
                 <td valign="top" class="footerContent" style="padding-top:0;" mc:edit="footer_content01">
-                    <p>*|IFNOT:ARCHIVE_PAGE|*
-                    *|LIST:DESCRIPTION|*</p>
+                    *|IFNOT:ARCHIVE_PAGE|*
+                    <p>*|LIST:DESCRIPTION|*</p>
+                    *|END:IF|*
                     <p>You can send us cookies and death threats in the post here:<br />
                     5821a rue Marquette, Montreal QC H2J 3Z4</p>
                 </td>
