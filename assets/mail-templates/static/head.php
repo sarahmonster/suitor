@@ -30,7 +30,7 @@
       * @theme page
       */
       body, #bodyTable{
-        /*@editable*/ background: url("http://mrsuitor.com/pinstriped_suit.jpg") repeat #FFF;
+        /*@editable*/ background: #fff url("http://mrsuitor.com/pinstriped_suit.jpg") repeat;
         color: #333333;
       }
 
@@ -275,7 +275,7 @@
       #templateBody{
         /*@editable*/ background-color: rgba(255, 255, 255, 0.8);
         /*@editable*/ border-top: 4px solid #8ABCE9;
-        /*@editable*/ margin-bottom: 30px;
+        /*@editable*/ margin-bottom: 10px;
       }
 
       /**
@@ -337,12 +337,17 @@
         /*@editable*/ color: #808080;
         /*@editable*/ font-family: "Helvetica Neue", Helvetica, sans-serif;
         /*@editable*/ font-size: 12px;
-        /*@editable*/ line-height: 150%;
-        padding-top:20px;
-        padding-right:20px;
-        padding-bottom:20px;
-        padding-left:20px;
+        /*@editable*/ line-height: 125%;
+        padding-top:0px;
+        padding-right:0px;
+        padding-bottom:0px;
+        padding-left:0px;
         /*@editable*/ text-align: center;
+      }
+
+      .footerContent p {
+        /*@editable*/ color: #808080;
+        margin: 8px 0;
       }
 
       /**

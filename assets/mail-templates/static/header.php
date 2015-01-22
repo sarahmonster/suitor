@@ -13,8 +13,8 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templatePreheader">
                                         <tr>
                                             <td valign="top" class="preheaderContent" style="padding-top:10px; padding-right:20px; padding-bottom:10px; padding-left:20px;" mc:edit="preheader_content00">
-                                                <span style="float:left">Let&#39;s chat.</span>  
-                                          
+                                                <span style="float:left">Let&#39;s chat.</span>
+
                                             <!-- *|IFNOT:ARCHIVE_PAGE|* -->
                                                 <span style="float:right">&nbsp; &nbsp; Does this email look wonky? <a href="*|ARCHIVE|*" target="_blank">Try this instead</a></span>
                                             <!-- *|END:IF|* -->

@@ -9,19 +9,22 @@
             </tr>
             <tr>
                 <td valign="top" class="footerContent" style="padding-top:0;" mc:edit="footer_content01">
-                
-                    *|IFNOT:ARCHIVE_PAGE|* 
-                    *|LIST:DESCRIPTION|*
-                    You can send us cookies and death threats in the post here:
-                    *|HTML:LIST_ADDRESS_HTML|* *|END:IF|* 
+                    <p>*|IFNOT:ARCHIVE_PAGE|*
+                    *|LIST:DESCRIPTION|*</p>
+                    <p>You can send us cookies and death threats in the post here:<br />
+                    5821a rue Marquette, Montreal QC H2J 3Z4</p>
                 </td>
             </tr>
             <tr>
                 <td valign="top" class="footerContent" style="padding-top:0; padding-bottom:40px;" mc:edit="footer_content02">
-                  Don&rsquo;t love us anymore? We understand. 
-                  <a href="*|UNSUB|*">Unsubscribe away!</a><br>
-                  Changed your name, or just want to tell our marketing-bot more about yourself? 
-                  <a href="*|UPDATE_PROFILE|*">Update your profile</a>
+                  <p>Don&rsquo;t love us anymore? We understand.
+                  <a href="*|UNSUB|*">Unsubscribe away!</a></p>
+
+                  <p>Changed your name, or want to tell us more about yourself?
+                  <a href="*|UPDATE_PROFILE|*">Update your profile</a></p>
+
+                  <p>We &hearts; Mailchimp. <br /><br />
+                  *|REWARDS|*</p>
                 </td>
             </tr>
         </table>
