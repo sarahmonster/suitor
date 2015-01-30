@@ -1,7 +1,15 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  before_filter :get_user_data
 
   helper :date
+
+  # Get the current user ID for Google Analytics
+  def get_user_data
+    if current_user
+      @userid = current_user.id
+    end
+  end
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
